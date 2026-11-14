@@ -133,6 +133,39 @@ textarea { min-height: 100px; resize: vertical; line-height: 1.45; }
 .help-details summary { color: #725323; font-weight: 800; cursor: pointer; }
 .help-details ol { padding-left: 20px; }
 .help-details p { margin-bottom: 0; }
+.copyright-footer {
+  padding: 28px 22px;
+  color: #d7cdbb;
+  background: #302b25;
+}
+.copyright-content {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.copyright-content h2 {
+  margin: 0;
+  color: #fff8e9;
+  font: 700 16px Georgia, 'Times New Roman', serif;
+}
+.copyright-content p { margin: 8px 0; }
+.copyright-content .copyright-all-rights {
+  margin-top: 0;
+  color: #c9a96f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+.copyright-content ul {
+  margin: -3px 0 12px;
+  padding-left: 20px;
+}
+.copyright-content .copyright-final {
+  margin-bottom: 0;
+  color: #fff8e9;
+  font-weight: 700;
+}
 .hidden { display: none; }
 @media (max-width: 980px) {
   .layout { grid-template-columns: 1fr; max-width: 760px; }
