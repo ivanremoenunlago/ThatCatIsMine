@@ -1,0 +1,188 @@
+nombre: "Gatos"
+slug: "gatos"
+color: "#D9B96E"
+paleta:
+  marco: "#D9B96E"
+  papel: "#F5E9CE"
+  tinta: "#493323"
+  detalle: "#B98232"
+iconos:
+  tipo: "../emojis/paw.png"
+  sofa: "../emojis/sofa.png"
+  salon: "../emojis/salon.png"
+diseno:
+  ancho_mm: 63.5
+  alto_mm: 88
+  dpi: 720
+  dpi_vista_previa: 240
+  margen: 0.0289
+  alto_ilustracion: 0.68
+  inicio_nombre: 0.6315
+  alto_nombre: 0.0906
+  inicio_descripcion: 0.7803
+  alto_descripcion: 0.1564
+  radio_esquina: 0.0611
+  radio_esquina_interior: 0.0528
+  radio_ilustracion: 0.0344
+  borde_interior: 0.0156
+  tamano_icono: 0.0722
+  tamano_caja_icono: 0.11
+  x_insignia: 0.0511
+  y_insignia: 0.0353
+  radio_componente: 0.0306
+  x_panel_puntuacion: 0.7889
+  y_panel_puntuacion: 0.0353
+  ancho_puntuaciones: 0.16
+  alto_puntuaciones: 0.145
+  radio_puntuaciones: 0.0222
+  tamano_icono_sofa_x: 0.06
+  tamano_icono_sofa_y: 0.0366
+  tamano_icono_salon_x: 0.06
+  tamano_icono_salon_y: 0.0432
+  tamano_fuente_puntuacion: 0.05
+  x_banda_nombre: 0.0433
+  y_banda_nombre: 0.6315
+  ancho_banda_nombre: 0.9133
+  alto_banda_nombre: 0.0906
+  radio_banda_nombre: 0.0311
+  tamano_fuente_nombre: 0.0489
+  tamano_fuente_nombre_min: 0.0267
+  espaciado_nombre: 0.00083
+  x_panel_habilidad: 0.0433
+  y_panel_habilidad: 0.7338
+  ancho_panel_habilidad: 0.9133
+  alto_panel_habilidad: 0.2366
+  radio_panel_habilidad: 0.0311
+  x_texto_habilidad: 0.1
+  y_texto_habilidad: 0.755
+  ancho_texto_habilidad: 0.8
+  alto_texto_habilidad: 0.195
+  alto_texto_habilidad_con_sinergia: 0.137
+  y_divisor_sinergia: 0.905
+  y_texto_sinergia: 0.938
+  tamano_fuente_sinergia: 0.0244
+  tamano_fuente_habilidad: 0.0311
+  tamano_fuente_habilidad_min: 0.0256
+  interlineado_habilidad: 0.0289
+  espaciado_habilidad: 0
+  opacidad_sombra: 0.18
+  desplazamiento_sombra: 0.0044
+  desenfoque_sombra: 0.01
+cartas:
+  - nombre: "Gato Gordo"
+    imagen: "imagenes/gato gordo.png"
+    sofa: 6
+    salon: 2
+    descripcion: "Es inmune a Robo Felino y Puerta Gatera."
+    sinergia: "Gato Desnutrido — ¡Que me aplastas!"
+  - nombre: "Gato Desnutrido"
+    imagen: "imagenes/gato desnutrido.png"
+    sofa: 1
+    salon: 1
+    descripcion: "Si no tienes cartas en la mano, obtiene +2 puntos de prestigio."
+    sinergia: "Gato Gordo — ¡Que me aplastas!"
+  - nombre: "Gato de Barrio (Matón)"
+    imagen: "imagenes/gato de barrio.png"
+    sofa: 2
+    salon: 1
+    descripcion: "Aumenta en +1 la potencia cuando atacas."
+    sinergia: "Gato Territorial — Veteranos del barrio"
+  - nombre: "Gato Territorial"
+    imagen: "imagenes/gato territorial.png"
+    sofa: 2
+    salon: 1
+    descripcion: "Aumenta en +1 la potencia cuando defiendes una carta."
+    sinergia: "Gato de Barrio (Matón) — Veteranos del barrio"
+  - nombre: "Gato Cotilla"
+    imagen: "imagenes/gato cotilla.png"
+    sofa: 3
+    salon: 1
+    descripcion: "Cuando te atacan, puedes descartar 1 carta para ver el ataque y sus apoyos."
+    sinergia: "Gato Curioso — Socios de información"
+  - nombre: "Gato Curioso"
+    imagen: "imagenes/gato curioso.png"
+    sofa: 3
+    salon: 1
+    descripcion: "Al inicio de tu fase de robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1."
+    sinergia: "Gato Cotilla — Socios de información"
+  - nombre: "Gato Metódico"
+    imagen: "imagenes/gato metodico.png"
+    sofa: 3
+    salon: 1
+    descripcion: "Si al final de la fase de robo tienes menos de 3 cartas, roba hasta tener 4."
+    sinergia: "Gato Acaparador — Control de inventario"
+  - nombre: "Gato Acaparador"
+    imagen: "imagenes/gato acaparador.png"
+    sofa: 3
+    salon: 1
+    descripcion: "Aumenta tu límite de mano de 7 a 9 cartas."
+    sinergia: "Gato Metódico — Control de inventario"
+  - nombre: "Gata Envidiosa"
+    imagen: "imagenes/gato envidioso.png"
+    sofa: 4
+    salon: 2
+    descripcion: "Tus ataques contra instalaciones reciben +1 de potencia. No se aplica contra gatos."
+    sinergia: "Gato Mapache — Saqueadores envidiosos"
+  - nombre: "Mamá Gata"
+    imagen: "imagenes/mama gata.png"
+    sofa: 2
+    salon: 1
+    descripcion: "Mientras esté activa en el Sofá, concede +1 punto a cada otro gato que esté en el Sofá."
+  - nombre: "Gato Bebé"
+    imagen: "imagenes/gato bebe.png"
+    sofa: 1
+    salon: 1
+    descripcion: "Si está solo en el Sofá, durante el robo inicial roba 1 carta adicional."
+  - nombre: "Gato Diurno (Blanco)"
+    imagen: "imagenes/gato diurno.png"
+    sofa: 3
+    salon: 1
+    descripcion: "Si un rival ataca con éxito a uno de tus gatos del Sofá, descarta 1 carta adicional."
+    sinergia: "Gato Nocturno (Negro) — Pareja yin-yang"
+  - nombre: "Gato Nocturno (Negro)"
+    imagen: "imagenes/gato ncoturno.png"
+    sofa: 3
+    salon: 1
+    descripcion: "Si un rival fracasa al atacar a uno de tus gatos del Sofá, descarta 1 carta."
+    sinergia: "Gato Diurno (Blanco) — Pareja yin-yang"
+  - nombre: "Gato Trillizo 1"
+    imagen: "imagenes/trillizo 1.png"
+    sofa: 2
+    salon: 1
+    descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
+    sinergia: "Los otros 2 Trillizos — Los Trillizos"
+  - nombre: "Gato Trillizo 2"
+    imagen: "imagenes/trillizo 2.png"
+    sofa: 2
+    salon: 1
+    descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
+    sinergia: "Los otros 2 Trillizos — Los Trillizos"
+  - nombre: "Gato Trillizo 3"
+    imagen: "imagenes/trillizo 3.png"
+    sofa: 2
+    salon: 1
+    descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
+    sinergia: "Los otros 2 Trillizos — Los Trillizos"
+  - nombre: "Gato Solitario"
+    imagen: "imagenes/gato solitario.png"
+    sofa: 7
+    salon: 2
+    descripcion: "Si es el único gato en el Sofá, cancela automáticamente cartas CANCELABLES que lo elijan como objetivo."
+  - nombre: "Gato Escalador"
+    imagen: "imagenes/gato escalador.png"
+    sofa: 3
+    salon: 1
+    descripcion: "Una vez por turno, puedes realizar un movimiento gatuno adicional durante el Paso de Preparación."
+    sinergia: "Gato Victimista — ¡Porque solo a mí!"
+  - nombre: "Gato Mapache"
+    imagen: "imagenes/mapache.png"
+    sofa: 2
+    salon: 1
+    descripcion: "Puedes recuperar la última carta de la pila de descartes en lugar de tu robo inicial."
+    sinergia: "Gata Envidiosa — Saqueadores envidiosos"
+  - nombre: "Gato Victimista"
+    imagen: "imagenes/gato victimista.png"
+    sofa: 3
+    salon: 1
+    descripcion: "Si cancelan con Flús-Flús de Agua una travesura tuya, el rival descarta 1 carta adicional."
+    sinergia: "Gato Escalador — ¡Porque solo a mí!"

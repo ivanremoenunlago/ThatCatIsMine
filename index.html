@@ -3,116 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Creador de cartas — ¡Ese gato es mío!</title>
+  <meta name="theme-color" content="#f3eee4">
+  <title>¡Ese gato es mío! — Catálogo de cartas</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <header class="topbar">
-    <div>
-      <p class="eyebrow">HERRAMIENTA LOCAL · SIN SUBIR ARCHIVOS A INTERNET</p>
+    <div class="brand">
+      <p class="eyebrow">CATÁLOGO DE CARTAS</p>
       <h1>¡Ese gato es mío!</h1>
-      <p class="subtitle">Creador de cartas a partir de un archivo .yml y una ilustración.</p>
+      <p class="subtitle">Cartas listas para revisar, descargar e imprimir.</p>
     </div>
     <div class="top-actions">
-      <button id="folderButton" class="button secondary">Abrir carpeta</button>
-      <button id="ymlButton" class="button secondary">Cargar .yml</button>
-      <button id="imageButton" class="button secondary">Cargar imagen</button>
+      <button id="folderButton" class="button secondary" type="button">Recargar catálogo</button>
+      <button id="pdfButton" class="button primary" type="button" disabled>Descargar PDF A4</button>
     </div>
   </header>
 
-  <main class="layout">
-    <section class="preview-panel">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">VISTA PREVIA</p>
-          <h2>Tu carta</h2>
-        </div>
-        <span id="status" class="status">Carga un archivo .yml y una imagen.</span>
-      </div>
-      <div class="preview-stage">
-        <canvas id="cardCanvas" width="1800" height="2494" aria-label="Vista previa de la carta"></canvas>
-      </div>
-      <div class="download-row">
-        <button id="downloadButton" class="button primary">Descargar carta PNG</button>
-        <button id="saveYmlButton" class="button secondary">Descargar .yml</button>
-      </div>
-      <p class="hint">El PNG se genera a 1800 × 2494 píxeles, con esquinas exteriores transparentes y metadatos de 720 DPI.</p>
-    </section>
-
-    <section class="editor-panel">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">DATOS DE LA CARTA</p>
-          <h2>Contenido editable</h2>
-        </div>
-      </div>
-
-      <div class="file-note">
-        <strong>Ejemplo:</strong> la ilustración del gato acaparador se carga automáticamente al abrir esta página. Para otras cartas, guarda el .yml y la imagen juntos y pulsa <em>Abrir carpeta</em>.
-      </div>
-
-      <div class="form-grid">
-        <label class="field full">
-          <span>Tipo de carta</span>
-          <input id="tipo" type="text" value="GATO" maxlength="24">
-        </label>
-        <label class="field full">
-          <span>Nombre del gato</span>
-          <input id="nombre" type="text" value="GATO ACAPARADOR" maxlength="48">
-        </label>
-        <label class="field full">
-          <span>Descripción de la habilidad</span>
-          <textarea id="descripcion" rows="4">Aumenta tu límite de mano de 7 a 9 cartas.</textarea>
-        </label>
-        <label class="field">
-          <span>Puntos en el Sofá</span>
-          <input id="sofa" type="number" min="0" max="99" value="3">
-        </label>
-        <label class="field">
-          <span>Puntos en el Salón</span>
-          <input id="salon" type="number" min="0" max="99" value="1">
-        </label>
-        <label class="field">
-          <span>Emoji de tipo</span>
-          <input id="emoji_tipo" type="text" value="🐾" maxlength="8">
-        </label>
-        <label class="field">
-          <span>Emoji de Sofá</span>
-          <input id="emoji_sofa" type="text" value="🛋️" maxlength="8">
-        </label>
-        <label class="field">
-          <span>Emoji de Salón</span>
-          <input id="emoji_salon" type="text" value="🏠" maxlength="8">
-        </label>
-        <label class="field">
-          <span>Color de categoría</span>
-          <div class="color-control">
-            <input id="color" type="color" value="#D7AA4D">
-            <code id="colorValue">#D7AA4D</code>
+  <main>
+    <section class="catalogue">
+      <nav id="categoryTabs" class="category-tabs" aria-label="Categorías de cartas"></nav>
+      <div class="category-heading">
+        <div class="category-heading-title">
+          <img id="categoryIcon" class="category-icon" alt="" aria-hidden="true">
+          <div>
+            <p class="eyebrow">COLECCIÓN</p>
+            <h2 id="categoryTitle">Cargando cartas…</h2>
           </div>
-        </label>
-        <label class="field full">
-          <span>Nombre del archivo de imagen (tal como aparece en la carpeta)</span>
-          <input id="imagen" type="text" value="gato_acaparador.png" placeholder="gato_acaparador.png">
-        </label>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Preparando el catálogo…</p>
       </div>
-
-      <div class="editor-footer">
-        <button id="resetButton" class="button text-button">Restaurar ejemplo</button>
-        <p>Los cambios de estos campos se reflejan automáticamente en la vista previa.</p>
-      </div>
-
-      <details class="help-details">
-        <summary>¿Cómo preparo mis archivos .yml?</summary>
-        <ol>
-          <li>Crea un archivo de texto y llámalo, por ejemplo, <code>gato_acaparador.yml</code>.</li>
-          <li>Copia dentro la estructura del archivo YAML de ejemplo incluido.</li>
-          <li>Escribe el nombre exacto de la imagen en <code>imagen:</code>.</li>
-          <li>Guarda el .yml y la imagen juntos en la misma carpeta.</li>
-          <li>Pulsa <strong>Abrir carpeta</strong> y selecciona esa carpeta.</li>
-        </ol>
-        <p>El archivo .yml utiliza una estructura YAML sencilla y editable. No necesita librerías ni instalaciones adicionales.</p>
-      </details>
+      <div id="emptyState" class="empty-state" hidden></div>
+      <div id="cardGrid" class="card-grid"></div>
     </section>
   </main>
 
@@ -136,9 +59,6 @@
     </div>
   </footer>
 
-  <input id="folderInput" class="hidden" type="file" webkitdirectory directory multiple>
-  <input id="ymlInput" class="hidden" type="file" accept=".yml,.yaml,text/plain">
-  <input id="imageInput" class="hidden" type="file" accept="image/png,image/jpeg,image/webp,image/*">
-  <script src="app.js"></script>
+  <input id="projectFolderInput" class="visually-hidden" type="file" webkitdirectory directory multiple>
 </body>
 </html>

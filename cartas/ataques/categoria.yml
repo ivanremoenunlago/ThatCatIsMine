@@ -1,0 +1,64 @@
+nombre: "Ataques"
+slug: "ataques"
+color: "#D9B96E"
+paleta:
+  marco: "#D9B96E"
+  papel: "#F5E9CE"
+  tinta: "#493323"
+  detalle: "#B98232"
+iconos:
+  tipo: "../emojis/ataque.png"
+diseno:
+  ancho_mm: 63.5
+  alto_mm: 88
+  dpi: 720
+  dpi_vista_previa: 240
+  margen: 0.0289
+  alto_ilustracion: 0.68
+  inicio_nombre: 0.6315
+  alto_nombre: 0.0906
+  inicio_descripcion: 0.7803
+  alto_descripcion: 0.1564
+  radio_esquina: 0.0611
+  radio_esquina_interior: 0.0528
+  radio_ilustracion: 0.0344
+  borde_interior: 0.0156
+  tamano_icono: 0.0722
+  tamano_caja_icono: 0.11
+  x_insignia: 0.0511
+  y_insignia: 0.0353
+  radio_componente: 0.0306
+  x_panel_puntuacion: 0.7889
+  y_panel_puntuacion: 0.0353
+  ancho_puntuaciones: 0.16
+  alto_puntuaciones: 0.145
+  radio_puntuaciones: 0.0222
+  tamano_icono_sofa_x: 0.06
+  tamano_icono_sofa_y: 0.0366
+  tamano_icono_salon_x: 0.06
+  tamano_icono_salon_y: 0.0432
+  tamano_fuente_puntuacion: 0.05
+  x_banda_nombre: 0.0433
+  y_banda_nombre: 0.6315
+  ancho_banda_nombre: 0.9133
+  alto_banda_nombre: 0.0906
+  tamano_fuente_nombre: 0.0489
+  tamano_fuente_nombre_min: 0.0267
+  espaciado_nombre: 0.00083
+  x_panel_habilidad: 0.0433
+  y_panel_habilidad: 0.7338
+  ancho_panel_habilidad: 0.9133
+  alto_panel_habilidad: 0.2366
+  radio_panel_habilidad: 0.0311
+  x_texto_habilidad: 0.1
+  y_texto_habilidad: 0.755
+  ancho_texto_habilidad: 0.8
+  alto_texto_habilidad: 0.195
+  tamano_fuente_habilidad: 0.0311
+  tamano_fuente_habilidad_min: 0.0256
+  interlineado_habilidad: 0.0289
+  espaciado_habilidad: 0
+  opacidad_sombra: 0.18
+  desplazamiento_sombra: 0.0044
+  desenfoque_sombra: 0.01
+cartas: []
