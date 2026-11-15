@@ -2,11 +2,11 @@ nombre: "Ataques"
 slug: "ataques"
 color: "#B94B48"
 paleta:
-  marco: "#B94B48"
+  marco: "#de857e"
   fondo: "#EBC8C3"
-  papel: "#F0D4CF"
+  papel: "#F5E4DF"
   tinta: "#493323"
-  detalle: "#D28A83"
+  detalle: "#B94B48"
 iconos:
   tipo: "../emojis/ataque.png"
 diseno:

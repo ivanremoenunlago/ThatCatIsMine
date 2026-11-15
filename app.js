@@ -432,7 +432,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   const skillHeight = Math.round(height * design.alto_panel_habilidad);
   fillCardShape(context, skillX, skillY, skillWidth, skillHeight,
     Math.round(width * design.radio_panel_habilidad),
-    palette.papel, category.slug === 'ataques' ? palette.marco : palette.detalle,
+    palette.papel, palette.detalle,
     7 * scale, null);
 
   if (category.slug === 'ataques') {

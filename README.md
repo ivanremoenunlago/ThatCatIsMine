@@ -66,9 +66,9 @@ Paletas actuales:
 | Categoría | Marco | Fondo | Superficies de texto/panel | Detalle |
 | --- | --- | --- | --- | --- |
 | Gatos | `#D9B96E` | `#E7D1A6` | `#F5E9CE` | `#B98232` |
-| Ataques | `#B94B48` | `#EBC8C3` | `#F0D4CF` | `#D28A83` |
+| Ataques | `#B94B48` | `#EBC8C3` | `#F5E4DF` | `#C25D55` |
 
-Ataques sigue la estructura de bordes y paneles claros de Gatos, con el rojo en el nombre y en los elementos del panel **DAÑO**. La paleta de cada categoría está en su YAML, bajo `paleta`.
+Ataques sigue la estructura de bordes y paneles claros de Gatos: las bandas del nombre y los paneles inferiores comparten el color de detalle en sus bordes. El rojo del marco destaca el nombre, los rótulos y los valores fijos de ataque o apoyo; las descripciones conservan el color de tinta. La paleta de cada categoría está en su YAML, bajo `paleta`.
 
 ## Cómo editar o añadir cartas
 
