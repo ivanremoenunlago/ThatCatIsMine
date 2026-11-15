@@ -1,11 +1,12 @@
 nombre: "Ataques"
 slug: "ataques"
-color: "#D9B96E"
+color: "#B94B48"
 paleta:
-  marco: "#D9B96E"
-  papel: "#F5E9CE"
+  marco: "#B94B48"
+  fondo: "#EBC8C3"
+  papel: "#F0D4CF"
   tinta: "#493323"
-  detalle: "#B98232"
+  detalle: "#D28A83"
 iconos:
   tipo: "../emojis/ataque.png"
 diseno:
@@ -42,6 +43,7 @@ diseno:
   y_banda_nombre: 0.6315
   ancho_banda_nombre: 0.9133
   alto_banda_nombre: 0.0906
+  radio_banda_nombre: 0.0311
   tamano_fuente_nombre: 0.0489
   tamano_fuente_nombre_min: 0.0267
   espaciado_nombre: 0.00083
@@ -58,7 +60,100 @@ diseno:
   tamano_fuente_habilidad_min: 0.0256
   interlineado_habilidad: 0.0289
   espaciado_habilidad: 0
+  tamano_fuente_rotulo_ataque: 0.028
+  tamano_fuente_valor_ataque: 0.12
+  tamano_fuente_detalle_ataque: 0.032
+  tamano_fuente_dano_variable: 0.038
   opacidad_sombra: 0.18
   desplazamiento_sombra: 0.0044
   desenfoque_sombra: 0.01
-cartas: []
+cartas:
+  - nombre: "Bola de Pelo"
+    imagen: "imagenes/bola de pelo.png"
+    tipo: "ataque"
+    dano: 0
+    copias: 2
+    descripcion: "Sin defensa: éxito automático. Con defensa: se compara el daño; el empate favorece al defensor."
+  - nombre: "Bufido"
+    imagen: "imagenes/bufido.png"
+    tipo: "ataque"
+    dano: 1
+    copias: 2
+  - nombre: "Emboscada"
+    imagen: "imagenes/emboscada.png"
+    tipo: "ataque"
+    dano: 2
+    copias: 2
+  - nombre: "Zarpazo"
+    imagen: "imagenes/zarpazo.png"
+    tipo: "ataque"
+    dano: 3
+    copias: 3
+  - nombre: "Mordisco"
+    imagen: "imagenes/mordisco.png"
+    tipo: "ataque"
+    dano: 4
+    copias: 2
+  - nombre: "Agarre con patada"
+    imagen: "imagenes/agarre con patada.png"
+    tipo: "ataque"
+    dano: 5
+    copias: 1
+  - nombre: "Ataque en manada"
+    imagen: "imagenes/ataque en manada.png"
+    tipo: "ataque"
+    copias: 1
+    dano_variable: "El daño es equivalente al número total de gatos que tienes en el Sofá y el Salón."
+  - nombre: "Afilado de uñas"
+    imagen: "imagenes/afilado de uñas.png"
+    tipo: "apoyo"
+    bonificacion: 2
+    copias: 1
+    descripcion: "Suma +2 al daño del ataque o +2 a la defensa."
+  - nombre: "Erizarse"
+    imagen: "imagenes/gato erizado.png"
+    tipo: "apoyo"
+    bonificacion: 1
+    copias: 3
+    descripcion: "Suma +1 al daño del ataque o +1 a la defensa."
+  - nombre: "Terror del aspirador"
+    imagen: "imagenes/aspirador terrorífico.png"
+    tipo: "ataque"
+    dano: 1
+    copias: 1
+  - nombre: "Escobazo contundente"
+    imagen: "imagenes/escobazo.png"
+    tipo: "ataque"
+    dano: 2
+    copias: 2
+  - nombre: "Zapatilla voladora"
+    imagen: "imagenes/zapatilla voladora.png"
+    tipo: "ataque"
+    dano: 3
+    copias: 2
+  - nombre: "Caza de Bigotes"
+    imagen: "imagenes/caza de bigotes.png"
+    tipo: "ataque"
+    dano: 4
+    copias: 1
+  - nombre: "Baño forzado"
+    imagen: "imagenes/gato bañándose.png"
+    tipo: "ataque"
+    dano: 5
+    copias: 1
+  - nombre: "Manguerazo frío"
+    imagen: "imagenes/manguerazo de agua fría.png"
+    tipo: "ataque"
+    copias: 1
+    dano_variable: "El daño es equivalente al número total de gatos que tiene el rival en el Sofá y el Salón."
+  - nombre: "¡Susto de Pepino!"
+    imagen: "imagenes/susto de pepino.png"
+    tipo: "apoyo"
+    bonificacion: 1
+    copias: 1
+    descripcion: "Suma +1 al daño del ataque o +1 a la defensa."
+  - nombre: "¡Pacto de Bigotes y Escobazos!"
+    imagen: "imagenes/pacto de bigotes y escobazos.png"
+    tipo: "ataque"
+    dano: 6
+    copias: 1

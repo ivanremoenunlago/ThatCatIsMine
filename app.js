@@ -102,8 +102,22 @@ function validateCategory(category) {
   }
   if (!category.iconos.tipo) throw new Error(`La categoría "${category.nombre}" no define un icono de tipo.`);
   for (const card of category.cartas) {
-    if (!card.nombre || !card.imagen || !card.descripcion) {
-      throw new Error(`La carta "${card.nombre || 'sin nombre'}" necesita nombre, imagen y descripción.`);
+    if (!card.nombre || !card.imagen) {
+      throw new Error(`La carta "${card.nombre || 'sin nombre'}" necesita nombre e imagen.`);
+    }
+    if (category.slug === 'gatos' && !card.descripcion) {
+      throw new Error(`La carta "${card.nombre}" necesita una descripción.`);
+    }
+    if (category.slug === 'ataques') {
+      if (!['ataque', 'apoyo'].includes(card.tipo) || !Number.isInteger(card.copias) || card.copias < 1) {
+        throw new Error(`La carta "${card.nombre}" necesita un tipo y un número de copias válidos.`);
+      }
+      if (card.tipo === 'ataque' && !Number.isFinite(card.dano) && !card.dano_variable) {
+        throw new Error(`La carta "${card.nombre}" necesita daño fijo o una descripción de daño variable.`);
+      }
+      if (card.tipo === 'apoyo' && !Number.isFinite(card.bonificacion)) {
+        throw new Error(`La carta "${card.nombre}" necesita una bonificación válida.`);
+      }
     }
   }
 }
@@ -252,6 +266,66 @@ function wrapText(context, text, maxWidth) {
   return lines;
 }
 
+function drawAttackContent(context, category, card, x, y, width, height) {
+  const design = category.diseno;
+  const palette = category.paleta;
+  const centerX = x + width / 2;
+  const centerY = y + height / 2;
+  const textWidth = width * 0.82;
+
+  context.textAlign = 'center';
+  context.textBaseline = 'middle';
+
+  if (card.dano_variable) {
+    let fontSize = Math.round(width * design.tamano_fuente_dano_variable);
+    let lines = [];
+    let lineHeight = 0;
+    while (fontSize >= width * 0.025) {
+      context.font = `600 ${fontSize}px "Nunito Sans", Arial, Helvetica, sans-serif`;
+      lines = wrapText(context, card.dano_variable, textWidth);
+      lineHeight = fontSize * 1.18;
+      if (lines.length * lineHeight <= height * 0.76) break;
+      fontSize -= 2;
+    }
+    context.fillStyle = palette.tinta;
+    const firstLineY = centerY - (lines.length - 1) * lineHeight / 2;
+    lines.forEach((line, index) => context.fillText(line, centerX, firstLineY + index * lineHeight, textWidth));
+    return;
+  }
+
+  const isSupport = card.tipo === 'apoyo';
+  const hasDescription = Boolean(card.descripcion);
+  const label = isSupport ? 'BONIFICACIÓN' : 'DAÑO';
+  const value = isSupport ? `+${card.bonificacion}` : String(card.dano);
+  const labelY = centerY - height * (hasDescription ? 0.26 : 0.16);
+  const valueY = centerY + height * (hasDescription ? -0.02 : 0.08);
+
+  context.fillStyle = palette.marco;
+  context.font = `800 ${Math.round(width * design.tamano_fuente_rotulo_ataque)}px "Nunito Sans", Arial, sans-serif`;
+  context.fillText(label, centerX, labelY);
+
+  context.fillStyle = palette.marco;
+  context.font = `700 ${Math.round(width * design.tamano_fuente_valor_ataque)}px "Lora", Georgia, serif`;
+  context.fillText(value, centerX, valueY);
+
+  if (hasDescription) {
+    let fontSize = Math.round(width * design.tamano_fuente_detalle_ataque);
+    let lines = [];
+    let lineHeight = 0;
+    while (fontSize >= width * 0.02) {
+      context.font = `600 ${fontSize}px "Nunito Sans", Arial, Helvetica, sans-serif`;
+      lines = wrapText(context, card.descripcion, textWidth);
+      lineHeight = fontSize * 1.18;
+      if (lines.length * lineHeight <= height * 0.34) break;
+      fontSize -= 2;
+    }
+    context.fillStyle = palette.tinta;
+    const detailY = centerY + height * 0.3;
+    const firstLineY = detailY - (lines.length - 1) * lineHeight / 2;
+    lines.forEach((line, index) => context.fillText(line, centerX, firstLineY + index * lineHeight, textWidth));
+  }
+}
+
 function drawCard(canvas, category, card, artImage, icons, renderDpi=category.diseno.dpi) {
   const context = canvas.getContext('2d');
   const palette = category.paleta;
@@ -276,7 +350,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   fillCardShape(context, 8 * scale, 8 * scale, width - 16 * scale, height - 16 * scale,
     corner, palette.marco, null, 0, null);
   fillCardShape(context, innerBorder, innerBorder, width - innerBorder * 2, height - innerBorder * 2,
-    Math.round(width * design.radio_esquina_interior), palette.papel, palette.detalle, 4 * scale, null);
+    Math.round(width * design.radio_esquina_interior), palette.fondo || palette.papel, palette.detalle, 4 * scale, null);
 
   if (artImage) {
     drawCover(context, artImage, margin, margin, width - margin * 2, artHeight,
@@ -348,7 +422,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   if ('letterSpacing' in context) context.letterSpacing = `${width * design.espaciado_nombre}px`;
   fitText(context, title, bandWidth - width * 0.08, titleSize, titleMinSize,
     '"Lora", Georgia, "Times New Roman", serif');
-  context.fillStyle = palette.tinta;
+  context.fillStyle = category.slug === 'ataques' ? palette.marco : palette.tinta;
   context.fillText(title, bandX + bandWidth / 2, bandY + bandHeight / 2, bandWidth - width * 0.08);
   if ('letterSpacing' in context) context.letterSpacing = '0px';
 
@@ -357,8 +431,14 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   const skillWidth = Math.round(width * design.ancho_panel_habilidad);
   const skillHeight = Math.round(height * design.alto_panel_habilidad);
   fillCardShape(context, skillX, skillY, skillWidth, skillHeight,
-    Math.round(width * design.radio_panel_habilidad), palette.papel, palette.detalle,
+    Math.round(width * design.radio_panel_habilidad),
+    palette.papel, category.slug === 'ataques' ? palette.marco : palette.detalle,
     7 * scale, null);
+
+  if (category.slug === 'ataques') {
+    drawAttackContent(context, category, card, skillX, skillY, skillWidth, skillHeight);
+    return;
+  }
 
   const descriptionX = Math.round(width * design.x_texto_habilidad);
   const descriptionY = Math.round(height * design.y_texto_habilidad);
@@ -429,7 +509,15 @@ async function createCardTile(category, card) {
   title.textContent = card.nombre;
   const score = document.createElement('p');
   score.className = 'card-meta';
-  score.textContent = `Sofá ${card.sofa} · Salón ${card.salon}`;
+  if (category.slug === 'gatos') {
+    score.textContent = `Sofá ${card.sofa} · Salón ${card.salon}`;
+  } else {
+    const copyLabel = `${card.copias} ${card.copias === 1 ? 'copia' : 'copias'}`;
+    const typeLabel = card.tipo === 'apoyo' ? 'Apoyo' : 'Ataque';
+    const powerLabel = card.dano_variable ? 'daño variable'
+      : card.tipo === 'apoyo' ? `+${card.bonificacion}` : `daño ${card.dano}`;
+    score.textContent = `${typeLabel} · ${powerLabel} · ${copyLabel}`;
+  }
   const actions = document.createElement('div');
   actions.className = 'card-actions';
   const downloadButton = document.createElement('button');
@@ -500,6 +588,11 @@ function downloadBlob(blob, filename) {
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+function printableCards(category) {
+  return category.cartas.flatMap(card =>
+    Array.from({length: card.copias || 1}, () => card));
 }
 
 async function canvasPngWithDpi(canvas, category) {
@@ -582,7 +675,7 @@ function cropMarks(x, y, width, height, gap, length) {
 }
 
 async function createPdf(category) {
-  const cards = category.cartas;
+  const cards = printableCards(category);
   const pageCount = Math.ceil(cards.length / 9);
   const pageWidth = 595.276;
   const pageHeight = 841.89;
@@ -674,7 +767,10 @@ async function createPdf(category) {
 async function renderCategory(category) {
   const renderId = ++state.categoryRenderId;
   state.activeSlug = category.slug;
-  $('categoryTitle').textContent = `${category.nombre} · ${category.cartas.length} cartas`;
+  const printableCount = printableCards(category).length;
+  $('categoryTitle').textContent = category.slug === 'ataques'
+    ? `${category.nombre} · ${category.cartas.length} tipos · ${printableCount} copias`
+    : `${category.nombre} · ${category.cartas.length} cartas`;
   try {
     const typeIconUrl = assetUrl(category, category.iconos.tipo);
     await loadImage(typeIconUrl);
@@ -688,10 +784,12 @@ async function renderCategory(category) {
   $('emptyState').hidden = category.cartas.length > 0;
   $('emptyState').textContent = category.cartas.length
     ? ''
-    : 'Esta categoría ya está preparada, pero todavía no tiene cartas. Cuando añadas ilustraciones y datos al archivo cartas/ataques/categoria.yml aparecerán aquí.';
+    : `Esta categoría aún no contiene cartas. Añade sus datos e ilustraciones a ${category.configPath}.`;
   $('cardGrid').replaceChildren();
   $('pdfButton').disabled = true;
-  $('pdfButton').textContent = category.cartas.length ? `Descargar PDF A4 · ${category.cartas.length} cartas` : 'PDF A4 no disponible';
+  $('pdfButton').textContent = printableCount
+    ? `Descargar PDF A4 · ${printableCount} ${category.slug === 'ataques' ? 'copias' : 'cartas'}`
+    : 'PDF A4 no disponible';
 
   for (const button of $('categoryTabs').querySelectorAll('button')) {
     button.setAttribute('aria-selected', String(button.dataset.slug === category.slug));
@@ -784,12 +882,13 @@ $('projectFolderInput').addEventListener('change', event => {
 $('pdfButton').addEventListener('click', async () => {
   const category = state.categories.find(item => item.slug === state.activeSlug);
   if (!category || !category.cartas.length) return;
+  const printableCount = printableCards(category).length;
   try {
     $('pdfButton').disabled = true;
     setStatus(`Preparando el PDF A4 de ${category.nombre}…`);
     const pdf = await createPdf(category);
     downloadBlob(pdf, `${safeFilename(category.slug)}-cartas-a4.pdf`);
-    setStatus(`PDF A4 listo: ${category.cartas.length} cartas en ${Math.ceil(category.cartas.length / 9)} páginas.`);
+    setStatus(`PDF A4 listo: ${printableCount} cartas en ${Math.ceil(printableCount / 9)} páginas.`);
   } catch (error) {
     console.error(error);
     setStatus(error.message || 'No se pudo generar el PDF.', true);

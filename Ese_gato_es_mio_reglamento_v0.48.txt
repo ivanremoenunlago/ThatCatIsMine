@@ -1,0 +1,595 @@
+¡ESE GATO ES MÍO!
+REGLAMENTO GENERAL Y CATÁLOGO DE CARTAS
+PROPUESTA DE VERSIÓN 0.48
+
+
+============================================================
+DATOS DEL JUEGO
+============================================================
+
+Mazo: 90 cartas.
+Jugadores: de 2 a 5.
+Número recomendado: de 3 a 4 jugadores.
+Objetivo de prestigio según el número de jugadores:
+- 2 jugadores: 15 puntos.
+- 3 o 4 jugadores: 13 puntos.
+- 5 jugadores: 12 puntos.
+La victoria se comprueba al cierre de tu propio turno.
+
+Distribución del mazo: 20 gatos, 27 ataques y apoyos, 6 estructuras, 4 objetos, 8 consumibles, 18 acciones y travesuras, 3 eventos globales y 4 respuestas.
+
+
+============================================================
+HISTORIAL DE CAMBIOS PRINCIPALES
+============================================================
+
+Cambios incorporados en la V0.48:
+- El mazo pasa de 100 a 90 cartas. Se conservan los 20 gatos y todas sus cartas.
+- El bloque de ataques y apoyos pasa de 35 a 27 cartas: los ataques humanos de potencia fija quedan en cinco tipos, uno por cada potencia de 1 a 5, y se conserva un ataque de potencia variable. Se mantienen todos los ataques de gatos, todos los apoyos y el ataque conjunto.
+- Se eliminan las 2 copias de Pienso Común. El bloque de consumibles pasa de 10 a 8 cartas.
+- Se establece un límite general de una carta generadora de acciones principales adicionales por turno. Esta regla se aplica a Pienso Premium, Destrucción de Sofá, Sobredosis de Catnip y cualquier otra carta con ese efecto.
+- Se aclara que Veteranos del Barrio concede +2 puntos de prestigio a la pareja en total, no +2 puntos por cada gato.
+- Se mantiene la posibilidad de utilizar varios apoyos en un mismo combate, sin límite de cantidad.
+- Se mantienen Sorpresa en la Almohada, las cuatro respuestas y el resto de las categorías sin cambios.
+
+Cambios incorporados en la V0.46:
+- Se aclara que la inmunidad del Gato Solitario cancela automáticamente cualquier carta CANCELABLE que lo elija directamente como objetivo mientras esté solo en el Sofá.
+- Se redefine Hora de la Siesta: desactiva todas las habilidades de los gatos y las sinergias, con las excepciones expresamente indicadas.
+- Se aclara que el movimiento gatuno habitual y los movimientos concedidos por cartas siguen pudiendo realizarse durante Hora de la Siesta.
+- Se aclaran las protecciones de las estructuras y la imposibilidad de atacar directamente a los gatos protegidos mientras la estructura siga activa.
+- Se sustituyen las 2 copias de Reflejo Felino y las 2 de Flús-Flús de Agua por 4 copias de Flús-Flús de Agua.
+
+
+Cambios incorporados en la V0.47:
+- Se limita a un máximo de +1 carta adicional por turno la suma de las bonificaciones que aumentan el robo inicial durante la Fase de Robo.
+- Se aclara que el límite del robo inicial no afecta a los robos producidos fuera de ese robo.
+- Se modifica ¡Bolsa de Chuches!: todos los jugadores roban 1 carta y, después de completar la vuelta, quien juega la carta roba 1 carta adicional.
+- Se modifica Gato Mapache para que la carta recuperada sustituya al robo inicial, manteniendo la reposición por mano baja y sin aplicar bonificaciones al robo inicial.
+- Se limita la sinergia ¡Porque solo a mí! para que el Gato Víctimista no pueda volver al Sofá durante el mismo turno en que sale para activar el efecto.
+- Se elimina de Ovillo de Lana la posibilidad expresa de recuperar gatos del descarte.
+
+
+============================================================
+RESUMEN RÁPIDO
+============================================================
+
+- Cada jugador comienza con 4 cartas. Los gatos de la mano inicial se colocan inmediatamente en su casa.
+- El objetivo es alcanzar o superar los puntos de prestigio correspondientes al número de jugadores: 15 con 2 jugadores, 13 con 3 o 4 jugadores y 12 con 5 jugadores.
+- En tu Fase de Robo, realizas primero el robo inicial: por defecto, robas 1 carta. Las bonificaciones que aumentan el robo inicial pueden añadir como máximo 1 carta adicional por turno, aunque tengas varias fuentes. Una vez completado el robo inicial y aplicada esa bonificación, si tienes menos de 3 cartas en la mano, robas hasta alcanzar el objetivo de reposición que te corresponda: 3 cartas normalmente, 4 con el Gato Metódico o 5 con la sinergia Control de Inventario.
+- Después de la Fase de Robo, resuelves el Paso de Preparación: primero puedes activar la habilidad de Los Trillizos y después puedes realizar el movimiento gatuno adicional del Gato Escalador, si corresponde.
+- En tu Fase de Acción puedes realizar una acción principal: jugar una carta o declarar un ataque. Algunos efectos pueden concederte acciones principales adicionales durante esa misma fase. Durante tu turno solo puedes jugar una carta cuyo efecto conceda acciones principales adicionales, aunque esa carta puede conceder más de una acción adicional.
+- Después puedes realizar tu movimiento gatuno habitual: mover o intercambiar 1 gato entre el Sofá y el Salón.
+- Al cerrar tu turno, compruebas si has ganado y, si no has ganado, descartas las cartas que superen tu límite de mano.
+- El límite de mano es de 7 cartas, o de 9 si tienes activo al Gato Acaparador. Solo se comprueba al cierre de tu turno.
+- Los gatos recibidos por cualquier efecto se colocan inmediatamente en tu casa. Nunca permanecen en la mano ni cuentan para el límite de mano.
+- En un ataque sin defensa, el ataque tiene éxito automáticamente. Si el defensor juega una carta de defensa, se comparan las potencias totales de ataque y defensa, incluidos los apoyos utilizados por ambos jugadores; el empate favorece al defensor.
+- Las cartas de respuesta pueden cancelar cualquier carta marcada como CANCELABLE, independientemente de su temática. Cada carta admite como máximo una respuesta y las respuestas no consumen una acción.
+- En un mismo combate, tanto el atacante como el defensor pueden utilizar tantos apoyos como quieran; no existe un límite de apoyos por participante.
+
+Este resumen es una referencia rápida. En caso de duda, prevalecen las reglas detalladas de los apartados siguientes.
+
+
+============================================================
+1. OBJETIVO/LORE DEL JUEGO
+============================================================
+
+En ¡Ese gato es mío!, todos los vecinos del barrio sois unos auténticos esnobs y locos de los gatos con muchos gastos ya en casa, pero no os ponéis de acuerdo sobre quién tiene la mejor «colección» de gatos. Una nueva colonia de mininos callejeros ha llegado al vecindario y se desata una guerra silenciosa de postureo: cada jugador intenta reunir la colonia más prestigiosa, activar las mejores sinergias y fastidiar a sus vecinos.
+
+Los gatos aportan puntos según estén en el Sofá o en el Salón. Las habilidades y sinergias pueden proporcionar puntos adicionales o ventajas tácticas.
+
+Gana el primer jugador que alcance o supere los puntos de prestigio establecidos para el número de jugadores al cierre de su propio turno. Alcanzar ese objetivo durante el turno de otro jugador no concede la victoria inmediatamente: hay que esperar al cierre del turno propio.
+
+
+============================================================
+2. PREPARACIÓN DE LA PARTIDA
+============================================================
+
+1. Barajad las 90 cartas y repartid 4 cartas a cada jugador.
+2. Si algún jugador recibe 3 o más gatos en el reparto inicial, ese jugador devuelve sus 4 cartas al mazo. Se baraja y se reparte de nuevo hasta que ningún jugador tenga más de 2 gatos en su mano inicial.
+3. Cuando el reparto sea válido, cada jugador coloca inmediatamente los gatos de su mano en su casa. Las demás cartas permanecen en la mano.
+4. Empieza el jugador que tenga menos gatos en su casa. En caso de empate, empieza quien obtuviera menos puntos en la partida anterior, si se lleva ese registro. Si no hay una partida anterior registrada, se decide al azar.
+5. Los turnos continúan en sentido horario.
+
+
+============================================================
+3. REGLAS GENERALES: ROBOS, MANO, DESCARTES Y GATOS
+============================================================
+
+3.1. ROBAR CARTAS
+
+ROBO INICIAL
+
+Durante tu fase de robo, primero realizas el robo inicial. Por defecto, robas 1 carta. Algunas habilidades, sinergias, estructuras y cartas pueden aumentar esta cantidad. Sin embargo, las bonificaciones que aumentan el robo inicial se acumulan hasta un máximo de +1 carta adicional por turno, aunque tengas varias fuentes de bonificación.
+
+REPOSICIÓN POR MANO BAJA
+
+Una vez completado el robo inicial y aplicadas todas sus bonificaciones, comprueba cuántas cartas tienes en la mano. Esta comprobación se realiza una sola vez, al final de la Fase de Robo.
+
+- Si tienes 3 o más cartas, no realizas ninguna reposición adicional.
+- Si tienes menos de 3 cartas, robas cartas adicionales hasta alcanzar el objetivo de reposición que te corresponda: normalmente, 3 cartas; 4 con el Gato Metódico; o 5 con la sinergia Control de Inventario.
+
+Las bonificaciones del robo inicial se aplican antes de comprobar si corresponde reponer la mano. Por tanto, esas bonificaciones pueden hacer que alcances 3 o más cartas y que no se active la reposición, aunque tengas al Gato Metódico.
+
+La reposición es un proceso independiente del robo inicial. Las bonificaciones que aumentan el robo inicial no se aplican de nuevo durante la reposición.
+
+3.2. LÍMITE DE MANO Y DESCARTES
+
+LÍMITE DE MANO
+
+Al finalizar tu turno no puedes tener más de 7 cartas en la mano. Debes elegir y descartar las cartas sobrantes.
+
+El Gato Acaparador aumenta tu límite de mano de 7 a 9 cartas.
+
+Este límite solo se comprueba en el cierre de tu turno. Si durante tu turno, durante la fase de robo o fuera de tu turno consigues más cartas de las permitidas, no tienes que descartar en ese momento.
+
+PILA DE DESCARTES
+
+Todas las cartas jugadas, descartadas, canceladas o destruidas van a una única pila de descartes compartida. La última carta descartada queda encima de la pila.
+
+Cuando el mazo principal se agota, se baraja toda la pila de descartes, excluyendo la última carta descartada, y se convierte en el nuevo mazo de robo. Las cartas que sigan en las manos o en la mesa no se incluyen.
+
+3.3. ENTRADA DE GATOS EN TU CASA
+
+El Sofá tiene una capacidad máxima de 3 espacios. Cada gato ocupa los espacios indicados en su descripción; las sinergias pueden modificar la ocupación, tal como se indica en sus reglas.
+
+Los gatos no permanecen en la mano durante la partida. Siempre que recibas un gato por robo, intercambio, recuperación o cualquier otro efecto, colócalo inmediatamente en tu casa:
+
+- Puedes colocarlo en el Sofá si quieres y hay espacio suficiente.
+- Si no cabe o prefieres no colocarlo en el Sofá, va al Salón.
+
+Los gatos no cuentan como cartas en mano ni sirven para completar la mano mínima de 3 cartas.
+
+Esta regla también se aplica a los gatos que robes a otro jugador: pasan a ser tuyos y se colocan en tu casa siguiendo estas reglas.
+
+
+============================================================
+4. ESTRUCTURA DEL TURNO
+============================================================
+
+Tu turno sigue este orden:
+
+1. FASE DE ROBO
+
+Primero realizas el robo inicial: por defecto, robas 1 carta. Las bonificaciones que aumentan el robo inicial pueden añadir como máximo 1 carta adicional por turno, aunque tengas varias fuentes. Una vez completado el robo inicial y aplicada esa bonificación, compruebas cuántas cartas tienes en la mano. Si tienes menos de 3 cartas, robas hasta alcanzar el objetivo de reposición que te corresponda: normalmente, 3 cartas; 4 con el Gato Metódico; o 5 con la sinergia Control de Inventario. Si tienes 3 o más cartas, no repones la mano.
+
+2. PASO DE PREPARACIÓN
+
+Este paso se resuelve después de completar la Fase de Robo y antes de comenzar la Fase de Acción.
+
+Resuelve las habilidades en el siguiente orden:
+
+- Primero, puedes activar la habilidad de Los Trillizos, si corresponde.
+- Después, puedes realizar el movimiento gatuno adicional del Gato Escalador, si está activo en tu Sofá.
+
+Las habilidades de este paso se comprueban al comenzar el Paso de Preparación y se resuelven una sola vez por turno. Las cartas o gatos que entren en tu casa durante este paso no activan retroactivamente habilidades de este mismo paso.
+
+Si utilizas al Gato Mapache para recuperar una carta en lugar de realizar tu robo inicial, después compruebas si corresponde reponer tu mano y continúas con el Paso de Preparación, donde puedes resolver las habilidades que correspondan.
+
+3. FASE DE ACCIÓN
+
+Puedes realizar una acción principal. Una acción principal consiste en jugar una carta o declarar un ataque.
+
+Si juegas una carta y queda cancelada, la acción principal utilizada para jugarla se consume igualmente.
+
+Las respuestas se juegan cuando corresponde y no consumen una acción principal.
+
+Algunos efectos pueden concederte acciones principales adicionales durante esta misma Fase de Acción. Estas acciones adicionales permiten realizar otra acción principal, según indique el efecto que las concede, pero no crean nuevas fases ni repiten las habilidades del Paso de Preparación.
+
+Durante tu turno puedes jugar como máximo una carta cuyo efecto conceda una o más acciones principales adicionales. Esta limitación se aplica a cualquier carta que conceda acciones principales adicionales, incluidas Pienso Premium, Destrucción de Sofá y Sobredosis de Catnip.
+
+La limitación afecta al número de cartas generadoras de acciones adicionales que puedes jugar, no al número de acciones adicionales que esa única carta puede conceder. Por tanto, una Sobredosis de Catnip puede conceder sus 2 acciones principales adicionales, pero no puedes jugar otra carta generadora de acciones adicionales durante ese mismo turno.
+
+La carta cuenta para este límite desde el momento en que la juegas, aunque su efecto sea cancelado. Si queda cancelada, la acción principal utilizada para jugarla se consume igualmente.
+
+4. MOVIMIENTO GATUNO HABITUAL
+
+Puedes mover o intercambiar 1 gato entre el Sofá y el Salón.
+
+Este movimiento es independiente del movimiento gatuno adicional que pueda conceder el Gato Escalador durante el Paso de Preparación. Otros efectos pueden conceder movimientos gatunos adicionales, según indique su descripción.
+
+5. CIERRE DEL TURNO
+
+Comprueba si has ganado. Si no has ganado, comprueba tu límite de mano y descarta las cartas sobrantes.
+
+
+============================================================
+5. CATÁLOGO DE GATOS
+============================================================
+
+Los valores se indican como SOFÁ / SALÓN. Salvo que una carta indique lo contrario, las habilidades y sinergias solo funcionan cuando el gato está en el Sofá.
+
+1. GATO GORDO — 6 / 2 puntos — Ocupa 2 espacios.
+Es inmune a Robo Felino y Puerta Gatera.
+
+2. GATO DESNUTRIDO — 1 / 1 punto — Ocupa 1 espacio.
+Mientras esté en el Sofá, si su propietario no tiene cartas en la mano, obtiene +2 puntos de prestigio.
+
+3. GATO DE BARRIO (MATÓN) — 2 / 1 puntos — Ocupa 1 espacio.
+Aumenta en +1 la potencia cuando atacas.
+
+4. GATO TERRITORIAL — 2 / 1 puntos — Ocupa 1 espacio.
+Aumenta en +1 la potencia cuando defiendes. Si no juegas carta, no tienes defensa adicional.
+
+5. GATO COTILLA — 3 / 1 puntos — Ocupa 1 espacio.
+Cuando te atacan, puedes descartar 1 carta para ver con qué te atacan, apoyos incluidos.
+
+6. GATO CURIOSO — 3 / 1 puntos — Ocupa 1 espacio.
+Al inicio de la fase de robo, puedes descartar 1 carta para mirar las 3 primeras cartas del mazo. Quédate con una y coloca las otras 2 en el fondo del mazo en el orden que quieras. Esta habilidad sustituye al robo inicial y no se acumula con sus bonificaciones.
+
+7. GATO METÓDICO — 3 / 1 puntos — Ocupa 1 espacio.
+Al final de la Fase de Robo, una vez aplicadas todas las bonificaciones del robo inicial, si tienes menos de 3 cartas en la mano, robas hasta tener 4.
+
+8. GATO ACAPARADOR — 3 / 1 puntos — Ocupa 1 espacio.
+Aumenta tu límite de mano de 7 a 9 cartas.
+
+9. GATA ENVIDIOSA — 4 / 2 puntos — Ocupa 1 espacio.
+Tus ataques contra instalaciones reciben +1 de potencia. No se aplica contra gatos.
+
+10. MAMÁ GATA — 2 / 1 puntos — Ocupa 1 espacio.
+Mientras esté activa en el Sofá, concede +1 punto a cada otro gato que esté en el Sofá.
+
+11. GATO BEBÉ — 1 / 1 punto — Ocupa 1 espacio.
+Si está solo en el Sofá, durante el robo inicial roba 1 carta adicional.
+
+12. GATO DIURNO (BLANCO) — 3 / 1 puntos — Ocupa 1 espacio.
+Cuando un rival realiza un ataque exitoso contra uno de tus gatos del Sofá, ese rival debe descartar 1 carta adicional de su mano.
+
+13. GATO NOCTURNO (NEGRO) — 3 / 1 puntos — Ocupa 1 espacio.
+Cuando un rival realiza un ataque contra uno de tus gatos del Sofá y el ataque fracasa, ese rival debe descartar 1 carta de su mano.
+
+14-16. LOS TRILLIZOS — 2 / 1 puntos cada uno — Ocupan 1 espacio cada uno.
+Durante el Paso de Preparación, antes del movimiento gatuno adicional del Gato Escalador, puedes descartar y robar el mismo número de cartas que Trillizos tengas en el Sofá: hasta 1, 2 o 3. Esta habilidad se puede activar una sola vez por turno.
+
+17. GATO SOLITARIO — 7 puntos en el Sofá si está solo; 0 si está acompañado. Vale 2 puntos en el Salón. Ocupa 1 espacio.
+Mientras sea el único gato en el Sofá, cualquier carta marcada como CANCELABLE que lo elija directamente como objetivo queda cancelada automáticamente. Esta inmunidad no requiere jugar una carta de respuesta. No lo protege contra ataques directos ni contra efectos indirectos o eventos globales. Si otro gato entra en el Sofá, el Solitario pasa a valer 0 puntos y pierde esta inmunidad; recupera sus 7 puntos y su inmunidad si vuelve a quedarse solo.
+
+18. GATO ESCALADOR — 3 / 1 puntos — Ocupa 1 espacio.
+Mientras esté activo en tu Sofá, puedes realizar un movimiento gatuno adicional durante el Paso de Preparación, después de resolver la habilidad de Los Trillizos y antes de comenzar tu Fase de Acción. Este movimiento es independiente del movimiento gatuno habitual que puedes realizar al finalizar tu turno y solo puede realizarse una vez por turno.
+
+19. GATO MAPACHE — 2 / 1 puntos — Ocupa 1 espacio.
+Puedes recuperar la última carta de la pila de descartes en lugar de realizar tu robo inicial. La carta recuperada cuenta como tu robo inicial. Después, comprueba si tienes menos de 3 cartas en la mano y, si corresponde, realiza la reposición por mano baja hasta alcanzar el objetivo que te corresponda. No aplicas bonificaciones que aumenten el robo inicial. Después continúas normalmente con el Paso de Preparación, por lo que puedes activar las habilidades que correspondan, incluidas las de Los Trillizos y el Gato Escalador. Si la pila de descartes está vacía, debes realizar la Fase de Robo normalmente.
+
+20. GATO VÍCTIMISTA — 3 / 1 puntos — Ocupa 1 espacio.
+Mientras esté activo en tu Sofá, cuando un rival intente cancelar con Flús-Flús de Agua una travesura que tú le lances, deberá descartar también 1 carta adicional de su mano. Si no tiene otra carta, no se descarta.
+
+
+============================================================
+6. SINERGIAS ENTRE GATOS
+============================================================
+
+Las sinergias se activan cuando los gatos indicados están simultáneamente en el Sofá, salvo que se indique otra condición.
+
+¡QUE ME APLASTAS! (GORDO + DESNUTRIDO)
+
+El Gato Desnutrido se coloca debajo del Gordo y ocupa 0 espacios adicionales. La pareja ocupa 2 espacios físicos en total.
+
+VETERANOS DEL BARRIO (BARRIO + TERRITORIAL)
+
+Se anulan las bonificaciones individuales de ataque y defensa de ambos gatos. La pareja obtiene +2 puntos de prestigio adicionales en total (no +2 por cada gato).
+
+SOCIOS DE INFORMACIÓN (COTILLA + CURIOSO)
+
+La inspección del Gato Cotilla es gratuita y el Gato Curioso mira 4 cartas en lugar de 3.
+
+CONTROL DE INVENTARIO (METÓDICO + ACAPARADOR)
+
+Al final de la Fase de Robo, una vez aplicadas todas las bonificaciones del robo inicial, si tienes menos de 3 cartas en la mano, robas hasta tener 5. Esta sinergia sustituye el objetivo de reposición del Gato Metódico; ambos objetivos no se acumulan.
+
+SAQUEADORES ENVIDIOSOS (ENVIDIOSA + MAPACHE)
+
+Cuando destruyas una instalación rival con un ataque, puedes descartar 1 carta de tu mano para recuperar esa instalación del descarte y añadirla a tu mano.
+
+PAREJA YIN-YANG (DIURNO + NOCTURNO)
+
+La pareja obtiene +1 punto de prestigio adicional en total.
+
+¡PORQUE SOLO A MÍ! (VÍCTIMISTA + ESCALADOR)
+
+Si ambos están activos en el Sofá al comienzo de tu turno y sacas al Gato Víctimista del Sofá durante ese turno, robas 1 carta adicional del mazo. Una vez que el Gato Víctimista sale del Sofá para activar este efecto, no puede volver al Sofá durante el resto de ese turno. Esta carta se roba cuando se resuelve el movimiento y no activa de nuevo las bonificaciones del robo inicial ni la reposición de mano.
+
+LOS TRILLIZOS
+
+Si tienes los 3 Trillizos en el Sofá, obtienes +2 puntos de prestigio adicionales, además de sus 6 puntos base. Su habilidad de descarte y robo aumenta según el número de Trillizos presentes.
+
+
+============================================================
+7. ATAQUES Y DEFENSAS
+============================================================
+
+Puedes atacar a un gato rival o a una instalación que pueda ser atacada.
+
+Un gato protegido por una estructura no puede elegirse como objetivo de un ataque directo mientras esa estructura siga activa. Primero debe destruirse o retirarse la estructura que lo protege. La Caja de Cartón y la Fortaleza Gatuna protegen a los gatos de su propietario según sus respectivas descripciones. La Cama de Peluche protege exclusivamente al gato sobre el que está colocada. Las estructuras protectoras pueden elegirse como objetivo de un ataque contra instalaciones cuando sean atacables; un ataque exitoso las destruye y deja expuestos los objetivos que protegían.
+
+7.1. RESOLUCIÓN DEL ATAQUE
+
+1. El atacante elige un objetivo legal y coloca boca abajo una carta de ataque junto con los apoyos que quiera utilizar.
+2. El defensor decide si juega una carta de ataque de su mano boca arriba como defensa, acompañada de los apoyos que quiera utilizar, o si renuncia a defenderse.
+3. Se revelan la carta de ataque y sus apoyos, así como la carta de defensa y sus apoyos, si los hay. Se suman las potencias y bonificaciones de las cartas y de las habilidades activas de ambos jugadores.
+4. Se comparan la potencia total del ataque y la defensa.
+
+7.2. RESULTADO
+
+- Si el defensor no juega ninguna carta, el ataque tiene éxito automáticamente, incluso si la potencia del ataque es 0.
+- Si el defensor juega una carta, el ataque debe superar la potencia total de la defensa para tener éxito.
+- En caso de empate, gana el defensor.
+- Si la defensa supera al ataque, el ataque fracasa.
+
+Un jugador que decide no defenderse pierde automáticamente el combate. Las bonificaciones de defensa no se aplican si no juega una carta, salvo que una habilidad indique expresamente lo contrario.
+
+7.3. CONSECUENCIAS
+
+- Si el ataque tiene éxito contra un gato, el atacante se queda con él y lo incorpora inmediatamente a su casa, siguiendo las reglas normales de entrada.
+- Si el ataque tiene éxito contra una instalación, esta se destruye y va a la pila de descartes. No se roba ningún gato.
+- Si el ataque fracasa, el gato o la instalación permanecen con su propietario.
+- La carta de ataque, las cartas de defensa y los apoyos utilizados se descartan después de resolver el combate, tanto si el ataque tiene éxito como si fracasa.
+
+Las cartas de apoyo no pueden utilizarse por sí solas. Pueden acompañar tanto a un ataque como a una defensa, aumentando la potencia total correspondiente. Tanto el atacante como el defensor pueden utilizar tantos apoyos como quieran en un mismo combate. No existe un límite de apoyos por participante.
+
+7.4. CATÁLOGO DE ATAQUES Y APOYOS
+
+Las cartas de ataque pueden utilizarse boca abajo para atacar o boca arriba para defenderse. Las cartas de apoyo solo se pueden utilizar junto con un ataque o una defensa: suman su bonificación a la potencia correspondiente y se descartan al finalizar el combate. Tanto el atacante como el defensor pueden añadir tantos apoyos como quieran.
+
+## ATAQUES DE GATOS
+
+- Bola de Pelo: potencia 0. 2 copias.
+- Bufido: potencia 1. 2 copias.
+- Emboscada: potencia 2. 2 copias.
+- Zarpazo: potencia 3. 3 copias.
+- Mordisco: potencia 4. 2 copias.
+- Agarre con patada: potencia 5. 1 copia.
+- Ataque en manada: El daño es equivalente al número total de gatos que tienes en el Sofá y el Salón. 1 copia.
+
+## APOYOS DE GATOS
+
+- Afilado de uñas: +2 a la potencia. 1 copia.
+- Erizarse: +1 a la potencia. 3 copias.
+
+## ATAQUES DE HUMANOS
+
+- Terror del aspirador: potencia 1. 1 copia.
+- Escobazo contundente: potencia 2. 2 copias.
+- Zapatilla voladora: potencia 3. 2 copias.
+- Caza de Bigotes: potencia 4. 1 copia.
+- Baño forzado: potencia 5. 1 copia.
+- Manguerazo frío: El daño es equivalente al número total de gatos que tiene el rival en el Sofá y el Salón. 1 copia.
+
+## APOYOS DE HUMANOS
+
+- ¡Susto de Pepino!: +1 a la potencia. 1 copia.
+
+## ATAQUE CONJUNTO
+
+- ¡Pacto de Bigotes y Escobazos!: potencia 6. 1 copia.
+
+
+En total, este bloque contiene 27 cartas. La Bola de Pelo es una carta de farol: si se usa para atacar y el defensor no juega defensa, el ataque tiene éxito automáticamente; si el defensor juega una carta, se compara la potencia normalmente y el empate favorece al defensor.
+
+
+============================================================
+8. ESTRUCTURAS, OBJETOS Y CONSUMIBLES
+============================================================
+
+8.1. LÍMITE DE ESTRUCTURAS
+
+Cada jugador puede tener como máximo una estructura activa. Cuentan como estructuras la Caja de Cartón, la Fortaleza Gatuna, el Comedero Automático y la Cama de Peluche.
+
+Para jugar una estructura nueva si ya tienes otra activa, primero debes descartar la anterior. No puedes mantener dos estructuras activas a la vez.
+
+Las estructuras no pueden cancelarse mediante Flús-Flús de Agua. Sus posibles formas de protección o destrucción se indican en sus respectivas descripciones.
+
+8.2. ESTRUCTURAS
+
+2x CAJA DE CARTÓN
+
+Estructura defensiva de un solo uso. Protege a todos tus gatos, tanto en el Sofá como en el Salón, y a tus instalaciones de apoyo. Mientras esté activa, estos objetivos no pueden elegirse directamente como objetivo de un ataque. Para acceder a ellos, primero debe destruirse o retirarse la Caja: puede destruirse mediante un ataque exitoso contra ella o mediante un efecto que permita destruir instalaciones. Los objetivos protegidos permanecen intactos. No detiene travesuras ni eventos globales.
+
+1x FORTALEZA GATUNA
+
+Estructura defensiva. Protege a todos los gatos y las instalaciones de tu casa. Mientras esté activa, estos objetivos no pueden elegirse directamente como objetivo de un ataque. Para acceder a ellos, primero debe destruirse la Fortaleza mediante un ataque exitoso contra ella o mediante Reforma Desastrosa.
+
+Además, intercepta las acciones o travesuras hostiles dirigidas contra tu casa, tus gatos o tus instalaciones. Si intercepta una acción o travesura que no sea un ataque, no se destruye y puede seguir protegiendo mientras permanezca activa. No detiene eventos globales.
+
+2x COMEDERO AUTOMÁTICO
+
+Mientras esté activo, robas 2 cartas en lugar de 1 durante tu robo inicial. Varios Comederos no acumulan el efecto. Puede destruirse mediante un ataque exitoso contra instalaciones o con Reforma Desastrosa.
+
+1x Rascador de Sisal
+
+Una vez durante tu turno, en el Paso de Preparación, puedes descartar 2 cartas de tu mano. Si lo haces, tu primer ataque de ese turno obtiene +1 de potencia.
+
+
+1x CAMA DE PELUCHE
+
+Se coloca sobre un gato de tu casa y cuenta como estructura. Protege exclusivamente a ese gato. Mientras tenga la Cama encima, no puede elegirse como objetivo de un ataque directo ni ser robado, intercambiado o desplazado por ningún efecto. El gato queda inmovilizado en su zona.
+
+La Cama se descarta al comienzo del siguiente turno de su propietario, antes de resolver los efectos de inicio. El gato permanece en su zona y recupera su movilidad. La Cama también puede destruirse mediante un ataque exitoso contra ella como instalación o mediante Reforma Desastrosa.
+
+8.3. OBJETOS
+
+Los objetos tienen efectos particulares y pueden utilizarse siguiendo las condiciones indicadas en sus descripciones.
+
+3x OVILLO DE LANA — CANCELABLE
+
+Recupera cualquier carta que no sea un gato de la pila de descartes y añádela a tu mano.
+
+Esta carta puede cancelarse mediante Flús-Flús de Agua. Si el Ovillo es cancelado, se descarta sin recuperar ninguna carta.
+
+El Ovillo que estás resolviendo se descarta después de elegir la carta recuperada, por lo que no puede recuperarse a sí mismo con su propio efecto. Sí puedes recuperar otro Ovillo que ya estuviera en el descarte.
+
+1x RATÓN CON HIERBA GATUNA — REACCIÓN ESPECIAL
+
+Cuando recibes un ataque directo contra uno de tus gatos, puedes consumir esta carta y redirigirlo hacia otro gato que sea un objetivo legal. El propietario del nuevo gato pasa a ser el defensor y decide si juega una carta de defensa. El ataque no se cancela: solo cambia de objetivo.
+
+Esta carta se utiliza como reacción durante un combate y no consume una acción. No puede cancelarse mediante las respuestas normales.
+
+8.4. CONSUMIBLES DE COMIDA
+
+Los consumibles producen sus efectos inmediatamente cuando se juegan. No pueden cancelarse mediante Flús-Flús de Agua.
+
+- 2x Pienso Premium: roba 1 carta y obtén 1 acción principal adicional durante ese turno. Su uso está sujeto al límite general de una carta generadora de acciones principales adicionales por turno.
+- 3x Lata de Atún: roba 2 cartas.
+- 1x Churu de Oro: roba 3 cartas.
+- 2x ¡Bolsa de Chuches!: todos los jugadores roban 1 carta, empezando por quien juega la carta y siguiendo en sentido horario. Cuando todos los jugadores hayan robado, quien haya jugado ¡Bolsa de Chuches! roba 1 carta adicional.
+
+Los gatos robados mediante estos efectos se colocan inmediatamente en la casa de su propietario.
+
+
+============================================================
+9. ACCIONES, TRAVESURAS Y EVENTOS
+============================================================
+
+9.1. ACCIONES Y TRAVESURAS INDIVIDUALES — 18 CARTAS
+
+Las acciones y travesuras individuales permiten realizar distintos efectos durante tu Fase de Acción.
+
+Todas las cartas de este apartado son CANCELABLES. Cualquier carta de respuesta puede utilizarse para cancelar su efecto, siguiendo las reglas del apartado 10.
+
+La temática o ilustración de una carta no determina su posibilidad de cancelación. Las antiguas divisiones entre cartas de categoría Gato y Humano dejan de tener efecto mecánico.
+
+1x SORPRESA EN LA ALMOHADA — CANCELABLE
+
+El jugador objetivo pierde la Fase de Acción de su siguiente turno. Puede resolver los efectos de inicio, realizar su Fase de Robo y su Paso de Preparación, efectuar el movimiento gatuno habitual y cerrar su turno, pero no puede jugar cartas ni declarar ataques durante la Fase de Acción que pierde.
+
+La carta se coloca como recordatorio y se descarta cuando el jugador llega a la Fase de Acción que pierde. Puede ser interceptada por Fortaleza Gatuna.
+
+1x DESTRUCCIÓN DE SOFÁ — CANCELABLE
+
+Consume la acción principal utilizada para jugarla. Si no se cancela, concede +1 punto temporal hasta el cierre de ese turno y 1 acción principal adicional durante esa misma Fase de Acción.
+
+Como únicamente beneficia a quien la juega, cualquier rival puede intentar cancelarla.
+
+2x SOBREDOSIS DE CATNIP — CANCELABLE
+
+Consume la acción principal utilizada para jugarla. Si no se cancela, concede 2 acciones principales adicionales durante esa misma Fase de Acción. Cada acción adicional permite realizar otra acción principal. No concede movimientos gatunos adicionales.
+
+Su uso está sujeto al límite general de una carta generadora de acciones principales adicionales por turno.
+
+2x RONRONEO — CANCELABLE
+
+Elige 2 gatos de tu Sofá y coloca esta carta sobre ellos.
+
+Al comienzo de tu siguiente turno, si ambos siguen en el Sofá y Ronroneo continúa sobre ellos, cada uno obtiene +1 punto durante ese turno. Si cualquiera abandona el Sofá antes de activarse, no obtienes la bonificación.
+
+Al terminar el turno en que se aplica, descarta Ronroneo.
+
+1x GATO EN LA VENTANA — CANCELABLE
+
+Mira la mano completa de un rival.
+
+1x TIRAR COSAS DE LA MESA — CANCELABLE
+
+Elige un rival que tenga 6 o más cartas en la mano y toma al azar 2 de ellas y añádelas a tu mano.
+
+1x SENTARSE EN EL TECLADO — CANCELABLE
+
+Elige un rival que tenga 4 o más cartas en la mano y toma al azar 1 de ellas y añádela a tu mano.
+
+2x PUERTA GATERA — CANCELABLE
+
+Intercambia 1 gato movible de tu propiedad por 1 gato del Salón de un rival. Los dos gatos cambian de propietario y se colocan en las casas nuevas siguiendo las reglas de entrada.
+
+No puede elegirse un gato protegido por Cama de Peluche. Puede ser interceptada por Fortaleza Gatuna.
+
+2x ROBO FELINO — CANCELABLE
+
+Roba 1 gato del Salón de un rival. No puede estar en el Sofá ni tener Cama de Peluche.
+
+El gato pasa a tu propiedad y se coloca según las reglas de entrada. Puede ser interceptada por Fortaleza Gatuna.
+
+2x APUNTAR CON LÁSER INFRARROJO — CANCELABLE
+
+Mueve un gato rival o tuyo del Sofá al Salón o del Salón al Sofá.
+
+Puede ser interceptada por Fortaleza Gatuna si afecta directamente a la casa de un jugador.
+
+1x ¡PSPSPSPS! — CANCELABLE
+
+Revela las 4 primeras cartas del mazo. Si aparece uno o más gatos, elige 1 y colócalo en tu casa. Devuelve las demás cartas al fondo del mazo en el orden que quieras.
+
+Si no aparece ningún gato, coloca las 4 cartas en el fondo del mazo.
+
+2x REFORMA DESASTROSA — CANCELABLE
+
+Destruye una instalación de un rival, incluida la Cama de Peluche. Si destruyes una Cama, el gato permanece en su zona y recupera su movilidad.
+
+Si una Fortaleza Gatuna puede interceptar la acción, la instalación elegida permanece y la Fortaleza aplica su protección. Fortaleza Gatuna no puede interceptar una Reforma Desastrosa que la elija directamente como objetivo.
+
+============================================================
+9.2. EVENTOS GLOBALES — 3 CARTAS
+============================================================
+
+Los eventos globales afectan a varios jugadores o modifican las condiciones generales de la partida. No pueden cancelarse mediante cartas de respuesta.
+
+1x HORA DE LA SIESTA — EVENTO GLOBAL
+
+Hasta el inicio de tu siguiente turno, todos los gatos de todos los jugadores, incluido quien juega esta carta, quedan dormidos. Durante este evento quedan desactivadas todas las habilidades de los gatos, tanto pasivas como activables o desencadenadas, y todas las bonificaciones de las sinergias. Ningún jugador puede utilizar estas habilidades ni beneficiarse de sus efectos.
+
+Los valores base impresos de los gatos siguen contando. También se mantiene la puntuación condicional del Gato Solitario: vale 7 puntos si es el único gato del Sofá y 0 puntos si está acompañado. Esta condición es una regla de puntuación, no una habilidad. Su inmunidad queda desactivada durante la Siesta.
+
+El acoplamiento físico entre el Gato Gordo y el Gato Desnutrido se mantiene: el Desnutrido continúa colocado debajo del Gordo y ocupa 0 espacios adicionales. Esta excepción conserva la distribución física del Sofá, pero no activa ninguna otra bonificación de la pareja.
+
+El movimiento gatuno habitual del propietario se puede realizar con normalidad durante su fase de movimiento. También se pueden resolver los efectos de cartas que permitan mover gatos. La Siesta no inmoviliza a los gatos; simplemente desactiva sus habilidades y las bonificaciones de las sinergias.
+
+1x CAMBIO DE ARENERO — EVENTO GLOBAL
+
+Cada jugador elige 1 carta de su mano y la pasa boca abajo al jugador de su derecha. Las cartas se pasan simultáneamente.
+
+1x PERRO DEL VECINO — EVENTO GLOBAL
+
+Cada jugador debe elegir 1 gato movible de su Sofá y enviarlo al Salón. Los gatos protegidos por Cama de Peluche no pueden moverse.
+
+Si un jugador no tiene gatos movibles en el Sofá, no mueve ninguno. No puede cancelarse con las respuestas normales y Fortaleza Gatuna no lo detiene.
+
+
+============================================================
+10. CARTAS DE RESPUESTA Y CANCELACIONES
+============================================================
+
+10.1. CARTAS DE RESPUESTA
+
+Hay un único tipo de carta de respuesta, con cuatro copias. Puede cancelar cualquier carta que lleve el indicador CANCELABLE, independientemente de su temática o del tipo de objeto que represente.
+
+4x FLÚS-FLÚS DE AGUA — RESPUESTA
+
+Cancela una carta que lleve el indicador CANCELABLE.
+
+Flús-Flús de Agua no puede cancelar ataques, apoyos, eventos globales, estructuras, consumibles ni cartas que no tengan el indicador CANCELABLE. Tampoco puede cancelarse a sí misma.
+
+10.2. QUIÉN PUEDE CANCELAR
+
+- Si una carta perjudica directamente a un jugador, solo ese jugador puede intentar cancelarla.
+- Si una carta únicamente beneficia a quien la juega, cualquier rival puede intentar cancelarla.
+- Si una carta afecta directamente a varios rivales, cualquiera de los afectados puede intentar cancelarla.
+
+En los casos en los que varios jugadores estén autorizados a cancelar, se sigue el orden horario, comenzando por el jugador situado a la izquierda de quien juega la carta.
+
+El primer jugador autorizado que utilice una respuesta cancela la carta. Una vez jugada esa respuesta, no pueden utilizarse más respuestas contra la misma carta.
+
+10.3. RESOLUCIÓN DE UNA CANCELACIÓN
+
+Cuando se juega una carta cancelable, se sigue este procedimiento:
+
+1. El jugador activo anuncia la carta y declara sus objetivos, si los tiene.
+2. Se abre la oportunidad de cancelación para los jugadores autorizados.
+3. Si se juega una respuesta, la carta original queda cancelada. También puede quedar cancelada automáticamente por una habilidad o inmunidad que así lo indique, sin necesidad de jugar una respuesta.
+4. Si nadie utiliza una respuesta ni se aplica una cancelación automática, se resuelve normalmente el efecto de la carta.
+5. La carta cancelada y, si la hubiera, la respuesta utilizada se colocan en la pila de descartes.
+
+Una respuesta no consume una acción.
+
+Cancelar una carta no devuelve la acción principal utilizada para jugarla: esa acción se consume igualmente.
+
+Las respuestas no pueden encadenarse. Cada carta cancelable admite como máximo una respuesta.
+
+10.4. FORTALEZA GATUNA Y CANCELACIONES
+
+Fortaleza Gatuna mantiene sus propias reglas de interceptación y no necesita utilizar una carta de respuesta.
+
+Cuando una acción cancelable se dirige contra una casa, un gato o una instalación protegida por Fortaleza Gatuna, primero se ofrece la oportunidad de cancelación.
+
+Si la acción no es cancelada, se comprueba si Fortaleza puede interceptarla. Si la intercepta, se aplica la protección indicada en su descripción.
+
+Fortaleza Gatuna no puede interceptar eventos globales ni una carta que la elija directamente como objetivo.
+
+
+FIN DEL REGLAMENTO — PROPUESTA DE VERSIÓN 0.48
