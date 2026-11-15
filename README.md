@@ -10,7 +10,8 @@ La aplicación es estática: HTML, CSS y JavaScript, sin servidor, dependencias 
 
 - **Gatos:** 20 cartas configuradas, con ilustraciones, puntuación de Sofá y Salón, descripciones y sinergias cuando corresponden.
 - **Ataques:** 17 tipos de cartas (ataques y apoyos), 27 copias físicas en total, con daño fijo o variable y sus ilustraciones.
-- **Categorías pendientes:** el catálogo solo incluye Gatos y Ataques. El reglamento v0.48 también contempla 6 estructuras, 4 objetos, 8 consumibles, 18 acciones y travesuras, 3 eventos globales y 4 respuestas; esas categorías aún no están configuradas en la web.
+- **Estructuras:** 5 tipos de cartas. Las cantidades detalladas en la sección 8.2 del reglamento suman 7 copias, aunque el resumen del reglamento indica 6.
+- **Categorías pendientes:** el reglamento v0.48 también contempla 4 objetos, 8 consumibles, 18 acciones y travesuras, 3 eventos globales y 4 respuestas; esas categorías aún no están configuradas en la web.
 - **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_v0.48.txt](./Ese_gato_es_mio_reglamento_v0.48.txt). El archivo v0.47 es una versión anterior.
 - El pie de [index.html](./index.html) incluye el aviso de derechos de autor.
 
@@ -24,7 +25,7 @@ Cada categoría tiene una pestaña. La galería muestra una carta por tipo:
 
 - **Descargar PNG** descarga ese tipo de carta como PNG a 720 DPI.
 - **Descargar PDF A4** genera el conjunto de la categoría, con hasta nueve cartas por página, separación de 3 mm y marcas de corte.
-- En Ataques, el PDF repite cada tipo según su campo `copias` (27 cartas físicas); el PNG individual se descarga una sola vez por tipo.
+- En Ataques y Estructuras, el PDF repite cada tipo según su campo `copias`; el PNG individual se descarga una sola vez por tipo.
 
 Al imprimir, selecciona tamaño real o escala del 100 % para conservar las dimensiones.
 
@@ -44,12 +45,15 @@ cartas/
   ataques/
     categoria.yml
     imagenes/
+  estructuras/
+    categoria.yml
+    imagenes/
 ```
 
 - `index.html`: estructura de la página y aviso de derechos.
 - `styles.css`: presentación de la galería, pestañas, botones y tarjetas de vista previa.
 - `app.js`: lectura y validación de categorías, carga de imágenes, renderizado en canvas y exportación PNG/PDF.
-- `cartas/gatos/categoria.yml` y `cartas/ataques/categoria.yml`: datos y configuración visual de cada categoría.
+- Los archivos `categoria.yml` dentro de cada categoría contienen sus datos y configuración visual.
 - `cartas/emojis/`: iconos comunes de tipo, huella, sofá y salón.
 - `cartas/<categoria>/imagenes/`: ilustraciones de esa categoría.
 
@@ -66,9 +70,10 @@ Paletas actuales:
 | Categoría | Marco | Fondo | Superficies de texto/panel | Detalle |
 | --- | --- | --- | --- | --- |
 | Gatos | `#D9B96E` | `#E7D1A6` | `#F5E9CE` | `#B98232` |
-| Ataques | `#B94B48` | `#EBC8C3` | `#F5E4DF` | `#C25D55` |
+| Ataques | `#DE857E` | `#EBC8C3` | `#F5E4DF` | `#B94B48` |
+| Estructuras | `#B8BEC2` | `#E5E8EA` | `#F5F6F6` | `#9CA5AA` |
 
-Ataques sigue la estructura de bordes y paneles claros de Gatos: las bandas del nombre y los paneles inferiores comparten el color de detalle en sus bordes. El rojo del marco destaca el nombre, los rótulos y los valores fijos de ataque o apoyo; las descripciones conservan el color de tinta. La paleta de cada categoría está en su YAML, bajo `paleta`.
+Ataques sigue la estructura de bordes y paneles claros de Gatos: las bandas del nombre y los paneles inferiores comparten el color de detalle en sus bordes. El rojo destaca el nombre, los rótulos y los valores fijos de ataque o apoyo; las descripciones conservan el color de tinta. Estructuras usa tonos blancos y grisáceos apagados, sin efecto metálico intenso. La paleta de cada categoría está en su YAML, bajo `paleta`.
 
 ## Cómo editar o añadir cartas
 
@@ -86,6 +91,10 @@ Cada entrada define `nombre`, `imagen`, `tipo` (`ataque` o `apoyo`) y `copias`.
 - Para un daño variable, usa `dano_variable: "<fórmula en texto>"`; la carta muestra la fórmula en vez de un valor fijo.
 - Para un apoyo, usa `bonificacion: <número>` y `descripcion`.
 - La galería llama **DAÑO** al valor fijo. El reglamento conserva el término «potencia» en sus reglas de ataque, defensa y bonificaciones; no cambies esa terminología del reglamento sin revisar las reglas y confirmarlo.
+
+### Estructuras
+
+Cada entrada define `nombre`, `imagen`, `tipo: "estructura"`, `copias` y `descripcion`. El PDF genera las copias indicadas; el PNG individual se descarga una sola vez por tipo.
 
 ### Añadir una categoría nueva
 

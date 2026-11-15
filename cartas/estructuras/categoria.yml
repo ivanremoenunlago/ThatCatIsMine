@@ -1,0 +1,81 @@
+nombre: "Estructuras"
+slug: "estructuras"
+color: "#B8BEC2"
+paleta:
+  marco: "#B8BEC2"
+  fondo: "#E5E8EA"
+  papel: "#F5F6F6"
+  tinta: "#444B4F"
+  detalle: "#9CA5AA"
+iconos:
+  tipo: "../emojis/estructuras.png"
+diseno:
+  ancho_mm: 63.5
+  alto_mm: 88
+  dpi: 720
+  dpi_vista_previa: 240
+  margen: 0.0289
+  alto_ilustracion: 0.68
+  inicio_nombre: 0.6315
+  alto_nombre: 0.0906
+  inicio_descripcion: 0.7803
+  alto_descripcion: 0.1564
+  radio_esquina: 0.0611
+  radio_esquina_interior: 0.0528
+  radio_ilustracion: 0.0344
+  borde_interior: 0.0156
+  tamano_icono: 0.0722
+  tamano_caja_icono: 0.11
+  x_insignia: 0.0511
+  y_insignia: 0.0353
+  radio_componente: 0.0306
+  x_banda_nombre: 0.0433
+  y_banda_nombre: 0.6315
+  ancho_banda_nombre: 0.9133
+  alto_banda_nombre: 0.0906
+  radio_banda_nombre: 0.0311
+  tamano_fuente_nombre: 0.0489
+  tamano_fuente_nombre_min: 0.0267
+  espaciado_nombre: 0.00083
+  x_panel_habilidad: 0.0433
+  y_panel_habilidad: 0.7338
+  ancho_panel_habilidad: 0.9133
+  alto_panel_habilidad: 0.2366
+  radio_panel_habilidad: 0.0311
+  x_texto_habilidad: 0.1
+  y_texto_habilidad: 0.755
+  ancho_texto_habilidad: 0.8
+  alto_texto_habilidad: 0.21
+  tamano_fuente_habilidad: 0.0278
+  tamano_fuente_habilidad_min: 0.0222
+  interlineado_habilidad: 0.024
+  espaciado_habilidad: 0
+  opacidad_sombra: 0.18
+  desplazamiento_sombra: 0.0044
+  desenfoque_sombra: 0.01
+cartas:
+  - nombre: "Caja de Cartón"
+    imagen: "imagenes/caja de cartón.png"
+    tipo: "estructura"
+    copias: 2
+    descripcion: "Estructura defensiva de un solo uso. Protege a todos tus gatos, tanto en el Sofá como en el Salón, y a tus instalaciones de apoyo. Mientras esté activa, estos objetivos no pueden elegirse directamente como objetivo de un ataque. Para acceder a ellos, primero debe destruirse o retirarse la Caja: puede destruirse mediante un ataque exitoso contra ella o mediante un efecto que permita destruir instalaciones. Los objetivos protegidos permanecen intactos. No detiene travesuras ni eventos globales."
+  - nombre: "Fortaleza Gatuna"
+    imagen: "imagenes/torre rascador.png"
+    tipo: "estructura"
+    copias: 1
+    descripcion: "Estructura defensiva. Protege a todos los gatos y las instalaciones de tu casa. Mientras esté activa, estos objetivos no pueden elegirse directamente como objetivo de un ataque. Para acceder a ellos, primero debe destruirse la Fortaleza mediante un ataque exitoso contra ella o mediante Reforma Desastrosa. Además, intercepta las acciones o travesuras hostiles dirigidas contra tu casa, tus gatos o tus instalaciones. Si intercepta una acción o travesura que no sea un ataque, no se destruye y puede seguir protegiendo mientras permanezca activa. No detiene eventos globales."
+  - nombre: "Comedero Automático"
+    imagen: "imagenes/comedero automático.png"
+    tipo: "estructura"
+    copias: 2
+    descripcion: "Mientras esté activo, robas 2 cartas en lugar de 1 durante tu robo inicial. Varios Comederos no acumulan el efecto. Puede destruirse mediante un ataque exitoso contra instalaciones o con Reforma Desastrosa."
+  - nombre: "Rascador de Sisal"
+    imagen: "imagenes/rascador.png"
+    tipo: "estructura"
+    copias: 1
+    descripcion: "Una vez durante tu turno, en el Paso de Preparación, puedes descartar 2 cartas de tu mano. Si lo haces, tu primer ataque de ese turno obtiene +1 de potencia."
+  - nombre: "Cama de Peluche"
+    imagen: "imagenes/cama de peluche.png"
+    tipo: "estructura"
+    copias: 1
+    descripcion: "Se coloca sobre un gato de tu casa y cuenta como estructura. Protege exclusivamente a ese gato. Mientras tenga la Cama encima, no puede elegirse como objetivo de un ataque directo ni ser robado, intercambiado o desplazado por ningún efecto. El gato queda inmovilizado en su zona. La Cama se descarta al comienzo del siguiente turno de su propietario, antes de resolver los efectos de inicio. El gato permanece en su zona y recupera su movilidad. La Cama también puede destruirse mediante un ataque exitoso contra ella como instalación o mediante Reforma Desastrosa."

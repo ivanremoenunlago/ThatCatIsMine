@@ -1,6 +1,10 @@
 'use strict';
 
-const CATEGORY_PATHS = ['cartas/gatos/categoria.yml', 'cartas/ataques/categoria.yml'];
+const CATEGORY_PATHS = [
+  'cartas/gatos/categoria.yml',
+  'cartas/ataques/categoria.yml',
+  'cartas/estructuras/categoria.yml'
+];
 const $ = (id) => document.getElementById(id);
 const state = {
   categories: [],
@@ -118,6 +122,11 @@ function validateCategory(category) {
       if (card.tipo === 'apoyo' && !Number.isFinite(card.bonificacion)) {
         throw new Error(`La carta "${card.nombre}" necesita una bonificación válida.`);
       }
+    }
+    if (category.slug === 'estructuras'
+      && (card.tipo !== 'estructura' || !card.descripcion
+        || !Number.isInteger(card.copias) || card.copias < 1)) {
+      throw new Error(`La carta "${card.nombre}" necesita descripción y cantidad de copias válidas.`);
     }
   }
 }
@@ -511,12 +520,18 @@ async function createCardTile(category, card) {
   score.className = 'card-meta';
   if (category.slug === 'gatos') {
     score.textContent = `Sofá ${card.sofa} · Salón ${card.salon}`;
-  } else {
+  } else if (category.slug === 'ataques') {
     const copyLabel = `${card.copias} ${card.copias === 1 ? 'copia' : 'copias'}`;
     const typeLabel = card.tipo === 'apoyo' ? 'Apoyo' : 'Ataque';
     const powerLabel = card.dano_variable ? 'daño variable'
       : card.tipo === 'apoyo' ? `+${card.bonificacion}` : `daño ${card.dano}`;
     score.textContent = `${typeLabel} · ${powerLabel} · ${copyLabel}`;
+  } else {
+    const copyLabel = `${card.copias} ${card.copias === 1 ? 'copia' : 'copias'}`;
+    const typeLabel = card.tipo
+      ? `${card.tipo[0].toLocaleUpperCase('es-ES')}${card.tipo.slice(1)}`
+      : category.nombre;
+    score.textContent = `${typeLabel} · ${copyLabel}`;
   }
   const actions = document.createElement('div');
   actions.className = 'card-actions';
@@ -768,7 +783,8 @@ async function renderCategory(category) {
   const renderId = ++state.categoryRenderId;
   state.activeSlug = category.slug;
   const printableCount = printableCards(category).length;
-  $('categoryTitle').textContent = category.slug === 'ataques'
+  const hasCopyCounts = category.cartas.some(card => Number.isInteger(card.copias));
+  $('categoryTitle').textContent = hasCopyCounts
     ? `${category.nombre} · ${category.cartas.length} tipos · ${printableCount} copias`
     : `${category.nombre} · ${category.cartas.length} cartas`;
   try {
@@ -788,7 +804,7 @@ async function renderCategory(category) {
   $('cardGrid').replaceChildren();
   $('pdfButton').disabled = true;
   $('pdfButton').textContent = printableCount
-    ? `Descargar PDF A4 · ${printableCount} ${category.slug === 'ataques' ? 'copias' : 'cartas'}`
+    ? `Descargar PDF A4 · ${printableCount} ${hasCopyCounts ? 'copias' : 'cartas'}`
     : 'PDF A4 no disponible';
 
   for (const button of $('categoryTabs').querySelectorAll('button')) {
