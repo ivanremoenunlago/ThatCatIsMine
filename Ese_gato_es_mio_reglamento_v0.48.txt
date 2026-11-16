@@ -7,7 +7,7 @@ PROPUESTA DE VERSIÓN 0.48
 DATOS DEL JUEGO
 ============================================================
 
-Mazo: 90 cartas.
+Mazo: 92 cartas.
 Jugadores: de 2 a 5.
 Número recomendado: de 3 a 4 jugadores.
 Objetivo de prestigio según el número de jugadores:
@@ -16,21 +16,22 @@ Objetivo de prestigio según el número de jugadores:
 - 5 jugadores: 12 puntos.
 La victoria se comprueba al cierre de tu propio turno.
 
-Distribución del mazo: 20 gatos, 27 ataques y apoyos, 6 estructuras, 4 objetos, 8 consumibles, 18 acciones y travesuras, 3 eventos globales y 4 respuestas.
+Distribución del mazo: 20 gatos, 27 ataques y apoyos, 7 estructuras, 4 objetos, 8 consumibles, 19 acciones y travesuras, 3 eventos globales y 4 respuestas.
 
 
 ============================================================
 HISTORIAL DE CAMBIOS PRINCIPALES
 ============================================================
 
-Cambios incorporados en la V0.48:
-- El mazo pasa de 100 a 90 cartas. Se conservan los 20 gatos y todas sus cartas.
-- El bloque de ataques y apoyos pasa de 35 a 27 cartas: los ataques humanos de potencia fija quedan en cinco tipos, uno por cada potencia de 1 a 5, y se conserva un ataque de potencia variable. Se mantienen todos los ataques de gatos, todos los apoyos y el ataque conjunto.
+- El mazo pasa de 100 a 92 cartas. Se conservan los 20 gatos y todas sus cartas.
+- El bloque de ataques y apoyos pasa de 35 a 27 cartas: se reducen los ataques humanos a cinco cartas, una por cada potencia de 1 a 5. Se mantienen todos los ataques de gatos, todos los apoyos y el ataque conjunto.
 - Se eliminan las 2 copias de Pienso Común. El bloque de consumibles pasa de 10 a 8 cartas.
 - Se establece un límite general de una carta generadora de acciones principales adicionales por turno. Esta regla se aplica a Pienso Premium, Destrucción de Sofá, Sobredosis de Catnip y cualquier otra carta con ese efecto.
 - Se aclara que Veteranos del Barrio concede +2 puntos de prestigio a la pareja en total, no +2 puntos por cada gato.
 - Se mantiene la posibilidad de utilizar varios apoyos en un mismo combate, sin límite de cantidad.
-- Se mantienen Sorpresa en la Almohada, las cuatro respuestas y el resto de las categorías sin cambios.
+- Las respuestas pasan a ser cuatro copias de Flús-Flús de Agua; se elimina Reflejo Felino.
+- Se incorpora No te muevas, estoy cómodo con el efecto de perder la próxima Fase de Acción, y Sorpresa en la Almohada pasa a descartar al azar la mitad de la mano, redondeando hacia abajo.
+- Churu de Oro cambia su nombre a Churu, y Bolsa de Chuches pasa a llamarse Bolsa de Catnip; ambas conservan sus cantidades y efectos.
 
 Cambios incorporados en la V0.46:
 - Se aclara que la inmunidad del Gato Solitario cancela automáticamente cualquier carta CANCELABLE que lo elija directamente como objetivo mientras esté solo en el Sofá.
@@ -73,7 +74,7 @@ Este resumen es una referencia rápida. En caso de duda, prevalecen las reglas d
 1. OBJETIVO/LORE DEL JUEGO
 ============================================================
 
-En ¡Ese gato es mío!, todos los vecinos del barrio sois unos auténticos esnobs y locos de los gatos con muchos gastos ya en casa, pero no os ponéis de acuerdo sobre quién tiene la mejor «colección» de gatos. Una nueva colonia de mininos callejeros ha llegado al vecindario y se desata una guerra silenciosa de postureo: cada jugador intenta reunir la colonia más prestigiosa, activar las mejores sinergias y fastidiar a sus vecinos.
+En ¡Ese gato es mío!, todos los vecinos del barrio sois unos auténticos esnobs y locos de los gatos con muchos gastos ya en casa, pero no os decidís quién tiene la mejor “colección” de gatos. Una nueva colonia de mininos callejeros ha llegado al vecindario y se desata una guerra silenciosa de postureo: cada jugador intenta reunir la colonia más prestigiosa, activar las mejores sinergias y fastidiar a sus vecinos.
 
 Los gatos aportan puntos según estén en el Sofá o en el Salón. Las habilidades y sinergias pueden proporcionar puntos adicionales o ventajas tácticas.
 
@@ -84,7 +85,7 @@ Gana el primer jugador que alcance o supere los puntos de prestigio establecidos
 2. PREPARACIÓN DE LA PARTIDA
 ============================================================
 
-1. Barajad las 90 cartas y repartid 4 cartas a cada jugador.
+1. Barajad las 92 cartas y repartid 4 cartas a cada jugador.
 2. Si algún jugador recibe 3 o más gatos en el reparto inicial, ese jugador devuelve sus 4 cartas al mazo. Se baraja y se reparte de nuevo hasta que ningún jugador tenga más de 2 gatos en su mano inicial.
 3. Cuando el reparto sea válido, cada jugador coloca inmediatamente los gatos de su mano en su casa. Las demás cartas permanecen en la mano.
 4. Empieza el jugador que tenga menos gatos en su casa. En caso de empate, empieza quien obtuviera menos puntos en la partida anterior, si se lleva ese registro. Si no hay una partida anterior registrada, se decide al azar.
@@ -214,7 +215,7 @@ Aumenta en +1 la potencia cuando defiendes. Si no juegas carta, no tienes defens
 Cuando te atacan, puedes descartar 1 carta para ver con qué te atacan, apoyos incluidos.
 
 6. GATO CURIOSO — 3 / 1 puntos — Ocupa 1 espacio.
-Al inicio de la fase de robo, puedes descartar 1 carta para mirar las 3 primeras cartas del mazo. Quédate con una y coloca las otras 2 en el fondo del mazo en el orden que quieras. Esta habilidad sustituye al robo inicial y no se acumula con sus bonificaciones.
+Al inicio de la fase de robo, puedes descartar 1 carta para mirar las 3 primeras cartas del mazo. Quédate con una y coloca las otras 2 en el fondo del mazo en el orden que quieras. Esto sustituye al robo base, sin contar los bonificadores. (revisar)
 
 7. GATO METÓDICO — 3 / 1 puntos — Ocupa 1 espacio.
 Al final de la Fase de Robo, una vez aplicadas todas las bonificaciones del robo inicial, si tienes menos de 3 cartas en la mano, robas hasta tener 4.
@@ -259,7 +260,7 @@ Mientras esté activo en tu Sofá, cuando un rival intente cancelar con Flús-Fl
 
 Las sinergias se activan cuando los gatos indicados están simultáneamente en el Sofá, salvo que se indique otra condición.
 
-¡QUE ME APLASTAS! (GORDO + DESNUTRIDO)
+QUE ME APLASTAS! (GORDO + DESNUTRIDO)
 
 El Gato Desnutrido se coloca debajo del Gordo y ocupa 0 espacios adicionales. La pareja ocupa 2 espacios físicos en total.
 
@@ -332,12 +333,12 @@ Las cartas de ataque pueden utilizarse boca abajo para atacar o boca arriba para
 ## ATAQUES DE GATOS
 
 - Bola de Pelo: potencia 0. 2 copias.
-- Bufido: potencia 1. 2 copias.
+- Bufido hizzz: potencia 1. 2 copias.
 - Emboscada: potencia 2. 2 copias.
 - Zarpazo: potencia 3. 3 copias.
 - Mordisco: potencia 4. 2 copias.
 - Agarre con patada: potencia 5. 1 copia.
-- Ataque en manada: El daño es equivalente al número total de gatos que tienes en el Sofá y el Salón. 1 copia.
+- Ataque en manada: potencia variable: número de gatos que tienes en el salón + sofá. 1 copia.
 
 ## APOYOS DE GATOS
 
@@ -347,15 +348,15 @@ Las cartas de ataque pueden utilizarse boca abajo para atacar o boca arriba para
 ## ATAQUES DE HUMANOS
 
 - Terror del aspirador: potencia 1. 1 copia.
-- Escobazo contundente: potencia 2. 2 copias.
-- Zapatilla voladora: potencia 3. 2 copias.
+- Escobazo Contundente: potencia 2. 2 copias.
+- Zapatilla Voladora: potencia 3. 2 copias.
 - Caza de Bigotes: potencia 4. 1 copia.
-- Baño forzado: potencia 5. 1 copia.
-- Manguerazo frío: El daño es equivalente al número total de gatos que tiene el rival en el Sofá y el Salón. 1 copia.
+- Baño Forzado: potencia 5. 1 copia.
+- Manguerazo Frío: potencia variable: número de gatos que tiene el rival en el salón + sofá. 1 copia.
 
 ## APOYOS DE HUMANOS
 
-- ¡Susto de Pepino!: +1 a la potencia. 1 copia.
+- ¡Susto Pepino!: +1 a la potencia. 1 copia.
 
 ## ATAQUE CONJUNTO
 
@@ -428,8 +429,8 @@ Los consumibles producen sus efectos inmediatamente cuando se juegan. No pueden 
 
 - 2x Pienso Premium: roba 1 carta y obtén 1 acción principal adicional durante ese turno. Su uso está sujeto al límite general de una carta generadora de acciones principales adicionales por turno.
 - 3x Lata de Atún: roba 2 cartas.
-- 1x Churu de Oro: roba 3 cartas.
-- 2x ¡Bolsa de Chuches!: todos los jugadores roban 1 carta, empezando por quien juega la carta y siguiendo en sentido horario. Cuando todos los jugadores hayan robado, quien haya jugado ¡Bolsa de Chuches! roba 1 carta adicional.
+- 1x Churu: roba 3 cartas.
+- 2x Bolsa de Catnip: todos los jugadores roban 1 carta, empezando por quien juega la carta y siguiendo en sentido horario. Cuando todos los jugadores hayan robado, quien haya jugado la Bolsa de Catnip roba 1 carta adicional.
 
 Los gatos robados mediante estos efectos se colocan inmediatamente en la casa de su propietario.
 
@@ -438,7 +439,7 @@ Los gatos robados mediante estos efectos se colocan inmediatamente en la casa de
 9. ACCIONES, TRAVESURAS Y EVENTOS
 ============================================================
 
-9.1. ACCIONES Y TRAVESURAS INDIVIDUALES — 18 CARTAS
+9.1. ACCIONES Y TRAVESURAS INDIVIDUALES — 19 CARTAS
 
 Las acciones y travesuras individuales permiten realizar distintos efectos durante tu Fase de Acción.
 
@@ -446,11 +447,9 @@ Todas las cartas de este apartado son CANCELABLES. Cualquier carta de respuesta 
 
 La temática o ilustración de una carta no determina su posibilidad de cancelación. Las antiguas divisiones entre cartas de categoría Gato y Humano dejan de tener efecto mecánico.
 
-1x SORPRESA EN LA ALMOHADA — CANCELABLE
+1x NO TE MUEVAS, ESTOY CÓMODO — CANCELABLE
 
-El jugador objetivo pierde la Fase de Acción de su siguiente turno. Puede resolver los efectos de inicio, realizar su Fase de Robo y su Paso de Preparación, efectuar el movimiento gatuno habitual y cerrar su turno, pero no puede jugar cartas ni declarar ataques durante la Fase de Acción que pierde.
-
-La carta se coloca como recordatorio y se descarta cuando el jugador llega a la Fase de Acción que pierde. Puede ser interceptada por Fortaleza Gatuna.
+El jugador objetivo pierde la Fase de Acción de su siguiente turno: puede resolver los efectos de inicio, robar, realizar el movimiento gatuno habitual y cerrar el turno, pero no puede jugar cartas ni declarar ataques durante esa fase. Coloca esta carta en la zona de juego del jugador afectado como recordatorio y descártala al llegar a la Fase de Acción que pierde. Puede ser interceptada por Fortaleza Gatuna.
 
 1x DESTRUCCIÓN DE SOFÁ — CANCELABLE
 
@@ -471,18 +470,21 @@ Elige 2 gatos de tu Sofá y coloca esta carta sobre ellos.
 Al comienzo de tu siguiente turno, si ambos siguen en el Sofá y Ronroneo continúa sobre ellos, cada uno obtiene +1 punto durante ese turno. Si cualquiera abandona el Sofá antes de activarse, no obtienes la bonificación.
 
 Al terminar el turno en que se aplica, descarta Ronroneo.
-
 1x GATO EN LA VENTANA — CANCELABLE
 
-Mira la mano completa de un rival.
+Mira la mano completa de un rival elegido.
+
+1x SORPRESA EN LA ALMOHADA — CANCELABLE
+
+Elige un rival y descarta al azar la mitad de las cartas de su mano, redondeando hacia abajo.
 
 1x TIRAR COSAS DE LA MESA — CANCELABLE
 
-Elige un rival que tenga 6 o más cartas en la mano y toma al azar 2 de ellas y añádelas a tu mano.
+Elige un rival que tenga 6 o más cartas en su mano y róbale 2 cartas al azar.
 
 1x SENTARSE EN EL TECLADO — CANCELABLE
 
-Elige un rival que tenga 4 o más cartas en la mano y toma al azar 1 de ellas y añádela a tu mano.
+Elige un rival que tenga 4 o más cartas en su mano y róbale 1 carta al azar.
 
 2x PUERTA GATERA — CANCELABLE
 

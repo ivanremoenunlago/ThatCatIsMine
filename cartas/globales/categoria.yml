@@ -1,0 +1,66 @@
+nombre: "Eventos Globales"
+slug: "globales"
+color: "#967FA8"
+paleta:
+  marco: "#967FA8"
+  fondo: "#E4DBEA"
+  papel: "#F5F0F7"
+  tinta: "#493F52"
+  detalle: "#8E789F"
+iconos:
+  tipo: "../emojis/evento global.png"
+diseno:
+  ancho_mm: 63.5
+  alto_mm: 88
+  dpi: 720
+  dpi_vista_previa: 240
+  margen: 0.0289
+  alto_ilustracion: 0.68
+  inicio_nombre: 0.6315
+  alto_nombre: 0.0906
+  inicio_descripcion: 0.7803
+  alto_descripcion: 0.1564
+  radio_esquina: 0.0611
+  radio_esquina_interior: 0.0528
+  radio_ilustracion: 0.0344
+  borde_interior: 0.0156
+  tamano_icono: 0.0722
+  tamano_caja_icono: 0.11
+  x_insignia: 0.0511
+  y_insignia: 0.0353
+  radio_componente: 0.0306
+  x_banda_nombre: 0.0433
+  y_banda_nombre: 0.6315
+  ancho_banda_nombre: 0.9133
+  alto_banda_nombre: 0.0906
+  radio_banda_nombre: 0.0311
+  tamano_fuente_nombre: 0.0489
+  tamano_fuente_nombre_min: 0.0267
+  espaciado_nombre: 0.00083
+  x_panel_habilidad: 0.0433
+  y_panel_habilidad: 0.7338
+  ancho_panel_habilidad: 0.9133
+  alto_panel_habilidad: 0.2366
+  radio_panel_habilidad: 0.0311
+  x_texto_habilidad: 0.1
+  y_texto_habilidad: 0.755
+  ancho_texto_habilidad: 0.8
+  alto_texto_habilidad: 0.21
+  tamano_fuente_habilidad: 0.0278
+  tamano_fuente_habilidad_min: 0.0222
+  interlineado_habilidad: 0.024
+  espaciado_habilidad: 0
+  opacidad_sombra: 0.18
+  desplazamiento_sombra: 0.0044
+  desenfoque_sombra: 0.01
+cartas:
+  - nombre: "Hora de la Siesta"
+    imagen: "imagenes/hora de la siesta.png"
+    tipo: "evento_global"
+    copias: 1
+    descripcion: "Hasta el inicio de tu siguiente turno, todos los gatos, incluido el tuyo, quedan dormidos: sus habilidades y sinergias quedan desactivadas, pero sus valores base siguen contando. El Gato Solitario conserva su puntuación condicional (7 puntos si está solo en el Sofá; 0 si está acompañado), pero pierde su inmunidad. La pareja Gato Gordo–Gato Desnutrido mantiene su colocación, sin otras bonificaciones. El movimiento habitual y los efectos de cartas que muevan gatos siguen permitidos."
+  - nombre: "Perro del Vecino"
+    imagen: "imagenes/perro del vecino.png"
+    tipo: "evento_global"
+    copias: 1
+    descripcion: "Cada jugador debe elegir 1 gato movible de su Sofá y enviarlo al Salón. Los gatos protegidos por Cama de Peluche no pueden moverse. Si no tiene gatos movibles en su Sofá, no mueve ninguno. No puede cancelarse con respuestas normales y Fortaleza Gatuna no lo detiene."

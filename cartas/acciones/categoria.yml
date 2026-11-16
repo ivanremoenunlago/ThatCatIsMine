@@ -1,0 +1,184 @@
+nombre: "Acciones"
+slug: "acciones"
+color: "#967FA8"
+paleta:
+  marco: "#967FA8"
+  fondo: "#E4DBEA"
+  papel: "#F5F0F7"
+  tinta: "#493F52"
+  detalle: "#8E789F"
+paleta_azul:
+  marco: "#759DB0"
+  fondo: "#DDEAF0"
+  papel: "#F4F8FA"
+  tinta: "#40535C"
+  detalle: "#6F97AA"
+iconos:
+  tipo: "../emojis/acciones.png"
+  flush: "../emojis/flush flush.png"
+diseno:
+  ancho_mm: 63.5
+  alto_mm: 88
+  dpi: 720
+  dpi_vista_previa: 240
+  margen: 0.0289
+  alto_ilustracion: 0.68
+  inicio_nombre: 0.6315
+  alto_nombre: 0.0906
+  inicio_descripcion: 0.7803
+  alto_descripcion: 0.1564
+  radio_esquina: 0.0611
+  radio_esquina_interior: 0.0528
+  radio_ilustracion: 0.0344
+  borde_interior: 0.0156
+  tamano_icono: 0.0722
+  tamano_caja_icono: 0.11
+  x_insignia: 0.0511
+  y_insignia: 0.0353
+  radio_componente: 0.0306
+  x_banda_nombre: 0.0433
+  y_banda_nombre: 0.6315
+  ancho_banda_nombre: 0.9133
+  alto_banda_nombre: 0.0906
+  radio_banda_nombre: 0.0311
+  tamano_fuente_nombre: 0.0489
+  tamano_fuente_nombre_min: 0.0267
+  espaciado_nombre: 0.00083
+  x_panel_habilidad: 0.0433
+  y_panel_habilidad: 0.7338
+  ancho_panel_habilidad: 0.9133
+  alto_panel_habilidad: 0.2366
+  radio_panel_habilidad: 0.0311
+  x_texto_habilidad: 0.1
+  y_texto_habilidad: 0.755
+  ancho_texto_habilidad: 0.8
+  alto_texto_habilidad: 0.21
+  tamano_fuente_habilidad: 0.0278
+  tamano_fuente_habilidad_min: 0.0222
+  interlineado_habilidad: 0.024
+  espaciado_habilidad: 0
+  opacidad_sombra: 0.18
+  desplazamiento_sombra: 0.0044
+  desenfoque_sombra: 0.01
+cartas:
+  - nombre: "No te muevas, estoy cómodo"
+    imagen: "imagenes/no te muevas, estoy cómodo..png"
+    tipo: "accion"
+    copias: 1
+    marca_flush: true
+    descripcion: "El jugador objetivo pierde la Fase de Acción de su siguiente turno: puede resolver los efectos de inicio, robar, realizar el movimiento gatuno habitual y cerrar el turno, pero no puede jugar cartas ni declarar ataques durante esa fase. Coloca esta carta en su zona de juego como recordatorio y descártala al llegar a la Fase de Acción que pierde. Puede ser interceptada por Fortaleza Gatuna."
+  - nombre: "Destrucción de Sofá"
+    imagen: "imagenes/destruccion de sofa.png"
+    tipo: "accion"
+    copias: 1
+    marca_flush: true
+    descripcion: "Consume la acción principal utilizada para jugarla. Si no se cancela, concede +1 punto temporal hasta el cierre de ese turno y 1 acción principal adicional durante esa misma Fase de Acción. Como únicamente beneficia a quien la juega, cualquier rival puede intentar cancelarla."
+  - nombre: "Sobredosis de Catnip"
+    imagen: "imagenes/sobredosis de catnip.png"
+    tipo: "accion"
+    copias: 2
+    marca_flush: true
+    descripcion: "Consume la acción principal utilizada para jugarla. Si no se cancela, concede 2 acciones principales adicionales durante esa misma Fase de Acción. Cada acción adicional permite realizar otra acción principal. No concede movimientos gatunos adicionales. Su uso está sujeto al límite general de una carta generadora de acciones principales adicionales por turno."
+  - nombre: "Ronroneo"
+    imagen: "imagenes/ronroneo.png"
+    tipo: "accion"
+    copias: 2
+    marca_flush: true
+    descripcion: "Elige 2 gatos de tu Sofá y coloca esta carta sobre ellos. Al comienzo de tu siguiente turno, si ambos siguen en el Sofá y Ronroneo continúa sobre ellos, cada uno obtiene +1 punto durante ese turno. Si cualquiera abandona el Sofá antes de activarse, no obtienes la bonificación. Al terminar el turno en que se aplica, descarta Ronroneo."
+  - nombre: "Gato en la Ventana"
+    imagen: "imagenes/gatos espias.png"
+    tipo: "accion"
+    copias: 1
+    marca_flush: true
+    descripcion: "Mira la mano completa de un rival elegido."
+  - nombre: "Sorpresa en la Almohada"
+    imagen: "imagenes/Sorpresa en la almohada.png"
+    tipo: "accion"
+    copias: 1
+    marca_flush: true
+    descripcion: "Elige un rival y descarta al azar la mitad de las cartas de su mano, redondeando hacia abajo."
+  - nombre: "Tirar Cosas de la Mesa"
+    imagen: "imagenes/tirar cosas de la mesa.png"
+    tipo: "accion"
+    copias: 1
+    marca_flush: true
+    descripcion: "Elige un rival que tenga 6 o más cartas en su mano y róbale 2 cartas al azar."
+  - nombre: "Sentarse en el Teclado"
+    imagen: "imagenes/gatosobre el teclado.png"
+    tipo: "accion"
+    copias: 1
+    marca_flush: true
+    descripcion: "Elige un rival que tenga 4 o más cartas en su mano y róbale 1 carta al azar."
+  - nombre: "Puerta Gatera"
+    imagen: "imagenes/puerta gatera.png"
+    tipo: "accion"
+    copias: 2
+    marca_flush: true
+    descripcion: "Intercambia 1 gato movible de tu propiedad por 1 gato del Salón de un rival. Los dos gatos cambian de propietario y se colocan en las casas nuevas siguiendo las reglas de entrada. No puede elegirse un gato protegido por Cama de Peluche. Puede ser interceptada por Fortaleza Gatuna."
+  - nombre: "Robo Felino"
+    imagen: "imagenes/robo felino.png"
+    tipo: "accion"
+    copias: 2
+    marca_flush: true
+    descripcion: "Roba 1 gato del Salón de un rival. No puede estar en el Sofá ni tener Cama de Peluche. El gato pasa a tu propiedad y se coloca según las reglas de entrada. Puede ser interceptada por Fortaleza Gatuna."
+  - nombre: "Apuntar con Láser Infrarrojo"
+    imagen: "imagenes/laser.png"
+    tipo: "accion"
+    copias: 2
+    marca_flush: true
+    descripcion: "Mueve un gato rival o tuyo del Sofá al Salón o del Salón al Sofá. Puede ser interceptada por Fortaleza Gatuna si afecta directamente a la casa de un jugador."
+  - nombre: "¡Pspspsps!"
+    imagen: "imagenes/pspspspsp.png"
+    tipo: "accion"
+    copias: 1
+    marca_flush: true
+    descripcion: "Revela las 4 primeras cartas del mazo. Si aparece uno o más gatos, elige 1 y colócalo en tu casa. Devuelve las demás cartas al fondo del mazo en el orden que quieras. Si no aparece ningún gato, coloca las 4 cartas en el fondo del mazo."
+  - nombre: "Reforma Desastrosa"
+    imagen: "imagenes/refroma desastrosa - Sabotaje Vecinal.png"
+    tipo: "accion"
+    copias: 2
+    marca_flush: true
+    descripcion: "Destruye una instalación de un rival, incluida la Cama de Peluche. Si destruyes una Cama, el gato permanece en su zona y recupera su movilidad. Si una Fortaleza Gatuna puede interceptar la acción, la instalación elegida permanece y la Fortaleza aplica su protección. Fortaleza Gatuna no puede interceptar una Reforma Desastrosa que la elija directamente como objetivo."
+  - nombre: "Ovillo de Lana"
+    imagen: "imagenes/ovillo de lana.png"
+    tipo: "objeto"
+    copias: 3
+    marca_flush: true
+    descripcion: "Recupera cualquier carta que no sea un gato de la pila de descartes y añádela a tu mano. Si el Ovillo es cancelado, se descarta sin recuperar ninguna carta. El Ovillo que estás resolviendo se descarta después de elegir la carta recuperada, por lo que no puede recuperarse a sí mismo con su propio efecto. Sí puedes recuperar otro Ovillo que ya estuviera en el descarte."
+  - nombre: "Ratón con Hierba Gatuna"
+    imagen: "imagenes/raton con hierva gatera.png"
+    tipo: "objeto"
+    copias: 1
+    descripcion: "Cuando recibes un ataque directo contra uno de tus gatos, puedes consumir esta carta y redirigirlo hacia otro gato que sea un objetivo legal. El propietario del nuevo gato pasa a ser el defensor y decide si juega una carta de defensa. El ataque no se cancela: solo cambia de objetivo. Se utiliza como reacción durante un combate y no consume una acción. No puede cancelarse mediante las respuestas normales."
+  - nombre: "Flús-Flús de Agua"
+    imagen: "imagenes/flus flus 1.png"
+    tipo: "respuesta"
+    copias: 1
+    marca_flush: true
+    paleta: "azul"
+    version: 1
+    descripcion: "Cancela una carta que lleve el indicador CANCELABLE. No puede cancelar ataques, apoyos, eventos globales, estructuras, consumibles ni cartas que no tengan ese indicador. Tampoco puede cancelarse a sí misma."
+  - nombre: "Flús-Flús de Agua"
+    imagen: "imagenes/flus flus 2.png"
+    tipo: "respuesta"
+    copias: 1
+    marca_flush: true
+    paleta: "azul"
+    version: 2
+    descripcion: "Cancela una carta que lleve el indicador CANCELABLE. No puede cancelar ataques, apoyos, eventos globales, estructuras, consumibles ni cartas que no tengan ese indicador. Tampoco puede cancelarse a sí misma."
+  - nombre: "Flús-Flús de Agua"
+    imagen: "imagenes/flus flus 3.png"
+    tipo: "respuesta"
+    copias: 1
+    marca_flush: true
+    paleta: "azul"
+    version: 3
+    descripcion: "Cancela una carta que lleve el indicador CANCELABLE. No puede cancelar ataques, apoyos, eventos globales, estructuras, consumibles ni cartas que no tengan ese indicador. Tampoco puede cancelarse a sí misma."
+  - nombre: "Flús-Flús de Agua"
+    imagen: "imagenes/flus flus 4.png"
+    tipo: "respuesta"
+    copias: 1
+    marca_flush: true
+    paleta: "azul"
+    version: 4
+    descripcion: "Cancela una carta que lleve el indicador CANCELABLE. No puede cancelar ataques, apoyos, eventos globales, estructuras, consumibles ni cartas que no tengan ese indicador. Tampoco puede cancelarse a sí misma."

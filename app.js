@@ -3,7 +3,10 @@
 const CATEGORY_PATHS = [
   'cartas/gatos/categoria.yml',
   'cartas/ataques/categoria.yml',
-  'cartas/estructuras/categoria.yml'
+  'cartas/estructuras/categoria.yml',
+  'cartas/acciones/categoria.yml',
+  'cartas/consumibles/categoria.yml',
+  'cartas/globales/categoria.yml'
 ];
 const $ = (id) => document.getElementById(id);
 const state = {
@@ -101,13 +104,22 @@ function validateCategory(category) {
   if (Object.values(category.diseno).some(value => !Number.isFinite(value))) {
     throw new Error(`La categoría "${category.nombre}" tiene proporciones de diseño no válidas.`);
   }
-  if (!category.paleta || Object.values(category.paleta).some(color => !/^#[0-9a-fA-F]{6}$/.test(color))) {
+  const palettes = Object.entries(category)
+    .filter(([key]) => key === 'paleta' || key.startsWith('paleta_'));
+  if (!category.paleta || palettes.some(([, palette]) =>
+    !palette || Object.values(palette).some(color => !/^#[0-9a-fA-F]{6}$/.test(color)))) {
     throw new Error(`La categoría "${category.nombre}" tiene colores no válidos.`);
   }
   if (!category.iconos.tipo) throw new Error(`La categoría "${category.nombre}" no define un icono de tipo.`);
   for (const card of category.cartas) {
     if (!card.nombre || !card.imagen) {
       throw new Error(`La carta "${card.nombre || 'sin nombre'}" necesita nombre e imagen.`);
+    }
+    if (card.marca_flush !== undefined && typeof card.marca_flush !== 'boolean') {
+      throw new Error(`La carta "${card.nombre}" tiene una marca de Flús-Flús no válida.`);
+    }
+    if (card.marca_flush && !category.iconos.flush) {
+      throw new Error(`La carta "${card.nombre}" necesita el icono de Flús-Flús.`);
     }
     if (category.slug === 'gatos' && !card.descripcion) {
       throw new Error(`La carta "${card.nombre}" necesita una descripción.`);
@@ -128,7 +140,33 @@ function validateCategory(category) {
         || !Number.isInteger(card.copias) || card.copias < 1)) {
       throw new Error(`La carta "${card.nombre}" necesita descripción y cantidad de copias válidas.`);
     }
+    if (category.slug === 'acciones') {
+      if (!['accion', 'objeto', 'respuesta'].includes(card.tipo) || !card.descripcion
+        || !Number.isInteger(card.copias) || card.copias < 1) {
+        throw new Error(`La carta "${card.nombre}" necesita tipo, descripción y cantidad de copias válidos.`);
+      }
+      if (card.paleta && !category[`paleta_${card.paleta}`]) {
+        throw new Error(`La carta "${card.nombre}" hace referencia a una paleta no definida.`);
+      }
+      if (card.tipo === 'respuesta' && (!Number.isInteger(card.version) || card.version < 1)) {
+        throw new Error(`La carta "${card.nombre}" necesita un número de ilustración válido.`);
+      }
+    }
+    if (category.slug === 'consumibles'
+      && (card.tipo !== 'consumible' || !card.descripcion
+        || !Number.isInteger(card.copias) || card.copias < 1)) {
+      throw new Error(`La carta "${card.nombre}" necesita descripción y cantidad de copias válidas.`);
+    }
+    if (category.slug === 'globales'
+      && (card.tipo !== 'evento_global' || !card.descripcion
+        || !Number.isInteger(card.copias) || card.copias < 1)) {
+      throw new Error(`La carta "${card.nombre}" necesita descripción y cantidad de copias válidas.`);
+    }
   }
+}
+
+function paletteForCard(category, card) {
+  return card.paleta ? category[`paleta_${card.paleta}`] : category.paleta;
 }
 
 function normalizeProjectPath(path) {
@@ -182,8 +220,8 @@ function loadImage(url) {
   return promise;
 }
 
-function tintedIcon(category, iconKey, image) {
-  const color = category.paleta.detalle || '#B98232';
+function tintedIcon(category, iconKey, image, palette=category.paleta) {
+  const color = palette.detalle || '#B98232';
   const cacheKey = `${assetUrl(category, category.iconos[iconKey])}:${color}`;
   if (state.tintedIconCache.has(cacheKey)) return state.tintedIconCache.get(cacheKey);
   const canvas = document.createElement('canvas');
@@ -277,7 +315,7 @@ function wrapText(context, text, maxWidth) {
 
 function drawAttackContent(context, category, card, x, y, width, height) {
   const design = category.diseno;
-  const palette = category.paleta;
+  const palette = paletteForCard(category, card);
   const centerX = x + width / 2;
   const centerY = y + height / 2;
   const textWidth = width * 0.82;
@@ -337,7 +375,7 @@ function drawAttackContent(context, category, card, x, y, width, height) {
 
 function drawCard(canvas, category, card, artImage, icons, renderDpi=category.diseno.dpi) {
   const context = canvas.getContext('2d');
-  const palette = category.paleta;
+  const palette = paletteForCard(category, card);
   const design = category.diseno;
   const width = Math.round(design.ancho_mm * renderDpi / 25.4);
   const height = Math.round(design.alto_mm * renderDpi / 25.4);
@@ -383,6 +421,16 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   if (icons.tipo) drawContain(context, icons.tipo,
     typeBoxX + (typeBoxSize - iconSize) / 2, typeBoxY + (typeBoxSize - iconSize) / 2,
     iconSize, iconSize);
+  if (icons.flush) {
+    context.save();
+    context.shadowColor = 'rgba(0,0,0,0.65)';
+    context.shadowBlur = 4 * scale;
+    context.shadowOffsetY = scale;
+    drawContain(context, icons.flush,
+      width - typeBoxX - iconSize, typeBoxY + (typeBoxSize - iconSize) / 2,
+      iconSize, iconSize);
+    context.restore();
+  }
 
   if (icons.sofa && icons.salon && Number.isFinite(Number(card.sofa)) && Number.isFinite(Number(card.salon))) {
     const scoreWidth = Math.round(width * design.ancho_puntuaciones);
@@ -431,7 +479,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   if ('letterSpacing' in context) context.letterSpacing = `${width * design.espaciado_nombre}px`;
   fitText(context, title, bandWidth - width * 0.08, titleSize, titleMinSize,
     '"Lora", Georgia, "Times New Roman", serif');
-  context.fillStyle = category.slug === 'ataques' ? palette.marco : palette.tinta;
+  context.fillStyle = category.slug === 'ataques' || card.paleta ? palette.marco : palette.tinta;
   context.fillText(title, bandX + bandWidth / 2, bandY + bandHeight / 2, bandWidth - width * 0.08);
   if ('letterSpacing' in context) context.letterSpacing = '0px';
 
@@ -513,7 +561,11 @@ async function createCardTile(category, card) {
   const previewDpi = category.diseno.dpi_vista_previa;
   canvas.width = Math.round(category.diseno.ancho_mm * previewDpi / 25.4);
   canvas.height = Math.round(category.diseno.alto_mm * previewDpi / 25.4);
-  canvas.setAttribute('aria-label', `Vista previa: ${card.nombre}`);
+  const variantCount = card.version
+    ? category.cartas.filter(item => item.nombre === card.nombre && item.tipo === card.tipo).length
+    : 0;
+  const variantLabel = card.version ? ` · ilustración ${card.version}/${variantCount}` : '';
+  canvas.setAttribute('aria-label', `Vista previa: ${card.nombre}${variantLabel}`);
   const title = document.createElement('h3');
   title.textContent = card.nombre;
   const score = document.createElement('p');
@@ -529,9 +581,11 @@ async function createCardTile(category, card) {
   } else {
     const copyLabel = `${card.copias} ${card.copias === 1 ? 'copia' : 'copias'}`;
     const typeLabel = card.tipo
-      ? `${card.tipo[0].toLocaleUpperCase('es-ES')}${card.tipo.slice(1)}`
+      ? card.tipo === 'accion' ? 'Acción'
+        : card.tipo === 'evento_global' ? 'Evento global'
+        : `${card.tipo[0].toLocaleUpperCase('es-ES')}${card.tipo.slice(1)}`
       : category.nombre;
-    score.textContent = `${typeLabel} · ${copyLabel}`;
+    score.textContent = `${typeLabel}${variantLabel} · ${copyLabel}`;
   }
   const actions = document.createElement('div');
   actions.className = 'card-actions';
@@ -550,8 +604,13 @@ async function createCardTile(category, card) {
       sofa: category.iconos.sofa ? await loadImage(assetUrl(category, category.iconos.sofa)) : null,
       salon: category.iconos.salon ? await loadImage(assetUrl(category, category.iconos.salon)) : null
     };
+    const palette = paletteForCard(category, card);
     const icons = Object.fromEntries(Object.entries(rawIcons)
-      .map(([key, image]) => [key, image ? tintedIcon(category, key, image) : null]));
+      .map(([key, image]) => [key, image ? tintedIcon(category, key, image, palette) : null]));
+    if (card.marca_flush && category.iconos.flush) {
+      const flushIcon = await loadImage(assetUrl(category, category.iconos.flush));
+      icons.flush = tintedIcon(category, 'flush', flushIcon, palette);
+    }
     card.artImage = art;
     card.icons = icons;
     drawCard(canvas, category, card, art, icons, previewDpi);
@@ -573,8 +632,9 @@ async function createCardTile(category, card) {
       exportCanvas = document.createElement('canvas');
       drawCard(exportCanvas, category, card, card.artImage, card.icons, category.diseno.dpi);
       const png = await canvasPngWithDpi(exportCanvas, category);
-      downloadBlob(png, `${safeFilename(card.nombre)}.png`);
-      setStatus(`PNG descargado: ${card.nombre}.`);
+      const filename = card.version ? `${card.nombre}-${card.version}` : card.nombre;
+      downloadBlob(png, `${safeFilename(filename)}.png`);
+      setStatus(`PNG descargado: ${card.nombre}${variantLabel}.`);
     } catch (error) {
       console.error(error);
       setStatus(error.message || `No se pudo generar ${card.nombre}.`, true);
@@ -608,6 +668,10 @@ function downloadBlob(blob, filename) {
 function printableCards(category) {
   return category.cartas.flatMap(card =>
     Array.from({length: card.copias || 1}, () => card));
+}
+
+function cardTypeCount(category) {
+  return new Set(category.cartas.map(card => `${card.tipo || ''}:${card.nombre}`)).size;
 }
 
 async function canvasPngWithDpi(canvas, category) {
@@ -784,9 +848,10 @@ async function renderCategory(category) {
   state.activeSlug = category.slug;
   const printableCount = printableCards(category).length;
   const hasCopyCounts = category.cartas.some(card => Number.isInteger(card.copias));
+  const typeCount = cardTypeCount(category);
   $('categoryTitle').textContent = hasCopyCounts
-    ? `${category.nombre} · ${category.cartas.length} tipos · ${printableCount} copias`
-    : `${category.nombre} · ${category.cartas.length} cartas`;
+    ? `${category.nombre} · ${typeCount} tipos · ${printableCount} copias`
+    : `${category.nombre} · ${typeCount} cartas`;
   try {
     const typeIconUrl = assetUrl(category, category.iconos.tipo);
     await loadImage(typeIconUrl);
@@ -835,7 +900,7 @@ function showCategories() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'tab-button';
-    button.textContent = `${category.nombre} (${category.cartas.length})`;
+    button.textContent = `${category.nombre} (${cardTypeCount(category)})`;
     button.dataset.slug = category.slug;
     button.setAttribute('role', 'tab');
     button.setAttribute('aria-selected', 'false');

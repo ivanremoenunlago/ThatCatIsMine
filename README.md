@@ -10,8 +10,11 @@ La aplicación es estática: HTML, CSS y JavaScript, sin servidor, dependencias 
 
 - **Gatos:** 20 cartas configuradas, con ilustraciones, puntuación de Sofá y Salón, descripciones y sinergias cuando corresponden.
 - **Ataques:** 17 tipos de cartas (ataques y apoyos), 27 copias físicas en total, con daño fijo o variable y sus ilustraciones.
-- **Estructuras:** 5 tipos de cartas. Las cantidades detalladas en la sección 8.2 del reglamento suman 7 copias, aunque el resumen del reglamento indica 6.
-- **Categorías pendientes:** el reglamento v0.48 también contempla 4 objetos, 8 consumibles, 18 acciones y travesuras, 3 eventos globales y 4 respuestas; esas categorías aún no están configuradas en la web.
+- **Estructuras:** 5 tipos y 7 copias físicas.
+- **Acciones:** 16 tipos en la galería (19 acciones, 4 objetos y 4 respuestas), con cuatro ilustraciones distintas para Flús-Flús de Agua.
+- **Consumibles:** 4 tipos y 8 copias físicas.
+- **Eventos Globales:** 2 tipos y 2 copias físicas integrados; falta la ilustración de Cambio de Arenero.
+- **Mazo:** 92 cartas según las cantidades detalladas acordadas.
 - **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_v0.48.txt](./Ese_gato_es_mio_reglamento_v0.48.txt). El archivo v0.47 es una versión anterior.
 - El pie de [index.html](./index.html) incluye el aviso de derechos de autor.
 
@@ -25,7 +28,7 @@ Cada categoría tiene una pestaña. La galería muestra una carta por tipo:
 
 - **Descargar PNG** descarga ese tipo de carta como PNG a 720 DPI.
 - **Descargar PDF A4** genera el conjunto de la categoría, con hasta nueve cartas por página, separación de 3 mm y marcas de corte.
-- En Ataques y Estructuras, el PDF repite cada tipo según su campo `copias`; el PNG individual se descarga una sola vez por tipo.
+- En Ataques, Estructuras, Acciones, Consumibles y Eventos Globales, el PDF repite cada carta según su campo `copias`; cada ilustración se puede descargar como PNG individual.
 
 Al imprimir, selecciona tamaño real o escala del 100 % para conservar las dimensiones.
 
@@ -46,6 +49,15 @@ cartas/
     categoria.yml
     imagenes/
   estructuras/
+    categoria.yml
+    imagenes/
+  acciones/
+    categoria.yml
+    imagenes/
+  consumibles/
+    categoria.yml
+    imagenes/
+  globales/
     categoria.yml
     imagenes/
 ```
@@ -72,8 +84,12 @@ Paletas actuales:
 | Gatos | `#D9B96E` | `#E7D1A6` | `#F5E9CE` | `#B98232` |
 | Ataques | `#DE857E` | `#EBC8C3` | `#F5E4DF` | `#B94B48` |
 | Estructuras | `#B8BEC2` | `#E5E8EA` | `#F5F6F6` | `#9CA5AA` |
+| Acciones | `#967FA8` | `#E4DBEA` | `#F5F0F7` | `#8E789F` |
+| Eventos Globales | `#967FA8` | `#E4DBEA` | `#F5F0F7` | `#8E789F` |
+| Flús-Flús de Agua | `#759DB0` | `#DDEAF0` | `#F4F8FA` | `#6F97AA` |
+| Consumibles | `#8CA57B` | `#E0E8D9` | `#F5F8F2` | `#849B75` |
 
-Ataques sigue la estructura de bordes y paneles claros de Gatos: las bandas del nombre y los paneles inferiores comparten el color de detalle en sus bordes. El rojo destaca el nombre, los rótulos y los valores fijos de ataque o apoyo; las descripciones conservan el color de tinta. Estructuras usa tonos blancos y grisáceos apagados, sin efecto metálico intenso. La paleta de cada categoría está en su YAML, bajo `paleta`.
+Ataques sigue la estructura de bordes y paneles claros de Gatos. El rojo destaca los nombres, rótulos y valores fijos de ataque o apoyo. Estructuras usa tonos blancos y grisáceos apagados; Acciones y Eventos Globales, morados suaves; y Consumibles, verdes suaves. Flús-Flús de Agua se mantiene en la pestaña Acciones, pero usa una paleta azul propia. Las paletas están en el YAML de cada categoría.
 
 ## Cómo editar o añadir cartas
 
@@ -95,6 +111,18 @@ Cada entrada define `nombre`, `imagen`, `tipo` (`ataque` o `apoyo`) y `copias`.
 ### Estructuras
 
 Cada entrada define `nombre`, `imagen`, `tipo: "estructura"`, `copias` y `descripcion`. El PDF genera las copias indicadas; el PNG individual se descarga una sola vez por tipo.
+
+### Acciones, objetos y respuestas
+
+La pestaña Acciones reúne acciones, objetos y respuestas. Cada entrada define `nombre`, `imagen`, `tipo` (`accion`, `objeto` o `respuesta`), `copias` y `descripcion`. Las cartas que muestran la marca de Flús-Flús llevan `marca_flush: true`; el icono se configura en `iconos.flush`, aparece sin recuadro en la parte superior derecha y usa el color de detalle de la paleta de la carta. Esta marca es visual: no determina por sí sola si una carta puede cancelarse. Las cartas con `paleta: "azul"` usan la paleta azul específica de Flús-Flús. Cada ilustración de Flús es una entrada independiente para que sus cuatro copias salgan distintas en el PDF y puedan descargarse por separado.
+
+### Consumibles
+
+Cada consumible define `nombre`, `imagen`, `tipo: "consumible"`, `copias` y `descripcion`.
+
+### Eventos Globales
+
+Cada evento define `nombre`, `imagen`, `tipo: "evento_global"`, `copias` y `descripcion`. Los eventos globales no son cancelables según el reglamento. La categoría incluye por ahora Hora de la Siesta y Perro del Vecino; Cambio de Arenero queda pendiente de su ilustración.
 
 ### Añadir una categoría nueva
 
