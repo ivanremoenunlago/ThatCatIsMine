@@ -16,7 +16,8 @@ const state = {
   uploadedFiles: null,
   uploadedFileMap: new Map(),
   imageCache: new Map(),
-  tintedIconCache: new Map()
+  tintedIconCache: new Map(),
+  printDeckUrls: []
 };
 
 function setStatus(message, isError=false) {
@@ -606,22 +607,8 @@ async function createCardTile(category, card) {
   card.canvas = canvas;
 
   try {
-    const art = await loadImage(assetUrl(category, card.imagen));
-    const rawIcons = {
-      tipo: await loadImage(assetUrl(category, category.iconos.tipo)),
-      sofa: category.iconos.sofa ? await loadImage(assetUrl(category, category.iconos.sofa)) : null,
-      salon: category.iconos.salon ? await loadImage(assetUrl(category, category.iconos.salon)) : null
-    };
-    const palette = paletteForCard(category, card);
-    const icons = Object.fromEntries(Object.entries(rawIcons)
-      .map(([key, image]) => [key, image ? tintedIcon(category, key, image, palette) : null]));
-    if (card.marca_flush && category.iconos.flush) {
-      const flushIcon = await loadImage(assetUrl(category, category.iconos.flush));
-      icons.flush = tintedIcon(category, 'flush', flushIcon, palette);
-    }
-    card.artImage = art;
-    card.icons = icons;
-    drawCard(canvas, category, card, art, icons, previewDpi);
+    const assets = await loadCardAssets(category, card);
+    drawCard(canvas, category, card, assets.artImage, assets.icons, previewDpi);
   } catch (error) {
     console.error(error);
     card.imageError = true;
@@ -655,6 +642,27 @@ async function createCardTile(category, card) {
     }
   });
   return tile;
+}
+
+async function loadCardAssets(category, card) {
+  if (card.artImage && card.icons) return {artImage: card.artImage, icons: card.icons};
+  const artImage = await loadImage(assetUrl(category, card.imagen));
+  const rawIcons = {
+    tipo: await loadImage(assetUrl(category, category.iconos.tipo)),
+    sofa: category.iconos.sofa ? await loadImage(assetUrl(category, category.iconos.sofa)) : null,
+    salon: category.iconos.salon ? await loadImage(assetUrl(category, category.iconos.salon)) : null
+  };
+  const palette = paletteForCard(category, card);
+  const icons = Object.fromEntries(Object.entries(rawIcons)
+    .map(([key, image]) => [key, image ? tintedIcon(category, key, image, palette) : null]));
+  if (card.marca_flush && category.iconos.flush) {
+    const flushIcon = await loadImage(assetUrl(category, category.iconos.flush));
+    icons.flush = tintedIcon(category, 'flush', flushIcon, palette);
+  }
+  card.artImage = artImage;
+  card.icons = icons;
+  card.imageError = false;
+  return {artImage, icons};
 }
 
 function safeFilename(name) {
@@ -851,6 +859,67 @@ async function createPdf(category) {
   return new Blob([concatBytes(...chunks)], {type: 'application/pdf'});
 }
 
+function completeDeckCardCount() {
+  return state.categories.reduce((total, category) =>
+    total + category.cartas.reduce((count, card) => count + (card.copias || 1), 0), 0);
+}
+
+function clearCompletePrintDeck() {
+  for (const url of state.printDeckUrls) URL.revokeObjectURL(url);
+  state.printDeckUrls = [];
+  $('printDeck').replaceChildren();
+}
+
+async function prepareCompletePrintDeck() {
+  clearCompletePrintDeck();
+  const cards = state.categories.flatMap(category =>
+    printableCards(category).map(card => ({category, card})));
+  if (!cards.length) throw new Error('No hay cartas disponibles para incluir.');
+  let sheet = null;
+
+  for (let index = 0; index < cards.length; index++) {
+    const {category, card} = cards[index];
+    setCompletePdfStatus(`Preparando carta ${index + 1} de ${cards.length}: ${card.nombre}…`);
+    const {artImage, icons} = await loadCardAssets(category, card).catch(error => {
+      throw new Error(`No se puede incluir «${card.nombre}»: ${error.message}`);
+    });
+    const canvas = document.createElement('canvas');
+    try {
+      drawCard(canvas, category, card, artImage, icons, category.diseno.dpi);
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.96));
+      if (!blob) throw new Error(`No se pudo generar la imagen de «${card.nombre}».`);
+      const url = URL.createObjectURL(blob);
+      state.printDeckUrls.push(url);
+      const image = document.createElement('img');
+      image.className = 'print-deck-card';
+      image.alt = `${card.nombre}, tamaño real`;
+      image.src = url;
+      if (index % 9 === 0) {
+        sheet = document.createElement('div');
+        sheet.className = 'print-deck-sheet';
+        $('printDeck').append(sheet);
+      }
+      sheet.append(image);
+      if (!image.complete) {
+        await new Promise((resolve, reject) => {
+          image.addEventListener('load', resolve, {once: true});
+          image.addEventListener('error', () => reject(new Error(`No se pudo cargar «${card.nombre}» para impresión.`)), {once: true});
+        });
+      }
+      if (!image.naturalWidth) throw new Error(`La imagen de «${card.nombre}» no está disponible para impresión.`);
+    } finally {
+      canvas.width = 0;
+      canvas.height = 0;
+    }
+  }
+  $('printDeck').lastElementChild.classList.add('is-last');
+  document.body.classList.add('print-complete-deck');
+}
+
+function setCompletePdfStatus(message) {
+  $('completePdfStatus').textContent = message;
+}
+
 async function renderCategory(category) {
   const renderId = ++state.categoryRenderId;
   state.activeSlug = category.slug;
@@ -930,6 +999,11 @@ function showCategories() {
   rulebookTab.setAttribute('aria-controls', 'rulebookPanel');
   rulebookTab.addEventListener('click', showRulebook);
   tabs.append(rulebookTab);
+  const totalCards = completeDeckCardCount();
+  $('printCompleteButton').disabled = totalCards === 0;
+  $('printCompleteButton').textContent = totalCards
+    ? `Guardar PDF completo · ${totalCards} cartas`
+    : 'PDF completo no disponible';
   if (state.categories.length) renderCategory(state.categories[0]);
 }
 
@@ -1013,6 +1087,28 @@ $('pdfButton').addEventListener('click', async () => {
 
 $('printRulebookButton').addEventListener('click', () => {
   if (!$('rulebookPanel').hidden) window.print();
+});
+
+$('printCompleteButton').addEventListener('click', async () => {
+  const button = $('printCompleteButton');
+  if ($('rulebookPanel').hidden || !state.categories.length) return;
+  button.disabled = true;
+  try {
+    const count = completeDeckCardCount();
+    setCompletePdfStatus(`Preparando reglamento y ${count} cartas a tamaño real…`);
+    await prepareCompletePrintDeck();
+    setCompletePdfStatus(`Documento listo: primero el reglamento y sus cinco tableros, después ${count} cartas físicas.`);
+    window.print();
+  } catch (error) {
+    console.error(error);
+    document.body.classList.remove('print-complete-deck');
+    clearCompletePrintDeck();
+    setCompletePdfStatus(error.message || 'No se pudo preparar el PDF completo.');
+  } finally {
+    document.body.classList.remove('print-complete-deck');
+    clearCompletePrintDeck();
+    button.disabled = false;
+  }
 });
 
 $('folderButton').dataset.action = 'reload';

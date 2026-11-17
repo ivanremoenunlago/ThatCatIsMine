@@ -29,7 +29,8 @@ Cada categoría tiene una pestaña. La galería muestra una carta por tipo. La p
 
 - **Descargar PNG** descarga ese tipo de carta como PNG a 720 DPI.
 - **Descargar PDF A4** genera el conjunto de la categoría, con hasta nueve cartas por página, separación de 3 mm y marcas de corte.
-- **Imprimir / Guardar PDF A4** abre el diálogo de impresión del navegador para imprimir el reglamento o guardarlo como PDF. Las reglas usan orientación vertical; cada tablero ocupa la página A4 horizontal completa, sin márgenes CSS. La hoja de estilos oculta el catálogo. Una impresora física sin impresión sin bordes puede recortar los extremos.
+- **Imprimir / Guardar PDF A4** abre el diálogo de impresión del navegador para imprimir el reglamento o guardarlo como PDF. Las reglas usan orientación vertical; cada tablero ocupa la página A4 horizontal completa. Para que las cartas físicas encajen, la imagen de cada tablero se amplía al 105 % y se recortan ligeramente sus bordes. Una impresora física puede necesitar impresión sin bordes para no recortar la zona de Estructuras.
+- **Guardar PDF completo** desde la pestaña Reglamento prepara un único documento con el reglamento y los cinco tableros primero, seguidos de todas las copias del mazo en páginas A4. Se abre el diálogo de impresión del navegador: elige «Guardar como PDF» y escala «Tamaño real» o «100 %». Las cartas se colocan a su tamaño físico configurado.
 - En Ataques, Estructuras, Acciones, Consumibles y Eventos Globales, el PDF repite cada carta según su campo `copias`; cada ilustración se puede descargar como PNG individual.
 
 Al imprimir, selecciona tamaño real o escala del 100 % para conservar las dimensiones.
@@ -77,7 +78,7 @@ cartas/
 
 Las rutas `imagen` e `iconos` de cada YAML son relativas al propio archivo de categoría. El nombre y la extensión deben coincidir exactamente con el archivo en disco.
 
-Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Si está en juego la Cama de Peluche, queda protegido el gato físicamente más próximo a su zona de estructura en cada momento. Los marcadores de los tableros son orientativos para pantalla e impresión del reglamento; no están calibrados como huecos de tamaño real para cartas de 63,5 × 88 mm.
+Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Si está en juego la Cama de Peluche, queda protegido el gato físicamente más próximo a su zona de estructura en cada momento. En las páginas A4 horizontales, la imagen del tablero se amplía al 105 % y se centra con recorte para que las tres plazas del Sofá y la zona de Estructuras midan aproximadamente 63,6 × 88,2 mm. Imprime o guarda el PDF a tamaño real (100 %); una impresora sin impresión sin bordes podría recortar parte de la zona de Estructuras.
 
 ## Diseño de las cartas
 

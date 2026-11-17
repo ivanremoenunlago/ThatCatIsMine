@@ -44,8 +44,12 @@
             <p class="eyebrow">REGLAMENTO DE JUEGO</p>
             <h2 id="rulebookTitle">¡Ese gato es mío!</h2>
             <p>Guía de juego con siete páginas de reglas y cinco tableros A4 horizontales.</p>
+            <p id="completePdfStatus" class="complete-pdf-status" role="status" aria-live="polite">Se abrirá la impresión para guardar un solo PDF: primero el reglamento y después todas las cartas a tamaño real. Selecciona escala 100 %. Para imprimir tableros sin recortar la zona de Estructuras, usa impresión sin bordes.</p>
           </div>
-          <button id="printRulebookButton" class="button primary" type="button">Imprimir / Guardar PDF A4</button>
+          <div class="rulebook-actions">
+            <button id="printRulebookButton" class="button secondary" type="button">Imprimir solo el reglamento</button>
+            <button id="printCompleteButton" class="button primary" type="button" disabled>Imprimir / Guardar PDF completo</button>
+          </div>
         </div>
 
         <article class="rulebook-page" aria-label="Página 1: objetivo y preparación">
@@ -291,11 +295,11 @@
           <footer class="rulebook-page-footer">Consulta los textos de las cartas para sus efectos concretos · ¡Que empiece la guerra de postureo! · 7 / 7</footer>
         </article>
 
-        <article class="rulebook-page rulebook-board-page" aria-label="Tablero A: sofá azul gris, alfombrilla ocre y alfombra marfil">
-          <h2 class="board-screen-title">Tablero A · Sofá azul gris, ocre y marfil</h2>
+        <article class="rulebook-page rulebook-board-page" aria-label="Tablero A: sofá malva suave y alfombrilla verde claro">
+          <h2 class="board-screen-title">Tablero A · Sofá malva suave</h2>
           <figure class="board-figure">
             <div class="board-image-stage">
-              <img src="tableros/Salón azul gris, ocre y marfil.png" alt="Tablero con sofá azul gris de tres plazas, alfombrilla para estructura y alfombra grande de salón.">
+              <img src="tableros/Salón con sofá malva suave.png" alt="Tablero con sofá malva de tres plazas, alfombrilla verde claro para estructuras y alfombra grande del salón.">
               <div class="board-card-place board-sofa-left" role="img" aria-label="Plaza izquierda del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-center" role="img" aria-label="Plaza central del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-right" role="img" aria-label="Plaza derecha del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
@@ -305,11 +309,11 @@
           </figure>
         </article>
 
-        <article class="rulebook-page rulebook-board-page" aria-label="Tablero B: sofá terracota y alfombra marfil">
-          <h2 class="board-screen-title">Tablero B · Sofá terracota y marfil</h2>
+        <article class="rulebook-page rulebook-board-page" aria-label="Tablero B: sofá terracota suave">
+          <h2 class="board-screen-title">Tablero B · Sofá terracota suave</h2>
           <figure class="board-figure">
             <div class="board-image-stage">
-              <img src="tableros/Sofá terracota sobre alfombra marfil.png" alt="Tablero con sofá terracota de tres plazas, alfombrilla para estructura y alfombra grande de salón.">
+              <img src="tableros/Sofá terracota suave con alfombra a juego.png" alt="Tablero con sofá terracota de tres plazas, alfombrilla azul para estructuras y alfombra de tonos a juego.">
               <div class="board-card-place board-sofa-left" role="img" aria-label="Plaza izquierda del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-center" role="img" aria-label="Plaza central del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-right" role="img" aria-label="Plaza derecha del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
@@ -319,11 +323,11 @@
           </figure>
         </article>
 
-        <article class="rulebook-page rulebook-board-page" aria-label="Tablero C: sofá verde salvia y alfombra rosa empolvado">
-          <h2 class="board-screen-title">Tablero C · Verde salvia y rosa empolvado</h2>
+        <article class="rulebook-page rulebook-board-page" aria-label="Tablero C: sofá verde salvia con ribete rosa">
+          <h2 class="board-screen-title">Tablero C · Verde salvia y rosa</h2>
           <figure class="board-figure">
             <div class="board-image-stage">
-              <img src="tableros/Salón en verde salvia y rosa empolvado.png" alt="Tablero con sofá verde salvia de tres plazas, alfombrilla para estructura y alfombra grande de salón.">
+              <img src="tableros/Sofá verde salvia con ribete rosa.png" alt="Tablero con sofá verde salvia de tres plazas, alfombrilla rosa para estructuras y alfombra grande del salón.">
               <div class="board-card-place board-sofa-left" role="img" aria-label="Plaza izquierda del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-center" role="img" aria-label="Plaza central del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-right" role="img" aria-label="Plaza derecha del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
@@ -333,11 +337,11 @@
           </figure>
         </article>
 
-        <article class="rulebook-page rulebook-board-page" aria-label="Tablero D: sofá azul petróleo y alfombra marfil">
-          <h2 class="board-screen-title">Tablero D · Azul petróleo y marfil</h2>
+        <article class="rulebook-page rulebook-board-page" aria-label="Tablero D: sofá rojo fresa">
+          <h2 class="board-screen-title">Tablero D · Rojo fresa</h2>
           <figure class="board-figure">
             <div class="board-image-stage">
-              <img src="tableros/Salón azul petróleo con alfombra marfil.png" alt="Tablero con sofá azul petróleo de tres plazas, alfombrilla para estructura y alfombra grande de salón.">
+              <img src="tableros/Sofá rojo fresa en salón de juegos.png" alt="Tablero con sofá rojo de tres plazas, alfombrilla clara para estructuras y alfombra grande del salón.">
               <div class="board-card-place board-sofa-left" role="img" aria-label="Plaza izquierda del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-center" role="img" aria-label="Plaza central del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-right" role="img" aria-label="Plaza derecha del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
@@ -347,11 +351,11 @@
           </figure>
         </article>
 
-        <article class="rulebook-page rulebook-board-page" aria-label="Tablero E: salón escandinavo moderno">
-          <h2 class="board-screen-title">Tablero E · Salón escandinavo moderno</h2>
+        <article class="rulebook-page rulebook-board-page" aria-label="Tablero E: sofá azul, alfombra crema y madera">
+          <h2 class="board-screen-title">Tablero E · Azul, crema y madera</h2>
           <figure class="board-figure">
             <div class="board-image-stage">
-              <img src="tableros/Salón escandinavo moderno para juegos de mesa.png" alt="Tablero de salón escandinavo con sofá de tres plazas, alfombrilla para estructura y alfombra grande de salón.">
+              <img src="tableros/Sofá azul, alfombra crema y madera.png" alt="Tablero con sofá azul de tres plazas, alfombrilla mostaza para estructuras y alfombra crema del salón sobre suelo de madera.">
               <div class="board-card-place board-sofa-left" role="img" aria-label="Plaza izquierda del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-center" role="img" aria-label="Plaza central del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
               <div class="board-card-place board-sofa-right" role="img" aria-label="Plaza derecha del sofá"><img class="board-paw-icon" src="cartas/emojis/paw.png" alt=""></div>
@@ -360,6 +364,7 @@
             </div>
           </figure>
         </article>
+        <section id="printDeck" class="print-deck" aria-label="Todas las cartas a tamaño real"></section>
       </section>
     </section>
   </main>

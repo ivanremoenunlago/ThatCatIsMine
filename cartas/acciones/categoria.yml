@@ -134,7 +134,7 @@ cartas:
     marca_flush: true
     descripcion: "Coge el mazo y quedate el primer gato que encuentres y barajalo, si no hay mas gatos en el mazo, roba 1 carta al azar."
   - nombre: "Sabotaje vecinal"
-    imagen: "imagenes/sabotaje vecinal.png"
+    imagen: "imagenes/refroma desastrosa - Sabotaje Vecinal.png"
     tipo: "accion"
     copias: 2
     marca_flush: true

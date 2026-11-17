@@ -270,15 +270,14 @@ como regla definitiva.
 5. TABLEROS Y DISTRIBUCIÓN VISUAL
 
 Hay cinco variantes de tablero en tableros/. Todas miden 1491 × 1055 píxeles y
-tienen una composición equivalente. Las coordenadas originales aproximadas,
-medidas sobre la imagen de 1491 × 1055 desde la esquina superior izquierda,
-son:
+tienen una composición equivalente. Las coordenadas nuevas, aplicadas a todas
+las variantes, usan el origen superior izquierdo:
 
-- Sofá, plaza izquierda: x=180, y=120, ancho=270, alto=370 px.
-- Sofá, plaza central: x=480, y=120, ancho=270, alto=370 px.
-- Sofá, plaza derecha: x=780, y=120, ancho=270, alto=370 px.
-- Alfombrilla de Estructura: x=1160, y=105, ancho=260, alto=405 px.
-- Salón: x=190, y=630, ancho=1110, alto=320 px.
+- Sofá, plaza izquierda: x=108, y=99, ancho=304, alto=422 px.
+- Sofá, plaza central: x=432, y=99, ancho=304, alto=422 px.
+- Sofá, plaza derecha: x=754, y=99, ancho=304, alto=422 px.
+- Alfombrilla de Estructura: x=1145, y=107, ancho=304, alto=422 px.
+- Salón: x=142, y=649, ancho=1206, alto=307 px.
 
 El Salón es una zona libre, sin huecos individuales dibujados. Los overlays se
 escalan proporcionalmente con la imagen.
@@ -295,28 +294,23 @@ Reglas visuales y de uso:
 - En el Salón no hay icono ni contorno superpuesto; queda solo el rótulo
   «SALÓN · ZONA LIBRE», semitransparente y sin sombra.
 - Se eliminó el SVG propio que antes dibujaba una carta con una pata.
-- Los marcadores son orientativos para pantalla/impresión del reglamento, no
-  están calibrados como huecos físicos para cartas.
+- Los cinco archivos actuales son «Salón con sofá malva suave.png», «Sofá azul,
+  alfombra crema y madera.png», «Sofá rojo fresa en salón de juegos.png»,
+  «Sofá terracota suave con alfombra a juego.png» y
+  «Sofá verde salvia con ribete rosa.png».
 
 Medidas físicas calculadas para la impresión A4 horizontal actual:
 - Los tableros ahora se imprimen a página completa A4 apaisada: 297 × 210 mm,
-  sin márgenes CSS. La imagen se estira mínimamente para cubrir la hoja; la
-  diferencia entre la proporción de la imagen (1491:1055) y la de A4 es de
-  aproximadamente 0,07 %. Una impresora física que no permita imprimir sin
-  bordes puede recortar los extremos.
-- Usando las coordenadas originales sobre la hoja completa, cada plaza del
-  Sofá mide aproximadamente 53,8 × 73,6 mm.
-- La zona de Estructura mide aproximadamente 51,8 × 80,6 mm.
-- Una carta física estándar mide 63,5 × 88 mm. Centrada sobre cada zona, a una
-  plaza del Sofá le faltan unos 9,7 mm de ancho total (4,9 mm por cada lateral)
-  y 14,4 mm de alto total (7,2 mm arriba y abajo).
-- A la zona de Estructura le faltan unos 11,7 mm de ancho total (5,9 mm por
-  cada lateral) y 7,4 mm de alto total (3,7 mm arriba y abajo).
-- Por tanto, ni las plazas del Sofá ni la alfombrilla de Estructura admiten
-  cartas físicas de 63,5 × 88 mm dentro de sus límites. Aumentar solo los
-  iconos superpuestos no lo resuelve; habría que rediseñar/ampliar los espacios
-  dibujados en el tablero o imprimir en un formato mayor. Las dimensiones
-  deben verificarse de nuevo tras cualquier rediseño.
+-  sin márgenes CSS. La imagen se amplía al 105 % y se centra, recortando los
+  bordes. El PDF sigue siendo A4; debe imprimirse a tamaño real (100 %).
+- Con ese aumento, los rectángulos de 304 × 422 px miden aproximadamente
+  63,6 × 88,2 mm, por lo que admiten cartas físicas de 63,5 × 88 mm. Se aplica
+  tanto a las tres plazas del Sofá como a la zona de Estructuras.
+- Sin el aumento, al ocupar exactamente una hoja A4, los rectángulos medirían
+  unos 60,5 × 84,0 mm: faltarían alrededor de 3,0 mm de ancho y 4,0 mm de alto.
+- La zona de Estructuras queda muy cerca del borde derecho al ampliar. Una
+  impresora sin impresión sin bordes puede recortar parte de esa zona; guardar
+  como PDF conserva la página completa.
 
 
 6. ÚLTIMO ESTADO TÉCNICO COMPROBADO
@@ -341,6 +335,24 @@ Archivos con cambios recientes:
 - contexto.txt (este documento)
 - Se quitó tableros/marcador-carta.svg.
 
-La conversación no autoriza a cambiar las dimensiones de los tableros todavía.
-La última pregunta del usuario fue si caben cartas reales; la respuesta fue que
-no, según las medidas anteriores. No se ha iniciado un rediseño de los tableros.
+La pestaña Reglamento también incluye ahora «Guardar PDF completo». Prepara el
+reglamento y sus cinco tableros primero, seguidos por todas las copias
+configuradas en los YAML (94 cartas físicas en el catálogo actual), distribuidas
+en páginas A4 verticales con nueve cartas por página y dimensiones 63,5 × 88 mm.
+Se usa el diálogo de impresión del navegador para guardar el único PDF; hay que
+seleccionar «Guardar como PDF» y escala 100 % / tamaño real. Las cartas se
+renderizan a la resolución de impresión de cada categoría.
+
+Durante la integración se reparó en cartas/acciones/categoria.yml la ruta de
+imagen de «Sabotaje vecinal»: se apuntó a la ilustración existente
+«refroma desastrosa - Sabotaje Vecinal.png», ya que la ruta anterior refería un
+archivo ausente. La prueba del documento combinado confirmó 94 imágenes
+cargadas, 11 páginas de cartas y tamaños CSS de impresión de 63,5 × 88 mm.
+
+La edición más reciente reemplazó cuatro imágenes de tablero y mantuvo la de
+Sofá azul, alfombra crema y madera. Se actualizaron las cinco referencias HTML
+y se eliminaron las páginas duplicadas/obsoletas del reglamento. Todas las
+imágenes actuales siguen el mismo tamaño y composición; las nuevas coordenadas
+se aplican a las cinco. En impresión el escenario se amplía al 105 % para que
+las zonas marcadas tengan el tamaño físico de una carta; esto recorta
+ligeramente los bordes de la imagen.
