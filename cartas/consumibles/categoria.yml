@@ -1,12 +1,12 @@
 nombre: "Consumibles"
 slug: "consumibles"
-color: "#8CA57B"
+color: "#A1B38F"
 paleta:
-  marco: "#8CA57B"
+  marco: "#A1B38F"
   fondo: "#E0E8D9"
   papel: "#F5F8F2"
   tinta: "#43523B"
-  detalle: "#849B75"
+  detalle: "#70885F"
 iconos:
   tipo: "../emojis/consumibles.png"
 diseno:

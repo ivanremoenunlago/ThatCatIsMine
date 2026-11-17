@@ -1,0 +1,904 @@
+¡ESE GATO ES MÍO!
+CARTAS Y REGLAMENTO — VERSIÓN DE PRUEBAS
+Revisión del 17 de noviembre de 2026
+
+Documento de trabajo para probar partidas. Incluye textos breves para las
+cartas, reglas ampliadas y dos esquemas del turno. Las decisiones añadidas
+para resolver huecos se identifican al final, junto con los datos pendientes.
+
+============================================================
+1. LORE Y OBJETIVO
+============================================================
+
+En ¡Ese gato es mío!, todos los vecinos del barrio sois unos auténticos
+esnobs y locos de los gatos. Ya tenéis muchos gastos en casa, pero todavía
+no os habéis puesto de acuerdo sobre quién tiene los mejores mininos.
+
+La llegada de nuevos mininos callejeros desata una guerra de postureo,
+travesuras y robos de gatos. Tendrás que acomodar a tus favoritos en el
+Sofá, aprovechar sus habilidades y fastidiar los planes de tus vecinos
+hasta demostrar quién tiene la colonia de gatos más prestigiosa.
+
+Los puntos de prestigio representan la reputación de tu colonia en el
+barrio. Los gatos aportan puntos según estén en el Sofá o en el Salón.
+Sus habilidades, las sinergias y algunas cartas pueden aumentar esos puntos.
+
+Ganas en cuanto alcanzas o superas el objetivo durante tu propio turno,
+después de resolver por completo el efecto en curso y sus respuestas.
+
+  2 jugadores       15 puntos de prestigio
+  3 o 4 jugadores   13 puntos de prestigio
+  5 jugadores       12 puntos de prestigio
+
+Llegar al objetivo durante el turno de otro jugador no concede la victoria.
+Debes conservar o alcanzar esos puntos durante tu propio turno. Si ya
+cumples el objetivo al comenzar, resuelve primero los efectos de inicio
+de turno y comprueba tu prestigio.
+
+============================================================
+2. RESUMEN RÁPIDO
+============================================================
+
+- Cada jugador recibe 4 cartas. Los gatos iniciales van a su casa.
+- El reparto inicial admite un máximo de 2 gatos por jugador.
+- Mapache sustituye el robo inicial completo, incluidas sus bonificaciones.
+- Después, si tienes menos de 3 cartas, repón hasta 3, 4 con Metódico
+  o 5 con Control de Inventario. Aplica el mayor objetivo disponible.
+- Empiezas la Fase de Acción con 1 acción principal.
+- Puedes encadenar varias cartas que concedan acciones adicionales.
+- Las acciones obtenidas se acumulan durante esa Fase de Acción.
+- Después puedes subir, bajar o intercambiar 1 gato entre Sofá y Salón.
+- Al cerrar el turno, descarta hasta tu límite de mano, normalmente 7.
+- Los gatos nunca permanecen en la mano ni cuentan para ese límite.
+- Todas las cartas de Acción son cancelables con Flús-Flús.
+- Un Flús-Flús puede cancelar otro Flús-Flús.
+- Si no se presenta defensa, el ataque tiene éxito, incluso con potencia 0.
+- Si hay defensa, se comparan las potencias. El empate favorece al defensor.
+- Atacante y defensor pueden utilizar tantos apoyos como quieran.
+
+============================================================
+3. PREPARACIÓN DE LA PARTIDA
+============================================================
+
+1. Barajad el mazo de prueba y repartid 4 cartas a cada jugador.
+2. Quien reciba 3 o más gatos devuelve sus 4 cartas al mazo. Barajad y
+   repetid su reparto. Hacedlo hasta que nadie tenga más de 2 gatos.
+3. Cuando todos los repartos sean válidos, colocad los gatos en vuestra
+   casa. Las demás cartas forman la mano inicial.
+4. Empieza quien tenga menos gatos en su casa. En caso de empate, empieza
+   quien obtuviera menos puntos en la partida anterior, si hay registro.
+   Si persiste el empate o no hay registro, decidid al azar.
+5. Los turnos continúan en sentido horario.
+
+============================================================
+4. TEXTOS BREVES PARA LAS CARTAS
+============================================================
+
+Las descripciones de esta sección son los textos destinados a las cartas.
+Las aclaraciones de uso aparecen después. El nombre «Huelga de Gatos»
+corresponde al evento de inmovilización acordado.
+
+GATOS
+
+Gato Gordo
+Descripción: Ocupa 2 espacios en el Sofá.
+
+Gato Desnutrido
+Descripción: Si no tienes cartas en la mano, obtiene +2 puntos de prestigio.
+
+Gato de Barrio (Matón)
+Descripción: Obtienes +1 de potencia al atacar.
+
+Gato Territorial
+Descripción: Obtienes +1 de potencia al defenderte.
+
+Gato Cotilla
+Descripción: Cuando te ataquen, puedes descartar 1 carta para revelar el ataque y sus apoyos antes de defenderte.
+
+Gato Curioso
+Descripción: Después de tu Fase de Robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1.
+
+Gato Metódico
+Descripción: Si tienes menos de 3 cartas al reponer tu mano, roba hasta tener 4.
+
+Gato Acaparador
+Descripción: Aumenta tu límite de mano de 7 a 9 cartas.
+
+Gata Envidiosa
+Descripción: Obtienes +1 de potencia al atacar estructuras.
+
+Mamá Gata
+Descripción: Mientras esté en el Sofá, cada otro gato de tu Sofá obtiene +1 de prestigio.
+
+Gato Bebé
+Descripción: Si está solo en tu Sofá, añade 1 carta a tu robo inicial.
+
+Gato Diurno (Blanco)
+Descripción: Si un rival ataca con éxito a un gato de tu Sofá, ese rival descarta 1 carta.
+
+Gato Nocturno (Negro)
+Descripción: Si un rival fracasa al atacar a un gato de tu Sofá, ese rival descarta 1 carta.
+
+Gato Trillizo
+Descripción: Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Una vez por turno.
+
+Gato Trillizo
+Descripción: Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Una vez por turno.
+
+Gato Trillizo
+Descripción: Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Una vez por turno.
+
+Gato Solitario
+Descripción: Solo en tu Sofá: da 7 de prestigio y cancela las Acciones que lo elijan como objetivo. Acompañado: da 0 y pierde esa protección.
+
+Gato Escalador
+Descripción: Antes de usar tus acciones, puedes realizar 1 movimiento gatuno adicional.
+
+Gato Mapache
+Descripción: Puedes recuperar la última carta del descarte en lugar de tu robo inicial y sus bonificaciones.
+
+Gato Victimista
+Descripción: Si un rival cancela una Acción tuya con Flús-Flús, ese rival descarta 1 carta adicional.
+
+ATAQUES
+
+Bola de Pelo
+Daño: 0
+
+Bufido
+Daño: 1
+
+Emboscada
+Daño: 2
+
+Zarpazo
+Daño: 3
+
+Mordisco
+Daño: 4
+
+Agarre con patada
+Daño: 5
+
+Ataque en manada
+Daño variable: El daño es equivalente al número total de gatos que tienes en el Sofá y el Salón.
+
+Afilado de uñas
+Descripción: Apoyo: suma +2 a tu potencia en este combate.
+Bonificación: +2
+
+Erizarse
+Descripción: Apoyo: suma +1 a tu potencia en este combate.
+Bonificación: +1
+
+Terror del aspirador
+Daño: 1
+
+Escobazo contundente
+Daño: 2
+
+Zapatilla voladora
+Daño: 3
+
+Caza de Bigotes
+Daño: 4
+
+Baño forzado
+Daño: 5
+
+Manguerazo frío
+Daño variable: El daño es equivalente al número total de gatos que tiene el rival en el Sofá y el Salón.
+
+¡Susto de Pepino!
+Descripción: Apoyo: suma +1 a tu potencia en este combate.
+Bonificación: +1
+
+¡Pacto de Bigotes y Escobazos!
+Daño: 6
+
+ESTRUCTURAS
+
+Caja de Cartón
+Descripción: Protege a tus gatos de ataques directos. Se destruye si recibe un ataque exitoso.
+
+Fortaleza Gatuna
+Descripción: Protege a tus gatos de ataques directos y Acciones rivales. Se destruye si recibe un ataque exitoso.
+
+Comedero Automático
+Descripción: Añade 1 carta a tu robo inicial. Se destruye si recibe un ataque exitoso.
+
+Rascador de Sisal
+Descripción: Antes de usar tus acciones, puedes descartar 2 cartas para que tu primer ataque del turno tenga +1 de potencia.
+
+Cama de Peluche
+Descripción: El gato junto a esta cama no puede ser atacado ni movido. Descarta la cama al inicio de tu próximo turno.
+
+ACCIONES
+
+No te muevas, estoy cómodo
+Descripción: Pon esta carta en el Salón de un rival. Ese jugador pierde su próximo turno.
+
+Destrucción de Sofá
+Descripción: Obtén +1 de prestigio y 1 acción adicional este turno.
+
+Sobredosis de Catnip
+Descripción: Obtén 2 acciones adicionales este turno.
+
+Ronroneo
+Descripción: Cubre 2 gatos de tu Sofá. Si ambos siguen allí al inicio de tu próximo turno, cada uno obtiene +1 de prestigio ese turno. Después, descarta esta carta.
+
+Espía de Ventana
+Descripción: Cuando te ataquen, revela el ataque y sus apoyos antes de decidir tu defensa.
+
+Sorpresa en la Almohada
+Descripción: Un rival descarta al azar la mitad de su mano, redondeando hacia abajo. Si tiene 1 carta, la descarta.
+
+Tirar Cosas de la Mesa
+Descripción: Elige un rival que tenga 6 o más cartas en su mano y róbale 2 cartas al azar.
+
+Sentarse en el Teclado
+Descripción: Elige un rival que tenga 4 o más cartas en su mano y róbale 1 carta al azar.
+
+Puerta Gatera
+Descripción: Intercambia 1 gato tuyo por 1 gato del Salón o Sofá rival.
+
+Robo Felino
+Descripción: Roba 1 gato del Salón rival (no del Sofá) y llévalo a tu casa.
+
+Apuntar con Láser Infrarrojo
+Descripción: Realiza 1 movimiento o intercambio entre el Sofá y el Salón de una casa, tuya o rival.
+
+¡Pspspsps!
+Descripción: Busca desde arriba el primer gato del mazo, llévalo a tu casa y baraja el mazo. Si no hay gatos, baraja y roba 1 carta.
+
+Sabotaje Vecinal
+Descripción: Destruye 1 estructura rival.
+
+Ovillo de Lana
+Descripción: Recupera de descartes una carta y añádela a tu mano.
+
+Ratón con Hierba Gatuna
+Descripción: Cuando te ataquen, desvía el ataque hacia otro gato o estructura que pueda recibirlo.
+
+Flús-Flús de Agua (versión 1)
+Descripción: Cancela 1 carta marcada con el símbolo de Flús-Flús.
+
+Flús-Flús de Agua (versión 2)
+Descripción: Cancela 1 carta marcada con el símbolo de Flús-Flús.
+
+Flús-Flús de Agua (versión 3)
+Descripción: Cancela 1 carta marcada con el símbolo de Flús-Flús.
+
+Flús-Flús de Agua (versión 4)
+Descripción: Cancela 1 carta marcada con el símbolo de Flús-Flús.
+
+EVENTOS GLOBALES
+
+Hora de la Siesta
+Descripción: Hasta el inicio de tu próximo turno, se anulan las habilidades y sinergias de todos los gatos.
+
+Perro del Vecino
+Descripción: Cada jugador baja 1 gato de su Sofá a su Salón, si puede.
+
+Reparto de Juguetes
+Descripción: Cada jugador pasa 1 carta de su mano, boca abajo, al jugador de su izquierda. Todos a la vez.
+
+Visita al Veterinario
+Descripción: Cada jugador con 1 a 3 gatos descarta 1 carta. Con 4 o más gatos, descarta 2.
+
+Huelga de Gatos
+Descripción: Hasta el inicio de tu próximo turno, ningún gato puede cambiar entre el Sofá y el Salón ni cambiar de casa.
+
+CONSUMIBLES
+
+Pienso Premium
+Descripción: Roba 1 carta y obtén 1 acción extra este turno.
+
+Lata de Atún
+Descripción: Roba 2 cartas. Coloca en tu casa los gatos que robes.
+
+Churu
+Descripción: Roba 3 cartas. Coloca en tu casa los gatos que robes.
+
+Bolsa de Catnip
+Descripción: Todos roban 1 carta, empezando por ti. Cuando todos hayan robado, robas 1 más.
+
+============================================================
+5. LA CASA, LA MANO Y LOS GATOS
+============================================================
+
+Tu casa comprende tu Sofá y tu Salón. Un gato en cualquiera de esas zonas
+cuenta como un gato de tu casa. Gato Gordo cuenta como 1 gato, aunque ocupe
+2 espacios en el Sofá.
+
+Los gatos obtenidos por robo o por un efecto se colocan inmediatamente en
+la casa correspondiente. Nunca se guardan en la mano.
+
+Las cartas que indiquen «roba N cartas» entregan N cartas del mazo. Si una
+es un gato, se coloca en la casa y no se roba otra para sustituirla. La
+reposición sí continúa hasta alcanzar su objetivo de cartas en la mano,
+mientras queden cartas disponibles.
+
+Cuando se indique descartar una cantidad sin exigir un coste de activación,
+descarta tantas cartas como puedas. Para activar una habilidad con un coste,
+debes poder pagarlo entero. Los descartes son elegidos por el jugador salvo
+que el efecto diga «al azar».
+
+Las zonas de entrada de los gatos, la capacidad exacta del Sofá, los puntos
+base por zona y las condiciones generales de activación de pasivas deben
+completarse con los datos del juego. Véase el apartado 15.
+
+============================================================
+6. DESARROLLO DEL TURNO
+============================================================
+
+Los números se corresponden con los dos esquemas. Los pasos principales
+aparecen en MAYÚSCULAS y las habilidades opcionales llevan subnúmeros.
+
+1. INICIO DEL TURNO
+Retira los efectos que caducan ahora, como Cama de Peluche, Hora de la
+Siesta y Huelga de Gatos. Después resuelve Ronroneo, si corresponde.
+
+2. FASE DE ROBO
+2.1. Robo inicial. Roba 1 carta. Comedero o Bebé pueden añadir 1 más en
+     total. Puedes sustituir todo ese robo por Mapache, si hay descartes.
+2.2. Reposición. Si tienes menos de 3 cartas, roba hasta 3. Metódico
+     cambia el objetivo a 4 y Control de Inventario a 5. Usa el mayor.
+
+3. FASE DE ACCIÓN
+Antes de gastar acciones, puedes activar estas habilidades en este orden.
+3.1. Curioso. Descarta 1, mira las 3 primeras y quédate con 1.
+3.2. Trillizos. Descarta y roba tantas cartas como Trillizos tengas
+     en el Sofá. Una activación conjunta por turno.
+3.3. Escalador. Realiza 1 movimiento gatuno adicional.
+3.4. Rascador. Descarta 2 para dar +1 a tu primer ataque del turno.
+3.5. Acciones. Empiezas con 1 acción. Cada acción permite jugar 1 carta
+     o declarar 1 ataque. Puedes encadenar cartas que den más acciones.
+
+Las habilidades 3.1 a 3.4 se resuelven antes del uso de acciones 3.5.
+En las cartas, «antes de tu Fase de Acción» se sustituye por «antes de
+usar tus acciones» para que coincida con esta organización.
+
+4. MOVIMIENTO GATUNO OPCIONAL
+Sube 1 gato, baja 1 gato o intercambia 1 gato de tu Sofá por 1 de tu
+Salón. Respeta la capacidad del Sofá. También puedes pasar.
+
+5. CIERRE DEL TURNO
+Descarta hasta tu límite de mano, normalmente 7 y con Acaparador 9.
+Terminan los efectos de este turno. Pasa al siguiente jugador.
+
+Puedes ganar durante cualquier paso de tu turno, una vez resuelto el
+efecto en curso y sus respuestas. Las acciones sin gastar se pierden
+al terminar la Fase de Acción.
+
+============================================================
+7. ACCIONES ADICIONALES
+============================================================
+
+Puedes guardar varias cartas que concedan acciones adicionales y jugarlas
+en un mismo turno. Cada una cuesta 1 acción y se resuelve por separado,
+con su oportunidad de respuesta. Sus acciones se añaden cuando se resuelve.
+
+Ejemplo. Empiezas con 1 acción. Juegas Sobredosis y te quedan 2. Juegas
+otra Sobredosis y te quedan 3. Puedes seguir jugando cartas o atacando.
+
+Si cancelan Sobredosis, no recibes sus acciones y no recuperas la que
+has gastado. Puedes cancelar ese Flús-Flús con otro para que Sobredosis
+llegue a resolverse. Si conservas acciones, puedes seguir utilizándolas.
+
+Se pueden guardar las cartas entre turnos, respetando el límite de mano.
+Las acciones obtenidas se utilizan en la Fase de Acción actual.
+Pienso Premium también concede una acción, pero sigue siendo Consumible.
+
+Para Curioso se propone dejar las cartas no elegidas en el fondo, en el
+orden que elijas. Si quedan menos de 3, mira las disponibles. Si eliges
+un gato, colócalo en tu casa. No vuelvas a comprobar la reposición después
+de Curioso o Trillizos. Para pagar sus costes debes tener cartas suficientes.
+Una habilidad adquirida después de su momento espera al siguiente turno.
+
+============================================================
+8. CANCELABILIDAD Y CADENAS DE FLÚS-FLÚS
+============================================================
+
+8.1. Qué se puede cancelar
+
+Todas las cartas de Acción llevan el símbolo de Flús-Flús, incluidas
+Espía de Ventana, Ratón con Hierba Gatuna y los propios Flús-Flús.
+Gatos, Ataques, apoyos, Estructuras, Consumibles y Eventos Globales no
+se cancelan con Flús-Flús. Las pasivas tampoco.
+
+8.2. Cuándo se cancela
+
+Flús-Flús se juega como respuesta antes de resolver la carta marcada.
+No consume acción principal. Cualquier jugador puede responder, aunque
+la carta no lo afecte directamente. También puede proteger el efecto
+de otro jugador cancelando el Flús-Flús que lo amenazaba.
+
+Una carta cancelada pierde su efecto. Se descarta y no se recuperan la
+acción ni los costes pagados. Ronroneo y No te muevas se cancelan cuando
+se juegan. Sus efectos posteriores no permiten cancelar de nuevo esas
+cartas una vez colocadas en mesa.
+
+8.3. Cadenas de Flús-Flús — opción A
+
+Cada carta admite una respuesta directa. El siguiente Flús-Flús responde
+al último Flús-Flús pendiente. Cualquier jugador puede añadirlo, incluido
+quien jugó la carta original. Se permite cualquier longitud de cadena,
+mientras haya cartas disponibles.
+
+Anuncia cada carta y deja que los demás puedan responder antes de
+resolverla. Si dos jugadores anuncian una respuesta a la vez, tiene
+prioridad el que esté primero en sentido horario desde quien jugó la
+carta a la que responden. El otro conserva su carta y puede responder al
+nuevo Flús-Flús cuando se abra esa oportunidad.
+
+Cuando nadie quiera responder, resuelve desde la última carta hacia la
+primera. Un Flús-Flús cancelado no cancela su objetivo.
+
+Ejemplo de tres jugadores
+A juega Robo Felino contra B. C juega Flús-Flús para impedirlo.
+B puede cancelar el Flús-Flús de C, aunque eso ayude a A.
+Si nadie añade otra respuesta, Robo Felino se resuelve.
+
+Ejemplo con acciones adicionales
+A juega Sobredosis. B la intenta cancelar con Flús-Flús.
+A responde con otro Flús-Flús. Si nadie responde, Sobredosis se resuelve.
+Si C cancela el último Flús-Flús de A, el de B cancela Sobredosis.
+
+Mantén las cartas pendientes sobre la mesa. Al cerrar la cadena, descarta
+cada carta cuando termina de resolverse o queda cancelada. Así se identifica
+la última carta del descarte para Mapache. Ovillo no puede recuperarse a
+sí mismo mientras su efecto está pendiente.
+
+Victimista se activa cuando una Acción tuya queda efectivamente cancelada
+por un Flús-Flús rival. Un intento de cancelación que se anula no lo activa.
+
+8.4. Victoria
+
+Primero se resuelven toda la cadena y sus consecuencias obligatorias.
+Después se comprueba la victoria si es el turno del jugador que alcanza
+el objetivo. Anunciar una carta todavía pendiente no concede la victoria.
+
+============================================================
+9. COMBATE Y RESPUESTAS ESPECIALES
+============================================================
+
+Declarar un ataque consume 1 acción principal. Debes elegir un objetivo
+válido y respetar las protecciones de gatos y estructuras.
+
+Para ordenar la información oculta, se propone esta secuencia de prueba.
+
+1. El atacante declara el objetivo y fija su carta de ataque y sus apoyos.
+   Los mantiene ocultos hasta su revelación.
+2. El jugador atacado puede usar Ratón con Hierba Gatuna para desviar el
+   ataque. Resuelve primero su posible cadena de Flús-Flús.
+3. El defensor definitivo puede usar Cotilla o Espía de Ventana para ver
+   el ataque y sus apoyos antes de elegir su defensa.
+4. El defensor decide si presenta una defensa y añade sus apoyos.
+5. Revelad las cartas pendientes y calculad las potencias totales.
+6. Resolved el resultado y las habilidades que se activen por él.
+
+El atacante no añade apoyos después de fijarlos en el paso 1. Ambos
+participantes pueden presentar tantos apoyos como quieran en su momento.
+Los apoyos se suman a una carta de combate y no constituyen por sí solos
+una defensa o un ataque. Las cartas válidas como defensa deben confirmarse
+con las reglas completas del combate, pendientes en el apartado 15.
+
+Sin defensa, el ataque tiene éxito automáticamente. Con defensa, el ataque
+tiene éxito solo si supera la potencia defensiva. El empate favorece al
+defensor. Las bonificaciones de Barrio, Territorial, Envidiosa y Rascador
+se aplican cuando corresponda.
+
+En Ataque en Manada se cuentan tus gatos del Sofá y Salón. En Manguerazo
+Frío se cuentan los del rival participante en ese combate. Para la prueba,
+si el Ratón cambia de defensor, se cuentan los gatos del defensor definitivo.
+
+Espía, Ratón y Flús-Flús se juegan como respuestas sin gastar acciones
+principales, incluso fuera de tu turno. Espía y Ratón solo se usan en el
+momento que indica su texto. Sus efectos sí admiten Flús-Flús.
+
+Si Espía es cancelada, las cartas del ataque siguen ocultas. Cotilla puede
+usarse en ese mismo momento pagando su coste, si su habilidad está activa.
+
+Si Ratón es cancelado, se conserva el objetivo original. Si se resuelve,
+el ataque sigue contra el nuevo objetivo válido y su propietario defiende.
+Ratón puede cambiar el objetivo a otro gato o estructura de tu casa o de
+otra casa, pero siempre debe respetar las protecciones de ese objetivo.
+
+Los ataques exitosos destruyen Caja de Cartón, Fortaleza y Comedero, según
+sus textos. El destino de un gato atacado con éxito y las condiciones de
+destrucción de las otras estructuras todavía necesitan confirmación.
+
+============================================================
+10. EVENTOS GLOBALES
+============================================================
+
+Jugar un Evento Global durante tu Fase de Acción consume 1 acción principal.
+Sus efectos alcanzan a todos los jugadores, incluido quien lo juega, salvo
+que su texto indique otra cosa. No son cancelables con Flús-Flús.
+
+Hora de la Siesta
+Se anulan las habilidades y sinergias de todos los gatos hasta el inicio
+de tu próximo turno. No cancela cartas ya resueltas ni elimina gatos.
+El tratamiento de Gordo y Solitario durante Siesta figura en los pendientes.
+
+Perro del Vecino
+Cada jugador baja 1 gato de su Sofá a su Salón si tiene un gato que pueda
+mover. Quien no tenga uno pasa. Las protecciones frente al movimiento
+siguen aplicándose.
+
+Reparto de Juguetes
+Cada jugador elige en secreto 1 carta de su mano y la coloca boca abajo.
+Cuando todos estén preparados, pasan esas cartas simultáneamente a su
+izquierda. Quien no tenga cartas no entrega ninguna, pero puede recibir.
+Los gatos que están en las casas no participan en este intercambio.
+
+Visita al Veterinario
+Cuenta los gatos de cada casa sumando Sofá y Salón.
+Con 0 gatos, no descartas. Con 1 a 3, descartas 1 carta. Con 4 o más,
+descartas 2. Cada jugador elige sus descartes. Si tiene menos cartas de
+las necesarias, descarta las que tenga.
+
+Huelga de Gatos
+Hasta el inicio de tu próximo turno, ningún gato puede cambiar entre el
+Sofá y el Salón ni cambiar de casa. Bloquea el movimiento habitual,
+Escalador, Láser, Puerta Gatera, Robo Felino y Perro del Vecino en cuanto
+intenten esos desplazamientos.
+Los gatos obtenidos del mazo o recuperados del descarte entran normalmente
+en la casa correspondiente. Se puede seguir atacando. La resolución
+concreta de un ataque exitoso contra un gato debe fijarse antes de cerrar
+su interacción con Huelga.
+
+Los eventos que solo bloquean movimientos no conceden protección frente
+a ataques. Cama de Peluche protege a su gato frente a ambos.
+
+============================================================
+11. ACLARACIONES DE CARTAS Y PREGUNTAS RÁPIDAS
+============================================================
+
+¿Puedo ganar antes de cerrar mi turno?
+Sí. Tras resolver por completo cualquier efecto y sus respuestas, ganas
+si alcanzas tu objetivo durante tu propio turno. También puede suceder
+tras un movimiento o una habilidad.
+
+¿Mapache permite sumar Comedero o Bebé?
+No. Recuperar la última carta sustituye todo el robo inicial. Después sí
+compruebas si te corresponde reponer por mano baja.
+
+¿Tengo Metódico y 3 cartas, robo hasta 4?
+No. La reposición solo se activa si tienes menos de 3 cartas. Lo mismo
+ocurre con Control de Inventario y su objetivo de 5.
+
+¿Descartar con Curioso o Trillizos me permite reponer otra vez?
+No. La reposición ya ha terminado.
+
+¿Puedo activar tres veces la habilidad si tengo los tres Trillizos?
+No. Realizas una sola activación y, con tres Trillizos, descartas 3 y robas 3.
+Debes tener cartas suficientes para pagar el descarte completo.
+
+¿Una acción extra permite otro movimiento gatuno habitual?
+No. Permite jugar otra carta o declarar otro ataque. Los movimientos
+adicionales necesitan un efecto que los conceda, como Escalador o Láser.
+
+¿Puedo guardar varias Sobredosis para usarlas en el mismo turno?
+Sí. Se permite esta acumulación en la mano y su uso encadenado. Debes
+respetar tu límite de mano y pagar una acción por cada carta que juegues.
+
+¿Puedo guardar para el siguiente turno las acciones que me sobren?
+No. Solo se conservan las cartas que aún tengas en la mano.
+
+¿Puedo cancelar un Flús-Flús con otro?
+Sí. El segundo puede ser cancelado por un tercero. La cadena se resuelve
+desde el último jugado y cada carta admite una respuesta directa.
+
+¿Puedo cancelar Pienso Premium porque da una acción adicional?
+No. Su categoría es Consumible. La cancelabilidad depende de la marca,
+que en esta versión llevan todas las Acciones.
+
+¿Espía de Ventana muestra toda la mano?
+No. Revela las cartas del ataque y sus apoyos cuando te atacan.
+
+¿El Solitario cancela un Evento Global que lo afecte?
+No. Su protección se aplica a Acciones que lo eligen como objetivo.
+Los Eventos Globales no son cancelables con esa habilidad ni con Flús-Flús.
+
+¿Ronroneo da puntos inmediatamente?
+No. Debes esperar al inicio de tu próximo turno. Los dos gatos elegidos
+deben seguir en tu Sofá. Para esta prueba, si cualquiera sale del Sofá o
+cambia de casa antes de ese momento, se pierde la recompensa de ambos,
+aunque el gato vuelva. Descarta Ronroneo cuando pierda esa condición.
+
+¿Qué significa «el gato junto a la cama»?
+Al colocar la Cama de Peluche, sitúala junto al gato que protege, de forma
+que sea inequívoco. Para esta prueba queda vinculada a ese gato hasta
+que se retire. No se reasigna por acercar físicamente otro gato.
+
+¿Fortaleza bloquea mis propias Acciones sobre mis gatos?
+En esta propuesta protege frente a Acciones rivales. Se permite actuar
+sobre tus propios gatos. Esta precisión se ha añadido para la prueba.
+
+¿Qué ocurre con No te muevas, estoy cómodo?
+El siguiente turno del jugador afectado se considera perdido. Se propone
+que en ese inicio caduquen sus efectos temporales, resuelva los efectos
+pendientes y descarte esta carta. Omite robo, habilidades previas, acciones
+y movimiento habitual. Resuelve el cierre y el límite de mano.
+Si conserva prestigio suficiente tras los efectos de inicio, puede ganar,
+porque ese turno sigue siendo suyo. Esta interacción debe probarse.
+Si coinciden varias copias pendientes, se propone que todas afecten al
+mismo próximo turno y se descarten juntas.
+
+¿Lata de Atún o Churu devuelven los gatos robados a un dueño anterior?
+En este borrador se interpreta «los gatos van a casa de sus dueños» como
+la colocación inmediata de los gatos que salen al robar. No hay una regla
+de devolver los gatos de la mesa a un propietario anterior. Debe confirmarse
+esta interpretación si la frase original pretendía un efecto adicional.
+
+¿Se roba de nuevo si ¡Pspspsps! no encuentra gatos?
+Se revisa el mazo, se baraja y se roba 1 carta. Si encuentra un gato, ese
+gato va a tu casa y las demás cartas vuelven al mazo, que se baraja.
+
+¿Qué pasa cuando se agota el mazo?
+Como regla provisional, baraja los descartes disponibles para formar un
+nuevo mazo y continúa el robo. Las cartas en mesa o pendientes de resolver
+no se incluyen. Si tampoco hay descartes, termina el robo con lo disponible.
+
+============================================================
+12. ESQUEMA DEL TURNO — VERSIÓN SENCILLA
+============================================================
+
+Sin bonificadores ni habilidades activas. Puedes ganar en cualquier momento
+de tu turno, tras resolver el efecto en curso y sus respuestas.
+
+┌───────────────────────────────────────────────────────┐
+│                  1. INICIO DEL TURNO                  │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                   2.1. ROBO INICIAL                   │
+│                     Roba 1 carta.                     │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│             2.2. REPOSICIÓN POR MANO BAJA             │
+│              Si tienes menos de 3 cartas,             │
+│                  roba hasta tener 3.                  │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                   3. FASE DE ACCIÓN                   │
+│           Juega 1 carta o declara 1 ataque.           │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│            4. MOVIMIENTO GATUNO · OPCIONAL            │
+│            Sube, baja o intercambia 1 gato            │
+│               entre el Sofá y el Salón.               │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                  5. CIERRE DEL TURNO                  │
+│         Descarta hasta un máximo de 7 cartas.         │
+│          Terminan los efectos de este turno.          │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│              TURNO DEL SIGUIENTE JUGADOR              │
+└───────────────────────────────────────────────────────┘
+
+============================================================
+13. ESQUEMA DEL TURNO — VERSIÓN COMPLETA
+============================================================
+
+Los cuadros de habilidades solo se aplican cuando estén activas y se
+cumplan sus condiciones. Sus activaciones opcionales se pueden omitir.
+Las alternativas del robo inicial son excluyentes.
+
+┌───────────────────────────────────────────────────────┐
+│                  1. INICIO DEL TURNO                  │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                 1.1. EFECTOS DE INICIO                │
+│           Cama · Ronroneo · Siesta · Huelga           │
+│        Caducan los efectos que terminan ahora.        │
+│             Después se resuelve Ronroneo.             │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                   2.1. ROBO INICIAL                   │
+├───────────────────────────┬───────────────────────────┤
+│       ROBO HABITUAL       │         O MAPACHE         │
+│                           │                           │
+│       Roba 1 carta.       │ Última carta del descarte.│
+│ Comedero o Bebé añaden +1.│   Sustituye todo el robo  │
+│  Máximo total: 2 cartas.  │   y sus bonificaciones.   │
+└───────────────────────────┴───────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│             2.2. REPOSICIÓN POR MANO BAJA             │
+│        Si tienes menos de 3 cartas, roba hasta:       │
+│          Normal: 3 · Metódico: 4 · Control: 5         │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                3.1. CURIOSO · OPCIONAL                │
+│       Descarta 1, mira las 3 primeras y elige 1.      │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│               3.2. TRILLIZOS · OPCIONAL               │
+│           Descarta y roba tantas cartas como          │
+│              Trillizos tengas en el Sofá.             │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│               3.3. ESCALADOR · OPCIONAL               │
+│         Realiza 1 movimiento gatuno adicional.        │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                3.4. RASCADOR · OPCIONAL               │
+│       Descarta 2 cartas para dar +1 de potencia       │
+│             a tu primer ataque del turno.             │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                  3.5. USO DE ACCIONES                 │
+│            Empiezas con 1 acción principal.           │
+│      Juega 1 carta o declara 1 ataque por acción.     │
+│       Puedes encadenar cartas de acciones extra.      │
+│         Resuelve cada carta y sus respuestas.         │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│            4. MOVIMIENTO GATUNO · OPCIONAL            │
+│            Sube, baja o intercambia 1 gato            │
+│               entre el Sofá y el Salón.               │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                  5. CIERRE DEL TURNO                  │
+│              Descarta el exceso de mano.              │
+│             Límite: 7 · Con Acaparador: 9.            │
+│          Terminan los efectos de este turno.          │
+│       Las acciones sobrantes ya se han perdido.       │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│              TURNO DEL SIGUIENTE JUGADOR              │
+└───────────────────────────────────────────────────────┘
+
+============================================================
+14. CAMBIOS INCORPORADOS EN ESTA VERSIÓN
+============================================================
+
+- Lore centrado en demostrar qué colonia tiene más prestigio.
+- Victoria durante cualquier momento del turno propio, tras resolución.
+- Curioso actúa después del robo y la reposición.
+- Mapache sustituye el robo inicial y todas sus bonificaciones.
+- Eliminado el nombre «Paso de Preparación».
+- Espía revela el ataque y sus apoyos, y se juega como respuesta.
+- Todas las Acciones son cancelables, también Espía, Ronroneo y Ratón.
+- Flús-Flús puede cancelar otro Flús-Flús mediante una cadena.
+- Se permiten varias cartas que concedan acciones en un mismo turno.
+- Se puede acumular esas cartas en la mano respetando el límite de mano.
+- Añadidos Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
+- Eventos Globales sin marca de cancelación.
+- «Instalaciones» se unifica como «estructuras».
+- «Repeticiones» se expresa como «acciones adicionales» en las cartas.
+- Se conserva el valor de los ataques y las cuatro versiones de Flús-Flús.
+- Se conservan las tres entradas de Gato Trillizo del listado original.
+
+============================================================
+15. DECISIONES PROPUESTAS Y DATOS PENDIENTES
+============================================================
+
+15.1. Decisiones propuestas para completar la prueba
+
+Estas precisiones se han añadido al redactar, porque el material recibido
+no las cerraba. Están desarrolladas en los apartados anteriores y pueden
+ajustarse después de probarlas.
+
+- Se entiende por «repeticiones» las cartas que dan acciones adicionales.
+- Al inicio caducan primero los efectos temporales y después se resuelven
+  recompensas. Se comprueba la victoria tras ese bloque.
+- Curioso devuelve las cartas no elegidas al fondo, en el orden elegido.
+- Trillizos tiene una activación conjunta y requiere pagar el coste entero.
+- Escalador actúa antes de Rascador, una vez cada uno en ese momento.
+- La acción gastada no se devuelve al cancelarse una carta.
+- Cualquier jugador puede responder con Flús-Flús. El orden horario solo
+  desempata anuncios simultáneos. Se fija el orden de descarte de la cadena.
+- El atacante fija todos sus apoyos antes de Ratón y de Espía/Cotilla.
+- Manguerazo cuenta los gatos del defensor definitivo después de un desvío.
+- «Travesura» de Victimista se interpreta como cualquier carta de Acción.
+- Fortaleza protege de Acciones rivales y permite las propias.
+- Cama queda vinculada al gato elegido por su colocación.
+- Ronroneo pierde su recompensa si alguno de sus gatos sale antes de tiempo.
+- Se concreta la caducidad de efectos y el cierre durante un turno perdido.
+- Varias copias de No te muevas afectan al mismo próximo turno.
+- Atún y Churu colocan los gatos robados en la casa de quien roba.
+- Se reciclan los descartes cuando se agota el mazo.
+
+15.2. Datos necesarios para cerrar el reglamento
+
+1. Capacidad del Sofá y posible límite del Salón. Las ilustraciones de tres
+   plazas no sustituyen una regla de capacidad.
+2. Prestigio base de cada gato en cada zona. El listado solo da habilidades.
+3. Zona exacta de entrada de gatos en el reparto, el robo, la recuperación
+   y el cambio de casa. Puerta Gatera también necesita concretar si cada
+   gato ocupa la plaza del intercambiado o entra por la zona habitual.
+4. Dónde están activas las habilidades de cada gato. Algunas dicen Sofá
+   expresamente y otras no. Hace falta una regla general.
+5. Listado completo de sinergias y sus requisitos. Solo se conoce el
+   objetivo de reposición de Control de Inventario, que es 5 cartas.
+6. Cartas que pueden usarse como defensa y apoyos permitidos por cada lado.
+7. Consecuencia de un ataque exitoso contra un gato. El texto recibido
+   no indica si se descarta, cambia de casa o se mueve de zona.
+8. Número de estructuras simultáneas, cómo se sustituyen y si todas se
+   destruyen con un ataque exitoso. Rascador y Cama no lo especifican.
+9. Si Hora de la Siesta anula la ocupación doble de Gordo y el valor especial
+   de Solitario. Hasta fijarlo no puede calcularse su efecto con precisión.
+10. Si se permiten varias cartas de Ratón sobre un mismo ataque.
+11. Si Huelga bloquea desplazamientos derivados de ganar un combate. Depende
+    de la consecuencia del ataque que se establezca en el punto 7.
+12. Cantidad de copias por carta y total final del mazo.
+
+No se han inventado valores de prestigio, sinergias ni resultados de ataque
+para rellenar estos huecos. Este documento organiza lo acordado y permite
+identificar exactamente qué falta antes de publicar una edición definitiva.
+
+============================================================
+16. QUÉ OBSERVAR EN LAS PARTIDAS DE PRUEBA
+============================================================
+
+- Cuántas acciones se encadenan en un turno y cuánto tarda ese turno.
+- Si guardar varias Sobredosis resulta interesante para quien juega y
+  para los demás, que pueden responder con Flús-Flús.
+- Si las cuatro versiones de Flús-Flús tienen suficientes copias para
+  responder sin hacer que toda Acción termine cancelada.
+- Si Destrucción de Sofá permite victorias demasiado fáciles al acumular
+  prestigio temporal. Sus bonificaciones coincidentes se suman en esta prueba.
+- Si perder un turno completo con No te muevas resulta demasiado severo.
+- Si Huelga bloquea demasiado tiempo a quienes necesitan reorganizar gatos.
+- Cuántas veces aparece cada Evento Global y si interrumpe demasiado el ritmo.
+- Si Mapache y Ovillo permiten recuperar repetidamente cartas muy fuertes.
+
+Los esquemas y textos usan caracteres Unicode. Para conservar la alineación,
+abre este TXT en UTF-8 y con una fuente monoespaciada.
+
+============================================================
+17. OBSERVACIONES DE ESTA REVISIÓN
+============================================================
+
+Se ha elegido la opción A de cancelaciones por sencillez y para permitir
+que cualquier jugador frene una victoria. El desempate horario se aplica
+únicamente si se anuncian varias respuestas simultáneamente.
+
+La Fase de Acción se organiza con habilidades iniciales 3.1 a 3.4 y uso
+de acciones 3.5. Esto conserva el orden acordado y permite numerar ambos
+esquemas con las mismas cinco fases principales.
+
+Quedan por resolver estas interacciones antes de dar el reglamento por
+cerrado, además de los datos enumerados en el apartado 15.
+
+- Ronroneo. El texto «siguen allí al inicio» puede interpretarse como una
+  comprobación puntual, pero la FAQ exige permanencia continua. Se propone
+  añadir en la carta «Si ambos permanecen allí hasta tu próximo turno».
+- Hora de la Siesta y Solitario. Decidir si los 7 puntos y la ocupación
+  doble de Gordo son rasgos permanentes o habilidades anulables.
+- Turno perdido. La regla de poder ganar durante un turno perdido sigue
+  siendo una propuesta, pendiente de confirmar.
+- Cotilla. Conviene precisar si «revelar» muestra las cartas a toda la mesa
+  o únicamente al defensor. Se recomienda toda la mesa para unificar con
+  Espía y evitar recordar información privada durante el combate.
+- Huelga. Hay que decidir si bloquea la salida al descarte de un gato
+  derrotado. Su texto solo bloquea cambios de zona o de casa.
+- Ratón. Falta fijar si puede haber varios desvíos sucesivos y si se permite
+  dirigir el ataque hacia un gato o estructura del propio atacante.
+- Trillizos. Falta decidir si roba nuevas cartas cuando obtiene gatos o si
+  únicamente extrae del mazo el número que ha descartado.
+- Victoria. Conviene confirmar si todos los efectos de inicio forman un
+  único bloque, como se propone, o se comprueba después de cada uno.
+
+Se ha conservado el contenido del autor y se han atendido las notas
+insertadas sobre simplificación del turno y opciones de cancelación.

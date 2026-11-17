@@ -74,7 +74,7 @@ cartas:
     imagen: "imagenes/gato gordo.png"
     sofa: 6
     salon: 2
-    descripcion: "Es inmune a Robo Felino y Puerta Gatera."
+    descripcion: "Ocupa 2 espacios en el sofá."
     sinergia: "Gato Desnutrido — ¡Que me aplastas!"
   - nombre: "Gato Desnutrido"
     imagen: "imagenes/gato desnutrido.png"
@@ -86,13 +86,13 @@ cartas:
     imagen: "imagenes/gato de barrio.png"
     sofa: 2
     salon: 1
-    descripcion: "Aumenta en +1 la potencia cuando atacas."
+    descripcion: "Aumenta en +1 el daño cuando atacas."
     sinergia: "Gato Territorial — Veteranos del barrio"
   - nombre: "Gato Territorial"
     imagen: "imagenes/gato territorial.png"
     sofa: 2
     salon: 1
-    descripcion: "Aumenta en +1 la potencia cuando defiendes una carta."
+    descripcion: "Aumenta en +1 el daño cuando te defiendes"
     sinergia: "Gato de Barrio (Matón) — Veteranos del barrio"
   - nombre: "Gato Cotilla"
     imagen: "imagenes/gato cotilla.png"
@@ -122,13 +122,13 @@ cartas:
     imagen: "imagenes/gato envidioso.png"
     sofa: 4
     salon: 2
-    descripcion: "Tus ataques contra instalaciones reciben +1 de potencia. No se aplica contra gatos."
+    descripcion: "Tus ataques contra instalaciones reciben +1 de daño. No se aplica contra gatos."
     sinergia: "Gato Mapache — Saqueadores envidiosos"
   - nombre: "Mamá Gata"
     imagen: "imagenes/mama gata.png"
     sofa: 2
     salon: 1
-    descripcion: "Mientras esté activa en el Sofá, concede +1 punto a cada otro gato que esté en el Sofá."
+    descripcion: "Mientras esté activa en el Sofá, concede +1 punto de prestigio  a cada otro gato que esté en el Sofá."
   - nombre: "Gato Bebé"
     imagen: "imagenes/gato bebe.png"
     sofa: 1
@@ -138,27 +138,27 @@ cartas:
     imagen: "imagenes/gato diurno.png"
     sofa: 3
     salon: 1
-    descripcion: "Si un rival ataca con éxito a uno de tus gatos del Sofá, descarta 1 carta adicional."
+    descripcion: "Si un rival ataca con éxito a uno de tus gatos del Sofá, se descarta una carta de su mano."
     sinergia: "Gato Nocturno (Negro) — Pareja yin-yang"
   - nombre: "Gato Nocturno (Negro)"
     imagen: "imagenes/gato ncoturno.png"
     sofa: 3
     salon: 1
-    descripcion: "Si un rival fracasa al atacar a uno de tus gatos del Sofá, descarta 1 carta."
+    descripcion: "Si un rival fracasa al atacar a uno de tus gatos del Sofá, se descarta una carta de su mano."
     sinergia: "Gato Diurno (Blanco) — Pareja yin-yang"
-  - nombre: "Gato Trillizo 1"
+  - nombre: "Gato Trillizo"
     imagen: "imagenes/trillizo 1.png"
     sofa: 2
     salon: 1
     descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
-  - nombre: "Gato Trillizo 2"
+  - nombre: "Gato Trillizo"
     imagen: "imagenes/trillizo 2.png"
     sofa: 2
     salon: 1
     descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
-  - nombre: "Gato Trillizo 3"
+  - nombre: "Gato Trillizo"
     imagen: "imagenes/trillizo 3.png"
     sofa: 2
     salon: 1
@@ -166,9 +166,9 @@ cartas:
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Solitario"
     imagen: "imagenes/gato solitario.png"
-    sofa: 7
+    sofa: 0/7
     salon: 2
-    descripcion: "Si es el único gato en el Sofá, cancela automáticamente cartas CANCELABLES que lo elijan como objetivo."
+    descripcion: "Si es el único gato en el Sofá, cancela automáticamente cartas CANCELABLES que lo elijan como objetivo y da 7 de presitigio. Si esta acompañado pierde su inmunidad y da 0 de prestigio."
   - nombre: "Gato Escalador"
     imagen: "imagenes/gato escalador.png"
     sofa: 3

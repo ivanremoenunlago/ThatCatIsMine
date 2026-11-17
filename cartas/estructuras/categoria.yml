@@ -3,10 +3,10 @@ slug: "estructuras"
 color: "#B8BEC2"
 paleta:
   marco: "#B8BEC2"
-  fondo: "#E5E8EA"
+  fondo: "#DDE2E4"
   papel: "#F5F6F6"
   tinta: "#444B4F"
-  detalle: "#9CA5AA"
+  detalle: "#858F95"
 iconos:
   tipo: "../emojis/estructuras.png"
 diseno:
@@ -58,24 +58,24 @@ cartas:
     imagen: "imagenes/caja de cartón.png"
     tipo: "estructura"
     copias: 2
-    descripcion: "Protege tus gatos del Sofá y del Salón y tus apoyos de ataques directos. Se destruye con un ataque exitoso contra ella o Reforma Desastrosa."
+    descripcion: "Protege tus gatos del Sofá y del Salón de ataques directos. Se destruye con un ataque exitoso contra ella."
   - nombre: "Fortaleza Gatuna"
     imagen: "imagenes/torre rascador.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "Protege de ataques a tus gatos e instalaciones; intercepta acciones hostiles a tu casa. Un ataque exitoso contra ella o Reforma Desastrosa la destruye."
+    descripcion: "Protege tus gatos del Sofá y del Salón de ataques directos y acciones. Se destruye con un ataque exitoso contra ella."
   - nombre: "Comedero Automático"
     imagen: "imagenes/comedero automático.png"
     tipo: "estructura"
     copias: 2
-    descripcion: "Roba 1 carta adicional durante el robo inicial. Un ataque exitoso contra el Comedero o Reforma Desastrosa lo destruye."
+    descripcion: "Roba 1 carta adicional durante el robo inicial. Se destruye con un ataque exitoso contra ella."
   - nombre: "Rascador de Sisal"
     imagen: "imagenes/rascador.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "Una vez por turno, descarta 2 cartas en el Paso de Preparación para que tu primer ataque tenga +1 de potencia."
+    descripcion: "Puedes descartar 2 cartas en el Paso de Preparación para que tu primer ataque tenga +1 de daño."
   - nombre: "Cama de Peluche"
     imagen: "imagenes/cama de peluche.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "Arropa al gato: no pueden atacarlo ni moverlo. Se descarta al inicio de tu próximo turno; un ataque exitoso a la Cama o Reforma Desastrosa la destruye."
+    descripcion: "El gato mas cercano a la cama no se puede atacar ni mover hasta tu siguiente turno. Se descarta al inicio de tu próximo turno."

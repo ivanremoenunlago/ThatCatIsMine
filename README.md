@@ -85,13 +85,15 @@ Paletas actuales:
 | --- | --- | --- | --- | --- |
 | Gatos | `#D9B96E` | `#E7D1A6` | `#F5E9CE` | `#B98232` |
 | Ataques | `#DE857E` | `#EBC8C3` | `#F5E4DF` | `#B94B48` |
-| Estructuras | `#B8BEC2` | `#E5E8EA` | `#F5F6F6` | `#9CA5AA` |
-| Acciones | `#967FA8` | `#E4DBEA` | `#F5F0F7` | `#8E789F` |
-| Eventos Globales | `#967FA8` | `#E4DBEA` | `#F5F0F7` | `#8E789F` |
-| Flús-Flús de Agua | `#759DB0` | `#DDEAF0` | `#F4F8FA` | `#6F97AA` |
-| Consumibles | `#8CA57B` | `#E0E8D9` | `#F5F8F2` | `#849B75` |
+| Estructuras | `#B8BEC2` | `#DDE2E4` | `#F5F6F6` | `#858F95` |
+| Acciones | `#A997B7` | `#E4DBEA` | `#F5F0F7` | `#806A91` |
+| Eventos Globales | `#A997B7` | `#E4DBEA` | `#F5F0F7` | `#806A91` |
+| Flús-Flús de Agua | `#8EADBB` | `#DDEAF0` | `#F4F8FA` | `#5E8293` |
+| Consumibles | `#A1B38F` | `#E0E8D9` | `#F5F8F2` | `#70885F` |
 
-Ataques sigue la estructura de bordes y paneles claros de Gatos. El rojo destaca los nombres, rótulos y valores fijos de ataque o apoyo. Estructuras usa tonos blancos y grisáceos apagados; Acciones y Eventos Globales, morados suaves; y Consumibles, verdes suaves. Flús-Flús de Agua se mantiene en la pestaña Acciones, pero usa una paleta azul propia. Las paletas están en el YAML de cada categoría.
+Ataques sigue la estructura de bordes y paneles claros de Gatos. El coral del marco se usa en los rótulos y valores fijos de ataque o apoyo. Estructuras usa tonos blancos y grisáceos apagados; Acciones y Eventos Globales, morados suaves; y Consumibles, verdes suaves. Flús-Flús de Agua se mantiene en la pestaña Acciones, pero usa una paleta azul propia. Las paletas están en el YAML de cada categoría.
+
+La banda del nombre usa el color de detalle de cada categoría como fondo, una versión más oscura de ese color como borde y el color claro de la superficie para el texto. En Acciones, Eventos Globales, Flús-Flús y Consumibles, el marco exterior y el detalle interior tienen tonos más separados para distinguir mejor los dos bordes. En Ataques, el rojo de detalle también se usa en las fórmulas de daño y descripciones; los rótulos y valores fijos mantienen el coral del marco.
 
 ## Cómo editar o añadir cartas
 

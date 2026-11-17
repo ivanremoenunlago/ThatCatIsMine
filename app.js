@@ -169,6 +169,14 @@ function paletteForCard(category, card) {
   return card.paleta ? category[`paleta_${card.paleta}`] : category.paleta;
 }
 
+function darkenColor(color, factor) {
+  if (!/^#[\da-f]{6}$/i.test(color)) throw new Error(`Invalid palette color: ${color}`);
+  const value = Number.parseInt(color.slice(1), 16);
+  const channels = [value >> 16, (value >> 8) & 255, value & 255]
+    .map(channel => Math.round(channel * factor));
+  return `#${channels.map(channel => channel.toString(16).padStart(2, '0')).join('')}`;
+}
+
 function normalizeProjectPath(path) {
   const parts = String(path).replace(/\\/g, '/').split('/').filter(Boolean);
   if (parts.length > 1) parts.shift();
@@ -334,7 +342,7 @@ function drawAttackContent(context, category, card, x, y, width, height) {
       if (lines.length * lineHeight <= height * 0.76) break;
       fontSize -= 2;
     }
-    context.fillStyle = palette.tinta;
+    context.fillStyle = palette.detalle;
     const firstLineY = centerY - (lines.length - 1) * lineHeight / 2;
     lines.forEach((line, index) => context.fillText(line, centerX, firstLineY + index * lineHeight, textWidth));
     return;
@@ -469,7 +477,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   const bandWidth = Math.round(width * design.ancho_banda_nombre);
   const bandHeight = Math.round(height * design.alto_banda_nombre);
   fillCardShape(context, bandX, bandY, bandWidth, bandHeight,
-    Math.round(width * design.radio_banda_nombre), palette.papel, palette.detalle,
+    Math.round(width * design.radio_banda_nombre), palette.detalle, darkenColor(palette.detalle, 0.68),
     8 * scale, shadow);
   const title = card.nombre.toLocaleUpperCase('es-ES');
   const titleSize = Math.round(width * design.tamano_fuente_nombre);
@@ -479,7 +487,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   if ('letterSpacing' in context) context.letterSpacing = `${width * design.espaciado_nombre}px`;
   fitText(context, title, bandWidth - width * 0.08, titleSize, titleMinSize,
     '"Lora", Georgia, "Times New Roman", serif');
-  context.fillStyle = category.slug === 'ataques' || card.paleta ? palette.marco : palette.tinta;
+  context.fillStyle = palette.papel;
   context.fillText(title, bandX + bandWidth / 2, bandY + bandHeight / 2, bandWidth - width * 0.08);
   if ('letterSpacing' in context) context.letterSpacing = '0px';
 

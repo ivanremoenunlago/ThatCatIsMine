@@ -1,12 +1,12 @@
 nombre: "Eventos Globales"
 slug: "globales"
-color: "#967FA8"
+color: "#A997B7"
 paleta:
-  marco: "#967FA8"
+  marco: "#A997B7"
   fondo: "#E4DBEA"
   papel: "#F5F0F7"
   tinta: "#493F52"
-  detalle: "#8E789F"
+  detalle: "#806A91"
 iconos:
   tipo: "../emojis/evento global.png"
 diseno:
@@ -58,9 +58,9 @@ cartas:
     imagen: "imagenes/hora de la siesta.png"
     tipo: "evento_global"
     copias: 1
-    descripcion: "Todos los gatos duermen hasta tu siguiente turno: se anulan habilidades y sinergias, no los puntos. El Solitario pierde inmunidad; se permite mover."
+    descripcion: "Todos los gatos duermen hasta tu siguiente turno, se anulan habilidades y sinergias."
   - nombre: "Perro del Vecino"
     imagen: "imagenes/perro del vecino.png"
     tipo: "evento_global"
     copias: 1
-    descripcion: "Cada jugador mueve 1 gato movible de su Sofá al Salón; Cama de Peluche lo impide. Si no tiene gatos movibles, no mueve. Fortaleza Gatuna no lo detiene."
+    descripcion: "Cada jugador mueve 1 gato de su Sofá al Salón."

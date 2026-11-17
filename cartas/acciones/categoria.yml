@@ -1,18 +1,18 @@
 nombre: "Acciones"
 slug: "acciones"
-color: "#967FA8"
+color: "#A997B7"
 paleta:
-  marco: "#967FA8"
+  marco: "#A997B7"
   fondo: "#E4DBEA"
   papel: "#F5F0F7"
   tinta: "#493F52"
-  detalle: "#8E789F"
+  detalle: "#806A91"
 paleta_azul:
-  marco: "#759DB0"
+  marco: "#8EADBB"
   fondo: "#DDEAF0"
   papel: "#F4F8FA"
   tinta: "#40535C"
-  detalle: "#6F97AA"
+  detalle: "#5E8293"
 iconos:
   tipo: "../emojis/acciones.png"
   flush: "../emojis/flush flush.png"
@@ -66,26 +66,26 @@ cartas:
     tipo: "accion"
     copias: 1
     marca_flush: true
-    descripcion: "El rival pierde su próxima Fase de Acción: no puede jugar ni atacar, pero sí robar y hacer el movimiento habitual. Déjala en su zona como recordatorio."
+    descripcion: "Pon esta carta en el salón de un rival. Este eprderá su proximo turno."
   - nombre: "Destrucción de Sofá"
     imagen: "imagenes/destruccion de sofa.png"
     tipo: "accion"
     copias: 1
     marca_flush: true
-    descripcion: "Obtienes +1 punto hasta el final del turno y 1 acción principal adicional. Cualquier rival puede cancelarla."
+    descripcion: "Obtienes +1 de prestigio hasta el final del turno y 1 acción adicional."
   - nombre: "Sobredosis de Catnip"
     imagen: "imagenes/sobredosis de catnip.png"
     tipo: "accion"
     copias: 2
     marca_flush: true
-    descripcion: "Obtienes 2 acciones extra este turno; no da movimientos extra."
+    descripcion: "Obtienes 2 acciones extra."
   - nombre: "Ronroneo"
     imagen: "imagenes/ronroneo.png"
     tipo: "accion"
     copias: 2
     marca_flush: true
     descripcion: "Elige 2 gatos del Sofá y cúbrelos con esta carta. Si siguen allí al inicio de tu próximo turno, obtienen +1 punto cada uno ese turno. Luego, descártala."
-  - nombre: "Gato en la Ventana"
+  - nombre: "Espía de Ventana"
     imagen: "imagenes/gatos espias.png"
     tipo: "accion"
     copias: 1
@@ -96,7 +96,7 @@ cartas:
     tipo: "accion"
     copias: 1
     marca_flush: true
-    descripcion: "Elige un rival y descarta al azar la mitad de las cartas de su mano, redondeando hacia abajo."
+    descripcion: "Elige un rival y descarta al azar la mitad de las cartas de su mano, redondeando hacia abajo. Si tiene 1 carta, descarta esa carta."
   - nombre: "Tirar Cosas de la Mesa"
     imagen: "imagenes/tirar cosas de la mesa.png"
     tipo: "accion"
@@ -114,42 +114,42 @@ cartas:
     tipo: "accion"
     copias: 2
     marca_flush: true
-    descripcion: "Intercambia 1 gato movible tuyo por 1 gato del Salón rival. No puedes elegir un gato con Cama de Peluche; Fortaleza Gatuna puede interceptar."
+    descripcion: "Intercambia 1 gato tuyo por 1 gato del Salón o Sofá rival."
   - nombre: "Robo Felino"
     imagen: "imagenes/robo felino.png"
     tipo: "accion"
     copias: 2
     marca_flush: true
-    descripcion: "Roba 1 gato del Salón rival (no del Sofá ni protegido por Cama de Peluche) y llévalo a tu casa. Fortaleza Gatuna puede interceptar."
+    descripcion: "Roba 1 gato del Salón rival (no del Sofá) y llévalo a tu casa."
   - nombre: "Apuntar con Láser Infrarrojo"
     imagen: "imagenes/laser.png"
     tipo: "accion"
     copias: 2
     marca_flush: true
-    descripcion: "Mueve un gato tuyo o rival entre el Sofá y el Salón. Fortaleza Gatuna puede interceptar si afecta directamente a una casa."
+    descripcion: "Mueve/Intercambia un gato tuyo o rival entre el Sofá y el Salón."
   - nombre: "¡Pspspsps!"
     imagen: "imagenes/pspspspsp.png"
     tipo: "accion"
     copias: 1
     marca_flush: true
-    descripcion: "Mira las 4 primeras cartas: elige 1 gato y llévalo a tu casa. Pon las demás al fondo en el orden que quieras; si no hay gatos, pon las 4 al fondo."
-  - nombre: "Reforma Desastrosa"
-    imagen: "imagenes/refroma desastrosa - Sabotaje Vecinal.png"
+    descripcion: "Coge el mazo y quedate el primer gato que encuentres y barajalo, si no hay mas gatos en el mazo, roba 1 carta al azar."
+  - nombre: "Sabotaje vecinal"
+    imagen: "imagenes/sabotaje vecinal.png"
     tipo: "accion"
     copias: 2
     marca_flush: true
-    descripcion: "Destruye una instalación rival, incluida Cama de Peluche; su gato permanece y recupera movilidad. Fortaleza puede interceptar, salvo si es el objetivo."
+    descripcion: "Destruye una instalación rival."
   - nombre: "Ovillo de Lana"
     imagen: "imagenes/ovillo de lana.png"
     tipo: "objeto"
     copias: 3
     marca_flush: true
-    descripcion: "Recupera de descartes una carta que no sea gato y añádela a tu mano. Si cancelan el Ovillo, no recuperas nada."
+    descripcion: "Recupera de descartes una carta y añádela a tu mano."
   - nombre: "Ratón con Hierba Gatuna"
     imagen: "imagenes/raton con hierva gatera.png"
     tipo: "objeto"
     copias: 1
-    descripcion: "Reacción sin coste y no cancelable: desvía a otro gato válido un ataque directo a uno de los tuyos. Su dueño decide la defensa; el ataque sigue."
+    descripcion: "Desvía a otro gato/estructura tuyo o rival un ataque dirigido hacia ti."
   - nombre: "Flús-Flús de Agua"
     imagen: "imagenes/flus flus 1.png"
     tipo: "respuesta"
@@ -157,7 +157,7 @@ cartas:
     marca_flush: true
     paleta: "azul"
     version: 1
-    descripcion: "Cancela una carta marcada CANCELABLE. No afecta ataques, apoyos, eventos globales, estructuras ni consumibles; tampoco se cancela a sí misma."
+    descripcion: "Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>."
   - nombre: "Flús-Flús de Agua"
     imagen: "imagenes/flus flus 2.png"
     tipo: "respuesta"
@@ -165,7 +165,7 @@ cartas:
     marca_flush: true
     paleta: "azul"
     version: 2
-    descripcion: "Cancela una carta marcada CANCELABLE. No afecta ataques, apoyos, eventos globales, estructuras ni consumibles; tampoco se cancela a sí misma."
+    descripcion: "Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>."
   - nombre: "Flús-Flús de Agua"
     imagen: "imagenes/flus flus 3.png"
     tipo: "respuesta"
@@ -173,7 +173,7 @@ cartas:
     marca_flush: true
     paleta: "azul"
     version: 3
-    descripcion: "Cancela una carta marcada CANCELABLE. No afecta ataques, apoyos, eventos globales, estructuras ni consumibles; tampoco se cancela a sí misma."
+    descripcion: "Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>."
   - nombre: "Flús-Flús de Agua"
     imagen: "imagenes/flus flus 4.png"
     tipo: "respuesta"
@@ -181,4 +181,4 @@ cartas:
     marca_flush: true
     paleta: "azul"
     version: 4
-    descripcion: "Cancela una carta marcada CANCELABLE. No afecta ataques, apoyos, eventos globales, estructuras ni consumibles; tampoco se cancela a sí misma."
+    descripcion: "Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>."

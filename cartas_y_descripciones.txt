@@ -1,0 +1,243 @@
+¡ESE GATO ES MÍO! — CARTAS Y DESCRIPCIONES
+
+Textos transcritos de los archivos categoria.yml. No se han completado ni corregido.
+En Ataques se indica el daño o la bonificación definida en categoria.yml. La cancelabilidad se toma del campo «marca_flush».
+
+GATOS
+
+Gato Gordo
+Descripción: Ocupa 2 espacios en el sofá.
+
+Gato Desnutrido
+Descripción: Si no tienes cartas en la mano, obtiene +2 puntos de prestigio.
+
+Gato de Barrio (Matón)
+Descripción: Aumenta en +1 el daño cuando atacas.
+
+Gato Territorial
+Descripción: Aumenta en +1 el daño cuando te defiendes
+
+Gato Cotilla
+Descripción: Cuando te atacan, puedes descartar 1 carta para ver el ataque y sus apoyos.
+
+Gato Curioso
+Descripción: Al inicio de tu fase de robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1.
+
+Gato Metódico
+Descripción: Si al final de la fase de robo tienes menos de 3 cartas, roba hasta tener 4.
+
+Gato Acaparador
+Descripción: Aumenta tu límite de mano de 7 a 9 cartas.
+
+Gata Envidiosa
+Descripción: Tus ataques contra instalaciones reciben +1 de daño. No se aplica contra gatos.
+
+Mamá Gata
+Descripción: Mientras esté activa en el Sofá, concede +1 punto de prestigio  a cada otro gato que esté en el Sofá.
+
+Gato Bebé
+Descripción: Si está solo en el Sofá, durante el robo inicial roba 1 carta adicional.
+
+Gato Diurno (Blanco)
+Descripción: Si un rival ataca con éxito a uno de tus gatos del Sofá, se descarta una carta de su mano.
+
+Gato Nocturno (Negro)
+Descripción: Si un rival fracasa al atacar a uno de tus gatos del Sofá, se descarta una carta de su mano.
+
+Gato Trillizo
+Descripción: Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá.
+
+Gato Trillizo
+Descripción: Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá.
+
+Gato Trillizo
+Descripción: Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá.
+
+Gato Solitario
+Descripción: Si es el único gato en el Sofá, cancela automáticamente cartas CANCELABLES que lo elijan como objetivo y da 7 de presitigio. Si esta acompañado pierde su inmunidad y da 0 de prestigio.
+
+Gato Escalador
+Descripción: Una vez por turno, puedes realizar un movimiento gatuno adicional durante el Paso de Preparación.
+
+Gato Mapache
+Descripción: Puedes recuperar la última carta de la pila de descartes en lugar de tu robo inicial.
+
+Gato Victimista
+Descripción: Si cancelan con Flús-Flús de Agua una travesura tuya, el rival descarta 1 carta adicional.
+
+ATAQUES
+
+Bola de Pelo
+Daño: 0
+
+Bufido
+Daño: 1
+
+Emboscada
+Daño: 2
+
+Zarpazo
+Daño: 3
+
+Mordisco
+Daño: 4
+
+Agarre con patada
+Daño: 5
+
+Ataque en manada
+Daño variable: El daño es equivalente al número total de gatos que tienes en el Sofá y el Salón.
+
+Afilado de uñas
+Descripción: Juega en combate: suma +2 a la otra carta.
+Bonificación: +2
+
+Erizarse
+Descripción: Juega en combate: suma +1 a la otra carta.
+Bonificación: +1
+
+Terror del aspirador
+Daño: 1
+
+Escobazo contundente
+Daño: 2
+
+Zapatilla voladora
+Daño: 3
+
+Caza de Bigotes
+Daño: 4
+
+Baño forzado
+Daño: 5
+
+Manguerazo frío
+Daño variable: El daño es equivalente al número total de gatos que tiene el rival en el Sofá y el Salón.
+
+¡Susto de Pepino!
+Descripción: Juega en combate: suma +1 a la otra carta.
+Bonificación: +1
+
+¡Pacto de Bigotes y Escobazos!
+Daño: 6
+
+ESTRUCTURAS
+
+Caja de Cartón
+Descripción: Protege tus gatos del Sofá y del Salón de ataques directos. Se destruye con un ataque exitoso contra ella.
+
+Fortaleza Gatuna
+Descripción: Protege tus gatos del Sofá y del Salón de ataques directos y acciones. Se destruye con un ataque exitoso contra ella.
+
+Comedero Automático
+Descripción: Roba 1 carta adicional durante el robo inicial. Se destruye con un ataque exitoso contra ella.
+
+Rascador de Sisal
+Descripción: Puedes descartar 2 cartas en el Paso de Preparación para que tu primer ataque tenga +1 de daño.
+
+Cama de Peluche
+Descripción: El gato mas cercano a la cama no se puede atacar ni mover hasta tu siguiente turno. Se descarta al inicio de tu próximo turno.
+
+ACCIONES
+
+No te muevas, estoy cómodo
+Descripción: Pon esta carta en el salón de un rival. Este eprderá su proximo turno.
+
+Destrucción de Sofá
+Descripción: Obtienes +1 de prestigio hasta el final del turno y 1 acción adicional.
+
+Sobredosis de Catnip
+Descripción: Obtienes 2 acciones extra.
+
+Ronroneo
+Descripción: Elige 2 gatos del Sofá y cúbrelos con esta carta. Si siguen allí al inicio de tu próximo turno, obtienen +1 punto cada uno ese turno. Luego, descártala.
+
+Espía de Ventana
+Descripción: Mira la mano completa de un rival elegido.
+
+Sorpresa en la Almohada
+Descripción: Elige un rival y descarta al azar la mitad de las cartas de su mano, redondeando hacia abajo. Si tiene 1 carta, descarta esa carta.
+
+Tirar Cosas de la Mesa
+Descripción: Elige un rival que tenga 6 o más cartas en su mano y róbale 2 cartas al azar.
+
+Sentarse en el Teclado
+Descripción: Elige un rival que tenga 4 o más cartas en su mano y róbale 1 carta al azar.
+
+Puerta Gatera
+Descripción: Intercambia 1 gato tuyo por 1 gato del Salón o Sofá rival.
+
+Robo Felino
+Descripción: Roba 1 gato del Salón rival (no del Sofá) y llévalo a tu casa.
+
+Apuntar con Láser Infrarrojo
+Descripción: Mueve/Intercambia un gato tuyo o rival entre el Sofá y el Salón.
+
+¡Pspspsps!
+Descripción: Coge el mazo y quedate el primer gato que encuentres y barajalo, si no hay mas gatos en el mazo, roba 1 carta al azar.
+
+Sabotaje vecinal
+Descripción: Destruye una instalación rival.
+
+Ovillo de Lana
+Descripción: Recupera de descartes una carta y añádela a tu mano.
+
+Ratón con Hierba Gatuna
+Descripción: Desvía a otro gato/estructura tuyo o rival un ataque dirigido hacia ti.
+
+Flús-Flús de Agua (versión 1)
+Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>.
+
+Flús-Flús de Agua (versión 2)
+Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>.
+
+Flús-Flús de Agua (versión 3)
+Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>.
+
+Flús-Flús de Agua (versión 4)
+Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>.
+
+EVENTOS GLOBALES
+
+Hora de la Siesta
+Descripción: Todos los gatos duermen hasta tu siguiente turno, se anulan habilidades y sinergias.
+
+Perro del Vecino
+Descripción: Cada jugador mueve 1 gato de su Sofá al Salón.
+
+CONSUMIBLES
+
+Pienso Premium
+Descripción: Roba 1 carta y obtén 1 acción extra este turno.
+
+Lata de Atún
+Descripción: Roba 2 cartas. Los gatos van a casa de sus dueños.
+
+Churu
+Descripción: Roba 3 cartas. Los gatos van a casa de sus dueños.
+
+Bolsa de Catnip
+Descripción: Todos roban 1 carta, empezando por ti. Cuando todos hayan robado, robas 1 más.
+
+CANCELABILIDAD
+
+Se consideran cancelables las cartas con marca_flush: true en categoria.yml:
+- No te muevas, estoy cómodo
+- Destrucción de Sofá
+- Sobredosis de Catnip
+- Ronroneo
+- Espía de Ventana
+- Sorpresa en la Almohada
+- Tirar Cosas de la Mesa
+- Sentarse en el Teclado
+- Puerta Gatera
+- Robo Felino
+- Apuntar con Láser Infrarrojo
+- ¡Pspspsps!
+- Sabotaje vecinal
+- Ovillo de Lana
+- Flús-Flús de Agua (versiones 1, 2, 3 y 4)
+
+No marcadas como cancelables en categoria.yml (sin marca_flush):
+- Todas las cartas de Gatos, Ataques, Estructuras, Eventos Globales y Consumibles.
+- Ratón con Hierba Gatuna.
