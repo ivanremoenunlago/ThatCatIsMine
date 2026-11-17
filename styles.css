@@ -87,6 +87,26 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
 .card-actions { display: flex; }
 .card-actions .button { width: 100%; }
 .card-meta { margin: 0 0 12px; color: var(--muted); font-size: 11px; }
+.synergy-card-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+.synergy-tile { border-color: #c58a2e; }
+.synergy-face-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.synergy-face {
+  display: flex;
+  min-width: 0;
+  aspect-ratio: 63.5 / 88;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #493323;
+  background: #fffdf8;
+  border: 3px solid #c58a2e;
+  border-radius: 9px;
+  text-align: center;
+}
+.synergy-face-front img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.synergy-face-back { flex-direction: column; padding: 8px; background: #fff8e9; }
+.synergy-face-back h4 { margin: 0 0 8px; color: #a56d1c; font: 700 14px/1.2 Georgia, 'Times New Roman', serif; }
+.synergy-face-back p { margin: 0; font-size: 12px; line-height: 1.4; }
 .empty-state {
   padding: 36px 22px;
   color: #6c5a43;
@@ -130,7 +150,6 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
   margin: 0 0 18px;
 }
 .rulebook-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; }
-.print-deck { display: none; }
 .rulebook-toolbar h2 { margin: 0 0 5px; font: 700 28px Georgia, 'Times New Roman', serif; }
 .rulebook-toolbar p:last-child { margin: 0; color: var(--muted); font-size: 13px; }
 .rulebook-toolbar .complete-pdf-status { margin-top: 6px; }
@@ -149,6 +168,49 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
   line-height: 1.38;
 }
 .rulebook-board-page { page: board-landscape; max-width: 297mm; min-height: 210mm; padding: 8mm; }
+.rulebook-page.pdf-export-page {
+  display: block;
+  width: 210mm;
+  max-width: none;
+  height: 297mm;
+  min-height: 297mm;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.pdf-export-page .rulebook-page-header { margin-bottom: 5mm; }
+.pdf-export-page .rulebook-page-header h2 { font-size: 22pt; }
+.pdf-export-page .board-screen-title { display: none; }
+.rulebook-page.pdf-export-page.rulebook-board-page {
+  display: flex;
+  width: 297mm;
+  height: 210mm;
+  min-height: 210mm;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.rulebook-page.pdf-export-page.rulebook-board-page .board-figure {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.rulebook-page.pdf-export-page.rulebook-board-page .board-image-stage {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.05);
+}
+.rulebook-page.pdf-export-page.rulebook-board-page .board-image-stage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 .board-screen-title { margin: 0 0 3mm; color: #493323; font: 700 16pt Georgia, 'Times New Roman', serif; }
 .board-figure { margin: 0; }
 .board-image-stage { position: relative; width: 100%; }
@@ -321,7 +383,6 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
 }
 @page { size: A4 portrait; margin: 12mm; }
 @page board-landscape { size: A4 landscape; margin: 0; }
-@page cards-portrait { size: A4 portrait; margin: 0; }
 @media print {
   html, body { width: auto; min-width: 0; margin: 0; color: #302b25; background: #fff; }
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -358,36 +419,8 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
   .rulebook-board-page .board-figure { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; }
   .rulebook-board-page .board-image-stage { width: 100%; height: 100%; transform: scale(1.05); }
   .rulebook-board-page .board-image-stage > img { width: 100%; height: 100%; object-fit: fill; }
-  body.print-complete-deck .rulebook-page:not(.rulebook-board-page) { page: auto; }
-  body.print-complete-deck .print-deck { display: block; }
-  .print-deck-sheet {
-    display: grid;
-    page: cards-portrait;
-    width: 210mm;
-    height: 297mm;
-    grid-template-columns: repeat(3, 63.5mm);
-    grid-template-rows: repeat(3, 88mm);
-    justify-content: center;
-    align-content: center;
-    gap: 3mm;
-    break-after: page;
-    page-break-after: always;
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-  }
-  .print-deck-sheet.is-last { break-after: auto; page-break-after: auto; }
-  .print-deck-card {
-    display: block;
-    width: 63.5mm;
-    height: 88mm;
-    object-fit: fill;
-    outline: .15mm solid #70685e;
-  }
   .rulebook-page:last-of-type { break-after: auto; page-break-after: auto; }
   .rulebook-page-header { margin-bottom: 5mm; }
   .rulebook-page-header h2 { font-size: 22pt; }
   .rulebook-card, .rulebook-timeline > li, .turn-flow > li, .turn-flow-branches section, .combat-flow li, .synergy-card { break-inside: avoid; }
-}
-@media print {
-  body.print-complete-deck .rulebook-page:last-of-type { break-after: page; page-break-after: always; }
 }

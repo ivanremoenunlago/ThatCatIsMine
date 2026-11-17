@@ -6,7 +6,8 @@ const CATEGORY_PATHS = [
   'cartas/estructuras/categoria.yml',
   'cartas/acciones/categoria.yml',
   'cartas/consumibles/categoria.yml',
-  'cartas/globales/categoria.yml'
+  'cartas/globales/categoria.yml',
+  'cartas/sinergias/categoria.yml'
 ];
 const $ = (id) => document.getElementById(id);
 const state = {
@@ -16,8 +17,7 @@ const state = {
   uploadedFiles: null,
   uploadedFileMap: new Map(),
   imageCache: new Map(),
-  tintedIconCache: new Map(),
-  printDeckUrls: []
+  tintedIconCache: new Map()
 };
 
 function setStatus(message, isError=false) {
@@ -95,7 +95,9 @@ function parseCategoryYaml(text) {
 }
 
 function validateCategory(category) {
-  if (!category.nombre || !category.slug || !category.iconos || !category.diseno || !Array.isArray(category.cartas)) {
+  const isSynergyCategory = category.slug === 'sinergias';
+  if (!category.nombre || !category.slug || (!category.iconos && !isSynergyCategory)
+    || !category.diseno || !Array.isArray(category.cartas)) {
     throw new Error('Faltan datos obligatorios en el archivo de categoría.');
   }
   const {ancho_mm, alto_mm, dpi} = category.diseno;
@@ -110,6 +112,15 @@ function validateCategory(category) {
   if (!category.paleta || palettes.some(([, palette]) =>
     !palette || Object.values(palette).some(color => !/^#[0-9a-fA-F]{6}$/.test(color)))) {
     throw new Error(`La categoría "${category.nombre}" tiene colores no válidos.`);
+  }
+  if (isSynergyCategory) {
+    for (const card of category.cartas) {
+      if (!card.nombre || !card.descripcion
+        || (card.imagen !== undefined && typeof card.imagen !== 'string')) {
+        throw new Error(`La sinergia "${card.nombre || 'sin nombre'}" necesita nombre y explicación válidos.`);
+      }
+    }
+    return;
   }
   if (!category.iconos.tipo) throw new Error(`La categoría "${category.nombre}" no define un icono de tipo.`);
   for (const card of category.cartas) {
@@ -562,6 +573,134 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   }
 }
 
+function drawSynergyFace(canvas, category, card, side, artImage, renderDpi=category.diseno.dpi) {
+  const width = Math.round(category.diseno.ancho_mm * renderDpi / 25.4);
+  const height = Math.round(category.diseno.alto_mm * renderDpi / 25.4);
+  const context = canvas.getContext('2d');
+  const border = Math.max(2, Math.round(width * 0.035));
+  const inset = Math.round(width * 0.055);
+  const corner = Math.round(width * 0.055);
+  const amber = category.paleta.marco;
+
+  canvas.width = width;
+  canvas.height = height;
+  context.clearRect(0, 0, width, height);
+
+  if (side === 'front') {
+    context.save();
+    roundedRect(context, 0, 0, width, height, corner);
+    context.clip();
+    if (artImage) {
+      drawCover(context, artImage, 0, 0, width, height, 0);
+    } else {
+      context.fillStyle = '#fffdf8';
+      context.fillRect(0, 0, width, height);
+      context.fillStyle = category.paleta.tinta;
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.font = `700 ${Math.round(width * 0.055)}px Arial, sans-serif`;
+      context.fillText(card.imageError ? 'ILUSTRACIÓN NO DISPONIBLE' : 'ILUSTRACIÓN PENDIENTE',
+        width / 2, height / 2, width - 2 * inset);
+    }
+    context.restore();
+    roundedRect(context, border / 2, border / 2, width - border, height - border, corner);
+    context.lineWidth = border;
+    context.strokeStyle = amber;
+    context.stroke();
+    return;
+  }
+
+  fillCardShape(context, 0, 0, width, height, corner, amber, null, 0, null);
+  fillCardShape(context, border, border, width - border * 2, height - border * 2,
+    Math.max(0, corner - border), category.paleta.papel, null, 0, null);
+  const contentX = width * 0.12;
+  const contentWidth = width * 0.76;
+  const titleY = height * 0.24;
+  context.textAlign = 'center';
+  context.textBaseline = 'middle';
+  context.fillStyle = amber;
+  let titleSize = Math.round(width * 0.075);
+  let titleLines = [];
+  while (titleSize > width * 0.05) {
+    context.font = `700 ${titleSize}px Georgia, "Times New Roman", serif`;
+    titleLines = wrapText(context, card.nombre, contentWidth);
+    if (titleLines.length <= 2) break;
+    titleSize -= 2;
+  }
+  const titleLineHeight = titleSize * 1.15;
+  titleLines.forEach((line, index) => {
+    context.fillText(line, width / 2, titleY + (index - (titleLines.length - 1) / 2) * titleLineHeight);
+  });
+
+  const dividerY = height * 0.39;
+  context.beginPath();
+  context.strokeStyle = amber;
+  context.lineWidth = Math.max(2, width * 0.006);
+  context.moveTo(contentX, dividerY);
+  context.lineTo(width - contentX, dividerY);
+  context.stroke();
+
+  let bodySize = Math.round(width * 0.047);
+  let bodyLines = [];
+  let lineHeight = 0;
+  const bodyHeight = height * 0.43;
+  while (bodySize >= width * 0.031) {
+    context.font = `600 ${bodySize}px Arial, Helvetica, sans-serif`;
+    bodyLines = wrapText(context, card.descripcion, contentWidth);
+    lineHeight = bodySize * 1.28;
+    if (bodyLines.length * lineHeight <= bodyHeight) break;
+    bodySize -= 2;
+  }
+  context.fillStyle = category.paleta.tinta;
+  const firstLineY = height * 0.66 - (bodyLines.length - 1) * lineHeight / 2;
+  bodyLines.forEach((line, index) => {
+    context.fillText(line, width / 2, firstLineY + index * lineHeight, contentWidth);
+  });
+}
+
+async function createSynergyCardTile(category, card) {
+  const tile = document.createElement('article');
+  tile.className = 'card-tile synergy-tile';
+  const title = document.createElement('h3');
+  title.textContent = card.nombre;
+  const pair = document.createElement('div');
+  pair.className = 'synergy-face-pair';
+  const front = document.createElement('div');
+  front.className = 'synergy-face synergy-face-front';
+  front.setAttribute('role', 'img');
+  front.setAttribute('aria-label', `Anverso de ${card.nombre}`);
+  const back = document.createElement('div');
+  back.className = 'synergy-face synergy-face-back';
+  const backTitle = document.createElement('h4');
+  backTitle.textContent = card.nombre;
+  const description = document.createElement('p');
+  description.textContent = card.descripcion;
+  back.append(backTitle, description);
+  pair.append(front, back);
+  tile.append(title, pair);
+
+  if (!card.imagen) {
+    front.textContent = 'Ilustración pendiente';
+    return tile;
+  }
+
+  try {
+    const imageUrl = assetUrl(category, card.imagen);
+    card.artImage = await loadImage(imageUrl);
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = '';
+    front.append(image);
+    card.imageError = false;
+  } catch (error) {
+    console.error(error);
+    card.imageError = true;
+    front.textContent = 'Ilustración no disponible';
+    setStatus(error.message, true);
+  }
+  return tile;
+}
+
 async function createCardTile(category, card) {
   const tile = document.createElement('article');
   tile.className = 'card-tile';
@@ -769,74 +908,49 @@ function cropMarks(x, y, width, height, gap, length) {
   return commands.join('\n');
 }
 
-async function createPdf(category) {
-  const cards = printableCards(category);
-  const pageCount = Math.ceil(cards.length / 9);
-  const pageWidth = 595.276;
-  const pageHeight = 841.89;
-  const imageWidth = Math.round(category.diseno.ancho_mm * category.diseno.dpi / 25.4);
-  const imageHeight = Math.round(category.diseno.alto_mm * category.diseno.dpi / 25.4);
-  const cardWidth = category.diseno.ancho_mm * 72 / 25.4;
-  const cardHeight = category.diseno.alto_mm * 72 / 25.4;
-  const gap = 3 * 72 / 25.4;
-  const gridWidth = 3 * cardWidth + 2 * gap;
-  const gridHeight = 3 * cardHeight + 2 * gap;
-  const marginX = (pageWidth - gridWidth) / 2;
-  const marginY = (pageHeight - gridHeight) / 2;
-  const markGap = 0.3 * 72 / 25.4;
-  const markLength = 1.2 * 72 / 25.4;
-  const images = [];
-  for (let index = 0; index < cards.length; index++) {
-    const card = cards[index];
-    setStatus(`Preparando imagen ${index + 1} de ${cards.length} para el PDF…`);
-    await new Promise(resolve => requestAnimationFrame(resolve));
-    const canvas = document.createElement('canvas');
-    drawCard(canvas, category, card, card.artImage, card.icons, category.diseno.dpi);
-    images.push(dataUrlBytes(canvas.toDataURL('image/jpeg', 0.94)));
-    canvas.width = 0;
-    canvas.height = 0;
-  }
+function createPdfDocument(pages) {
+  if (!pages.length) throw new Error('No hay páginas disponibles para el PDF.');
   const objects = [];
-  const pageInfo = [];
-
+  const pageObjectIds = [];
+  const firstImageObjectId = 3 + pages.length * 2;
+  const imageObjects = [];
   objects[1] = '<< /Type /Catalog /Pages 2 0 R >>';
-  for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
+
+  pages.forEach((page, pageIndex) => {
     const pageObject = 3 + pageIndex * 2;
     const contentObject = pageObject + 1;
-    const firstCard = pageIndex * 9;
-    const pageCards = cards.slice(firstCard, firstCard + 9);
-    const imageReferences = pageCards.map((_, slot) => {
-      const imageObject = 3 + pageCount * 2 + firstCard + slot;
-      return `/Im${slot} ${imageObject} 0 R`;
-    });
+    const imageReferences = [];
     const pageContent = [];
 
-    pageCards.forEach((card, slot) => {
-      const localIndex = slot;
-      const row = Math.floor(localIndex / 3);
-      const itemsInRow = Math.min(3, pageCards.length - row * 3);
-      const firstColumn = (3 - itemsInRow) / 2;
-      const column = firstColumn + localIndex % 3;
-      const x = marginX + column * (cardWidth + gap);
-      const y = pageHeight - marginY - (row + 1) * cardHeight - row * gap;
-      pageContent.push(`q\n${cardWidth} 0 0 ${cardHeight} ${x.toFixed(2)} ${y.toFixed(2)} cm\n/Im${slot} Do\nQ`);
-      pageContent.push('0.5 w\n' + cropMarks(x, y, cardWidth, cardHeight, markGap, markLength));
+    page.images.forEach((image, imageIndex) => {
+      const objectId = firstImageObjectId + imageObjects.length;
+      const resourceName = `Im${imageIndex}`;
+      imageReferences.push(`/${resourceName} ${objectId} 0 R`);
+      pageContent.push(`q\n${image.width} 0 0 ${image.height} ${image.x.toFixed(2)} ${image.y.toFixed(2)} cm\n/${resourceName} Do\nQ`);
+      if (image.cropMarks) {
+        pageContent.push('0.5 w\n' + cropMarks(
+          image.x, image.y, image.width, image.height,
+          image.cropMarks.gap, image.cropMarks.length
+        ));
+      }
+      imageObjects.push({objectId, image});
     });
+    pageContent.push(...(page.commands || []));
 
+    const resources = imageReferences.length
+      ? `/Resources << /XObject << ${imageReferences.join(' ')} >> >>`
+      : '/Resources << >>';
     const content = pageContent.join('\n') + '\n';
-    objects[pageObject] = `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /XObject << ${imageReferences.join(' ')} >> >> /Contents ${contentObject} 0 R >>`;
+    objects[pageObject] = `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${page.width} ${page.height}] ${resources} /Contents ${contentObject} 0 R >>`;
     objects[contentObject] = `<< /Length ${textBytes(content).length} >>\nstream\n${content}endstream`;
-    pageInfo.push({pageObject});
-  }
+    pageObjectIds.push(`${pageObject} 0 R`);
+  });
 
-  const pageIds = pageInfo.map(page => `${page.pageObject} 0 R`).join(' ');
-  objects[2] = `<< /Type /Pages /Kids [${pageIds}] /Count ${pageCount} >>`;
-  for (let index = 0; index < cards.length; index++) {
-    const objectId = 3 + pageCount * 2 + index;
-    const jpeg = images[index];
+  objects[2] = `<< /Type /Pages /Kids [${pageObjectIds.join(' ')}] /Count ${pages.length} >>`;
+  for (const {objectId, image} of imageObjects) {
     objects[objectId] = concatBytes(
-      textBytes(`<< /Type /XObject /Subtype /Image /Width ${imageWidth} /Height ${imageHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpeg.length} >>\nstream\n`),
-      jpeg,
+      textBytes(`<< /Type /XObject /Subtype /Image /Width ${image.pixelWidth} /Height ${image.pixelHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${image.bytes.length} >>\nstream\n`),
+      image.bytes,
       textBytes('\nendstream')
     );
   }
@@ -859,65 +973,256 @@ async function createPdf(category) {
   return new Blob([concatBytes(...chunks)], {type: 'application/pdf'});
 }
 
+function createCardGridPages(images, widthMm, heightMm) {
+  const pageWidth = 595.276;
+  const pageHeight = 841.89;
+  const cardWidth = widthMm * 72 / 25.4;
+  const cardHeight = heightMm * 72 / 25.4;
+  const gap = 3 * 72 / 25.4;
+  const gridWidth = 3 * cardWidth + 2 * gap;
+  const gridHeight = 3 * cardHeight + 2 * gap;
+  const marginX = (pageWidth - gridWidth) / 2;
+  const marginY = (pageHeight - gridHeight) / 2;
+  const cropGap = 0.3 * 72 / 25.4;
+  const cropLength = 1.2 * 72 / 25.4;
+  const pages = [];
+
+  for (let firstImage = 0; firstImage < images.length; firstImage += 9) {
+    const pageImages = images.slice(firstImage, firstImage + 9).map((image, slot, pageImages) => {
+      const row = Math.floor(slot / 3);
+      const itemsInRow = Math.min(3, pageImages.length - row * 3);
+      const firstColumn = (3 - itemsInRow) / 2;
+      const column = firstColumn + slot % 3;
+      const x = marginX + column * (cardWidth + gap);
+      const y = pageHeight - marginY - (row + 1) * cardHeight - row * gap;
+      return {
+        ...image,
+        x,
+        y,
+        width: cardWidth,
+        height: cardHeight,
+        cropMarks: {gap: cropGap, length: cropLength}
+      };
+    });
+    pages.push({width: pageWidth, height: pageHeight, images: pageImages});
+  }
+  return pages;
+}
+
+function createSynergyPages(cards, category) {
+  const pageWidth = 595.276;
+  const pageHeight = 841.89;
+  const cardWidth = category.diseno.ancho_mm * 72 / 25.4;
+  const cardHeight = category.diseno.alto_mm * 72 / 25.4;
+  const pairGap = 3 * 72 / 25.4;
+  const rowGap = 8 * 72 / 25.4;
+  const pairWidth = 2 * cardWidth + pairGap;
+  const marginX = (pageWidth - pairWidth) / 2;
+  const gridHeight = 3 * cardHeight + 2 * rowGap;
+  const marginY = (pageHeight - gridHeight) / 2;
+  const cropGap = 0.3 * 72 / 25.4;
+  const cropLength = 1.2 * 72 / 25.4;
+  const pages = [];
+
+  for (let firstCard = 0; firstCard < cards.length; firstCard += 3) {
+    const images = [];
+    cards.slice(firstCard, firstCard + 3).forEach((card, row) => {
+      const y = pageHeight - marginY - (row + 1) * cardHeight - row * rowGap;
+      [card.front, card.back].forEach((image, side) => {
+        const x = marginX + side * (cardWidth + pairGap);
+        images.push({
+          ...image,
+          x,
+          y,
+          width: cardWidth,
+          height: cardHeight,
+          cropMarks: {gap: cropGap, length: cropLength}
+        });
+      });
+    });
+    pages.push({width: pageWidth, height: pageHeight, images});
+  }
+  return pages;
+}
+
+async function createCardImage(category, card) {
+  const {artImage, icons} = await loadCardAssets(category, card).catch(error => {
+    throw new Error(`No se puede incluir «${card.nombre}»: ${error.message}`);
+  });
+  const canvas = document.createElement('canvas');
+  try {
+    drawCard(canvas, category, card, artImage, icons, category.diseno.dpi);
+    return {
+      bytes: dataUrlBytes(canvas.toDataURL('image/jpeg', 0.94)),
+      pixelWidth: canvas.width,
+      pixelHeight: canvas.height
+    };
+  } finally {
+    canvas.width = 0;
+    canvas.height = 0;
+  }
+}
+
+async function createSynergyImages(category, progress) {
+  const cards = printableCards(category);
+  const images = [];
+  for (let index = 0; index < cards.length; index++) {
+    const card = cards[index];
+    if (progress) progress(index, cards.length, card);
+    await new Promise(resolve => setTimeout(resolve, 0));
+    const artImage = card.imagen
+      ? await loadImage(assetUrl(category, card.imagen)).catch(error => {
+        throw new Error(`No se puede cargar la ilustración de «${card.nombre}»: ${error.message}`);
+      })
+      : null;
+    const faces = {};
+    for (const side of ['front', 'back']) {
+      const canvas = document.createElement('canvas');
+      try {
+        drawSynergyFace(canvas, category, card, side, artImage, category.diseno.dpi);
+        faces[side] = {
+          bytes: dataUrlBytes(canvas.toDataURL('image/jpeg', 0.96)),
+          pixelWidth: canvas.width,
+          pixelHeight: canvas.height
+        };
+      } finally {
+        canvas.width = 0;
+        canvas.height = 0;
+      }
+    }
+    images.push(faces);
+  }
+  return images;
+}
+
+async function createPdf(category) {
+  const cards = printableCards(category);
+  const images = [];
+  for (let index = 0; index < cards.length; index++) {
+    setStatus(`Preparando imagen ${index + 1} de ${cards.length} para el PDF…`);
+    await new Promise(resolve => setTimeout(resolve, 0));
+    images.push(await createCardImage(category, cards[index]));
+  }
+  return createPdfDocument(createCardGridPages(images, category.diseno.ancho_mm, category.diseno.alto_mm));
+}
+
+async function createSynergyPdf(category) {
+  const images = await createSynergyImages(category, (index, total, card) => {
+    setStatus(`Preparando sinergia ${index + 1} de ${total}: ${card.nombre}…`);
+  });
+  return createPdfDocument(createSynergyPages(images, category));
+}
+
 function completeDeckCardCount() {
   return state.categories.reduce((total, category) =>
     total + category.cartas.reduce((count, card) => count + (card.copias || 1), 0), 0);
 }
 
-function clearCompletePrintDeck() {
-  for (const url of state.printDeckUrls) URL.revokeObjectURL(url);
-  state.printDeckUrls = [];
-  $('printDeck').replaceChildren();
+function standardDeckCardCount() {
+  return state.categories
+    .filter(category => category.slug !== 'sinergias')
+    .reduce((total, category) =>
+      total + category.cartas.reduce((count, card) => count + (card.copias || 1), 0), 0);
 }
 
-async function prepareCompletePrintDeck() {
-  clearCompletePrintDeck();
-  const cards = state.categories.flatMap(category =>
-    printableCards(category).map(card => ({category, card})));
-  if (!cards.length) throw new Error('No hay cartas disponibles para incluir.');
-  let sheet = null;
-
-  for (let index = 0; index < cards.length; index++) {
-    const {category, card} = cards[index];
-    setCompletePdfStatus(`Preparando carta ${index + 1} de ${cards.length}: ${card.nombre}…`);
-    const {artImage, icons} = await loadCardAssets(category, card).catch(error => {
-      throw new Error(`No se puede incluir «${card.nombre}»: ${error.message}`);
-    });
-    const canvas = document.createElement('canvas');
-    try {
-      drawCard(canvas, category, card, artImage, icons, category.diseno.dpi);
-      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.96));
-      if (!blob) throw new Error(`No se pudo generar la imagen de «${card.nombre}».`);
-      const url = URL.createObjectURL(blob);
-      state.printDeckUrls.push(url);
-      const image = document.createElement('img');
-      image.className = 'print-deck-card';
-      image.alt = `${card.nombre}, tamaño real`;
-      image.src = url;
-      if (index % 9 === 0) {
-        sheet = document.createElement('div');
-        sheet.className = 'print-deck-sheet';
-        $('printDeck').append(sheet);
-      }
-      sheet.append(image);
-      if (!image.complete) {
-        await new Promise((resolve, reject) => {
-          image.addEventListener('load', resolve, {once: true});
-          image.addEventListener('error', () => reject(new Error(`No se pudo cargar «${card.nombre}» para impresión.`)), {once: true});
-        });
-      }
-      if (!image.naturalWidth) throw new Error(`La imagen de «${card.nombre}» no está disponible para impresión.`);
-    } finally {
-      canvas.width = 0;
-      canvas.height = 0;
-    }
-  }
-  $('printDeck').lastElementChild.classList.add('is-last');
-  document.body.classList.add('print-complete-deck');
+function synergyCardCount() {
+  const category = state.categories.find(item => item.slug === 'sinergias');
+  return category ? printableCards(category).length : 0;
 }
 
 function setCompletePdfStatus(message) {
   $('completePdfStatus').textContent = message;
+}
+
+async function renderRulebookPdfPages() {
+  if (typeof window.html2canvas !== 'function') {
+    throw new Error('No se pudo cargar el componente necesario para generar el PDF del reglamento. Recarga la página e inténtalo de nuevo.');
+  }
+  const rulebookPages = [...$('rulebookPanel').querySelectorAll('.rulebook-page')];
+  if (!rulebookPages.length) throw new Error('No se encontraron páginas del reglamento para exportar.');
+  if (document.fonts && document.fonts.ready) await document.fonts.ready;
+  const pages = [];
+
+  for (let index = 0; index < rulebookPages.length; index++) {
+    const page = rulebookPages[index];
+    const isLandscape = page.classList.contains('rulebook-board-page');
+    const widthMm = isLandscape ? 297 : 210;
+    const heightMm = isLandscape ? 210 : 297;
+    const widthPx = Math.round(widthMm * 96 / 25.4);
+    const heightPx = Math.round(heightMm * 96 / 25.4);
+    setCompletePdfStatus(`Preparando página ${index + 1} de ${rulebookPages.length} del reglamento…`);
+    page.classList.add('pdf-export-page');
+    try {
+      await Promise.all([...page.querySelectorAll('img')].map(async image => {
+        if (!image.complete) {
+          await new Promise((resolve, reject) => {
+            image.addEventListener('load', resolve, {once: true});
+            image.addEventListener('error', () => reject(new Error(`No se pudo cargar una imagen del reglamento: ${image.src}`)), {once: true});
+          });
+        }
+        if (!image.naturalWidth) throw new Error(`No se pudo cargar una imagen del reglamento: ${image.src}`);
+        if (image.decode) await image.decode();
+      }));
+      const canvas = await window.html2canvas(page, {
+        backgroundColor: '#fffdf8',
+        scale: 2,
+        logging: false,
+        useCORS: true,
+        width: widthPx,
+        height: heightPx,
+        windowWidth: widthPx,
+        windowHeight: heightPx
+      });
+      if (!canvas.width || !canvas.height) throw new Error('La página se ha renderizado vacía.');
+      pages.push({
+        width: widthMm * 72 / 25.4,
+        height: heightMm * 72 / 25.4,
+        images: [{
+          bytes: dataUrlBytes(canvas.toDataURL('image/jpeg', 0.94)),
+          pixelWidth: canvas.width,
+          pixelHeight: canvas.height,
+          x: 0,
+          y: 0,
+          width: widthMm * 72 / 25.4,
+          height: heightMm * 72 / 25.4
+        }]
+      });
+      canvas.width = 0;
+      canvas.height = 0;
+    } catch (error) {
+      throw new Error(`No se pudo generar «${page.getAttribute('aria-label') || `página ${index + 1}`}»: ${error.message}`);
+    } finally {
+      page.classList.remove('pdf-export-page');
+    }
+  }
+  return pages;
+}
+
+async function createRulebookPdf() {
+  return createPdfDocument(await renderRulebookPdfPages());
+}
+
+async function createCompletePdf() {
+  const pages = await renderRulebookPdfPages();
+  const cards = state.categories.flatMap(category =>
+    category.slug === 'sinergias' ? [] : printableCards(category).map(card => ({category, card})));
+  const cardImages = [];
+  for (let index = 0; index < cards.length; index++) {
+    const {category, card} = cards[index];
+    setCompletePdfStatus(`Preparando carta ${index + 1} de ${cards.length}: ${card.nombre}…`);
+    await new Promise(resolve => setTimeout(resolve, 0));
+    cardImages.push(await createCardImage(category, card));
+  }
+  pages.push(...createCardGridPages(cardImages, 63.5, 88));
+
+  const synergies = state.categories.find(category => category.slug === 'sinergias');
+  if (synergies) {
+    const synergyImages = await createSynergyImages(synergies, (index, total, card) => {
+      setCompletePdfStatus(`Preparando sinergia ${index + 1} de ${total}: ${card.nombre}…`);
+    });
+    pages.push(...createSynergyPages(synergyImages, synergies));
+  }
+  return createPdfDocument(pages);
 }
 
 async function renderCategory(category) {
@@ -933,14 +1238,18 @@ async function renderCategory(category) {
   $('categoryTitle').textContent = hasCopyCounts
     ? `${category.nombre} · ${typeCount} tipos · ${printableCount} copias`
     : `${category.nombre} · ${typeCount} cartas`;
-  try {
-    const typeIconUrl = assetUrl(category, category.iconos.tipo);
-    await loadImage(typeIconUrl);
-    if (renderId !== state.categoryRenderId) return;
-    $('categoryIcon').src = typeIconUrl;
-  } catch (error) {
-    console.error(error);
-    if (renderId !== state.categoryRenderId) return;
+  if (category.iconos && category.iconos.tipo) {
+    try {
+      const typeIconUrl = assetUrl(category, category.iconos.tipo);
+      await loadImage(typeIconUrl);
+      if (renderId !== state.categoryRenderId) return;
+      $('categoryIcon').src = typeIconUrl;
+    } catch (error) {
+      console.error(error);
+      if (renderId !== state.categoryRenderId) return;
+      $('categoryIcon').removeAttribute('src');
+    }
+  } else {
     $('categoryIcon').removeAttribute('src');
   }
   $('emptyState').hidden = category.cartas.length > 0;
@@ -949,9 +1258,11 @@ async function renderCategory(category) {
     : `Esta categoría aún no contiene cartas. Añade sus datos e ilustraciones a ${category.configPath}.`;
   $('cardGrid').replaceChildren();
   $('pdfButton').disabled = true;
-  $('pdfButton').textContent = printableCount
-    ? `Descargar PDF A4 · ${printableCount} ${hasCopyCounts ? 'copias' : 'cartas'}`
-    : 'PDF A4 no disponible';
+  $('pdfButton').textContent = category.slug === 'sinergias'
+    ? printableCount ? `Descargar PDF A4 · ${printableCount} sinergias` : 'Sinergias no disponibles'
+    : printableCount
+      ? `Descargar PDF A4 · ${printableCount} ${hasCopyCounts ? 'copias' : 'cartas'}`
+      : 'PDF A4 no disponible';
 
   for (const button of $('categoryTabs').querySelectorAll('button')) {
     button.setAttribute('aria-selected', String(button.dataset.slug === category.slug));
@@ -961,17 +1272,30 @@ async function renderCategory(category) {
     return;
   }
 
-  setStatus(`Cargando las ilustraciones de ${category.cartas.length} cartas…`);
-  const tiles = await Promise.all(category.cartas.map(card => createCardTile(category, card)));
+  setStatus(`Cargando ${category.slug === 'sinergias' ? 'las sinergias' : 'las ilustraciones'} de ${category.cartas.length} cartas…`);
+  const tiles = await Promise.all(category.cartas.map(card =>
+    category.slug === 'sinergias'
+      ? createSynergyCardTile(category, card)
+      : createCardTile(category, card)));
   if (renderId !== state.categoryRenderId) return;
+  $('cardGrid').classList.toggle('synergy-card-grid', category.slug === 'sinergias');
   $('cardGrid').replaceChildren(...tiles);
   const failed = category.cartas.filter(card => card.imageError).length;
   $('pdfButton').disabled = failed > 0;
-  for (const card of category.cartas) {
-    const button = card.canvas.closest('.card-tile').querySelector('.card-actions button');
-    button.disabled = Boolean(card.imageError);
+  if (category.slug !== 'sinergias') {
+    for (const card of category.cartas) {
+      const button = card.canvas.closest('.card-tile').querySelector('.card-actions button');
+      button.disabled = Boolean(card.imageError);
+    }
   }
-  setStatus(failed ? `${failed} ilustraciones no se pudieron cargar; corrige sus rutas antes de exportar.` : `${category.cartas.length} cartas listas para descargar.`);
+  const pending = category.slug === 'sinergias'
+    ? category.cartas.filter(card => !card.imagen).length
+    : 0;
+  setStatus(failed
+    ? `${failed} ilustraciones no se pudieron cargar; corrige sus rutas antes de exportar.`
+    : pending
+      ? `${category.cartas.length} sinergias listas; ${pending} ilustraciones pendientes se marcarán en el PDF.`
+      : `${category.cartas.length} ${category.slug === 'sinergias' ? 'sinergias listas para descargar.' : 'cartas listas para descargar.'}`);
 }
 
 function showCategories() {
@@ -1000,9 +1324,11 @@ function showCategories() {
   rulebookTab.addEventListener('click', showRulebook);
   tabs.append(rulebookTab);
   const totalCards = completeDeckCardCount();
-  $('printCompleteButton').disabled = totalCards === 0;
-  $('printCompleteButton').textContent = totalCards
-    ? `Guardar PDF completo · ${totalCards} cartas`
+  const deckCount = standardDeckCardCount();
+  const synergiesCount = synergyCardCount();
+  $('completePdfButton').disabled = totalCards === 0;
+  $('completePdfButton').textContent = totalCards
+    ? `Descargar PDF completo · ${deckCount} cartas + ${synergiesCount} sinergias`
     : 'PDF completo no disponible';
   if (state.categories.length) renderCategory(state.categories[0]);
 }
@@ -1070,6 +1396,21 @@ $('projectFolderInput').addEventListener('change', event => {
 $('pdfButton').addEventListener('click', async () => {
   const category = state.categories.find(item => item.slug === state.activeSlug);
   if (!category || !category.cartas.length) return;
+  if (category.slug === 'sinergias') {
+    try {
+      $('pdfButton').disabled = true;
+      setStatus('Generando el PDF A4 de sinergias…');
+      const pdf = await createSynergyPdf(category);
+      downloadBlob(pdf, 'sinergias-cartas-a4.pdf');
+      setStatus(`PDF descargado: ${printableCards(category).length} sinergias, con anverso y explicación lado a lado.`);
+    } catch (error) {
+      console.error(error);
+      setStatus(error.message || 'No se pudo generar el PDF de sinergias.', true);
+    } finally {
+      $('pdfButton').disabled = category.cartas.some(card => card.imageError);
+    }
+    return;
+  }
   const printableCount = printableCards(category).length;
   try {
     $('pdfButton').disabled = true;
@@ -1085,28 +1426,38 @@ $('pdfButton').addEventListener('click', async () => {
   }
 });
 
-$('printRulebookButton').addEventListener('click', () => {
-  if (!$('rulebookPanel').hidden) window.print();
+$('rulebookPdfButton').addEventListener('click', async () => {
+  const button = $('rulebookPdfButton');
+  if ($('rulebookPanel').hidden) return;
+  button.disabled = true;
+  try {
+    setCompletePdfStatus('Generando el PDF del reglamento y sus cinco tableros…');
+    const pdf = await createRulebookPdf();
+    downloadBlob(pdf, 'ese-gato-es-mio-reglamento.pdf');
+    setCompletePdfStatus('PDF del reglamento descargado: siete páginas de reglas y cinco tableros.');
+  } catch (error) {
+    console.error(error);
+    setCompletePdfStatus(error.message || 'No se pudo generar el PDF del reglamento.');
+  } finally {
+    button.disabled = false;
+  }
 });
 
-$('printCompleteButton').addEventListener('click', async () => {
-  const button = $('printCompleteButton');
+$('completePdfButton').addEventListener('click', async () => {
+  const button = $('completePdfButton');
   if ($('rulebookPanel').hidden || !state.categories.length) return;
   button.disabled = true;
   try {
-    const count = completeDeckCardCount();
-    setCompletePdfStatus(`Preparando reglamento y ${count} cartas a tamaño real…`);
-    await prepareCompletePrintDeck();
-    setCompletePdfStatus(`Documento listo: primero el reglamento y sus cinco tableros, después ${count} cartas físicas.`);
-    window.print();
+    const deckCount = standardDeckCardCount();
+    const synergiesCount = synergyCardCount();
+    setCompletePdfStatus(`Generando PDF completo: reglamento, ${deckCount} cartas y ${synergiesCount} sinergias…`);
+    const pdf = await createCompletePdf();
+    downloadBlob(pdf, 'ese-gato-es-mio-completo.pdf');
+    setCompletePdfStatus(`PDF completo descargado: reglamento y cinco tableros; después ${deckCount} cartas y ${synergiesCount} sinergias con sus caras lado a lado.`);
   } catch (error) {
     console.error(error);
-    document.body.classList.remove('print-complete-deck');
-    clearCompletePrintDeck();
     setCompletePdfStatus(error.message || 'No se pudo preparar el PDF completo.');
   } finally {
-    document.body.classList.remove('print-complete-deck');
-    clearCompletePrintDeck();
     button.disabled = false;
   }
 });

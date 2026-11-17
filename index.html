@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#f3eee4">
   <title>¡Ese gato es mío! — Catálogo de cartas</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    integrity="sha384-ZZ1pncU3bQe8y31yfZdMFdSpttDoPmOZg2wguVK9almUodir1PghgT0eY7Mrty8H"
+    crossorigin="anonymous" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -13,7 +16,7 @@
     <div class="brand">
       <p class="eyebrow">CATÁLOGO DE CARTAS</p>
       <h1>¡Ese gato es mío!</h1>
-      <p class="subtitle">Cartas listas para revisar, descargar e imprimir.</p>
+      <p class="subtitle">Cartas listas para revisar y descargar.</p>
     </div>
     <div class="top-actions">
       <button id="folderButton" class="button secondary" type="button">Recargar catálogo</button>
@@ -44,11 +47,11 @@
             <p class="eyebrow">REGLAMENTO DE JUEGO</p>
             <h2 id="rulebookTitle">¡Ese gato es mío!</h2>
             <p>Guía de juego con siete páginas de reglas y cinco tableros A4 horizontales.</p>
-            <p id="completePdfStatus" class="complete-pdf-status" role="status" aria-live="polite">Se abrirá la impresión para guardar un solo PDF: primero el reglamento y después todas las cartas a tamaño real. Selecciona escala 100 %. Para imprimir tableros sin recortar la zona de Estructuras, usa impresión sin bordes.</p>
+            <p id="completePdfStatus" class="complete-pdf-status" role="status" aria-live="polite">Los botones generan y descargan directamente un PDF. El completo contiene primero el reglamento y sus cinco tableros, después las cartas a tamaño real y, al final, las sinergias con sus dos caras lado a lado.</p>
           </div>
           <div class="rulebook-actions">
-            <button id="printRulebookButton" class="button secondary" type="button">Imprimir solo el reglamento</button>
-            <button id="printCompleteButton" class="button primary" type="button" disabled>Imprimir / Guardar PDF completo</button>
+            <button id="rulebookPdfButton" class="button secondary" type="button">Descargar PDF del reglamento</button>
+            <button id="completePdfButton" class="button primary" type="button" disabled>Descargar PDF completo</button>
           </div>
         </div>
 
@@ -364,7 +367,6 @@
             </div>
           </figure>
         </article>
-        <section id="printDeck" class="print-deck" aria-label="Todas las cartas a tamaño real"></section>
       </section>
     </section>
   </main>

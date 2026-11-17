@@ -2,9 +2,9 @@
 
 ## Propósito
 
-Este repositorio contiene una galería web local y los recursos para diseñar, revisar e imprimir las cartas del juego de mesa «¡Ese gato es mío!». La galería lee las categorías desde YAML, monta las ilustraciones en una plantilla común y permite descargar PNG individuales o un PDF A4 listo para imprimir. También incluye una pestaña de reglamento con siete páginas de reglas en vertical y cinco tableros A4 en horizontal, imprimibles o guardables como un único PDF.
+Este repositorio contiene una galería web local y los recursos para diseñar, revisar y descargar las cartas del juego de mesa «¡Ese gato es mío!». La galería lee las categorías desde YAML, monta las ilustraciones en una plantilla común y permite descargar PNG individuales o PDFs A4 listos para imprimir. También incluye una pestaña de reglamento con siete páginas de reglas en vertical y cinco tableros A4 en horizontal, disponibles en PDF.
 
-La aplicación es estática: HTML, CSS y JavaScript, sin servidor, dependencias ni proceso de compilación. Los archivos se procesan en el navegador y no se suben a Internet.
+La aplicación es estática: HTML, CSS y JavaScript, sin servidor ni proceso de compilación. Los archivos se procesan en el navegador y no se suben a Internet. Para crear PDFs descargables del reglamento se carga html2canvas 1.4.1 desde cdnjs con integridad verificada.
 
 ## Estado actual
 
@@ -14,6 +14,7 @@ La aplicación es estática: HTML, CSS y JavaScript, sin servidor, dependencias 
 - **Acciones:** 16 tipos en la galería (19 acciones, 4 objetos y 4 respuestas), con cuatro ilustraciones distintas para Flús-Flús de Agua.
 - **Consumibles:** 4 tipos y 8 copias físicas.
 - **Eventos Globales:** 5 tipos y 5 copias configuradas, con ilustraciones para Hora de la Siesta, Perro del Vecino, Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
+- **Sinergias:** 8 cartas de referencia de 63,5 × 88 mm, con la imagen ocupando todo el anverso y la explicación al lado; ambos lados llevan borde ámbar. Las ilustraciones pendientes se indican claramente.
 - **Mazo:** 94 cartas físicas según las cantidades configuradas actualmente en los YAML; el reglamento revisado aún deja pendiente confirmar el total final.
 - **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_revisado.txt](./Ese_gato_es_mio_reglamento_revisado.txt), un borrador de trabajo con decisiones propuestas y puntos pendientes.
 - **Reglamento web:** la pestaña **Reglamento** resume la preparación, incluye esquemas simplificado y completo del turno, explica el combate, las estructuras, los eventos y las sinergias acordadas, y muestra cinco variantes del tablero.
@@ -29,11 +30,12 @@ Cada categoría tiene una pestaña. La galería muestra una carta por tipo. La p
 
 - **Descargar PNG** descarga ese tipo de carta como PNG a 720 DPI.
 - **Descargar PDF A4** genera el conjunto de la categoría, con hasta nueve cartas por página, separación de 3 mm y marcas de corte.
-- **Imprimir / Guardar PDF A4** abre el diálogo de impresión del navegador para imprimir el reglamento o guardarlo como PDF. Las reglas usan orientación vertical; cada tablero ocupa la página A4 horizontal completa. Para que las cartas físicas encajen, la imagen de cada tablero se amplía al 105 % y se recortan ligeramente sus bordes. Una impresora física puede necesitar impresión sin bordes para no recortar la zona de Estructuras.
-- **Guardar PDF completo** desde la pestaña Reglamento prepara un único documento con el reglamento y los cinco tableros primero, seguidos de todas las copias del mazo en páginas A4. Se abre el diálogo de impresión del navegador: elige «Guardar como PDF» y escala «Tamaño real» o «100 %». Las cartas se colocan a su tamaño físico configurado.
+- **Descargar PDF del reglamento** descarga directamente las siete páginas de reglas y los cinco tableros; las reglas son A4 vertical y cada tablero A4 horizontal.
+- **Descargar PDF completo** genera un único archivo: reglamento y tableros, las 94 cartas del mazo en páginas A4, y las ocho sinergias al final, con imagen y explicación lado a lado. No abre el diálogo de impresión.
+- La pestaña **Sinergias** tiene su propio botón **Descargar PDF A4**. Cada pareja ocupa dos cartas normales de 63,5 × 88 mm, colocadas una al lado de la otra; no se prepara para impresión dúplex. Las ilustraciones aún no asignadas aparecen marcadas como pendientes.
 - En Ataques, Estructuras, Acciones, Consumibles y Eventos Globales, el PDF repite cada carta según su campo `copias`; cada ilustración se puede descargar como PNG individual.
 
-Al imprimir, selecciona tamaño real o escala del 100 % para conservar las dimensiones.
+Los PDFs de cartas ya incluyen su tamaño físico y no necesitan que se seleccione una escala en un diálogo de impresión.
 
 ## Estructura de archivos
 
@@ -136,6 +138,10 @@ Cada consumible define `nombre`, `imagen`, `tipo: "consumible"`, `copias` y `des
 ### Eventos Globales
 
 Cada evento define `nombre`, `imagen`, `tipo: "evento_global"`, `copias` y `descripcion`. Los eventos globales no son cancelables según el reglamento. La categoría incluye Hora de la Siesta, Perro del Vecino, Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
+
+### Sinergias
+
+Las ocho sinergias y explicaciones se mantienen en `cartas/sinergias/categoria.yml`. `imagen` es opcional; al añadir una ilustración, registra su ruta relativa al YAML. La carta muestra la ilustración completa en un lado y el nombre y la explicación en el otro, ambos con borde ámbar.
 
 ### Añadir una categoría nueva
 
