@@ -23,19 +23,273 @@
 
   <main>
     <section class="catalogue">
-      <nav id="categoryTabs" class="category-tabs" aria-label="Categorías de cartas"></nav>
-      <div class="category-heading">
-        <div class="category-heading-title">
-          <img id="categoryIcon" class="category-icon" alt="" aria-hidden="true">
-          <div>
-            <p class="eyebrow">COLECCIÓN</p>
-            <h2 id="categoryTitle">Cargando cartas…</h2>
+      <nav id="categoryTabs" class="category-tabs" role="tablist" aria-label="Categorías y reglamento"></nav>
+      <div id="categoryPanel" role="tabpanel">
+        <div class="category-heading">
+          <div class="category-heading-title">
+            <img id="categoryIcon" class="category-icon" alt="" aria-hidden="true">
+            <div>
+              <p class="eyebrow">COLECCIÓN</p>
+              <h2 id="categoryTitle">Cargando cartas…</h2>
+            </div>
           </div>
+          <p id="status" class="status" role="status" aria-live="polite">Preparando el catálogo…</p>
         </div>
-        <p id="status" class="status" role="status" aria-live="polite">Preparando el catálogo…</p>
+        <div id="emptyState" class="empty-state" hidden></div>
+        <div id="cardGrid" class="card-grid"></div>
       </div>
-      <div id="emptyState" class="empty-state" hidden></div>
-      <div id="cardGrid" class="card-grid"></div>
+      <section id="rulebookPanel" class="rulebook-panel" role="tabpanel" aria-labelledby="rulebookTab" hidden>
+        <div class="rulebook-toolbar">
+          <div>
+            <p class="eyebrow">REGLAMENTO DE JUEGO</p>
+            <h2 id="rulebookTitle">¡Ese gato es mío!</h2>
+            <p>Guía rápida de preparación, turnos, combate y efectos.</p>
+          </div>
+          <button id="printRulebookButton" class="button primary" type="button">Imprimir / Guardar PDF A4</button>
+        </div>
+
+        <article class="rulebook-page" aria-label="Página 1: objetivo y preparación">
+          <header class="rulebook-page-header">
+            <span class="rulebook-kicker">01 · EMPIEZA AQUÍ</span>
+            <h2>Una casa, dos zonas y una colonia prestigiosa</h2>
+            <p class="rulebook-lead">Acomoda a tus gatos, aprovecha sus habilidades y gana prestigio antes que tus vecinos.</p>
+          </header>
+          <div class="rulebook-columns">
+            <section class="rulebook-card rulebook-highlight">
+              <h3>Objetivo</h3>
+              <p>En partidas de 2 a 5 jugadores, alcanza el objetivo de prestigio durante tu propio turno. Si ya lo cumples al empezar, resuelve los efectos de inicio y comprueba la victoria. Llegar a la cifra durante el turno de otra persona no gana la partida por ti.</p>
+              <table class="rulebook-table">
+                <tbody>
+                  <tr><th>Jugadores</th><th>Objetivo</th></tr>
+                  <tr><td>2</td><td>15 puntos</td></tr>
+                  <tr><td>3 o 4</td><td>13 puntos</td></tr>
+                  <tr><td>5</td><td>12 puntos</td></tr>
+                </tbody>
+              </table>
+            </section>
+            <section class="rulebook-card">
+              <h3>Preparación</h3>
+              <ol class="rulebook-steps">
+                <li>Baraja el mazo y reparte 4 cartas a cada jugador.</li>
+                <li>Si recibes 3 o más gatos, devuelve las 4 cartas, baraja y repite el reparto.</li>
+                <li>Al inicio, coloca tus gatos en el Salón; las demás cartas forman tu mano.</li>
+                <li>Empieza quien tenga menos gatos. Desempata con el registro de la partida anterior o al azar.</li>
+              </ol>
+            </section>
+          </div>
+          <section class="rulebook-card">
+            <h3>Tu casa</h3>
+            <div class="rulebook-zones">
+              <div class="rulebook-zone rulebook-zone-sofa">
+                <strong>Sofá · 3 espacios</strong>
+                <span>Las habilidades sin zona indicada se activan aquí.</span>
+                <div class="sofa-seats" aria-hidden="true"><i></i><i></i><i></i></div>
+              </div>
+              <div class="rulebook-zone rulebook-zone-salon">
+                <strong>Salón · sin límite</strong>
+                <span>Los gatos aquí siguen contando como parte de tu casa.</span>
+                <div class="salon-cats" aria-hidden="true">🐈　🐈‍⬛　🐈</div>
+              </div>
+            </div>
+            <p class="rulebook-note">Cada gato aporta el prestigio indicado para su zona. El Gato Gordo cuenta como un gato, pero ocupa 2 espacios del Sofá. Los gatos que entran en tu casa después de la preparación se colocan en el Sofá o el Salón, a tu elección.</p>
+          </section>
+          <footer class="rulebook-page-footer">¡Ese gato es mío! · Guía de juego · 1 / 7</footer>
+        </article>
+
+        <article class="rulebook-page" aria-label="Página 2: desarrollo del turno">
+          <header class="rulebook-page-header">
+            <span class="rulebook-kicker">02 · TU TURNO</span>
+            <h2>De la primera carta al último movimiento</h2>
+            <p class="rulebook-lead">Sigue este orden. Las acciones principales y los movimientos gatunos son cosas distintas.</p>
+          </header>
+          <ol class="rulebook-timeline">
+            <li>
+              <span class="timeline-number">1</span>
+              <div><h3>Inicio</h3><p>Retira los efectos que caducan. Después resuelve las recompensas pendientes. Desde el comienzo de tu turno puedes ganar, una vez resuelto el efecto en curso.</p></div>
+            </li>
+            <li>
+              <span class="timeline-number">2</span>
+              <div><h3>Robo</h3><p>Roba 1 carta. Bebé, si está solo en el Sofá, o Comedero pueden añadir como máximo 1 carta adicional al robo inicial. Mapache recupera la última carta del descarte y sustituye ese robo completo y sus bonificaciones. Si terminas con menos de 3 cartas, repón hasta 3; hasta 4 con Metódico o 5 con Control de Inventario, usando el objetivo mayor.</p></div>
+            </li>
+            <li>
+              <span class="timeline-number">3</span>
+              <div><h3>Preparación</h3><p>Activa las habilidades disponibles en el Sofá, en este orden: Curioso, Trillizos, Escalador y Rascador. Curioso descarta 1, mira las 3 primeras y conserva 1; devuelve las demás al fondo. Escalador concede un movimiento adicional. Para una habilidad con coste debes poder pagarlo entero.</p></div>
+            </li>
+            <li>
+              <span class="timeline-number">4</span>
+              <div><h3>Acciones principales</h3><p>Empiezas con 1 acción. Cada acción permite jugar una carta o declarar un ataque. Las acciones adicionales se acumulan en esta fase; no conceden movimientos gatunos.</p></div>
+            </li>
+            <li>
+              <span class="timeline-number">5</span>
+              <div><h3>Movimiento y cierre</h3><p>Después de las acciones, puedes mover 1 gato entre tu Sofá y Salón, subirlo, bajarlo o intercambiarlo. Respeta los espacios del Sofá. Al final, descarta hasta tu límite de mano: normalmente 7, o 9 con el Gato Acaparador.</p></div>
+            </li>
+          </ol>
+          <div class="rulebook-columns">
+            <section class="rulebook-card">
+              <h3>Robo de gatos</h3>
+              <p>Un gato robado del mazo o recuperado va directamente a tu casa, no a tu mano. Al robar N cartas, cada gato cuenta dentro de esas N y no se reemplaza. La reposición por mano baja continúa hasta alcanzar su objetivo.</p>
+            </section>
+            <section class="rulebook-card rulebook-highlight">
+              <h3>Trillizos</h3>
+              <p>Una vez en Preparación, descarta y roba tantas cartas como Trillizos tengas en el Sofá. Debes poder pagar el descarte completo. Si sale un gato, entra en tu casa y cuenta dentro de ese robo.</p>
+            </section>
+          </div>
+          <footer class="rulebook-page-footer">Las acciones extra no se guardan para el turno siguiente · 2 / 7</footer>
+        </article>
+
+        <article class="rulebook-page" aria-label="Página 3: esquema simplificado del turno">
+          <header class="rulebook-page-header">
+            <span class="rulebook-kicker">03 · ESQUEMA SIMPLIFICADO</span>
+            <h2>El turno, de un vistazo</h2>
+            <p class="rulebook-lead">Una guía rápida del orden habitual. Las habilidades y excepciones aparecen en el esquema completo.</p>
+          </header>
+          <ol class="turn-flow">
+            <li><span class="turn-flow-number">1</span><div><h3>Inicio del turno</h3></div></li>
+            <li><span class="turn-flow-number">2.1</span><div><h3>Robo inicial</h3><p>Roba 1 carta.</p></div></li>
+            <li><span class="turn-flow-number">2.2</span><div><h3>Reposición por mano baja</h3><p>Si tienes menos de 3 cartas, roba hasta tener 3.</p></div></li>
+            <li><span class="turn-flow-number">3</span><div><h3>Fase de acción</h3><p>Por cada acción, juega 1 carta o declara 1 ataque.</p></div></li>
+            <li><span class="turn-flow-number">4</span><div><h3>Movimiento gatuno · opcional</h3><p>Sube, baja o intercambia 1 gato entre el Sofá y el Salón.</p></div></li>
+            <li><span class="turn-flow-number">5</span><div><h3>Cierre del turno</h3><p>Descarta hasta un máximo de 7 cartas. Terminan los efectos de este turno.</p></div></li>
+            <li><span class="turn-flow-number" aria-hidden="true">→</span><div><h3>Turno del siguiente jugador</h3></div></li>
+          </ol>
+          <aside class="rulebook-callout"><strong>Excepciones:</strong> el límite de mano es 9 con Gato Acaparador. Para los robos especiales, habilidades y movimientos adicionales, sigue el esquema completo.</aside>
+          <footer class="rulebook-page-footer">Resumen del turno habitual · 3 / 7</footer>
+        </article>
+
+        <article class="rulebook-page" aria-label="Página 4: esquema completo del turno">
+          <header class="rulebook-page-header">
+            <span class="rulebook-kicker">04 · ESQUEMA COMPLETO</span>
+            <h2>El turno, paso a paso</h2>
+            <p class="rulebook-lead">Las habilidades solo se aplican si están activas y se cumplen sus condiciones. Puedes omitir las activaciones opcionales. Las alternativas del robo inicial son excluyentes.</p>
+          </header>
+          <ol class="turn-flow turn-flow-detailed">
+            <li><span class="turn-flow-number">1</span><div><h3>Inicio del turno</h3></div></li>
+            <li><span class="turn-flow-number">1.1</span><div><h3>Efectos de inicio</h3><p>Cama · Ronroneo · Siesta · Huelga. Caducan los efectos que terminan ahora; después se resuelve Ronroneo.</p></div></li>
+            <li>
+              <span class="turn-flow-number">2.1</span>
+              <div>
+                <h3>Robo inicial · elige una alternativa</h3>
+                <div class="turn-flow-branches">
+                  <section><strong>Robo habitual</strong><p>Roba 1 carta. Bebé, si está solo en el Sofá, o Comedero añaden 1. Máximo: 2 cartas.</p></section>
+                  <section><strong>O Mapache</strong><p>Recupera la última carta del descarte. Sustituye todo el robo inicial y sus bonificaciones.</p></section>
+                </div>
+              </div>
+            </li>
+            <li><span class="turn-flow-number">2.2</span><div><h3>Reposición por mano baja</h3><p>Si tienes menos de 3 cartas, roba hasta: normal, 3 · Metódico, 4 · Control de Inventario, 5.</p></div></li>
+            <li><span class="turn-flow-number">3.1</span><div><h3>Curioso · opcional</h3><p>Descarta 1, mira las 3 primeras cartas y elige 1.</p></div></li>
+            <li><span class="turn-flow-number">3.2</span><div><h3>Trillizos · opcional</h3><p>Descarta y roba tantas cartas como Trillizos tengas en el Sofá.</p></div></li>
+            <li><span class="turn-flow-number">3.3</span><div><h3>Escalador · opcional</h3><p>Realiza 1 movimiento gatuno adicional.</p></div></li>
+            <li><span class="turn-flow-number">3.4</span><div><h3>Rascador · opcional</h3><p>Descarta 2 cartas para dar +1 de potencia a tu primer ataque del turno.</p></div></li>
+            <li><span class="turn-flow-number">3.5</span><div><h3>Uso de acciones</h3><p>Empiezas con 1 acción principal. Por cada acción, juega 1 carta o declara 1 ataque. Puedes encadenar cartas que den acciones extra. Resuelve cada carta y sus respuestas.</p></div></li>
+            <li><span class="turn-flow-number">4</span><div><h3>Movimiento gatuno · opcional</h3><p>Sube, baja o intercambia 1 gato entre el Sofá y el Salón.</p></div></li>
+            <li><span class="turn-flow-number">5</span><div><h3>Cierre del turno</h3><p>Descarta el exceso de mano. Límite: 7 cartas · 9 con Acaparador. Terminan los efectos de este turno; las acciones sobrantes se pierden.</p></div></li>
+            <li><span class="turn-flow-number" aria-hidden="true">→</span><div><h3>Turno del siguiente jugador</h3></div></li>
+          </ol>
+          <footer class="rulebook-page-footer">Si una habilidad modifica estos pasos, sigue su texto y las reglas de su carta · 4 / 7</footer>
+        </article>
+
+        <article class="rulebook-page" aria-label="Página 5: combate y respuestas">
+          <header class="rulebook-page-header">
+            <span class="rulebook-kicker">05 · COMBATE</span>
+            <h2>Ataca, defiende y resuelve</h2>
+            <p class="rulebook-lead">Un ataque cuesta 1 acción principal. El objetivo puede ser un gato o una estructura atacable.</p>
+          </header>
+          <ol class="combat-flow">
+            <li><strong>Atacante:</strong> declara objetivo y fija su carta de Ataque y los Apoyos que quiera; los mantiene ocultos.</li>
+            <li><strong>Ratón:</strong> quien recibe el ataque puede redirigirlo. Se permiten desvíos sucesivos si hay más Ratones. Cada nuevo objetivo debe ser un gato o estructura de cualquier casa, salvo la del atacante y la Cama de Peluche.</li>
+            <li><strong>Defensor:</strong> el propietario del objetivo final puede usar cualquier carta de Ataque como defensa y añadir tantos Apoyos como quiera.</li>
+            <li><strong>Espía o Cotilla:</strong> después de que el defensor elija su defensa, se revela el Ataque y sus Apoyos a toda la mesa; la defensa ya no cambia. Espía se juega como respuesta: consume esa carta, sin gastar acción ni descartar otra. Cotilla requiere descartar 1 carta.</li>
+            <li><strong>Resultado:</strong> revelad y sumad las potencias. Sin defensa, el Ataque tiene éxito. Con defensa, debe superar su potencia; el empate favorece al defensor.</li>
+          </ol>
+          <div class="rulebook-columns">
+            <section class="rulebook-card rulebook-highlight">
+              <h3>Si el ataque tiene éxito</h3>
+              <p><strong>Contra un gato:</strong> el atacante lo captura y pasa a ser su propietario. Quien lo captura elige Sofá o Salón. Durante Huelga también puede capturarlo, pero después no podrá moverlo hasta que termine el evento.</p>
+              <p><strong>Contra una estructura:</strong> se destruye si no es la Cama de Peluche. La Cama no puede elegirse como objetivo.</p>
+            </section>
+            <section class="rulebook-card">
+              <h3>Apoyos y potencia</h3>
+              <p>Los Apoyos se suman a una carta de Ataque o Defensa; no atacan ni defienden por sí solos. No hay límite de Apoyos por combate.</p>
+              <p>Ataque en Manada cuenta tus gatos de ambas zonas. Manguerazo Frío cuenta los del defensor final tras los desvíos.</p>
+            </section>
+          </div>
+          <aside class="rulebook-callout">
+            <strong>Ratón no cancela:</strong> cambia el objetivo y el nuevo propietario defiende. No puede redirigir a la casa del atacante ni a la Cama. Si se cancela Ratón, se conserva el objetivo original.
+          </aside>
+          <footer class="rulebook-page-footer">Si alcanzas el objetivo de prestigio durante tu turno, ganas al terminar de resolver el efecto y sus respuestas · 5 / 7</footer>
+        </article>
+
+        <article class="rulebook-page" aria-label="Página 6: estructuras y eventos globales">
+          <header class="rulebook-page-header">
+            <span class="rulebook-kicker">06 · ESTRUCTURAS Y EVENTOS</span>
+            <h2>Protege tu casa; prepárate para el caos</h2>
+          </header>
+          <div class="rulebook-columns">
+            <section class="rulebook-card">
+              <h3>Estructuras</h3>
+              <ul class="rulebook-list">
+                <li>Cada jugador puede tener 1 estructura activa. Si juegas otra, la anterior se descarta.</li>
+                <li>Un ataque exitoso destruye cualquier estructura salvo la Cama de Peluche, que no puede ser objetivo.</li>
+                <li><strong>Caja de Cartón:</strong> protege tus gatos de ataques directos.</li>
+                <li><strong>Fortaleza Gatuna:</strong> protege tus gatos de ataques directos y acciones rivales; no protege otras estructuras. Puedes usar tus propias acciones sobre tus gatos protegidos.</li>
+                <li><strong>Comedero Automático:</strong> añade 1 carta al robo inicial; no se acumula con otras fuentes de bonificación inicial.</li>
+                <li><strong>Rascador:</strong> en Preparación, descarta 2 cartas para que tu primer ataque tenga +1.</li>
+                <li><strong>Cama de Peluche:</strong> elige y vincula la Cama a un gato. No se puede atacar ni mover hasta el siguiente turno de su dueño; la Cama se descarta al inicio de ese turno.</li>
+              </ul>
+            </section>
+            <section class="rulebook-card rulebook-highlight">
+              <h3>Eventos globales</h3>
+              <p>Afectan a todos, también a quien los juega. No se cancelan con Flús-Flús.</p>
+              <ul class="rulebook-list">
+                <li><strong>Hora de la Siesta:</strong> desactiva habilidades y sinergias hasta tu próximo turno, pero no inmoviliza a los gatos. Se mantienen las puntuaciones, los 7/0 de Solitario y la colocación física Gordo–Desnutrido; la inmunidad de Solitario queda anulada.</li>
+                <li><strong>Perro del Vecino:</strong> cada jugador mueve 1 gato del Sofá al Salón si puede. La Cama impide mover al gato protegido.</li>
+                <li><strong>Reparto de Juguetes:</strong> todos pasan 1 carta boca abajo a la izquierda, simultáneamente. Quien no tenga cartas no entrega, pero puede recibir.</li>
+                <li><strong>Visita al Veterinario:</strong> con 1–3 gatos, descarta 1 carta; con 4 o más, descarta 2. Con 0, no descartas.</li>
+                <li><strong>Huelga de Gatos:</strong> hasta el inicio del próximo turno de quien la jugó, se omiten los movimientos gatunos y las cartas que moverían gatos. Excepción: se puede capturar en combate; quien captura lo coloca en una zona elegida y el gato no vuelve a moverse hasta que acabe la Huelga.</li>
+              </ul>
+            </section>
+          </div>
+          <aside class="rulebook-callout">
+            <strong>No te muevas, estoy cómodo:</strong> el objetivo pierde en su próximo turno el robo, las habilidades de Preparación, las acciones y el movimiento habitual. Resuelve los efectos de inicio y el cierre; puede ganar si alcanza el objetivo durante ese turno.
+          </aside>
+          <footer class="rulebook-page-footer">Ovillo puede recuperar cualquier carta del descarte, incluidos gatos si alguno llega allí · 6 / 7</footer>
+        </article>
+
+        <article class="rulebook-page" aria-label="Página 7: sinergias y consulta rápida">
+          <header class="rulebook-page-header">
+            <span class="rulebook-kicker">07 · SINERGIAS Y CONSULTA</span>
+            <h2>Gatos que hacen equipo</h2>
+            <p class="rulebook-lead">Salvo que se indique otra condición, las parejas deben estar juntas en el Sofá.</p>
+          </header>
+          <div class="synergy-grid">
+            <section class="synergy-card"><h3>¡Que me aplastas!</h3><p>Gordo + Desnutrido: coloca al Desnutrido bajo el Gordo; no ocupa espacio adicional.</p></section>
+            <section class="synergy-card"><h3>Veteranos del barrio</h3><p>Matón + Territorial: se anulan sus bonificaciones individuales; la pareja obtiene +2 prestigio en total.</p></section>
+            <section class="synergy-card"><h3>Socios de información</h3><p>Cotilla + Curioso: Cotilla no descarta para mirar; Curioso mira 4 cartas en lugar de 3.</p></section>
+            <section class="synergy-card"><h3>Control de inventario</h3><p>Metódico + Acaparador: si acabas el robo con menos de 3 cartas, repón hasta 5. Sustituye el objetivo de Metódico.</p></section>
+            <section class="synergy-card"><h3>Saqueadores envidiosos</h3><p>Envidiosa + Mapache: al destruir una estructura rival con un ataque, puedes descartar 1 carta para recuperar esa estructura del descarte.</p></section>
+            <section class="synergy-card"><h3>Pareja yin-yang</h3><p>Diurno + Nocturno: la pareja obtiene +1 prestigio adicional en total.</p></section>
+            <section class="synergy-card"><h3>¡Porque solo a mí!</h3><p>Victimista + Escalador: si ambos están en el Sofá al inicio y Victimista sale durante tu turno, roba 1 carta. No puede volver al Sofá ese turno.</p></section>
+            <section class="synergy-card"><h3>Los Trillizos</h3><p>Con los tres en el Sofá, obtienes +2 prestigio además de sus puntos base.</p></section>
+          </div>
+          <div class="rulebook-columns rulebook-faq">
+            <section class="rulebook-card">
+              <h3>Preguntas rápidas</h3>
+              <p><strong>¿Empate en combate?</strong> Gana la defensa.</p>
+              <p><strong>¿Acción extra = movimiento?</strong> No. Solo permite otra carta o ataque.</p>
+              <p><strong>¿Puedo ganar en turno ajeno?</strong> No. Debe ser tu turno.</p>
+              <p><strong>¿Solitario está protegido?</strong> En el Sofá vale 7 puntos si está solo y 0 si está acompañado; en el Salón vale 2. Solo cancela Acciones cancelables que lo elijan directamente si está solo.</p>
+              <p><strong>¿Ronroneo si un gato sale y vuelve?</strong> No: si cualquiera de los dos sale del Sofá antes de tu siguiente turno, ambos pierden la bonificación.</p>
+              <p><strong>¿Se agota el mazo?</strong> Baraja los descartes para formar uno nuevo. Si tampoco quedan descartes, termina el robo.</p>
+            </section>
+            <section class="rulebook-card">
+              <h3>Flús-Flús</h3>
+              <p>Las cartas de Acción marcadas pueden cancelarse. Cualquier jugador puede responder, incluso a favor de otro. Un Flús-Flús puede cancelar otro; las cadenas se resuelven desde el último al primero. La acción gastada no se recupera.</p>
+              <p>Ataques, Apoyos, estructuras, consumibles y eventos globales no se cancelan con Flús-Flús.</p>
+            </section>
+          </div>
+          <footer class="rulebook-page-footer">Consulta los textos de las cartas para sus efectos concretos · ¡Que empiece la guerra de postureo! · 7 / 7</footer>
+        </article>
+      </section>
     </section>
   </main>
 

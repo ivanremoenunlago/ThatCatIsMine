@@ -854,6 +854,10 @@ async function createPdf(category) {
 async function renderCategory(category) {
   const renderId = ++state.categoryRenderId;
   state.activeSlug = category.slug;
+  $('categoryPanel').hidden = false;
+  $('rulebookPanel').hidden = true;
+  $('pdfButton').hidden = false;
+  document.title = `¡Ese gato es mío! — ${category.nombre}`;
   const printableCount = printableCards(category).length;
   const hasCopyCounts = category.cartas.some(card => Number.isInteger(card.copias));
   const typeCount = cardTypeCount(category);
@@ -912,10 +916,31 @@ function showCategories() {
     button.dataset.slug = category.slug;
     button.setAttribute('role', 'tab');
     button.setAttribute('aria-selected', 'false');
+    button.setAttribute('aria-controls', 'categoryPanel');
     button.addEventListener('click', () => renderCategory(category));
     tabs.append(button);
   }
+  const rulebookTab = document.createElement('button');
+  rulebookTab.id = 'rulebookTab';
+  rulebookTab.type = 'button';
+  rulebookTab.className = 'tab-button';
+  rulebookTab.textContent = 'Reglamento';
+  rulebookTab.setAttribute('role', 'tab');
+  rulebookTab.setAttribute('aria-selected', 'false');
+  rulebookTab.setAttribute('aria-controls', 'rulebookPanel');
+  rulebookTab.addEventListener('click', showRulebook);
+  tabs.append(rulebookTab);
   if (state.categories.length) renderCategory(state.categories[0]);
+}
+
+function showRulebook() {
+  $('categoryPanel').hidden = true;
+  $('rulebookPanel').hidden = false;
+  $('pdfButton').hidden = true;
+  document.title = '¡Ese gato es mío! — Reglamento';
+  for (const button of $('categoryTabs').querySelectorAll('[role="tab"]')) {
+    button.setAttribute('aria-selected', String(button.id === 'rulebookTab'));
+  }
 }
 
 async function loadProject(files=null) {
@@ -984,6 +1009,10 @@ $('pdfButton').addEventListener('click', async () => {
   } finally {
     $('pdfButton').disabled = !category.cartas.length || category.cartas.some(card => card.imageError);
   }
+});
+
+$('printRulebookButton').addEventListener('click', () => {
+  if (!$('rulebookPanel').hidden) window.print();
 });
 
 $('folderButton').dataset.action = 'reload';

@@ -153,7 +153,7 @@ Ronroneo
 Descripción: Elige 2 gatos del Sofá y cúbrelos con esta carta. Si siguen allí al inicio de tu próximo turno, obtienen +1 punto cada uno ese turno. Luego, descártala.
 
 Espía de Ventana
-Descripción: Mira la mano completa de un rival elegido.
+Descripción: Revela a toda la mesa el ataque y sus apoyos después de que el defensor elija su defensa.
 
 Sorpresa en la Almohada
 Descripción: Elige un rival y descarta al azar la mitad de las cartas de su mano, redondeando hacia abajo. Si tiene 1 carta, descarta esa carta.
@@ -200,10 +200,19 @@ Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush
 EVENTOS GLOBALES
 
 Hora de la Siesta
-Descripción: Todos los gatos duermen hasta tu siguiente turno, se anulan habilidades y sinergias.
+Descripción: Hasta el inicio de tu próximo turno, se anulan las habilidades y sinergias de todos los gatos.
 
 Perro del Vecino
-Descripción: Cada jugador mueve 1 gato de su Sofá al Salón.
+Descripción: Cada jugador baja 1 gato de su Sofá a su Salón, si puede.
+
+Reparto de Juguetes
+Descripción: Cada jugador pasa 1 carta de su mano, boca abajo, al jugador de su izquierda. Todos a la vez.
+
+Visita al Veterinario
+Descripción: Cada jugador con 1 a 3 gatos descarta 1 carta. Con 4 o más gatos, descarta 2.
+
+Huelga de Gatos
+Descripción: Hasta el inicio de tu próximo turno, ningún gato puede cambiar entre el Sofá y el Salón ni cambiar de casa.
 
 CONSUMIBLES
 
@@ -219,9 +228,10 @@ Descripción: Roba 3 cartas. Los gatos van a casa de sus dueños.
 Bolsa de Catnip
 Descripción: Todos roban 1 carta, empezando por ti. Cuando todos hayan robado, robas 1 más.
 
-CANCELABILIDAD
+CANCELABILIDAD SEGÚN EL REGLAMENTO REVISADO
 
-Se consideran cancelables las cartas con marca_flush: true en categoria.yml:
+Son cancelables todas las cartas de Acción. La marca de Flús-Flús es visual;
+no es por sí sola la regla que determina la cancelabilidad.
 - No te muevas, estoy cómodo
 - Destrucción de Sofá
 - Sobredosis de Catnip
@@ -236,8 +246,8 @@ Se consideran cancelables las cartas con marca_flush: true en categoria.yml:
 - ¡Pspspsps!
 - Sabotaje vecinal
 - Ovillo de Lana
+- Ratón con Hierba Gatuna
 - Flús-Flús de Agua (versiones 1, 2, 3 y 4)
 
-No marcadas como cancelables en categoria.yml (sin marca_flush):
+No cancelables con Flús-Flús:
 - Todas las cartas de Gatos, Ataques, Estructuras, Eventos Globales y Consumibles.
-- Ratón con Hierba Gatuna.

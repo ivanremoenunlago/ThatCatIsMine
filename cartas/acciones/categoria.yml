@@ -90,7 +90,7 @@ cartas:
     tipo: "accion"
     copias: 1
     marca_flush: true
-    descripcion: "Mira la mano completa de un rival elegido."
+    descripcion: "Revela a toda la mesa el ataque y sus apoyos después de que el defensor elija su defensa."
   - nombre: "Sorpresa en la Almohada"
     imagen: "imagenes/Sorpresa en la almohada.png"
     tipo: "accion"
@@ -149,6 +149,7 @@ cartas:
     imagen: "imagenes/raton con hierva gatera.png"
     tipo: "objeto"
     copias: 1
+    marca_flush: true
     descripcion: "Desvía a otro gato/estructura tuyo o rival un ataque dirigido hacia ti."
   - nombre: "Flús-Flús de Agua"
     imagen: "imagenes/flus flus 1.png"

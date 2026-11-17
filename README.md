@@ -2,7 +2,7 @@
 
 ## Propósito
 
-Este repositorio contiene una galería web local y los recursos para diseñar, revisar e imprimir las cartas del juego de mesa «¡Ese gato es mío!». La galería lee las categorías desde YAML, monta las ilustraciones en una plantilla común y permite descargar PNG individuales o un PDF A4 listo para imprimir.
+Este repositorio contiene una galería web local y los recursos para diseñar, revisar e imprimir las cartas del juego de mesa «¡Ese gato es mío!». La galería lee las categorías desde YAML, monta las ilustraciones en una plantilla común y permite descargar PNG individuales o un PDF A4 listo para imprimir. También incluye una pestaña de reglamento con opción para imprimirlo o guardarlo como PDF A4.
 
 La aplicación es estática: HTML, CSS y JavaScript, sin servidor, dependencias ni proceso de compilación. Los archivos se procesan en el navegador y no se suben a Internet.
 
@@ -13,9 +13,10 @@ La aplicación es estática: HTML, CSS y JavaScript, sin servidor, dependencias 
 - **Estructuras:** 5 tipos y 7 copias físicas.
 - **Acciones:** 16 tipos en la galería (19 acciones, 4 objetos y 4 respuestas), con cuatro ilustraciones distintas para Flús-Flús de Agua.
 - **Consumibles:** 4 tipos y 8 copias físicas.
-- **Eventos Globales:** 2 tipos y 2 copias físicas integrados; falta la ilustración de Cambio de Arenero.
-- **Mazo:** 92 cartas según las cantidades detalladas acordadas.
-- **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_v0.48.txt](./Ese_gato_es_mio_reglamento_v0.48.txt). El archivo v0.47 es una versión anterior.
+- **Eventos Globales:** 5 tipos y 5 copias configuradas, con ilustraciones para Hora de la Siesta, Perro del Vecino, Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
+- **Mazo:** 94 cartas físicas según las cantidades configuradas actualmente en los YAML; el reglamento revisado aún deja pendiente confirmar el total final.
+- **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_revisado.txt](./Ese_gato_es_mio_reglamento_revisado.txt), un borrador de trabajo con decisiones propuestas y puntos pendientes.
+- **Reglamento web:** la pestaña **Reglamento** resume la preparación, incluye esquemas simplificado y completo del turno, y explica el combate, las estructuras, los eventos y las sinergias acordadas.
 - El pie de [index.html](./index.html) incluye el aviso de derechos de autor.
 
 ## Abrir la galería
@@ -24,10 +25,11 @@ Abre `index.html` con Chrome o Edge. La aplicación intenta cargar automáticame
 
 Si el navegador bloquea la lectura local, utiliza **Seleccionar carpeta manualmente** y elige la raíz del proyecto. También puedes servir la carpeta con cualquier servidor web local; no hace falta instalar paquetes ni compilar nada.
 
-Cada categoría tiene una pestaña. La galería muestra una carta por tipo:
+Cada categoría tiene una pestaña. La galería muestra una carta por tipo. La pestaña **Reglamento** abre la guía completa en varias páginas A4:
 
 - **Descargar PNG** descarga ese tipo de carta como PNG a 720 DPI.
 - **Descargar PDF A4** genera el conjunto de la categoría, con hasta nueve cartas por página, separación de 3 mm y marcas de corte.
+- **Imprimir / Guardar PDF A4** abre el diálogo de impresión del navegador para imprimir el reglamento o guardarlo como PDF. Usa orientación vertical y papel A4; la hoja de estilos de impresión oculta el catálogo y conserva las páginas del manual.
 - En Ataques, Estructuras, Acciones, Consumibles y Eventos Globales, el PDF repite cada carta según su campo `copias`; cada ilustración se puede descargar como PNG individual.
 
 Al imprimir, selecciona tamaño real o escala del 100 % para conservar las dimensiones.
@@ -39,6 +41,7 @@ index.html
 styles.css
 app.js
 README.md
+Ese_gato_es_mio_reglamento_revisado.txt
 Ese_gato_es_mio_reglamento_v0.48.txt
 cartas/
   emojis/
@@ -62,9 +65,9 @@ cartas/
     imagenes/
 ```
 
-- `index.html`: estructura de la página y aviso de derechos.
-- `styles.css`: presentación de la galería, pestañas, botones y tarjetas de vista previa.
-- `app.js`: lectura y validación de categorías, carga de imágenes, renderizado en canvas y exportación PNG/PDF.
+- `index.html`: estructura de la página, pestañas, contenido del reglamento y aviso de derechos.
+- `styles.css`: presentación de la galería y el reglamento, incluidas las páginas A4 de impresión.
+- `app.js`: lectura y validación de categorías, carga de imágenes, renderizado en canvas y exportación PNG/PDF de cartas; controla también las pestañas de la galería y el reglamento.
 - Los archivos `categoria.yml` dentro de cada categoría contienen sus datos y configuración visual.
 - `cartas/emojis/`: iconos comunes de tipo, huella, sofá y salón.
 - `cartas/<categoria>/imagenes/`: ilustraciones de esa categoría.
@@ -126,7 +129,7 @@ Cada consumible define `nombre`, `imagen`, `tipo: "consumible"`, `copias` y `des
 
 ### Eventos Globales
 
-Cada evento define `nombre`, `imagen`, `tipo: "evento_global"`, `copias` y `descripcion`. Los eventos globales no son cancelables según el reglamento. La categoría incluye por ahora Hora de la Siesta y Perro del Vecino; Cambio de Arenero queda pendiente de su ilustración.
+Cada evento define `nombre`, `imagen`, `tipo: "evento_global"`, `copias` y `descripcion`. Los eventos globales no son cancelables según el reglamento. La categoría incluye Hora de la Siesta, Perro del Vecino, Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
 
 ### Añadir una categoría nueva
 
@@ -145,11 +148,11 @@ El lector YAML integrado admite un subconjunto sencillo: claves de texto/número
 3. Usa el YAML para cambiar datos de cartas y paletas. Modifica `app.js` solo cuando haga falta comportamiento o composición nuevos.
 4. Recarga la galería y revisa todas las cartas afectadas; prueba al menos un PNG individual y el PDF A4.
 
-El reglamento v0.48 está disponible como archivo de texto. Una página o maquetación específica para manuales todavía no forma parte de la aplicación.
+El reglamento revisado es el borrador actual. La versión v0.48 se conserva como referencia histórica y no debe usarse para completar reglas que sigan pendientes en el borrador actual.
 
 ## Criterios para futuros cambios
 
-- Usa el reglamento v0.48 como referencia, pero no inventes ni cambies mecánicas para corregir el diseño. Si hay una contradicción o falta información, consulta antes de modificar las reglas.
+- Usa el reglamento revisado y las decisiones confirmadas como fuente actual; v0.48 es solo una referencia histórica. No inventes reglas para completar una contradicción: consulta antes de cambiar una mecánica.
 - Conserva la plantilla y las medidas entre cartas de una misma categoría; cambia ilustración y datos, no la distribución, salvo petición expresa.
 - Mantén separados los recursos por categoría y no renombres una imagen sin actualizar su referencia YAML.
 - Después de editar, abre la galería, confirma que no faltan ilustraciones y revisa visualmente PNG y PDF. Ejecuta también `git diff --check`.
