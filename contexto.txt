@@ -1,0 +1,346 @@
+CONTEXTO DEL PROYECTO «¡ESE GATO ES MÍO!»
+Actualizado: 17 de noviembre de 2026
+
+Este documento reúne el contexto útil de la conversación para continuar el trabajo
+en otro chat o en una sesión futura. Las reglas que el usuario señaló como
+pendientes no deben completarse por intuición ni tomando automáticamente datos de
+versiones antiguas.
+
+
+1. OBJETIVO Y EVOLUCIÓN DEL PROYECTO
+
+El proyecto empezó como una pequeña herramienta local para generar y revisar
+cartas de «¡Ese gato es mío!». La petición inicial era conseguir que funcionase
+la carta «Gato Acaparador» y que cargase su imagen. Después se amplió a una
+galería completa de todas las cartas, a la revisión visual de las paletas y,
+finalmente, a la integración de un reglamento web imprimible y cinco variantes
+de tablero.
+
+La aplicación es una web estática local; no es un juego interactivo. No usa
+servidor propio, base de datos, dependencias externas ni proceso de compilación.
+Su catálogo y recursos se cargan desde archivos del proyecto. Si el navegador
+bloquea el acceso a archivos locales, la página puede permitir seleccionar la
+carpeta raíz.
+
+Archivos importantes:
+- index.html: pestañas, galería, contenido del reglamento y tableros.
+- styles.css: presentación, adaptación móvil y estilos de impresión.
+- app.js: carga y validación de datos, dibujo/exportación de cartas y
+  comportamiento de pestañas.
+- README.md: documentación para usar y editar el proyecto.
+- cartas/<categoría>/categoria.yml: datos, textos, cantidades, paletas y rutas
+  de recursos de las cartas.
+- cartas/emojis/: iconos compartidos, incluido paw.png y el icono de estructuras.
+- tableros/: cinco imágenes de tablero.
+
+Las categorías de cartas son Gatos, Ataques, Estructuras, Acciones, Consumibles
+y Eventos Globales. Flús-Flús está en Acciones, con su paleta propia.
+Los YAML son la fuente de verdad de nombres, textos, copias, tipos e imágenes.
+El inventario auxiliar de cartas no es fuente de datos usada por la web.
+
+Las cartas miden 63,5 × 88 mm. La aplicación dibuja cartas en Canvas (vistas
+previas y archivos individuales PNG) y genera PDF A4 propio para las categorías,
+repitiendo las copias indicadas y colocando hasta nueve cartas por página.
+La exportación del reglamento es distinta: se imprime desde el navegador y se
+puede guardar como PDF mediante el diálogo de impresión.
+
+
+2. HISTORIAL DE CAMBIOS VISUALES SOLICITADOS
+
+- Se añadió el aviso de derechos de autor del juego, con el año 2026 y el texto
+  «Todos los derechos reservados».
+- Se revisaron las paletas de las categorías para que los bordes exteriores e
+  interiores y los rótulos se distingan mejor, siguiendo la estética de Gatos.
+- El título de las cartas cambió de color; se probaron intercambios entre el
+  color del borde y el interior.
+- En algunos ataques se corrigió texto negro no deseado.
+- Se generó un inventario auxiliar en TXT en un momento anterior; no debe
+  sustituir los YAML como fuente de datos.
+- El usuario pidió documentación actualizada en README.md en varias ocasiones.
+
+
+3. FUENTES Y CRITERIOS PARA EL REGLAMENTO
+
+Archivo de referencia actual: Ese_gato_es_mio_reglamento_revisado.txt.
+Ese archivo es un borrador de trabajo actual y contiene puntos pendientes.
+Ese_gato_es_mio_reglamento_v0.48.txt sirve para comparar, no para rellenar
+automáticamente las reglas incompletas del borrador revisado.
+
+Excepción aprobada: se conservan las ocho sinergias de v0.48.
+Usar los YAML actuales para nombres, textos y datos de las cartas. No modificar
+mecánicas ni textos de cartas fuera de lo aprobado por el usuario.
+No usar el inventario auxiliar como fuente para la web.
+
+El usuario señaló como cambios que había que comprobar en el reglamento:
+- Las acciones adicionales se acumulan.
+- Flús-Flús puede responder a otro Flús-Flús.
+- Cualquier jugador puede responder, según las reglas acordadas.
+- Curioso se resuelve después del robo.
+- Mapache sustituye el robo inicial y sus bonificaciones.
+- Se puede ganar durante el propio turno.
+
+Si una implementación concreta contradice el borrador o no aclara el alcance
+de estos cambios, consultar al usuario en vez de inventar una resolución.
+
+Decisiones confirmadas expresamente:
+- Un ataque exitoso contra un gato lo captura y lo pasa a la casa del atacante.
+  Quien captura elige Sofá o Salón si allí cabe; la capacidad exacta sigue
+  pendiente.
+- Huelga de Gatos afecta a todos y suprime el movimiento gatuno durante el
+  evento: no se mueven gatos entre Sofá y Salón ni de una casa a otra. Un ataque
+  sí puede capturar un gato; se coloca en una zona elegida donde quepa y ya no
+  se mueve mientras dure la Huelga. Las acciones de movimiento se pueden jugar,
+  pero no desplazan gatos durante el evento. Escalador no concede un movimiento
+  útil durante la Huelga.
+- Ovillo de Lana recupera cualquier carta de los descartes, incluidos gatos si
+  alguno llega allí.
+- Durante Hora de la Siesta se conservan las puntuaciones y la ocupación física
+  especial; se desactivan habilidades, sinergias e inmunidad de Solitario.
+- Se permite ganar durante un turno perdido por «No te muevas, estoy cómodo».
+  Aplicar las fases del borrador; no convertir la pérdida del turno en una
+  prohibición de victoria.
+- Máximo una estructura activa por jugador. Un ataque exitoso destruye cualquier
+  estructura salvo Cama de Peluche, que es indestructible.
+- Fortaleza Gatuna protege gatos, no otras estructuras.
+- Ratón puede redirigir un ataque a un gato o estructura de cualquier casa salvo
+  la del atacante; no puede elegir Cama de Peluche.
+- Espía/Cotilla revelan las cartas del atacante después de que el defensor ya
+  haya elegido su defensa, y la revelación la ve toda la mesa.
+- En la zona de gato capturado, quien lo captura puede elegir Sofá o Salón si
+  hay espacio.
+- No cambiar la descripción de la carta Cama de Peluche para explicar su
+  protección por proximidad.
+
+Pendientes que no deben resolverse sin consultar:
+- Capacidad del Sofá y límite del Salón.
+- Zona en la que entran los gatos al robar, recuperar o cambiar de casa.
+- Regla general sobre dónde están activas las habilidades.
+- Qué cartas pueden usarse como defensa y qué apoyos se permiten.
+- Interacción de Trillizos cuando roba gatos.
+- Cuándo y con qué frecuencia se comprueba la victoria, si afecta al texto
+  final.
+
+Posible inconsistencia que requiere decisión: el YAML actual describe Espía de
+Ventana como una carta para mirar la mano, mientras que el reglamento revisado la
+menciona junto con Cotilla para revelar el ataque. No cambiar el efecto de la
+carta sin preguntar.
+
+
+4. REGLAMENTO WEB E IMPRESIÓN
+
+La pestaña «Reglamento» tiene siete páginas principales en A4 vertical. Incluye
+los dos esquemas del turno (simplificado y completo), además de explicaciones de
+preparación, combate, estructuras, eventos y sinergias acordadas. Se añadieron
+cinco páginas de tablero en A4 horizontal. El reglamento se imprime/guarda como
+PDF mediante el diálogo nativo del navegador.
+
+El diseño previsto originalmente fue de dos páginas para aprender y jugar y
+una tercera de respuestas/casos; se pueden usar más páginas si hace falta para
+mantener el cuerpo de texto legible. No reducir demasiado las cartas de ejemplo
+ni el texto.
+
+Los esquemas pedidos por el usuario:
+
+ESQUEMA SIMPLIFICADO
+
+┌───────────────────────────────────────────────────────┐
+│                  1. INICIO DEL TURNO                  │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                   2.1. ROBO INICIAL                   │
+│                     Roba 1 carta.                     │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│             2.2. REPOSICIÓN POR MANO BAJA             │
+│              Si tienes menos de 3 cartas,             │
+│                  roba hasta tener 3.                  │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                   3. FASE DE ACCIÓN                   │
+│           Juega 1 carta o declara 1 ataque.           │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│            4. MOVIMIENTO GATUNO · OPCIONAL            │
+│            Sube, baja o intercambia 1 gato            │
+│               entre el Sofá y el Salón.               │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                  5. CIERRE DEL TURNO                  │
+│         Descarta hasta un máximo de 7 cartas.         │
+│          Terminan los efectos de este turno.          │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│              TURNO DEL SIGUIENTE JUGADOR              │
+└───────────────────────────────────────────────────────┘
+
+
+ESQUEMA COMPLETO
+
+Los cuadros de habilidades solo se aplican cuando estén activas y se cumplan
+sus condiciones. Sus activaciones opcionales se pueden omitir. Las alternativas
+del robo inicial son excluyentes.
+
+┌───────────────────────────────────────────────────────┐
+│                  1. INICIO DEL TURNO                  │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                 1.1. EFECTOS DE INICIO                │
+│           Cama · Ronroneo · Siesta · Huelga           │
+│        Caducan los efectos que terminan ahora.        │
+│             Después se resuelve Ronroneo.             │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                   2.1. ROBO INICIAL                   │
+├───────────────────────────┬───────────────────────────┤
+│       ROBO HABITUAL       │         O MAPACHE         │
+│                           │                           │
+│       Roba 1 carta.       │ Última carta del descarte.│
+│ Comedero o Bebé añaden +1.│   Sustituye todo el robo  │
+│  Máximo total: 2 cartas.  │   y sus bonificaciones.   │
+└───────────────────────────┴───────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│             2.2. REPOSICIÓN POR MANO BAJA             │
+│        Si tienes menos de 3 cartas, roba hasta:       │
+│          Normal: 3 · Metódico: 4 · Control: 5         │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                3.1. CURIOSO · OPCIONAL                │
+│       Descarta 1, mira las 3 primeras y elige 1.      │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│               3.2. TRILLIZOS · OPCIONAL               │
+│           Descarta y roba tantas cartas como          │
+│              Trillizos tengas en el Sofá.             │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│               3.3. ESCALADOR · OPCIONAL               │
+│         Realiza 1 movimiento gatuno adicional.        │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                3.4. RASCADOR · OPCIONAL               │
+│       Descarta 2 cartas para dar +1 de potencia       │
+│             a tu primer ataque del turno.             │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                  3.5. USO DE ACCIONES                 │
+│            Empiezas con 1 acción principal.           │
+│      Juega 1 carta o declara 1 ataque por acción.     │
+│       Puedes encadenar cartas de acciones extra.      │
+│         Resuelve cada carta y sus respuestas.         │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│            4. MOVIMIENTO GATUNO · OPCIONAL            │
+│            Sube, baja o intercambia 1 gato            │
+│               entre el Sofá y el Salón.               │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│                  5. CIERRE DEL TURNO                  │
+│              Descarta el exceso de mano.              │
+│             Límite: 7 · Con Acaparador: 9.            │
+│          Terminan los efectos de este turno.          │
+│       Las acciones sobrantes ya se han perdido.       │
+└───────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────┐
+│              TURNO DEL SIGUIENTE JUGADOR              │
+└───────────────────────────────────────────────────────┘
+
+Los textos de los esquemas se incluyeron a petición del usuario. Si una regla
+de esos esquemas se opone a una decisión posterior o a un punto marcado como
+pendiente, hay que resolver la contradicción con el usuario antes de publicarla
+como regla definitiva.
+
+
+5. TABLEROS Y DISTRIBUCIÓN VISUAL
+
+Hay cinco variantes de tablero en tableros/. Todas miden 1491 × 1055 píxeles y
+tienen una composición equivalente. Las coordenadas originales aproximadas,
+medidas sobre la imagen de 1491 × 1055 desde la esquina superior izquierda,
+son:
+
+- Sofá, plaza izquierda: x=180, y=120, ancho=270, alto=370 px.
+- Sofá, plaza central: x=480, y=120, ancho=270, alto=370 px.
+- Sofá, plaza derecha: x=780, y=120, ancho=270, alto=370 px.
+- Alfombrilla de Estructura: x=1160, y=105, ancho=260, alto=405 px.
+- Salón: x=190, y=630, ancho=1110, alto=320 px.
+
+El Salón es una zona libre, sin huecos individuales dibujados. Los overlays se
+escalan proporcionalmente con la imagen.
+
+Reglas visuales y de uso:
+- Se pueden reordenar gatos libremente dentro del Sofá o dentro del Salón; el
+  reordenamiento es estético y no consume movimiento.
+- Con Cama de Peluche en juego, el gato físicamente más próximo a su zona de
+  estructura es el protegido. La colocación ayuda a reconocerlo visualmente;
+  no se debe cambiar la descripción de la carta para explicar esto.
+- En las plazas del Sofá se usa ahora directamente cartas/emojis/paw.png, con
+  opacidad CSS 0,58.
+- En la zona de Estructura se usa cartas/emojis/estructuras.png.
+- En el Salón no hay icono ni contorno superpuesto; queda solo el rótulo
+  «SALÓN · ZONA LIBRE», semitransparente y sin sombra.
+- Se eliminó el SVG propio que antes dibujaba una carta con una pata.
+- Los marcadores son orientativos para pantalla/impresión del reglamento, no
+  están calibrados como huecos físicos para cartas.
+
+Medidas físicas calculadas para la impresión A4 horizontal actual:
+- Los tableros ahora se imprimen a página completa A4 apaisada: 297 × 210 mm,
+  sin márgenes CSS. La imagen se estira mínimamente para cubrir la hoja; la
+  diferencia entre la proporción de la imagen (1491:1055) y la de A4 es de
+  aproximadamente 0,07 %. Una impresora física que no permita imprimir sin
+  bordes puede recortar los extremos.
+- Usando las coordenadas originales sobre la hoja completa, cada plaza del
+  Sofá mide aproximadamente 53,8 × 73,6 mm.
+- La zona de Estructura mide aproximadamente 51,8 × 80,6 mm.
+- Una carta física estándar mide 63,5 × 88 mm. Centrada sobre cada zona, a una
+  plaza del Sofá le faltan unos 9,7 mm de ancho total (4,9 mm por cada lateral)
+  y 14,4 mm de alto total (7,2 mm arriba y abajo).
+- A la zona de Estructura le faltan unos 11,7 mm de ancho total (5,9 mm por
+  cada lateral) y 7,4 mm de alto total (3,7 mm arriba y abajo).
+- Por tanto, ni las plazas del Sofá ni la alfombrilla de Estructura admiten
+  cartas físicas de 63,5 × 88 mm dentro de sus límites. Aumentar solo los
+  iconos superpuestos no lo resuelve; habría que rediseñar/ampliar los espacios
+  dibujados en el tablero o imprimir en un formato mayor. Las dimensiones
+  deben verificarse de nuevo tras cualquier rediseño.
+
+
+6. ÚLTIMO ESTADO TÉCNICO COMPROBADO
+
+En la última edición se sustituyó el SVG por la imagen real paw.png en las 15
+plazas de Sofá (tres por cada uno de los cinco tableros). Se actualizó README.md
+y se eliminó tableros/marcador-carta.svg.
+
+Comprobaciones realizadas:
+- Cargan las 15 imágenes de pata.
+- Cargan los cinco iconos de Estructura.
+- El Salón no tiene imagen/icono superpuesto.
+- La opacidad de la pata es 0,58.
+- La captura visual muestra la pata blanca semitransparente en las plazas del
+  Sofá, el icono propio en Estructura y solo el rótulo en el Salón.
+- git diff --check pasó.
+
+Archivos con cambios recientes:
+- index.html
+- styles.css
+- README.md
+- contexto.txt (este documento)
+- Se quitó tableros/marcador-carta.svg.
+
+La conversación no autoriza a cambiar las dimensiones de los tableros todavía.
+La última pregunta del usuario fue si caben cartas reales; la respuesta fue que
+no, según las medidas anteriores. No se ha iniciado un rediseño de los tableros.

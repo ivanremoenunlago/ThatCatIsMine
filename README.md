@@ -2,7 +2,7 @@
 
 ## Propósito
 
-Este repositorio contiene una galería web local y los recursos para diseñar, revisar e imprimir las cartas del juego de mesa «¡Ese gato es mío!». La galería lee las categorías desde YAML, monta las ilustraciones en una plantilla común y permite descargar PNG individuales o un PDF A4 listo para imprimir. También incluye una pestaña de reglamento con opción para imprimirlo o guardarlo como PDF A4.
+Este repositorio contiene una galería web local y los recursos para diseñar, revisar e imprimir las cartas del juego de mesa «¡Ese gato es mío!». La galería lee las categorías desde YAML, monta las ilustraciones en una plantilla común y permite descargar PNG individuales o un PDF A4 listo para imprimir. También incluye una pestaña de reglamento con siete páginas de reglas en vertical y cinco tableros A4 en horizontal, imprimibles o guardables como un único PDF.
 
 La aplicación es estática: HTML, CSS y JavaScript, sin servidor, dependencias ni proceso de compilación. Los archivos se procesan en el navegador y no se suben a Internet.
 
@@ -16,7 +16,7 @@ La aplicación es estática: HTML, CSS y JavaScript, sin servidor, dependencias 
 - **Eventos Globales:** 5 tipos y 5 copias configuradas, con ilustraciones para Hora de la Siesta, Perro del Vecino, Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
 - **Mazo:** 94 cartas físicas según las cantidades configuradas actualmente en los YAML; el reglamento revisado aún deja pendiente confirmar el total final.
 - **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_revisado.txt](./Ese_gato_es_mio_reglamento_revisado.txt), un borrador de trabajo con decisiones propuestas y puntos pendientes.
-- **Reglamento web:** la pestaña **Reglamento** resume la preparación, incluye esquemas simplificado y completo del turno, y explica el combate, las estructuras, los eventos y las sinergias acordadas.
+- **Reglamento web:** la pestaña **Reglamento** resume la preparación, incluye esquemas simplificado y completo del turno, explica el combate, las estructuras, los eventos y las sinergias acordadas, y muestra cinco variantes del tablero.
 - El pie de [index.html](./index.html) incluye el aviso de derechos de autor.
 
 ## Abrir la galería
@@ -25,11 +25,11 @@ Abre `index.html` con Chrome o Edge. La aplicación intenta cargar automáticame
 
 Si el navegador bloquea la lectura local, utiliza **Seleccionar carpeta manualmente** y elige la raíz del proyecto. También puedes servir la carpeta con cualquier servidor web local; no hace falta instalar paquetes ni compilar nada.
 
-Cada categoría tiene una pestaña. La galería muestra una carta por tipo. La pestaña **Reglamento** abre la guía completa en varias páginas A4:
+Cada categoría tiene una pestaña. La galería muestra una carta por tipo. La pestaña **Reglamento** abre la guía completa: siete páginas A4 verticales con las reglas y cinco páginas A4 horizontales con los tableros. La impresión usa orientación mixta dentro del mismo PDF:
 
 - **Descargar PNG** descarga ese tipo de carta como PNG a 720 DPI.
 - **Descargar PDF A4** genera el conjunto de la categoría, con hasta nueve cartas por página, separación de 3 mm y marcas de corte.
-- **Imprimir / Guardar PDF A4** abre el diálogo de impresión del navegador para imprimir el reglamento o guardarlo como PDF. Usa orientación vertical y papel A4; la hoja de estilos de impresión oculta el catálogo y conserva las páginas del manual.
+- **Imprimir / Guardar PDF A4** abre el diálogo de impresión del navegador para imprimir el reglamento o guardarlo como PDF. Las reglas usan orientación vertical; cada tablero ocupa la página A4 horizontal completa, sin márgenes CSS. La hoja de estilos oculta el catálogo. Una impresora física sin impresión sin bordes puede recortar los extremos.
 - En Ataques, Estructuras, Acciones, Consumibles y Eventos Globales, el PDF repite cada carta según su campo `copias`; cada ilustración se puede descargar como PNG individual.
 
 Al imprimir, selecciona tamaño real o escala del 100 % para conservar las dimensiones.
@@ -41,6 +41,8 @@ index.html
 styles.css
 app.js
 README.md
+tableros/
+  (cinco variantes de imagen para el tablero)
 Ese_gato_es_mio_reglamento_revisado.txt
 Ese_gato_es_mio_reglamento_v0.48.txt
 cartas/
@@ -71,8 +73,11 @@ cartas/
 - Los archivos `categoria.yml` dentro de cada categoría contienen sus datos y configuración visual.
 - `cartas/emojis/`: iconos comunes de tipo, huella, sofá y salón.
 - `cartas/<categoria>/imagenes/`: ilustraciones de esa categoría.
+- `tableros/`: cinco imágenes de tablero de 1491 × 1055 px. La web muestra el icono existente de la pata en las tres plazas del Sofá, el icono de Estructuras en su alfombrilla y solo el rótulo semitransparente en el Salón, que no tiene puestos individuales.
 
 Las rutas `imagen` e `iconos` de cada YAML son relativas al propio archivo de categoría. El nombre y la extensión deben coincidir exactamente con el archivo en disco.
+
+Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Si está en juego la Cama de Peluche, queda protegido el gato físicamente más próximo a su zona de estructura en cada momento. Los marcadores de los tableros son orientativos para pantalla e impresión del reglamento; no están calibrados como huecos de tamaño real para cartas de 63,5 × 88 mm.
 
 ## Diseño de las cartas
 
