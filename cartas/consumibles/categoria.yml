@@ -46,9 +46,9 @@ diseno:
   y_texto_habilidad: 0.755
   ancho_texto_habilidad: 0.8
   alto_texto_habilidad: 0.21
-  tamano_fuente_habilidad: 0.0278
-  tamano_fuente_habilidad_min: 0.0222
-  interlineado_habilidad: 0.024
+  tamano_fuente_habilidad: 0.0311
+  tamano_fuente_habilidad_min: 0.0256
+  interlineado_habilidad: 0.0289
   espaciado_habilidad: 0
   opacidad_sombra: 0.18
   desplazamiento_sombra: 0.0044
@@ -58,19 +58,19 @@ cartas:
     imagen: "imagenes/pienso premium.png"
     tipo: "consumible"
     copias: 2
-    descripcion: "Roba 1 carta y obtén 1 acción principal adicional durante ese turno. Su uso está sujeto al límite general de una carta generadora de acciones principales adicionales por turno."
+    descripcion: "Roba 1 carta y obtén 1 acción extra este turno."
   - nombre: "Lata de Atún"
     imagen: "imagenes/lata de atun.png"
     tipo: "consumible"
     copias: 3
-    descripcion: "Roba 2 cartas. Los gatos robados se colocan inmediatamente en la casa de su propietario."
+    descripcion: "Roba 2 cartas. Los gatos van a casa de sus dueños."
   - nombre: "Churu"
     imagen: "imagenes/churu.png"
     tipo: "consumible"
     copias: 1
-    descripcion: "Roba 3 cartas. Los gatos robados se colocan inmediatamente en la casa de su propietario."
+    descripcion: "Roba 3 cartas. Los gatos van a casa de sus dueños."
   - nombre: "Bolsa de Catnip"
     imagen: "imagenes/bolsa de catnip.png"
     tipo: "consumible"
     copias: 2
-    descripcion: "Todos los jugadores roban 1 carta, empezando por quien juega la carta y siguiendo en sentido horario. Cuando todos hayan robado, quien haya jugado la Bolsa de Catnip roba 1 carta adicional. Los gatos robados se colocan inmediatamente en la casa de su propietario."
+    descripcion: "Todos roban 1 carta, empezando por ti. Cuando todos hayan robado, robas 1 más."

@@ -46,9 +46,9 @@ diseno:
   y_texto_habilidad: 0.755
   ancho_texto_habilidad: 0.8
   alto_texto_habilidad: 0.21
-  tamano_fuente_habilidad: 0.0278
-  tamano_fuente_habilidad_min: 0.0222
-  interlineado_habilidad: 0.024
+  tamano_fuente_habilidad: 0.0311
+  tamano_fuente_habilidad_min: 0.0256
+  interlineado_habilidad: 0.0289
   espaciado_habilidad: 0
   opacidad_sombra: 0.18
   desplazamiento_sombra: 0.0044
@@ -58,9 +58,9 @@ cartas:
     imagen: "imagenes/hora de la siesta.png"
     tipo: "evento_global"
     copias: 1
-    descripcion: "Hasta el inicio de tu siguiente turno, todos los gatos, incluido el tuyo, quedan dormidos: sus habilidades y sinergias quedan desactivadas, pero sus valores base siguen contando. El Gato Solitario conserva su puntuación condicional (7 puntos si está solo en el Sofá; 0 si está acompañado), pero pierde su inmunidad. La pareja Gato Gordo–Gato Desnutrido mantiene su colocación, sin otras bonificaciones. El movimiento habitual y los efectos de cartas que muevan gatos siguen permitidos."
+    descripcion: "Todos los gatos duermen hasta tu siguiente turno: se anulan habilidades y sinergias, no los puntos. El Solitario pierde inmunidad; se permite mover."
   - nombre: "Perro del Vecino"
     imagen: "imagenes/perro del vecino.png"
     tipo: "evento_global"
     copias: 1
-    descripcion: "Cada jugador debe elegir 1 gato movible de su Sofá y enviarlo al Salón. Los gatos protegidos por Cama de Peluche no pueden moverse. Si no tiene gatos movibles en su Sofá, no mueve ninguno. No puede cancelarse con respuestas normales y Fortaleza Gatuna no lo detiene."
+    descripcion: "Cada jugador mueve 1 gato movible de su Sofá al Salón; Cama de Peluche lo impide. Si no tiene gatos movibles, no mueve. Fortaleza Gatuna no lo detiene."

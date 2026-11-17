@@ -366,7 +366,7 @@ function drawAttackContent(context, category, card, x, y, width, height) {
       if (lines.length * lineHeight <= height * 0.34) break;
       fontSize -= 2;
     }
-    context.fillStyle = palette.tinta;
+    context.fillStyle = palette.detalle;
     const detailY = centerY + height * 0.3;
     const firstLineY = detailY - (lines.length - 1) * lineHeight / 2;
     lines.forEach((line, index) => context.fillText(line, centerX, firstLineY + index * lineHeight, textWidth));

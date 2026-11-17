@@ -62,8 +62,8 @@ diseno:
   espaciado_habilidad: 0
   tamano_fuente_rotulo_ataque: 0.028
   tamano_fuente_valor_ataque: 0.12
-  tamano_fuente_detalle_ataque: 0.032
-  tamano_fuente_dano_variable: 0.038
+  tamano_fuente_detalle_ataque: 0.036
+  tamano_fuente_dano_variable: 0.041
   opacidad_sombra: 0.18
   desplazamiento_sombra: 0.0044
   desenfoque_sombra: 0.01
@@ -73,7 +73,6 @@ cartas:
     tipo: "ataque"
     dano: 0
     copias: 2
-    descripcion: "Sin defensa: éxito automático. Con defensa: se compara el daño; el empate favorece al defensor."
   - nombre: "Bufido"
     imagen: "imagenes/bufido.png"
     tipo: "ataque"
@@ -109,13 +108,13 @@ cartas:
     tipo: "apoyo"
     bonificacion: 2
     copias: 1
-    descripcion: "Suma +2 al daño del ataque o +2 a la defensa."
+    descripcion: "Juega en combate: suma +2 a la otra carta."
   - nombre: "Erizarse"
     imagen: "imagenes/gato erizado.png"
     tipo: "apoyo"
     bonificacion: 1
     copias: 3
-    descripcion: "Suma +1 al daño del ataque o +1 a la defensa."
+    descripcion: "Juega en combate: suma +1 a la otra carta."
   - nombre: "Terror del aspirador"
     imagen: "imagenes/aspirador terrorífico.png"
     tipo: "ataque"
@@ -151,7 +150,7 @@ cartas:
     tipo: "apoyo"
     bonificacion: 1
     copias: 1
-    descripcion: "Suma +1 al daño del ataque o +1 a la defensa."
+    descripcion: "Juega en combate: suma +1 a la otra carta."
   - nombre: "¡Pacto de Bigotes y Escobazos!"
     imagen: "imagenes/pacto de bigotes y escobazos.png"
     tipo: "ataque"

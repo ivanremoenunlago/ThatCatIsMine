@@ -77,6 +77,8 @@ Todas las cartas usan tamaño físico **63,5 × 88 mm**, equivalente a **1800 ×
 
 Las proporciones, posiciones y tamaños de texto se definen en `diseno` dentro de cada YAML; las familias tipográficas y el renderizado están en `app.js`. Si se cambia una medida, comprueba tanto la vista previa como la exportación final.
 
+Mantén las descripciones breves, idealmente en 2-3 líneas impresas; deja los pasos y excepciones detallados para el reglamento. El tamaño de letra debe seguir siendo legible y solo reducirse automáticamente cuando el texto no quepa.
+
 Paletas actuales:
 
 | Categoría | Marco | Fondo | Superficies de texto/panel | Detalle |
