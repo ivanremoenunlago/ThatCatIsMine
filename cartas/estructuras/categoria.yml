@@ -55,27 +55,32 @@ diseno:
   desenfoque_sombra: 0.01
 cartas:
   - nombre: "Caja de Cartón"
-    imagen: "imagenes/caja de cartón.png"
+    imagen: "imagenes/caja_de_carton.png"
     tipo: "estructura"
     copias: 2
-    descripcion: "Protege tus gatos del Sofá y del Salón de ataques directos. Se destruye con un ataque exitoso contra ella."
+    descripcion: "Protege tus gatos de ataques directos. Se destruye con un ataque exitoso contra ella."
   - nombre: "Fortaleza Gatuna"
-    imagen: "imagenes/torre rascador.png"
+    imagen: "imagenes/fortaleza_gatuna.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "Protege tus gatos del Sofá y del Salón de ataques directos y acciones. Se destruye con un ataque exitoso contra ella."
+    descripcion: "Protege tus gatos de ataques directos y bloquea eventos individuales rivales que afecten a tus gatos. Permanece tras interceptar un Evento individual y se destruye con un ataque exitoso."
   - nombre: "Comedero Automático"
-    imagen: "imagenes/comedero automático.png"
+    imagen: "imagenes/comedero_automatico.png"
     tipo: "estructura"
     copias: 2
     descripcion: "Roba 1 carta adicional durante el robo inicial. Se destruye con un ataque exitoso contra ella."
   - nombre: "Rascador de Sisal"
-    imagen: "imagenes/rascador.png"
+    imagen: "imagenes/rascador_de_sisal.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "Puedes descartar 2 cartas en el Paso de Preparación para que tu primer ataque tenga +1 de daño."
+    descripcion: "Una vez por turno, al declarar un ataque, puedes descartar 1 carta de tu mano para sumar +1 a su potencia. Decide antes de que el rival elija su defensa. Se destruye con un ataque exitoso contra ella."
   - nombre: "Cama de Peluche"
-    imagen: "imagenes/cama de peluche.png"
+    imagen: "imagenes/cama_de_peluche.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "El gato mas cercano a la cama no se puede atacar ni mover hasta tu siguiente turno. Se descarta al inicio de tu próximo turno."
+    descripcion: "El gato junto a esta cama no puede ser atacado ni movido. Descarta la cama al inicio de tu próximo turno."
+  - nombre: "Arenero"
+    imagen: "imagenes/arenero.png"
+    tipo: "estructura"
+    copias: 1
+    descripcion: "Cuando descartes cartas de tu mano, sobre el Arenero. Justo antes de tu fase de cierre, si hay 3 o más, puedes devolver 1 a tu mano y enviar las demás al descarte común. Se destruye con un ataque exitoso contra ella."

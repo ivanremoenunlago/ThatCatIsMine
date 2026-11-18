@@ -55,27 +55,27 @@ diseno:
   desenfoque_sombra: 0.01
 cartas:
   - nombre: "Hora de la Siesta"
-    imagen: "imagenes/hora de la siesta.png"
+    imagen: "imagenes/hora_de_la_siesta.png"
     tipo: "evento_global"
     copias: 1
     descripcion: "Hasta el inicio de tu próximo turno, se anulan las habilidades y sinergias de todos los gatos."
   - nombre: "Perro del Vecino"
-    imagen: "imagenes/perro del vecino.png"
+    imagen: "imagenes/perro_del_vecino.png"
     tipo: "evento_global"
     copias: 1
     descripcion: "Cada jugador baja 1 gato de su Sofá a su Salón, si puede."
   - nombre: "Reparto de Juguetes"
-    imagen: "imagenes/Reparto de Juguetes.png"
+    imagen: "imagenes/reparto_de_juguetes.png"
     tipo: "evento_global"
     copias: 1
     descripcion: "Cada jugador pasa 1 carta de su mano, boca abajo, al jugador de su izquierda. Todos a la vez."
   - nombre: "Visita al Veterinario"
-    imagen: "imagenes/visita al veterinario.png"
+    imagen: "imagenes/visita_al_veterinario.png"
     tipo: "evento_global"
     copias: 1
     descripcion: "Cada jugador con 1 a 3 gatos descarta 1 carta. Con 4 o más gatos, descarta 2."
   - nombre: "Huelga de Gatos"
-    imagen: "imagenes/huelga gatuna.png"
+    imagen: "imagenes/huelga_de_gatos.png"
     tipo: "evento_global"
     copias: 1
     descripcion: "Hasta el inicio de tu próximo turno, ningún gato puede cambiar entre el Sofá y el Salón ni cambiar de casa."

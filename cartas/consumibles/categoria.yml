@@ -55,12 +55,12 @@ diseno:
   desenfoque_sombra: 0.01
 cartas:
   - nombre: "Pienso Premium"
-    imagen: "imagenes/pienso premium.png"
+    imagen: "imagenes/pienso_premium.png"
     tipo: "consumible"
     copias: 2
     descripcion: "Roba 1 carta y obtén 1 acción extra este turno."
   - nombre: "Lata de Atún"
-    imagen: "imagenes/lata de atun.png"
+    imagen: "imagenes/lata_de_atun.png"
     tipo: "consumible"
     copias: 3
     descripcion: "Roba 2 cartas. Los gatos van a casa de sus dueños."
@@ -70,7 +70,7 @@ cartas:
     copias: 1
     descripcion: "Roba 3 cartas. Los gatos van a casa de sus dueños."
   - nombre: "Bolsa de Catnip"
-    imagen: "imagenes/bolsa de catnip.png"
+    imagen: "imagenes/bolsa_de_catnip.png"
     tipo: "consumible"
     copias: 2
     descripcion: "Todos roban 1 carta, empezando por ti. Cuando todos hayan robado, robas 1 más."

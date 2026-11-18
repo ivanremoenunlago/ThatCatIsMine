@@ -10,14 +10,13 @@ La aplicación es estática: HTML, CSS y JavaScript, sin servidor ni proceso de 
 
 - **Gatos:** 20 cartas configuradas, con ilustraciones, puntuación de Sofá y Salón, descripciones y sinergias cuando corresponden.
 - **Ataques:** 17 tipos de cartas (ataques y apoyos), 27 copias físicas en total, con daño fijo o variable y sus ilustraciones.
-- **Estructuras:** 5 tipos y 7 copias físicas.
-- **Acciones:** 16 tipos en la galería (19 acciones, 4 objetos y 4 respuestas), con cuatro ilustraciones distintas para Flús-Flús de Agua.
+- **Estructuras:** 6 tipos y 8 copias físicas, incluido el Arenero.
+- **Acciones y Eventos:** 21 tipos y 33 copias físicas (19 acciones, 5 objetos, 4 respuestas y 5 Eventos Globales), con cuatro ilustraciones distintas para Flús-Flús de Agua.
 - **Consumibles:** 4 tipos y 8 copias físicas.
-- **Eventos Globales:** 5 tipos y 5 copias configuradas, con ilustraciones para Hora de la Siesta, Perro del Vecino, Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
-- **Sinergias:** 8 cartas de referencia de 63,5 × 88 mm, con la imagen ocupando todo el anverso y la explicación al lado; ambos lados llevan borde ámbar. Las ilustraciones pendientes, si existieran, se indicarían claramente.
-- **Mazo:** 94 cartas físicas según las cantidades configuradas actualmente en los YAML; el reglamento revisado aún deja pendiente confirmar el total final.
-- **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_revisado.txt](./Ese_gato_es_mio_reglamento_revisado.txt), un borrador de trabajo con decisiones propuestas y puntos pendientes.
-- **Reglamento web:** la pestaña **Reglamento** resume la preparación, incluye esquemas simplificado y completo del turno, explica el combate, las estructuras, los eventos y las sinergias acordadas, y muestra cinco variantes del tablero.
+- **Sinergias:** 9 cartas de referencia de 63,5 × 88 mm, con la imagen ocupando todo el anverso y la explicación al lado; ambos lados llevan borde ámbar.
+- **Mazo:** 96 cartas físicas según el inventario de la versión de pruebas V3.
+- **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_v3_con_esquemas.txt](./Ese_gato_es_mio_reglamento_v3_con_esquemas.txt), la versión de pruebas vigente con esquemas de turno y asuntos pendientes.
+- **Reglamento web:** la pestaña **Reglamento** resume la preparación, incluye esquemas simplificado y completo del turno, explica el combate, las estructuras, los eventos y las sinergias en prueba, y muestra cinco variantes del tablero.
 - El pie de [index.html](./index.html) incluye el aviso de derechos de autor.
 
 ## Abrir la galería
@@ -31,9 +30,9 @@ Cada categoría tiene una pestaña. La galería muestra una carta por tipo. La p
 - **Descargar PNG** descarga ese tipo de carta como PNG a 720 DPI.
 - **Descargar PDF A4** genera el conjunto de la categoría, con hasta nueve cartas por página, separación de 3 mm y marcas de corte.
 - **Descargar PDF del reglamento** descarga directamente las siete páginas de reglas y los cinco tableros; las reglas son A4 vertical y cada tablero A4 horizontal.
-- **Descargar PDF completo** genera un único archivo: reglamento y tableros, las 94 cartas del mazo en páginas A4, y las ocho sinergias al final, con imagen y explicación lado a lado. No abre el diálogo de impresión.
+- **Descargar PDF completo** genera un único archivo: reglamento y tableros, las 96 cartas del mazo en páginas A4, y las nueve sinergias al final, con imagen y explicación lado a lado. No abre el diálogo de impresión.
 - La pestaña **Sinergias** tiene su propio botón **Descargar PDF A4**. Cada pareja ocupa dos cartas normales de 63,5 × 88 mm, colocadas una al lado de la otra; no se prepara para impresión dúplex. Las ilustraciones aún no asignadas aparecen marcadas como pendientes.
-- En Ataques, Estructuras, Acciones, Consumibles y Eventos Globales, el PDF repite cada carta según su campo `copias`; cada ilustración se puede descargar como PNG individual.
+- En Ataques, Estructuras, Acciones y Eventos, y Consumibles, el PDF repite cada carta según su campo `copias`; cada ilustración se puede descargar como PNG individual.
 
 Los PDFs de cartas ya incluyen su tamaño físico y no necesitan que se seleccione una escala en un diálogo de impresión.
 
@@ -47,7 +46,10 @@ README.md
 tableros/
   (cinco variantes de imagen para el tablero)
 Ese_gato_es_mio_reglamento_revisado.txt
+Ese_gato_es_mio_reglamento_revisado_v2.txt
 Ese_gato_es_mio_reglamento_v0.48.txt
+Ese_gato_es_mio_reglamento_v3.txt
+Ese_gato_es_mio_reglamento_v3_con_esquemas.txt
 cartas/
   emojis/
   gatos/
@@ -66,7 +68,7 @@ cartas/
     categoria.yml
     imagenes/
   globales/
-    categoria.yml
+    categoria.yml (referencia anterior, ya no se carga en la galería)
     imagenes/
 ```
 
@@ -80,7 +82,7 @@ cartas/
 
 Las rutas `imagen` e `iconos` de cada YAML son relativas al propio archivo de categoría. El nombre y la extensión deben coincidir exactamente con el archivo en disco.
 
-Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Si está en juego la Cama de Peluche, queda protegido el gato físicamente más próximo a su zona de estructura en cada momento. En las páginas A4 horizontales, la imagen del tablero se amplía al 105 % y se centra con recorte para que las tres plazas del Sofá y la zona de Estructuras midan aproximadamente 63,6 × 88,2 mm. Imprime o guarda el PDF a tamaño real (100 %); una impresora sin impresión sin bordes podría recortar parte de la zona de Estructuras.
+Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Al jugar la Cama de Peluche, colócala junto al gato que protege; queda vinculada a él y no cambia de objetivo por la posición de otros gatos. En las páginas A4 horizontales, la imagen del tablero se amplía al 105 % y se centra con recorte para que las tres plazas del Sofá y la zona de Estructuras midan aproximadamente 63,6 × 88,2 mm. Imprime o guarda el PDF a tamaño real (100 %); una impresora sin impresión sin bordes podría recortar parte de la zona de Estructuras.
 
 ## Diseño de las cartas
 
@@ -97,14 +99,13 @@ Paletas actuales:
 | Gatos | `#D9B96E` | `#E7D1A6` | `#F5E9CE` | `#B98232` |
 | Ataques | `#DE857E` | `#EBC8C3` | `#F5E4DF` | `#B94B48` |
 | Estructuras | `#B8BEC2` | `#DDE2E4` | `#F5F6F6` | `#858F95` |
-| Acciones | `#A997B7` | `#E4DBEA` | `#F5F0F7` | `#806A91` |
-| Eventos Globales | `#A997B7` | `#E4DBEA` | `#F5F0F7` | `#806A91` |
+| Acciones y Eventos | `#A997B7` | `#E4DBEA` | `#F5F0F7` | `#806A91` |
 | Flús-Flús de Agua | `#8EADBB` | `#DDEAF0` | `#F4F8FA` | `#5E8293` |
 | Consumibles | `#A1B38F` | `#E0E8D9` | `#F5F8F2` | `#70885F` |
 
-Ataques sigue la estructura de bordes y paneles claros de Gatos. El coral del marco se usa en los rótulos y valores fijos de ataque o apoyo. Estructuras usa tonos blancos y grisáceos apagados; Acciones y Eventos Globales, morados suaves; y Consumibles, verdes suaves. Flús-Flús de Agua se mantiene en la pestaña Acciones, pero usa una paleta azul propia. Las paletas están en el YAML de cada categoría.
+Ataques sigue la estructura de bordes y paneles claros de Gatos. El coral del marco se usa en los rótulos y valores fijos de ataque o apoyo. Estructuras usa tonos blancos y grisáceos apagados; Acciones y Eventos, morados suaves; y Consumibles, verdes suaves. Flús-Flús de Agua se mantiene en la pestaña Acciones y Eventos, pero usa una paleta azul propia. Las paletas están en el YAML de cada categoría.
 
-La banda del nombre usa el color de detalle de cada categoría como fondo, una versión más oscura de ese color como borde y el color claro de la superficie para el texto. En Acciones, Eventos Globales, Flús-Flús y Consumibles, el marco exterior y el detalle interior tienen tonos más separados para distinguir mejor los dos bordes. En Ataques, el rojo de detalle también se usa en las fórmulas de daño y descripciones; los rótulos y valores fijos mantienen el coral del marco.
+La banda del nombre usa el color de detalle de cada categoría como fondo, una versión más oscura de ese color como borde y el color claro de la superficie para el texto. En Acciones y Eventos, Flús-Flús y Consumibles, el marco exterior y el detalle interior tienen tonos más separados para distinguir mejor los dos bordes. En Ataques, el rojo de detalle también se usa en las fórmulas de daño y descripciones; los rótulos y valores fijos mantienen el coral del marco.
 
 ## Cómo editar o añadir cartas
 
@@ -127,21 +128,19 @@ Cada entrada define `nombre`, `imagen`, `tipo` (`ataque` o `apoyo`) y `copias`.
 
 Cada entrada define `nombre`, `imagen`, `tipo: "estructura"`, `copias` y `descripcion`. El PDF genera las copias indicadas; el PNG individual se descarga una sola vez por tipo.
 
-### Acciones, objetos y respuestas
+### Acciones y Eventos
 
-La pestaña Acciones reúne acciones, objetos y respuestas. Cada entrada define `nombre`, `imagen`, `tipo` (`accion`, `objeto` o `respuesta`), `copias` y `descripcion`. Las cartas que muestran la marca de Flús-Flús llevan `marca_flush: true`; el icono se configura en `iconos.flush`, aparece sin recuadro en la parte superior derecha y usa el color de detalle de la paleta de la carta. Esta marca es visual: no determina por sí sola si una carta puede cancelarse. Las cartas con `paleta: "azul"` usan la paleta azul específica de Flús-Flús. Cada ilustración de Flús es una entrada independiente para que sus cuatro copias salgan distintas en el PDF y puedan descargarse por separado.
+La pestaña **Acciones y Eventos** reúne acciones, objetos, respuestas y Eventos Globales. Cada entrada define `nombre`, `imagen`, `tipo` (`accion`, `objeto`, `respuesta` o `evento_global`), `copias` y `descripcion`. Los eventos globales conservan `tipo: "evento_global"` aunque compartan la pestaña. Las cartas que muestran la marca de Flús-Flús llevan `marca_flush: true`; Sabotaje Vecinal no lleva la marca y no se puede cancelar. El icono de Flús-Flús se configura en `iconos.flush`, aparece sin recuadro en la parte superior derecha y usa el color de detalle de la paleta de la carta. Las cartas con `paleta: "azul"` usan la paleta azul específica de Flús-Flús. Cada ilustración de Flús es una entrada independiente para que sus cuatro copias salgan distintas en el PDF y puedan descargarse por separado.
 
 ### Consumibles
 
 Cada consumible define `nombre`, `imagen`, `tipo: "consumible"`, `copias` y `descripcion`.
 
-### Eventos Globales
-
-Cada evento define `nombre`, `imagen`, `tipo: "evento_global"`, `copias` y `descripcion`. Los eventos globales no son cancelables según el reglamento. La categoría incluye Hora de la Siesta, Perro del Vecino, Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
+Las ilustraciones de Eventos Globales siguen en `cartas/globales/imagenes/`, pero sus entradas de catálogo están en `cartas/acciones/categoria.yml`. El antiguo `cartas/globales/categoria.yml` se conserva como referencia y ya no se carga.
 
 ### Sinergias
 
-Las ocho sinergias y explicaciones se mantienen en `cartas/sinergias/categoria.yml`. `imagen` es opcional; al añadir una ilustración, registra su ruta relativa al YAML. La carta muestra la ilustración completa en un lado y el nombre y la explicación en el otro, ambos con borde ámbar.
+Las nueve sinergias y explicaciones se mantienen en `cartas/sinergias/categoria.yml`. `imagen` es opcional; al añadir una ilustración, registra su ruta relativa al YAML. La carta muestra la ilustración completa en un lado y el nombre y la explicación en el otro, ambos con borde ámbar.
 
 ### Añadir una categoría nueva
 
@@ -160,11 +159,11 @@ El lector YAML integrado admite un subconjunto sencillo: claves de texto/número
 3. Usa el YAML para cambiar datos de cartas y paletas. Modifica `app.js` solo cuando haga falta comportamiento o composición nuevos.
 4. Recarga la galería y revisa todas las cartas afectadas; prueba al menos un PNG individual y el PDF A4.
 
-El reglamento revisado es el borrador actual. La versión v0.48 se conserva como referencia histórica y no debe usarse para completar reglas que sigan pendientes en el borrador actual.
+El reglamento V3 con esquemas es el borrador de trabajo vigente. Las versiones anteriores se conservan como referencia; no deben usarse para completar reglas que sigan pendientes en V3.
 
 ## Criterios para futuros cambios
 
-- Usa el reglamento revisado y las decisiones confirmadas como fuente actual; v0.48 es solo una referencia histórica. No inventes reglas para completar una contradicción: consulta antes de cambiar una mecánica.
+- Usa el reglamento V3 con esquemas y las decisiones confirmadas como fuente actual; los borradores anteriores son referencias históricas. No inventes reglas para completar una contradicción: consulta antes de cambiar una mecánica.
 - Conserva la plantilla y las medidas entre cartas de una misma categoría; cambia ilustración y datos, no la distribución, salvo petición expresa.
 - Mantén separados los recursos por categoría y no renombres una imagen sin actualizar su referencia YAML.
 - Después de editar, abre la galería, confirma que no faltan ilustraciones y revisa visualmente PNG y PDF. Ejecuta también `git diff --check`.

@@ -21,7 +21,7 @@ Gato Cotilla
 Descripción: Cuando te atacan, puedes descartar 1 carta para ver el ataque y sus apoyos.
 
 Gato Curioso
-Descripción: Al inicio de tu fase de robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1.
+Descripción: Después de tu fase de robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1.
 
 Gato Metódico
 Descripción: Si al final de la fase de robo tienes menos de 3 cartas, roba hasta tener 4.
@@ -33,7 +33,7 @@ Gata Envidiosa
 Descripción: Tus ataques contra instalaciones reciben +1 de daño. No se aplica contra gatos.
 
 Mamá Gata
-Descripción: Mientras esté activa en el Sofá, concede +1 punto de prestigio  a cada otro gato que esté en el Sofá.
+Descripción: Mientras esté activa en el Sofá, concede +1 punto de prestigio a cada otro gato que esté en el Sofá. El Gato Bebé recibe +2 con la sinergia Mamá y Bebé.
 
 Gato Bebé
 Descripción: Si está solo en el Sofá, durante el robo inicial roba 1 carta adicional.
@@ -127,21 +127,24 @@ Caja de Cartón
 Descripción: Protege tus gatos del Sofá y del Salón de ataques directos. Se destruye con un ataque exitoso contra ella.
 
 Fortaleza Gatuna
-Descripción: Protege tus gatos del Sofá y del Salón de ataques directos y acciones. Se destruye con un ataque exitoso contra ella.
+Descripción: Protege tus gatos de ataques directos y bloquea Eventos individuales rivales que afecten a tus gatos, tu mano o tu Salón. Permanece tras interceptar un Evento individual y se destruye con un ataque exitoso.
 
 Comedero Automático
 Descripción: Roba 1 carta adicional durante el robo inicial. Se destruye con un ataque exitoso contra ella.
 
 Rascador de Sisal
-Descripción: Puedes descartar 2 cartas en el Paso de Preparación para que tu primer ataque tenga +1 de daño.
+Descripción: Una vez por turno, al declarar un ataque, puedes descartar 1 carta de tu mano para sumar +1 a su potencia. Decide antes de que el rival elija su defensa.
 
 Cama de Peluche
-Descripción: El gato mas cercano a la cama no se puede atacar ni mover hasta tu siguiente turno. Se descarta al inicio de tu próximo turno.
+Descripción: El gato junto a esta cama no puede ser atacado ni movido. Descarta la cama al inicio de tu próximo turno.
 
-ACCIONES
+Arenero
+Descripción: Cuando descartes cartas de tu mano, colócalas boca arriba sobre el Arenero. Justo antes de tu fase de cierre, si hay 3 o más, puedes devolver 1 a tu mano y enviar todas las demás al descarte común. Un ataque exitoso destruye el Arenero. Si sale de juego, todas las cartas que tenga encima van al descarte común.
+
+ACCIONES Y EVENTOS · INDIVIDUALES Y REACCIONES
 
 No te muevas, estoy cómodo
-Descripción: Pon esta carta en el salón de un rival. Este eprderá su proximo turno.
+Descripción: Pon esta carta en el Salón de un rival. Ese jugador pierde su próximo turno completo, incluidos inicio, cierre y comprobación de victoria.
 
 Destrucción de Sofá
 Descripción: Obtienes +1 de prestigio hasta el final del turno y 1 acción adicional.
@@ -153,7 +156,7 @@ Ronroneo
 Descripción: Elige 2 gatos del Sofá y cúbrelos con esta carta. Si siguen allí al inicio de tu próximo turno, obtienen +1 punto cada uno ese turno. Luego, descártala.
 
 Espía de Ventana
-Descripción: Revela a toda la mesa el ataque y sus apoyos después de que el defensor elija su defensa.
+Descripción: Cuando te ataquen, revela el ataque y sus apoyos antes de decidir tu defensa.
 
 Sorpresa en la Almohada
 Descripción: Elige un rival y descarta al azar la mitad de las cartas de su mano, redondeando hacia abajo. Si tiene 1 carta, descarta esa carta.
@@ -177,27 +180,27 @@ Descripción: Mueve/Intercambia un gato tuyo o rival entre el Sofá y el Salón.
 Descripción: Coge el mazo y quedate el primer gato que encuentres y barajalo, si no hay mas gatos en el mazo, roba 1 carta al azar.
 
 Sabotaje vecinal
-Descripción: Destruye una instalación rival.
+Descripción: Destruye 1 estructura rival, incluida la Fortaleza. No se puede cancelar con Flús-Flús.
 
 Ovillo de Lana
-Descripción: Recupera de descartes una carta y añádela a tu mano.
+Descripción: Recupera una carta del descarte común y añádela a tu mano. Si es un gato, colócalo directamente en tu casa.
 
 Ratón con Hierba Gatuna
-Descripción: Desvía a otro gato/estructura tuyo o rival un ataque dirigido hacia ti.
+Descripción: Cuando te ataquen, puedes desviar el ataque hacia otro gato o estructura válida. El nuevo objetivo puede volver a desviarlo.
 
 Flús-Flús de Agua (versión 1)
-Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>.
+Descripción: Cancela 1 carta marcada con el símbolo de Flús-Flús.
 
 Flús-Flús de Agua (versión 2)
-Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>.
+Descripción: Cancela 1 carta marcada con el símbolo de Flús-Flús.
 
 Flús-Flús de Agua (versión 3)
-Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>.
+Descripción: Cancela 1 carta marcada con el símbolo de Flús-Flús.
 
 Flús-Flús de Agua (versión 4)
-Descripción: Cancela una carta marcada con <copilot inserta aqui emoji de flush flush>.
+Descripción: Cancela 1 carta marcada con el símbolo de Flús-Flús.
 
-EVENTOS GLOBALES
+EVENTOS GLOBALES · DENTRO DE ACCIONES Y EVENTOS
 
 Hora de la Siesta
 Descripción: Hasta el inicio de tu próximo turno, se anulan las habilidades y sinergias de todos los gatos.
@@ -228,26 +231,13 @@ Descripción: Roba 3 cartas. Los gatos van a casa de sus dueños.
 Bolsa de Catnip
 Descripción: Todos roban 1 carta, empezando por ti. Cuando todos hayan robado, robas 1 más.
 
-CANCELABILIDAD SEGÚN EL REGLAMENTO REVISADO
+CANCELABILIDAD SEGÚN EL REGLAMENTO V3
 
-Son cancelables todas las cartas de Acción. La marca de Flús-Flús es visual;
-no es por sí sola la regla que determina la cancelabilidad.
-- No te muevas, estoy cómodo
-- Destrucción de Sofá
-- Sobredosis de Catnip
-- Ronroneo
-- Espía de Ventana
-- Sorpresa en la Almohada
-- Tirar Cosas de la Mesa
-- Sentarse en el Teclado
-- Puerta Gatera
-- Robo Felino
-- Apuntar con Láser Infrarrojo
-- ¡Pspspsps!
-- Sabotaje vecinal
-- Ovillo de Lana
-- Ratón con Hierba Gatuna
-- Flús-Flús de Agua (versiones 1, 2, 3 y 4)
+Son cancelables los Eventos individuales marcados con el símbolo de Flús-Flús,
+incluidos Ovillo, Ratón, Espía y las cuatro versiones de Flús-Flús.
+Sabotaje vecinal es la excepción entre los Eventos individuales y no se cancela.
 
-No cancelables con Flús-Flús:
-- Todas las cartas de Gatos, Ataques, Estructuras, Eventos Globales y Consumibles.
+No se cancelan con Flús-Flús:
+- Eventos Globales
+- Gatos, Ataques y Apoyos
+- Estructuras y Consumibles

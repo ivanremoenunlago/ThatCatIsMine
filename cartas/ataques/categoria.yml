@@ -69,7 +69,7 @@ diseno:
   desenfoque_sombra: 0.01
 cartas:
   - nombre: "Bola de Pelo"
-    imagen: "imagenes/bola de pelo.png"
+    imagen: "imagenes/bola_de_pelo.png"
     tipo: "ataque"
     dano: 0
     copias: 2
@@ -94,65 +94,65 @@ cartas:
     dano: 4
     copias: 2
   - nombre: "Agarre con patada"
-    imagen: "imagenes/agarre con patada.png"
+    imagen: "imagenes/agarre_con_patada.png"
     tipo: "ataque"
     dano: 5
     copias: 1
   - nombre: "Ataque en manada"
-    imagen: "imagenes/ataque en manada.png"
+    imagen: "imagenes/ataque_en_manada.png"
     tipo: "ataque"
     copias: 1
     dano_variable: "El daño es equivalente al número total de gatos que tienes en el Sofá y el Salón."
   - nombre: "Afilado de uñas"
-    imagen: "imagenes/afilado de uñas.png"
+    imagen: "imagenes/afilado_de_unas.png"
     tipo: "apoyo"
     bonificacion: 2
     copias: 1
     descripcion: "Juega en combate: suma +2 a la otra carta."
   - nombre: "Erizarse"
-    imagen: "imagenes/gato erizado.png"
+    imagen: "imagenes/erizarse.png"
     tipo: "apoyo"
     bonificacion: 1
     copias: 3
     descripcion: "Juega en combate: suma +1 a la otra carta."
   - nombre: "Terror del aspirador"
-    imagen: "imagenes/aspirador terrorífico.png"
+    imagen: "imagenes/terror_del_aspirador.png"
     tipo: "ataque"
     dano: 1
     copias: 1
   - nombre: "Escobazo contundente"
-    imagen: "imagenes/escobazo.png"
+    imagen: "imagenes/escobazo_contundente.png"
     tipo: "ataque"
     dano: 2
     copias: 2
   - nombre: "Zapatilla voladora"
-    imagen: "imagenes/zapatilla voladora.png"
+    imagen: "imagenes/zapatilla_voladora.png"
     tipo: "ataque"
     dano: 3
     copias: 2
   - nombre: "Caza de Bigotes"
-    imagen: "imagenes/caza de bigotes.png"
+    imagen: "imagenes/caza_de_bigotes.png"
     tipo: "ataque"
     dano: 4
     copias: 1
   - nombre: "Baño forzado"
-    imagen: "imagenes/gato bañándose.png"
+    imagen: "imagenes/bano_forzado.png"
     tipo: "ataque"
     dano: 5
     copias: 1
   - nombre: "Manguerazo frío"
-    imagen: "imagenes/manguerazo de agua fría.png"
+    imagen: "imagenes/manguerazo_frio.png"
     tipo: "ataque"
     copias: 1
     dano_variable: "El daño es equivalente al número total de gatos que tiene el rival en el Sofá y el Salón."
   - nombre: "¡Susto de Pepino!"
-    imagen: "imagenes/susto de pepino.png"
+    imagen: "imagenes/susto_de_pepino.png"
     tipo: "apoyo"
     bonificacion: 1
     copias: 1
     descripcion: "Juega en combate: suma +1 a la otra carta."
   - nombre: "¡Pacto de Bigotes y Escobazos!"
-    imagen: "imagenes/pacto de bigotes y escobazos.png"
+    imagen: "imagenes/pacto_de_bigotes_y_escobazos.png"
     tipo: "ataque"
     dano: 6
     copias: 1

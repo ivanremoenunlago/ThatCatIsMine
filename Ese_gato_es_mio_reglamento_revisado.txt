@@ -108,7 +108,7 @@ Gata Envidiosa
 Descripción: Obtienes +1 de potencia al atacar estructuras.
 
 Mamá Gata
-Descripción: Mientras esté en el Sofá, cada otro gato de tu Sofá obtiene +1 de prestigio.
+Descripción: Mientras esté en el Sofá, cada otro gato de tu Sofá obtiene +1 de prestigio. Con la sinergia Mamá y Bebé, el Gato Bebé obtiene +2 en lugar de +1.
 
 Gato Bebé
 Descripción: Si está solo en tu Sofá, añade 1 carta a tu robo inicial.
@@ -560,7 +560,7 @@ SINERGIAS CONFIRMADAS
 
 Las sinergias se aplican cuando sus gatos participantes están juntos en el
 Sofá, salvo que una sinergia indique otra ubicación o condición. Estas son
-las ocho sinergias conservadas para esta edición:
+las nueve sinergias conservadas para esta edición:
 
 - ¡Que me aplastas!: Gordo + Desnutrido. Coloca al Desnutrido bajo el Gordo;
   no ocupa espacio adicional.
@@ -580,6 +580,9 @@ las ocho sinergias conservadas para esta edición:
   volver al Sofá ese turno.
 - Los Trillizos: los tres Trillizos en el Sofá. Obtienes +2 de prestigio
   además de los puntos base de sus cartas.
+- Mamá y Bebé: Mamá Gata + Gato Bebé. Si ambos están en el Sofá, el Bebé
+  recibe +2 de prestigio por la habilidad de Mamá Gata en lugar de +1; los
+  demás gatos siguen recibiendo +1.
 
 No se aplica una sinergia si la pareja o el conjunto requerido no cumple
 su ubicación o condición. Hora de la Siesta desactiva las sinergias.
@@ -816,7 +819,7 @@ Las alternativas del robo inicial son excluyentes.
 - «Repeticiones» se expresa como «acciones adicionales» en las cartas.
 - Se conserva el valor de los ataques y las cuatro versiones de Flús-Flús.
 - Se conservan las tres entradas de Gato Trillizo del listado original.
-- Se incorporan las ocho sinergias confirmadas en una sección propia y en
+- Se incorporan las nueve sinergias confirmadas en una sección propia y en
   la página web de consulta.
 
 ============================================================

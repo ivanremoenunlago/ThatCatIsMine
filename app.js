@@ -6,7 +6,6 @@ const CATEGORY_PATHS = [
   'cartas/estructuras/categoria.yml',
   'cartas/acciones/categoria.yml',
   'cartas/consumibles/categoria.yml',
-  'cartas/globales/categoria.yml',
   'cartas/sinergias/categoria.yml'
 ];
 const $ = (id) => document.getElementById(id);
@@ -153,7 +152,7 @@ function validateCategory(category) {
       throw new Error(`La carta "${card.nombre}" necesita descripción y cantidad de copias válidas.`);
     }
     if (category.slug === 'acciones') {
-      if (!['accion', 'objeto', 'respuesta'].includes(card.tipo) || !card.descripcion
+      if (!['accion', 'objeto', 'respuesta', 'evento_global'].includes(card.tipo) || !card.descripcion
         || !Number.isInteger(card.copias) || card.copias < 1) {
         throw new Error(`La carta "${card.nombre}" necesita tipo, descripción y cantidad de copias válidos.`);
       }

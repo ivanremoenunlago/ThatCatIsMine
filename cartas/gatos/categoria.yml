@@ -71,118 +71,120 @@ diseno:
   desenfoque_sombra: 0.01
 cartas:
   - nombre: "Gato Gordo"
-    imagen: "imagenes/gato gordo.png"
+    imagen: "imagenes/gato_gordo.png"
     sofa: 6
     salon: 2
     descripcion: "Ocupa 2 espacios en el sofá."
     sinergia: "Gato Desnutrido — ¡Que me aplastas!"
   - nombre: "Gato Desnutrido"
-    imagen: "imagenes/gato desnutrido.png"
+    imagen: "imagenes/gato_desnutrido.png"
     sofa: 1
     salon: 1
     descripcion: "Si no tienes cartas en la mano, obtiene +2 puntos de prestigio."
     sinergia: "Gato Gordo — ¡Que me aplastas!"
   - nombre: "Gato de Barrio (Matón)"
-    imagen: "imagenes/gato de barrio.png"
+    imagen: "imagenes/gato_de_barrio_maton.png"
     sofa: 2
     salon: 1
     descripcion: "Aumenta en +1 el daño cuando atacas."
     sinergia: "Gato Territorial — Veteranos del barrio"
   - nombre: "Gato Territorial"
-    imagen: "imagenes/gato territorial.png"
+    imagen: "imagenes/gato_territorial.png"
     sofa: 2
     salon: 1
     descripcion: "Aumenta en +1 el daño cuando te defiendes"
     sinergia: "Gato de Barrio (Matón) — Veteranos del barrio"
   - nombre: "Gato Cotilla"
-    imagen: "imagenes/gato cotilla.png"
+    imagen: "imagenes/gato_cotilla.png"
     sofa: 3
     salon: 1
     descripcion: "Cuando te atacan, puedes descartar 1 carta para ver el ataque y sus apoyos."
     sinergia: "Gato Curioso — Socios de información"
   - nombre: "Gato Curioso"
-    imagen: "imagenes/gato curioso.png"
+    imagen: "imagenes/gato_curioso.png"
     sofa: 3
     salon: 1
-    descripcion: "Al inicio de tu fase de robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1."
+    descripcion: "Después de tu fase de robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1."
     sinergia: "Gato Cotilla — Socios de información"
   - nombre: "Gato Metódico"
-    imagen: "imagenes/gato metodico.png"
+    imagen: "imagenes/gato_metodico.png"
     sofa: 3
     salon: 1
     descripcion: "Si al final de la fase de robo tienes menos de 3 cartas, roba hasta tener 4."
     sinergia: "Gato Acaparador — Control de inventario"
   - nombre: "Gato Acaparador"
-    imagen: "imagenes/gato acaparador.png"
+    imagen: "imagenes/gato_acaparador.png"
     sofa: 3
     salon: 1
     descripcion: "Aumenta tu límite de mano de 7 a 9 cartas."
     sinergia: "Gato Metódico — Control de inventario"
   - nombre: "Gata Envidiosa"
-    imagen: "imagenes/gato envidioso.png"
+    imagen: "imagenes/gata_envidiosa.png"
     sofa: 4
     salon: 2
     descripcion: "Tus ataques contra instalaciones reciben +1 de daño. No se aplica contra gatos."
     sinergia: "Gato Mapache — Saqueadores envidiosos"
   - nombre: "Mamá Gata"
-    imagen: "imagenes/mama gata.png"
+    imagen: "imagenes/mama_gata.png"
     sofa: 2
     salon: 1
-    descripcion: "Mientras esté activa en el Sofá, concede +1 punto de prestigio  a cada otro gato que esté en el Sofá."
+    descripcion: "Mientras esté activa en el Sofá, concede +1 punto de prestigio a cada otro gato que esté en el Sofá. El Gato Bebé recibe +2 con Mamá y Bebé."
+    sinergia: "Gato Bebé — Mamá y Bebé"
   - nombre: "Gato Bebé"
-    imagen: "imagenes/gato bebe.png"
+    imagen: "imagenes/gato_bebe.png"
     sofa: 1
     salon: 1
     descripcion: "Si está solo en el Sofá, durante el robo inicial roba 1 carta adicional."
+    sinergia: "Mamá Gata — Mamá y Bebé"
   - nombre: "Gato Diurno (Blanco)"
-    imagen: "imagenes/gato diurno.png"
+    imagen: "imagenes/gato_diurno_blanco.png"
     sofa: 3
     salon: 1
     descripcion: "Si un rival ataca con éxito a uno de tus gatos del Sofá, se descarta una carta de su mano."
     sinergia: "Gato Nocturno (Negro) — Pareja yin-yang"
   - nombre: "Gato Nocturno (Negro)"
-    imagen: "imagenes/gato ncoturno.png"
+    imagen: "imagenes/gato_nocturno_negro.png"
     sofa: 3
     salon: 1
     descripcion: "Si un rival fracasa al atacar a uno de tus gatos del Sofá, se descarta una carta de su mano."
     sinergia: "Gato Diurno (Blanco) — Pareja yin-yang"
   - nombre: "Gato Trillizo"
-    imagen: "imagenes/trillizo 1.png"
+    imagen: "imagenes/gato_trillizo_1.png"
     sofa: 2
     salon: 1
     descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Trillizo"
-    imagen: "imagenes/trillizo 2.png"
+    imagen: "imagenes/gato_trillizo_2.png"
     sofa: 2
     salon: 1
     descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Trillizo"
-    imagen: "imagenes/trillizo 3.png"
+    imagen: "imagenes/gato_trillizo_3.png"
     sofa: 2
     salon: 1
     descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Solitario"
-    imagen: "imagenes/gato solitario.png"
+    imagen: "imagenes/gato_solitario.png"
     sofa: 0/7
     salon: 2
     descripcion: "Si es el único gato en el Sofá, cancela automáticamente cartas CANCELABLES que lo elijan como objetivo y da 7 de presitigio. Si esta acompañado pierde su inmunidad y da 0 de prestigio."
   - nombre: "Gato Escalador"
-    imagen: "imagenes/gato escalador.png"
+    imagen: "imagenes/gato_escalador.png"
     sofa: 3
     salon: 1
     descripcion: "Una vez por turno, puedes realizar un movimiento gatuno adicional durante el Paso de Preparación."
     sinergia: "Gato Victimista — ¡Porque solo a mí!"
   - nombre: "Gato Mapache"
-    imagen: "imagenes/mapache.png"
+    imagen: "imagenes/gato_mapache.png"
     sofa: 2
     salon: 1
     descripcion: "Puedes recuperar la última carta de la pila de descartes en lugar de tu robo inicial."
     sinergia: "Gata Envidiosa — Saqueadores envidiosos"
   - nombre: "Gato Victimista"
-    imagen: "imagenes/gato victimista.png"
+    imagen: "imagenes/gato_victimista.png"
     sofa: 3
     salon: 1
     descripcion: "Si cancelan con Flús-Flús de Agua una travesura tuya, el rival descarta 1 carta adicional."
