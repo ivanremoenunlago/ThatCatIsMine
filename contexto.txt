@@ -1,5 +1,5 @@
 CONTEXTO DEL PROYECTO «¡ESE GATO ES MÍO!»
-Actualizado: 17 de noviembre de 2026
+Actualizado: 18 de noviembre de 2026
 
 Este documento reúne el contexto útil de la conversación para continuar el trabajo
 en otro chat o en una sesión futura. Las reglas que el usuario señaló como
@@ -70,6 +70,8 @@ Excepción aprobada: se conservan las ocho sinergias de v0.48.
 Usar los YAML actuales para nombres, textos y datos de las cartas. No modificar
 mecánicas ni textos de cartas fuera de lo aprobado por el usuario.
 No usar el inventario auxiliar como fuente para la web.
+Las tres nuevas ilustraciones Gordo/Desnutrido, Cotilla/Curioso y
+Escalador/Victimista se vincularon al YAML de sinergias el 18 de noviembre.
 
 El usuario señaló como cambios que había que comprobar en el reglamento:
 - Las acciones adicionales se acumulan.

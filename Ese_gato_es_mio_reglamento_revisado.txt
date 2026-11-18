@@ -556,6 +556,34 @@ a ataques. Cama de Peluche protege a su gato frente a ambos.
 11. ACLARACIONES DE CARTAS Y PREGUNTAS RÁPIDAS
 ============================================================
 
+SINERGIAS CONFIRMADAS
+
+Las sinergias se aplican cuando sus gatos participantes están juntos en el
+Sofá, salvo que una sinergia indique otra ubicación o condición. Estas son
+las ocho sinergias conservadas para esta edición:
+
+- ¡Que me aplastas!: Gordo + Desnutrido. Coloca al Desnutrido bajo el Gordo;
+  no ocupa espacio adicional.
+- Veteranos del barrio: Matón + Territorial. Se anulan sus bonificaciones
+  individuales y la pareja obtiene +2 de prestigio en total.
+- Socios de información: Cotilla + Curioso. Cotilla no descarta para usar
+  su habilidad de información. Curioso mira 4 cartas en vez de 3.
+- Control de inventario: Metódico + Acaparador. Si finalizas la reposición
+  con menos de 3 cartas, repón hasta 5. Este objetivo sustituye al de Metódico.
+- Saqueadores envidiosos: Envidiosa + Mapache. Al destruir una estructura
+  rival con un ataque, puedes descartar 1 carta para recuperar esa estructura
+  del descarte.
+- Pareja yin-yang: Diurno + Nocturno. La pareja obtiene +1 de prestigio
+  adicional en total.
+- ¡Porque solo a mí!: Victimista + Escalador. Si ambos están en el Sofá al
+  inicio y Victimista sale durante tu turno, roba 1 carta. Victimista no puede
+  volver al Sofá ese turno.
+- Los Trillizos: los tres Trillizos en el Sofá. Obtienes +2 de prestigio
+  además de los puntos base de sus cartas.
+
+No se aplica una sinergia si la pareja o el conjunto requerido no cumple
+su ubicación o condición. Hora de la Siesta desactiva las sinergias.
+
 ¿Puedo ganar antes de cerrar mi turno?
 Sí. Tras resolver por completo cualquier efecto y sus respuestas, ganas
 si alcanzas tu objetivo durante tu propio turno. También puede suceder
@@ -788,6 +816,8 @@ Las alternativas del robo inicial son excluyentes.
 - «Repeticiones» se expresa como «acciones adicionales» en las cartas.
 - Se conserva el valor de los ataques y las cuatro versiones de Flús-Flús.
 - Se conservan las tres entradas de Gato Trillizo del listado original.
+- Se incorporan las ocho sinergias confirmadas en una sección propia y en
+  la página web de consulta.
 
 ============================================================
 15. DECISIONES PROPUESTAS Y DATOS PENDIENTES
@@ -829,8 +859,8 @@ ajustarse después de probarlas.
    gato ocupa la plaza del intercambiado o entra por la zona habitual.
 4. Dónde están activas las habilidades de cada gato. Algunas dicen Sofá
    expresamente y otras no. Hace falta una regla general.
-5. Listado completo de sinergias y sus requisitos. Solo se conoce el
-   objetivo de reposición de Control de Inventario, que es 5 cartas.
+5. Confirmación final de la ubicación exacta requerida por cada sinergia.
+   Para esta prueba se mantiene el requisito de estar juntas en el Sofá.
 6. Cartas que pueden usarse como defensa y apoyos permitidos por cada lado.
 7. Consecuencia de un ataque exitoso contra un gato. El texto recibido
    no indica si se descarta, cambia de casa o se mueve de zona.

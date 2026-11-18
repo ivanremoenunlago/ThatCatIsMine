@@ -14,7 +14,7 @@ La aplicación es estática: HTML, CSS y JavaScript, sin servidor ni proceso de 
 - **Acciones:** 16 tipos en la galería (19 acciones, 4 objetos y 4 respuestas), con cuatro ilustraciones distintas para Flús-Flús de Agua.
 - **Consumibles:** 4 tipos y 8 copias físicas.
 - **Eventos Globales:** 5 tipos y 5 copias configuradas, con ilustraciones para Hora de la Siesta, Perro del Vecino, Reparto de Juguetes, Visita al Veterinario y Huelga de Gatos.
-- **Sinergias:** 8 cartas de referencia de 63,5 × 88 mm, con la imagen ocupando todo el anverso y la explicación al lado; ambos lados llevan borde ámbar. Las ilustraciones pendientes se indican claramente.
+- **Sinergias:** 8 cartas de referencia de 63,5 × 88 mm, con la imagen ocupando todo el anverso y la explicación al lado; ambos lados llevan borde ámbar. Las ilustraciones pendientes, si existieran, se indicarían claramente.
 - **Mazo:** 94 cartas físicas según las cantidades configuradas actualmente en los YAML; el reglamento revisado aún deja pendiente confirmar el total final.
 - **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_revisado.txt](./Ese_gato_es_mio_reglamento_revisado.txt), un borrador de trabajo con decisiones propuestas y puntos pendientes.
 - **Reglamento web:** la pestaña **Reglamento** resume la preparación, incluye esquemas simplificado y completo del turno, explica el combate, las estructuras, los eventos y las sinergias acordadas, y muestra cinco variantes del tablero.
