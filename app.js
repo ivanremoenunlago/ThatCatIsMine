@@ -887,11 +887,10 @@ function textBytes(text) {
   return new TextEncoder().encode(text);
 }
 
-function dataUrlBytes(dataUrl) {
-  const binary = atob(dataUrl.slice(dataUrl.indexOf(',') + 1));
-  const bytes = new Uint8Array(binary.length);
-  for (let index = 0; index < binary.length; index++) bytes[index] = binary.charCodeAt(index);
-  return bytes;
+async function canvasJpegBytes(canvas, quality) {
+  const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', quality));
+  if (!blob) throw new Error('No se pudo codificar una imagen del PDF.');
+  return new Uint8Array(await blob.arrayBuffer());
 }
 
 function cropMarks(x, y, width, height, gap, length) {
@@ -1053,7 +1052,7 @@ async function createCardImage(category, card) {
   try {
     drawCard(canvas, category, card, artImage, icons, category.diseno.dpi);
     return {
-      bytes: dataUrlBytes(canvas.toDataURL('image/jpeg', 0.94)),
+      bytes: await canvasJpegBytes(canvas, 0.94),
       pixelWidth: canvas.width,
       pixelHeight: canvas.height
     };
@@ -1081,7 +1080,7 @@ async function createSynergyImages(category, progress) {
       try {
         drawSynergyFace(canvas, category, card, side, artImage, category.diseno.dpi);
         faces[side] = {
-          bytes: dataUrlBytes(canvas.toDataURL('image/jpeg', 0.96)),
+          bytes: await canvasJpegBytes(canvas, 0.96),
           pixelWidth: canvas.width,
           pixelHeight: canvas.height
         };
@@ -1178,7 +1177,7 @@ async function renderRulebookPdfPages() {
         width: widthMm * 72 / 25.4,
         height: heightMm * 72 / 25.4,
         images: [{
-          bytes: dataUrlBytes(canvas.toDataURL('image/jpeg', 0.94)),
+          bytes: await canvasJpegBytes(canvas, 0.94),
           pixelWidth: canvas.width,
           pixelHeight: canvas.height,
           x: 0,
