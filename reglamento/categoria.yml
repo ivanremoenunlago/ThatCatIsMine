@@ -70,7 +70,7 @@ cartas:
   - pagina: 1
     tipo: "lista"
     grupo: "estructuras"
-    texto: "Rascador: antes de la Fase de Acción, una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de potencia. Puedes pagar el descarte aunque no ataques o saltes la fase."
+    texto: "Rascador: antes de la Fase de Acción, una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de daño. Puedes pagar el descarte aunque no ataques o saltes la fase."
   - pagina: 1
     tipo: "lista"
     grupo: "estructuras"
@@ -161,7 +161,7 @@ cartas:
     fase: "accion"
     marca: "intermedio"
     titulo: "Rascador · antes de la Fase de Acción"
-    texto: "Una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de potencia. Puedes pagar el descarte aunque no ataques o saltes la fase."
+    texto: "Una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de daño. Puedes pagar el descarte aunque no ataques o saltes la fase."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "basico"
@@ -244,7 +244,7 @@ cartas:
     fase: "accion"
     marca: "intermedio"
     titulo: "Rascador · antes de la Fase de Acción"
-    texto: "Una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de potencia. Puedes pagar el descarte aunque no ataques o saltes la fase."
+    texto: "Una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de daño. Puedes pagar el descarte aunque no ataques o saltes la fase."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "completo"
@@ -359,14 +359,14 @@ cartas:
     tipo: "lista"
     grupo: "combate"
     ordenada: true
-    texto: "Revelad y sumad las potencias. Sin defensa, el Ataque tiene éxito, incluso con potencia 0. Con defensa, el Ataque debe superarla; el empate favorece al defensor."
+    texto: "Revelad y sumad los daños. Sin defensa, el Ataque tiene éxito, incluso con daño 0. Con defensa, el Ataque debe superarla; el empate favorece al defensor."
   - pagina: 3
     tipo: "seccion"
     titulo: "Si el ataque tiene éxito"
     texto: "Si el objetivo es un gato, el atacante lo captura y elige Sofá si cabe o Salón. Durante Huelga se puede seguir atacando y el gato capturado entra en su nueva casa; solo se impide bajar gatos que ya estaban en el Sofá al Salón o intercambiar zonas. Comprueba la capacidad tras colocarlo y la victoria después de completar la captura. Un ataque exitoso contra Caja de Cartón o Fortaleza Gatuna destruye esa estructura y termina ahí: capturar al gato protegido requiere otro ataque. Las demás estructuras atacables también se destruyen con un ataque exitoso; la Cama no puede elegirse como objetivo de ataque, pero Sabotaje Vecinal sí puede destruirla."
   - pagina: 3
     tipo: "seccion"
-    titulo: "Apoyos y potencia"
+    titulo: "Apoyos y daños"
     texto: "Los Apoyos se suman a una carta de Ataque o Defensa; no atacan ni defienden por sí solos y no hay límite por combate. Ataque en Manada cuenta tus gatos de ambas zonas. Manguerazo Frío cuenta los del defensor final después de los desvíos. Antes de la Fase de Acción, puedes descartar 1 carta con el Rascador: tu primer ataque posterior de este turno recibe +1, nunca una Defensa. Puedes pagar el descarte aunque no ataques o saltes la fase."
   - pagina: 3
     tipo: "seccion"
@@ -406,7 +406,7 @@ cartas:
   - pagina: 4
     tipo: "sinergia"
     titulo: "Veteranos del barrio"
-    texto: "De Barrio + Territorial: se anulan sus bonificaciones individuales de potencia; la pareja obtiene +2 de prestigio en total."
+    texto: "De Barrio + Territorial: se anulan sus bonificaciones individuales de daño; la pareja obtiene +2 de prestigio en total."
   - pagina: 4
     tipo: "sinergia"
     titulo: "Socios de información"
