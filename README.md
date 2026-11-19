@@ -2,7 +2,7 @@
 
 ## Propósito
 
-Este repositorio contiene una galería web local y los recursos para diseñar, revisar y descargar las cartas del juego de mesa «¡Ese gato es mío!». La galería lee las categorías desde YAML, monta las ilustraciones en una plantilla común y permite descargar PNG individuales o PDFs A4 listos para imprimir. También incluye una pestaña de reglamento con siete páginas de reglas en vertical y cinco tableros A4 en horizontal, disponibles en PDF.
+Este repositorio contiene una galería web local y los recursos para diseñar, revisar y descargar las cartas del juego de mesa «¡Ese gato es mío!». La galería lee las categorías desde YAML, monta las ilustraciones en una plantilla común y permite descargar PNG individuales o PDFs A4 listos para imprimir. El reglamento también se lee desde YAML y sus ocho páginas, igual que los cinco tableros, se exportan en A4 horizontal.
 
 La aplicación es estática: HTML, CSS y JavaScript, sin servidor ni proceso de compilación. Los archivos se procesan en el navegador y no se suben a Internet. Para crear PDFs descargables del reglamento se carga html2canvas 1.4.1 desde cdnjs con integridad verificada.
 
@@ -16,7 +16,8 @@ La aplicación es estática: HTML, CSS y JavaScript, sin servidor ni proceso de 
 - **Sinergias:** 9 cartas de referencia de 63,5 × 88 mm, con la imagen ocupando todo el anverso y la explicación al lado; ambos lados llevan borde ámbar.
 - **Mazo:** 96 cartas físicas según el inventario de la versión de pruebas V3.
 - **Reglamento de referencia:** [Ese_gato_es_mio_reglamento_v3_con_esquemas.txt](./Ese_gato_es_mio_reglamento_v3_con_esquemas.txt), la versión de pruebas vigente con esquemas de turno y asuntos pendientes.
-- **Reglamento web:** la pestaña **Reglamento** resume la preparación, incluye esquemas simplificado y completo del turno, explica el combate, las estructuras, los eventos y las sinergias en prueba, y muestra cinco variantes del tablero.
+- **Reglamento web:** la pestaña **Reglamento** incluye el lore, la preparación, el turno, el combate, las estructuras, los eventos y las sinergias. El texto se edita en `reglamento/categoria.yml`; sus ocho páginas se muestran y descargan en A4 horizontal.
+- **Tableros:** tienen una pestaña independiente con las cinco variantes. La impresión final permite incluir tableros sin añadir el reglamento, o viceversa.
 - El pie de [index.html](./index.html) incluye el aviso de derechos de autor.
 
 ## Abrir la galería
@@ -25,12 +26,11 @@ Abre `index.html` con Chrome o Edge. La aplicación intenta cargar automáticame
 
 Si el navegador bloquea la lectura local, utiliza **Seleccionar carpeta manualmente** y elige la raíz del proyecto. También puedes servir la carpeta con cualquier servidor web local; no hace falta instalar paquetes ni compilar nada.
 
-Cada categoría tiene una pestaña. La galería muestra una carta por tipo. La pestaña **Reglamento** abre la guía completa: siete páginas A4 verticales con las reglas y cinco páginas A4 horizontales con los tableros. La impresión usa orientación mixta dentro del mismo PDF:
+Cada categoría tiene una pestaña. La galería muestra una carta por tipo. **Impresión final** permite elegir páginas del reglamento, tableros, categorías completas o cartas individuales y descargarlas juntas en un PDF. En cartas con varias copias se puede elegir cuántas incluir. El orden del archivo es reglamento, tableros, cartas y sinergias.
 
 - **Descargar PNG** descarga ese tipo de carta como PNG a 720 DPI.
 - **Descargar PDF A4** genera el conjunto de la categoría, con hasta nueve cartas por página, separación de 3 mm y marcas de corte.
-- **Descargar PDF del reglamento** descarga directamente las siete páginas de reglas y los cinco tableros; las reglas son A4 vertical y cada tablero A4 horizontal.
-- **Descargar PDF completo** genera un único archivo: reglamento y tableros, las 96 cartas del mazo en páginas A4, y las nueve sinergias al final, con imagen y explicación lado a lado. No abre el diálogo de impresión.
+- **Impresión final** descarga únicamente la selección marcada: reglamento y tableros en A4 horizontal, cartas normales hasta nueve por página y sinergias con sus dos caras lado a lado. No abre el diálogo de impresión.
 - La pestaña **Sinergias** tiene su propio botón **Descargar PDF A4**. Cada pareja ocupa dos cartas normales de 63,5 × 88 mm, colocadas una al lado de la otra; no se prepara para impresión dúplex. Las ilustraciones aún no asignadas aparecen marcadas como pendientes.
 - En Ataques, Estructuras, Acciones y Eventos, y Consumibles, el PDF repite cada carta según su campo `copias`; cada ilustración se puede descargar como PNG individual.
 
@@ -41,8 +41,15 @@ Los PDFs de cartas ya incluyen su tamaño físico y no necesitan que se seleccio
 ```text
 index.html
 styles.css
-app.js
+js/
+  project-data.js
+  card-renderer.js
+  pdf-export.js
+  rulebook.js
+  app.js
 README.md
+reglamento/
+  categoria.yml
 tableros/
   (cinco variantes de imagen para el tablero)
 Ese_gato_es_mio_reglamento_revisado.txt
@@ -72,23 +79,29 @@ cartas/
     imagenes/
 ```
 
-- `index.html`: estructura de la página, pestañas, contenido del reglamento y aviso de derechos.
+- `index.html`: estructura de la página, pestañas, tableros y aviso de derechos.
 - `styles.css`: presentación de la galería y el reglamento, incluidas las páginas A4 de impresión.
-- `app.js`: lectura y validación de categorías, carga de imágenes, renderizado en canvas y exportación PNG/PDF de cartas; controla también las pestañas de la galería y el reglamento.
+- `js/project-data.js`: configuración, estado, lectura/validación del YAML y resolución de archivos e imágenes.
+- `js/card-renderer.js`: composición de las cartas y sinergias, y generación de sus vistas previas.
+- `js/pdf-export.js`: creación de imágenes para imprimir y armado de PDFs.
+- `js/rulebook.js`: presentación del reglamento y selección de elementos para la impresión final.
+- `js/app.js`: arranque de la aplicación, navegación por categorías y eventos de la interfaz.
+- `index.html` carga esos scripts en ese orden. Son scripts clásicos, no módulos, para conservar el uso directo desde `file://` y la selección manual de la carpeta.
 - Los archivos `categoria.yml` dentro de cada categoría contienen sus datos y configuración visual.
+- `reglamento/categoria.yml`: bloques de texto del reglamento. Se pueden cambiar títulos, párrafos, listas y orden de páginas sin editar el HTML.
 - `cartas/emojis/`: iconos comunes de tipo, huella, sofá y salón.
 - `cartas/<categoria>/imagenes/`: ilustraciones de esa categoría.
-- `tableros/`: cinco imágenes de tablero de 1491 × 1055 px. La web muestra el icono existente de la pata en las tres plazas del Sofá, el icono de Estructuras en su alfombrilla y solo el rótulo semitransparente en el Salón, que no tiene puestos individuales.
+- `tableros/`: cinco imágenes de tablero de 1491 × 1055 px. Su proporción coincide prácticamente con A4 horizontal y se colocan en páginas de 297 × 210 mm. La resolución de origen es de unos 128 ppp al imprimir a ese tamaño.
 
 Las rutas `imagen` e `iconos` de cada YAML son relativas al propio archivo de categoría. El nombre y la extensión deben coincidir exactamente con el archivo en disco.
 
-Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Al jugar la Cama de Peluche, colócala junto al gato que protege; queda vinculada a él y no cambia de objetivo por la posición de otros gatos. En las páginas A4 horizontales, la imagen del tablero se amplía al 105 % y se centra con recorte para que las tres plazas del Sofá y la zona de Estructuras midan aproximadamente 63,6 × 88,2 mm. Imprime o guarda el PDF a tamaño real (100 %); una impresora sin impresión sin bordes podría recortar parte de la zona de Estructuras.
+Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Al jugar la Cama de Peluche, colócala junto al gato que protege; queda vinculada a él y no cambia de objetivo por la posición de otros gatos. En los tableros, la imagen se amplía al 105 % para que las plazas del Sofá y la zona de Estructuras midan aproximadamente 63,6 × 88,2 mm, el tamaño de una carta. Este ajuste recorta unos 7,4 mm de cada lado y 5,3 mm arriba y abajo; conviene imprimir en una impresora sin bordes a tamaño real (100 %). Si se reduce la imagen para conservar todo el arte dentro de los márgenes, las zonas de carta se quedan en unos 60,5 × 84 mm y las cartas no caben a tamaño real.
 
 ## Diseño de las cartas
 
 Todas las cartas usan tamaño físico **63,5 × 88 mm**, equivalente a **1800 × 2494 píxeles a 720 DPI**. La ilustración se recorta proporcionalmente, sin deformarse, en un área aproximada de **1696 × 1696 píxeles**. El diseño mantiene marco, esquinas, imagen, banda del nombre y panel inferior compartidos.
 
-Las proporciones, posiciones y tamaños de texto se definen en `diseno` dentro de cada YAML; las familias tipográficas y el renderizado están en `app.js`. Si se cambia una medida, comprueba tanto la vista previa como la exportación final.
+Las proporciones, posiciones y tamaños de texto se definen en `diseno` dentro de cada YAML; las familias tipográficas y el renderizado están en `js/card-renderer.js`. Si se cambia una medida, comprueba tanto la vista previa como la exportación final.
 
 Mantén las descripciones breves, idealmente en 2-3 líneas impresas; deja los pasos y excepciones detallados para el reglamento. El tamaño de letra debe seguir siendo legible y solo reducirse automáticamente cuando el texto no quepa.
 
@@ -109,7 +122,7 @@ La banda del nombre usa el color de detalle de cada categoría como fondo, una v
 
 ## Cómo editar o añadir cartas
 
-Los YAML son la fuente de datos del catálogo: evita duplicar nombres, daños, textos o rutas dentro de `app.js`.
+Los YAML son la fuente de datos del catálogo: evita duplicar nombres, daños, textos o rutas dentro del código JavaScript.
 
 ### Gatos
 
@@ -146,8 +159,8 @@ Las nueve sinergias y explicaciones se mantienen en `cartas/sinergias/categoria.
 
 1. Crea `cartas/<categoria>/categoria.yml` e `imagenes/` siguiendo el formato de las categorías existentes.
 2. Usa rutas relativas al YAML y comprueba que cada imagen exista.
-3. Añade la ruta del YAML a `CATEGORY_PATHS` en `app.js`.
-4. Si la categoría necesita datos o una composición distintos, actualiza también `validateCategory` y el renderizado específico de `drawCard`.
+3. Añade la ruta del YAML a `CATEGORY_PATHS` en `js/project-data.js`.
+4. Si la categoría necesita datos o una composición distintos, actualiza `validateCategory` en `js/project-data.js` y el renderizado específico de `drawCard` en `js/card-renderer.js`.
 5. Comprueba carga de todas las imágenes, PNG individual, PDF, cantidades de copias y tamaño físico.
 
 El lector YAML integrado admite un subconjunto sencillo: claves de texto/número booleano y listas de cartas planas. Mantén las claves en ASCII con `snake_case` y los textos y rutas entre comillas dobles, como en los ejemplos actuales; no dependas de construcciones YAML avanzadas.
@@ -156,7 +169,7 @@ El lector YAML integrado admite un subconjunto sencillo: claves de texto/número
 
 1. Confirma nombre, texto, estadísticas y cantidad de copias con el reglamento vigente; no inventes datos que falten.
 2. Coloca cada ilustración en la carpeta `imagenes/` de su categoría y registra su ruta exacta en el YAML.
-3. Usa el YAML para cambiar datos de cartas y paletas. Modifica `app.js` solo cuando haga falta comportamiento o composición nuevos.
+3. Usa el YAML para cambiar datos de cartas y paletas. Modifica el archivo JavaScript de la responsabilidad correspondiente solo cuando haga falta comportamiento o composición nuevos.
 4. Recarga la galería y revisa todas las cartas afectadas; prueba al menos un PNG individual y el PDF A4.
 
 El reglamento V3 con esquemas es el borrador de trabajo vigente. Las versiones anteriores se conservan como referencia; no deben usarse para completar reglas que sigan pendientes en V3.
