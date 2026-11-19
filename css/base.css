@@ -87,6 +87,13 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
   font-weight: 800;
   letter-spacing: 1.2px;
 }
+.copyright-license-badge {
+  display: block;
+  width: 210px;
+  max-width: 100%;
+  height: auto;
+  margin: 12px 0 16px;
+}
 .copyright-content ul { margin: -3px 0 12px; padding-left: 20px; }
 .copyright-content .copyright-final { margin-bottom: 0; color: #fff8e9; font-weight: 700; }
 .visually-hidden {
