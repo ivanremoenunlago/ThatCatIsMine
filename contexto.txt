@@ -24,7 +24,8 @@ carpeta raíz.
 
 Archivos importantes:
 - index.html: pestañas, galería, contenido del reglamento y tableros.
-- styles.css: presentación, adaptación móvil y estilos de impresión.
+- css/base.css, css/cards.css y css/print.css: presentación global, cartas,
+  adaptación móvil y estilos de impresión.
 - app.js: carga y validación de datos, dibujo/exportación de cartas y
   comportamiento de pestañas.
 - README.md: documentación para usar y editar el proyecto.
@@ -271,15 +272,15 @@ como regla definitiva.
 
 5. TABLEROS Y DISTRIBUCIÓN VISUAL
 
-Hay cinco variantes de tablero en tableros/. Todas miden 1491 × 1055 píxeles y
-tienen una composición equivalente. Las coordenadas nuevas, aplicadas a todas
-las variantes, usan el origen superior izquierdo:
+Hay cinco variantes de tablero en tableros/. Todas miden 3508 × 2480 píxeles,
+300 ppp, y se ajustan a A4 horizontal. Las coordenadas siguientes usan el origen
+superior izquierdo de la imagen; las cajas CSS se escalan proporcionalmente:
 
-- Sofá, plaza izquierda: x=108, y=99, ancho=304, alto=422 px.
-- Sofá, plaza central: x=432, y=99, ancho=304, alto=422 px.
-- Sofá, plaza derecha: x=754, y=99, ancho=304, alto=422 px.
-- Alfombrilla de Estructura: x=1145, y=107, ancho=304, alto=422 px.
-- Salón: x=142, y=649, ancho=1206, alto=307 px.
+- Sofá, plaza izquierda: x=181, y=212, ancho=750, alto=1039 px.
+- Sofá, plaza central: x=960, y=212, ancho=750, alto=1039 px.
+- Sofá, plaza derecha: x=1740, y=212, ancho=750, alto=1039 px.
+- Alfombrilla de Estructura: x=2693, y=224, ancho=750, alto=1039 px.
+- Salón, zona útil: x=351, y=1598, ancho=2806, alto=645 px.
 
 El Salón es una zona libre, sin huecos individuales dibujados. Los overlays se
 escalan proporcionalmente con la imagen.
@@ -296,23 +297,20 @@ Reglas visuales y de uso:
 - En el Salón no hay icono ni contorno superpuesto; queda solo el rótulo
   «SALÓN · ZONA LIBRE», semitransparente y sin sombra.
 - Se eliminó el SVG propio que antes dibujaba una carta con una pata.
-- Los cinco archivos actuales son «Salón con sofá malva suave.png», «Sofá azul,
-  alfombra crema y madera.png», «Sofá rojo fresa en salón de juegos.png»,
-  «Sofá terracota suave con alfombra a juego.png» y
-  «Sofá verde salvia con ribete rosa.png».
+- Los cinco PNG activos son `tableros/sofa_malva.png`, `sofa_azul.png`,
+  `sofa_rojo.png`, `sofa_terracota.png` y `sofa_verde.png`.
 
 Medidas físicas calculadas para la impresión A4 horizontal actual:
 - Los tableros ahora se imprimen a página completa A4 apaisada: 297 × 210 mm,
--  sin márgenes CSS. La imagen se amplía al 105 % y se centra, recortando los
-  bordes. El PDF sigue siendo A4; debe imprimirse a tamaño real (100 %).
-- Con ese aumento, los rectángulos de 304 × 422 px miden aproximadamente
-  63,6 × 88,2 mm, por lo que admiten cartas físicas de 63,5 × 88 mm. Se aplica
-  tanto a las tres plazas del Sofá como a la zona de Estructuras.
-- Sin el aumento, al ocupar exactamente una hoja A4, los rectángulos medirían
-  unos 60,5 × 84,0 mm: faltarían alrededor de 3,0 mm de ancho y 4,0 mm de alto.
-- La zona de Estructuras queda muy cerca del borde derecho al ampliar. Una
-  impresora sin impresión sin bordes puede recortar parte de esa zona; guardar
-  como PDF conserva la página completa.
+  sin ampliación, recorte ni `scale(1.05)`. El PDF debe imprimirse a tamaño real
+  (100 %).
+- Los tres cojines del Sofá tienen el mismo ancho: aproximadamente 66,0 mm.
+  Cada recuadro de carta mide 63,5 × 88 mm y, centrado en el cojín, deja unos
+  1,25 mm de tapicería a cada lado.
+- Las posiciones CSS comunes a los cinco tableros están en `css/print.css`:
+  izquierda 5,1545 %, centro 27,3713 %, derecha 49,5881 %; ancho 21,3805 %,
+  parte superior 8,5569 % y alto 41,9048 %. Estructura empieza en 76,7609 % /
+  9,0407 %. El Salón útil empieza en 10,01 % / 64,42 % y mide 80 % × 26 %.
 
 
 6. ÚLTIMO ESTADO TÉCNICO COMPROBADO
@@ -332,7 +330,7 @@ Comprobaciones realizadas:
 
 Archivos con cambios recientes:
 - index.html
-- styles.css
+- css/base.css, css/cards.css y css/print.css
 - README.md
 - contexto.txt (este documento)
 - Se quitó tableros/marcador-carta.svg.
@@ -351,10 +349,7 @@ imagen de «Sabotaje vecinal»: se apuntó a la ilustración existente
 archivo ausente. La prueba del documento combinado confirmó 94 imágenes
 cargadas, 11 páginas de cartas y tamaños CSS de impresión de 63,5 × 88 mm.
 
-La edición más reciente reemplazó cuatro imágenes de tablero y mantuvo la de
-Sofá azul, alfombra crema y madera. Se actualizaron las cinco referencias HTML
-y se eliminaron las páginas duplicadas/obsoletas del reglamento. Todas las
-imágenes actuales siguen el mismo tamaño y composición; las nuevas coordenadas
-se aplican a las cinco. En impresión el escenario se amplía al 105 % para que
-las zonas marcadas tengan el tamaño físico de una carta; esto recorta
-ligeramente los bordes de la imagen.
+La edición más reciente igualó los cojines en los cinco PNG de tablero y ajustó
+las cajas CSS de Sofá, Estructura y Salón. Las cinco imágenes siguen midiendo
+3508 × 2480 píxeles y las coordenadas se comparten en `css/print.css`. El tablero
+se muestra e imprime sin aplicar el zoom del 105 %.

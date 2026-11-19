@@ -1,145 +1,3 @@
-:root {
-  color-scheme: light;
-  --ink: #493323;
-  --muted: #786c5d;
-  --paper: #fbf7ef;
-  --panel: #fffdf8;
-  --line: #e7ddcb;
-  --gold: #b98232;
-  font-family: Arial, Helvetica, sans-serif;
-}
-* { box-sizing: border-box; }
-body { margin: 0; color: var(--ink); background: #f2eee6; }
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 24px clamp(18px, 4vw, 58px);
-  background: #fffdf8;
-  border-bottom: 1px solid var(--line);
-}
-.eyebrow {
-  margin: 0 0 7px;
-  color: #99743e;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.7px;
-}
-h1, h2, h3, p { margin-top: 0; }
-h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times New Roman', serif; }
-.subtitle { margin: 0; color: var(--muted); font-size: 14px; }
-.top-actions { display: flex; flex-wrap: wrap; gap: 9px; justify-content: flex-end; }
-.button {
-  min-height: 42px;
-  padding: 10px 16px;
-  border: 1px solid #d8c9ad;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-}
-.button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 5px 15px #49332316; }
-.button:disabled { opacity: .48; cursor: not-allowed; }
-.button.primary { color: white; background: #9f702c; border-color: #9f702c; }
-.button.primary:hover:not(:disabled) { background: #875c21; }
-.button.secondary { color: var(--ink); background: #fffaf0; }
-.catalogue { max-width: 1500px; margin: 0 auto; padding: 28px 22px 40px; }
-.category-tabs { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 25px; }
-.tab-button {
-  padding: 10px 18px;
-  color: #6f604d;
-  background: #fffaf0;
-  border: 1px solid #ded5c6;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.tab-button[aria-selected="true"] { color: #fff; background: #493323; border-color: #493323; }
-.category-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin-bottom: 20px; }
-.category-heading-title { display: flex; align-items: center; gap: 13px; }
-.category-icon { display: block; width: 38px; height: 38px; object-fit: contain; filter: brightness(0) saturate(100%); }
-.category-heading .eyebrow { margin-bottom: 5px; }
-.category-heading h2 { margin: 0; font: 700 26px Georgia, 'Times New Roman', serif; }
-.status { max-width: 560px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; text-align: right; }
-.status.error { color: #a33f36; }
-.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(205px, 1fr)); gap: 22px; align-items: start; }
-.card-tile {
-  min-width: 0;
-  padding: 12px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 17px;
-  box-shadow: 0 7px 22px #513c2110;
-}
-.card-art {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  background: #eee5d5;
-  box-shadow: 0 5px 14px #0002;
-}
-.card-tile h3 { margin: 13px 0 11px; font: 700 16px/1.3 Georgia, 'Times New Roman', serif; }
-.card-actions { display: flex; }
-.card-actions .button { width: 100%; }
-.card-meta { margin: 0 0 12px; color: var(--muted); font-size: 11px; }
-.synergy-card-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
-.synergy-tile { border-color: #c58a2e; }
-.synergy-face-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.synergy-face {
-  display: flex;
-  min-width: 0;
-  aspect-ratio: 63.5 / 88;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  color: #493323;
-  background: #fffdf8;
-  border: 3px solid #c58a2e;
-  border-radius: 9px;
-  text-align: center;
-}
-.synergy-face-front img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.synergy-face-back { flex-direction: column; padding: 8px; background: #fff8e9; }
-.synergy-face-back h4 { margin: 0 0 8px; color: #a56d1c; font: 700 14px/1.2 Georgia, 'Times New Roman', serif; }
-.synergy-face-back p { margin: 0; font-size: 12px; line-height: 1.4; }
-.empty-state {
-  padding: 36px 22px;
-  color: #6c5a43;
-  background: #faf3e5;
-  border: 1px solid #eddfc4;
-  border-radius: 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  text-align: center;
-}
-.copyright-footer { padding: 28px 22px; color: #d7cdbb; background: #302b25; }
-.copyright-content { max-width: 900px; margin: 0 auto; font-size: 12px; line-height: 1.65; }
-.copyright-content h2 { margin: 0; color: #fff8e9; font: 700 16px Georgia, 'Times New Roman', serif; }
-.copyright-content p { margin: 8px 0; }
-.copyright-content .copyright-all-rights {
-  margin-top: 0;
-  color: #c9a96f;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-}
-.copyright-content ul { margin: -3px 0 12px; padding-left: 20px; }
-.copyright-content .copyright-final { margin-bottom: 0; color: #fff8e9; font-weight: 700; }
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 .rulebook-panel[hidden], #categoryPanel[hidden], #pdfButton[hidden] { display: none !important; }
 .rulebook-panel { max-width: 297mm; margin: 0 auto; }
 .rulebook-toolbar {
@@ -208,7 +66,7 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
   align-items: center;
   justify-content: center;
 }
-.rulebook-board-page .board-image-stage { width: 100%; height: 100%; transform: scale(1.05); }
+.rulebook-board-page .board-image-stage { width: 100%; height: 100%; }
 .rulebook-board-page .board-image-stage > img { width: 100%; height: 100%; object-fit: fill; }
 .rulebook-page.pdf-export-page.rulebook-board-page {
   display: flex;
@@ -229,7 +87,6 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
 .rulebook-page.pdf-export-page.rulebook-board-page .board-image-stage {
   width: 100%;
   height: 100%;
-  transform: scale(1.05);
 }
 .rulebook-page.pdf-export-page.rulebook-board-page .board-image-stage > img {
   width: 100%;
@@ -252,15 +109,15 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
   border-radius: 2%;
   box-shadow: inset 0 0 0 1px rgba(66, 55, 42, .12);
 }
-.board-sofa-left { left: 7.243%; top: 9.384%; width: 20.389%; height: 40%; }
-.board-sofa-center { left: 28.974%; top: 9.384%; width: 20.389%; height: 40%; }
-.board-sofa-right { left: 50.570%; top: 9.384%; width: 20.389%; height: 40%; }
-.board-structure { left: 76.794%; top: 10.142%; width: 20.389%; height: 40%; }
+.board-sofa-left { left: 5.1545%; top: 8.5569%; width: 21.3805%; height: 41.9048%; }
+.board-sofa-center { left: 27.3713%; top: 8.5569%; width: 21.3805%; height: 41.9048%; }
+.board-sofa-right { left: 49.5881%; top: 8.5569%; width: 21.3805%; height: 41.9048%; }
+.board-structure { left: 76.7609%; top: 9.0407%; width: 21.3805%; height: 41.9048%; }
 .board-salon-zone {
-  left: 9.524%;
-  top: 61.517%;
-  width: 80.885%;
-  height: 29.100%;
+  left: 10.01%;
+  top: 64.42%;
+  width: 80%;
+  height: 26%;
 }
 .board-paw-icon {
   display: block;
@@ -287,7 +144,8 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
   color: #493323;
   font: 700 17pt/1.08 Georgia, 'Times New Roman', serif;
 }
-.rulebook-lead { margin: 0; color: #6d5a44; font-size: 8.5pt; }
+.rulebook-lead { margin: 0 0 1.2mm; color: #6d5a44; font-size: 8.5pt; }
+.rulebook-lead:last-child { margin-bottom: 0; }
 .rulebook-sections { display: grid; align-content: start; gap: 2mm 4mm; }
 .rulebook-sections-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .rulebook-sections-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -335,52 +193,76 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
 .salon-cats { min-height: 7mm; color: #70885f; font-size: 15pt; line-height: 1; }
 .rulebook-note { margin: 3mm 0 0; color: #625849; font-size: 9pt; }
 .rulebook-timeline, .combat-flow { display: grid; gap: 2.5mm; margin: 0; padding: 0; list-style: none; }
-.turn-flow { margin: 0; padding: 0; list-style: none; }
-.turn-flow > li {
-  position: relative;
+.turn-diagrams {
   display: grid;
-  grid-template-columns: 10mm minmax(0, 1fr);
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  align-items: start;
   gap: 3mm;
-  align-items: center;
-  padding: 2.5mm 3mm;
-  background: #fffaf0;
-  border: 1px solid #e8dcc7;
+}
+.turn-diagram {
+  display: grid;
+  min-width: 0;
+  align-content: start;
+  gap: .8mm;
+  padding: 2mm;
+  background: #fffdf9;
+  border: 1px solid #e7ddcb;
   border-radius: 2.5mm;
 }
-.turn-flow > li:not(:last-child) { margin-bottom: 5mm; }
-.turn-flow > li:not(:last-child)::after {
-  position: absolute;
-  bottom: -5.3mm;
-  left: 50%;
-  width: 2mm;
-  height: 2mm;
-  color: #806a91;
-  border-right: 1px solid #806a91;
-  border-bottom: 1px solid #806a91;
-  content: "";
-  transform: translateX(-50%) rotate(45deg);
+.turn-diagram-title {
+  margin: 0 0 .5mm;
+  color: #493323;
+  font: 700 11pt/1.1 Georgia, 'Times New Roman', serif;
 }
-.turn-flow-number {
+.turn-diagram-basico { gap: .6mm; padding: 1.5mm; }
+.turn-diagram-basico .turn-step { grid-template-columns: 5mm minmax(0, 1fr); gap: 1mm; padding: .7mm 1mm; }
+.turn-diagram-basico .turn-step-number { min-height: 4.5mm; }
+.turn-diagram-completo { grid-template-columns: minmax(0, 1fr); gap: .6mm; padding: 1.5mm; }
+.turn-step {
+  --turn-border: #8a9bad;
+  --turn-fill: #f0f3f6;
   display: grid;
-  min-height: 8mm;
+  grid-template-columns: 6mm minmax(0, 1fr);
+  gap: 1.5mm;
+  align-items: start;
+  min-width: 0;
+  padding: 1.2mm 1.6mm;
+  background: var(--turn-fill);
+  border: 1px solid var(--turn-border);
+  border-radius: 2mm;
+  break-inside: avoid;
+}
+.turn-phase-inicio { --turn-border: #5681a7; --turn-fill: #edf4fb; }
+.turn-phase-robo { --turn-border: #806a91; --turn-fill: #f3eef7; }
+.turn-phase-accion { --turn-border: #b98232; --turn-fill: #fff4e3; }
+.turn-phase-movimiento { --turn-border: #70885f; --turn-fill: #eef3ea; }
+.turn-phase-cierre { --turn-border: #667584; --turn-fill: #eef1f4; }
+.turn-marker-opcional { --turn-border: #b94b48; --turn-fill: #fff0ef; }
+.turn-marker-intermedio { --turn-border: #468e86; --turn-fill: #eaf5f3; }
+.turn-diagram-completo .turn-step {
+  grid-template-columns: 5mm minmax(0, 1fr);
+  gap: 1mm;
+  padding: .6mm 1mm;
+}
+.turn-diagram-completo .turn-step-number { min-height: 4.5mm; font-size: 6.5pt; }
+.turn-diagram-completo .turn-step h4 { margin-bottom: .3mm; font-size: 7.2pt; line-height: 1.04; }
+.turn-diagram-completo .turn-step p { font-size: 7pt; line-height: 1.08; }
+.turn-step-number {
+  display: grid;
+  min-height: 5.5mm;
   place-items: center;
   color: #fff;
-  background: #806a91;
-  border-radius: 2mm;
-  font-size: 8pt;
+  background: var(--turn-border);
+  border-radius: 1.4mm;
+  font-size: 7pt;
   font-weight: 800;
-  text-align: center;
 }
-.turn-flow h3 { margin: 0 0 1mm; color: #57412b; font: 700 10.5pt/1.15 Georgia, 'Times New Roman', serif; }
-.turn-flow p { margin: 0; }
-.turn-flow-detailed { font-size: 9pt; line-height: 1.28; }
-.turn-flow-detailed > li { padding-top: 1.7mm; padding-bottom: 1.7mm; }
-.turn-flow-detailed > li:not(:last-child) { margin-bottom: 2.5mm; }
-.turn-flow-detailed > li:not(:last-child)::after { bottom: -2.8mm; }
-.turn-flow-detailed h3 { font-size: 9.5pt; }
-.turn-flow-branches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3mm; margin-top: 1.5mm; }
-.turn-flow-branches section { padding: 2mm; background: #f5f0f7; border-radius: 2mm; }
-.turn-flow-branches strong { display: block; margin-bottom: 1mm; color: #57412b; }
+.turn-step h4 { margin: 0 0 .5mm; color: #3e372f; font: 700 8pt/1.12 Arial, sans-serif; }
+.turn-step p { margin: 0; font-size: 7.2pt; line-height: 1.16; }
+.turn-choice { display: flex; align-items: stretch; gap: 1mm; }
+.turn-choice .turn-step { flex: 1 1 0; }
+.turn-choice-separator { align-self: center; color: #625849; font-size: 7pt; font-weight: 800; }
 .rulebook-timeline > li { display: grid; grid-template-columns: 9mm minmax(0, 1fr); gap: 3mm; align-items: start; padding: 2.5mm 3mm; background: #fffaf0; border: 1px solid #e8dcc7; border-radius: 2.5mm; }
 .timeline-number { display: grid; width: 8mm; height: 8mm; place-items: center; color: white; background: #806a91; border-radius: 50%; font-weight: 800; }
 .rulebook-timeline h3 { margin: 0 0 1mm; color: #57412b; font: 700 11pt Georgia, 'Times New Roman', serif; }
@@ -397,24 +279,19 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
 .rulebook-faq p { margin-bottom: 1.5mm; font-size: 9pt; }
 .rulebook-page-footer { margin-top: 5mm; padding-top: 2mm; color: #857966; border-top: 1px solid #e7ddcb; font-size: 8pt; text-align: right; }
 @media (max-width: 680px) {
-  .topbar { align-items: flex-start; flex-direction: column; }
-  .top-actions { justify-content: flex-start; }
-  .catalogue { padding: 20px 14px 30px; }
-  .category-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; }
-  .category-heading { align-items: flex-start; flex-direction: column; }
-  .status { text-align: left; }
-  .card-grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 13px; }
-  .card-tile { padding: 9px; }
   .rulebook-toolbar { align-items: flex-start; flex-direction: column; }
   .final-print-header { flex-direction: column; }
   .final-print-download { width: 100%; justify-items: start; }
   .final-print-status { text-align: left; }
   .final-print-groups, .final-print-categories { grid-template-columns: 1fr; }
-  .rulebook-page { padding: 5mm; }
+  .rulebook-page { min-height: 0; aspect-ratio: auto; overflow: visible; padding: 5mm; }
   .rulebook-page-header h2 { font-size: 16pt; }
   .rulebook-sections-2, .rulebook-sections-3 { grid-template-columns: 1fr; }
-  .rulebook-columns, .rulebook-zones, .synergy-grid { grid-template-columns: 1fr; }
-  .turn-flow-branches { grid-template-columns: 1fr; }
+  .rulebook-columns, .rulebook-zones, .synergy-grid, .turn-diagrams { grid-template-columns: 1fr; }
+  .turn-diagram-completo { grid-template-columns: 1fr; }
+  .turn-diagram-completo > .turn-diagram-title,
+  .turn-diagram-completo > .turn-choice { grid-column: auto; }
+  .turn-choice { align-items: center; flex-direction: column; }
   .rulebook-card { padding: 3mm; }
 }
 @page { size: A4 landscape; margin: 0; }
@@ -451,10 +328,26 @@ h1 { margin-bottom: 5px; font: 700 clamp(25px, 3vw, 36px)/1.1 Georgia, 'Times Ne
   }
   .board-screen-title { display: none; }
   .rulebook-board-page .board-figure { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; }
-  .rulebook-board-page .board-image-stage { width: 100%; height: 100%; transform: scale(1.05); }
+  .rulebook-board-page .board-image-stage { width: 100%; height: 100%; }
   .rulebook-board-page .board-image-stage > img { width: 100%; height: 100%; object-fit: fill; }
   .rulebook-page:last-of-type { break-after: auto; page-break-after: auto; }
   .rulebook-page-header { margin-bottom: 2mm; }
   .rulebook-page-header h2 { font-size: 17pt; }
+  .rulebook-page { font-size: 9.5pt; line-height: 1.28; }
+  .rulebook-lead { font-size: 9.5pt; }
   .rulebook-block { break-inside: avoid; }
+  .rulebook-block h3 { font-size: 11pt; }
+  .turn-diagram-basico .turn-step h4 { font-size: 9pt; }
+  .turn-diagram-basico .turn-step p { font-size: 8.5pt; line-height: 1.14; }
+  .turn-diagram-completo .turn-step p { font-size: 8.7pt; line-height: 1.14; }
+  .turn-diagram-completo .turn-step h4 { font-size: 9pt; }
+  .turn-diagram-completo .turn-step-number { font-size: 8pt; }
 }
+.rulebook-page.pdf-export-page { font-size: 9.5pt; line-height: 1.28; }
+.rulebook-page.pdf-export-page .rulebook-lead { font-size: 9.5pt; }
+.rulebook-page.pdf-export-page .rulebook-block h3 { font-size: 11pt; }
+.rulebook-page.pdf-export-page .turn-diagram-basico .turn-step h4 { font-size: 9pt; }
+.rulebook-page.pdf-export-page .turn-diagram-basico .turn-step p { font-size: 8.5pt; line-height: 1.14; }
+.rulebook-page.pdf-export-page .turn-diagram-completo .turn-step p { font-size: 8.7pt; line-height: 1.14; }
+.rulebook-page.pdf-export-page .turn-diagram-completo .turn-step h4 { font-size: 9pt; }
+.rulebook-page.pdf-export-page .turn-diagram-completo .turn-step-number { font-size: 8pt; }

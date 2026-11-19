@@ -74,118 +74,138 @@ cartas:
     imagen: "imagenes/gato_gordo.png"
     sofa: 6
     salon: 2
-    descripcion: "Ocupa 2 espacios en el sofá."
+    habilidad: "Ya si eso, mañana"
+    descripcion: "Si está en tu Sofá y pasas toda la Fase de Acción, mira en secreto la carta superior del mazo. Puedes dejarla arriba o ponerla en el fondo. Ocupa dos plazas del Sofá."
     sinergia: "Gato Desnutrido — ¡Que me aplastas!"
   - nombre: "Gato Desnutrido"
     imagen: "imagenes/gato_desnutrido.png"
     sofa: 1
     salon: 1
-    descripcion: "Si no tienes cartas en la mano, obtiene +2 puntos de prestigio."
+    habilidad: "A pan y agua"
+    descripcion: "Si tienes la mano vacía, obtiene +2 de prestigio."
     sinergia: "Gato Gordo — ¡Que me aplastas!"
-  - nombre: "Gato de Barrio (Matón)"
+  - nombre: "Gato de Barrio"
     imagen: "imagenes/gato_de_barrio_maton.png"
     sofa: 2
     salon: 1
-    descripcion: "Aumenta en +1 el daño cuando atacas."
+    habilidad: "Aquí mando yo"
+    descripcion: "Obtienes +1 de potencia al atacar."
     sinergia: "Gato Territorial — Veteranos del barrio"
   - nombre: "Gato Territorial"
     imagen: "imagenes/gato_territorial.png"
     sofa: 2
     salon: 1
-    descripcion: "Aumenta en +1 el daño cuando te defiendes"
-    sinergia: "Gato de Barrio (Matón) — Veteranos del barrio"
+    habilidad: "De aquí no pasas"
+    descripcion: "Obtienes +1 de potencia al defenderte."
+    sinergia: "Gato de Barrio — Veteranos del barrio"
   - nombre: "Gato Cotilla"
     imagen: "imagenes/gato_cotilla.png"
     sofa: 3
     salon: 1
-    descripcion: "Cuando te atacan, puedes descartar 1 carta para ver el ataque y sus apoyos."
+    habilidad: "¿Qué tramas?"
+    descripcion: "Cuando te ataquen, puedes descartar 1 carta para revelar el Ataque y sus Apoyos antes de elegir tu defensa."
     sinergia: "Gato Curioso — Socios de información"
   - nombre: "Gato Curioso"
     imagen: "imagenes/gato_curioso.png"
     sofa: 3
     salon: 1
-    descripcion: "Después de tu fase de robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1."
+    habilidad: "A ver qué hay"
+    descripcion: "Después de la Fase de Robo, puedes descartar 1 carta para mirar las 3 primeras cartas del mazo y quedarte con 1."
     sinergia: "Gato Cotilla — Socios de información"
-  - nombre: "Gato Metódico"
+  - nombre: "Gato Previsor"
     imagen: "imagenes/gato_metodico.png"
     sofa: 3
     salon: 1
-    descripcion: "Si al final de la fase de robo tienes menos de 3 cartas, roba hasta tener 4."
-    sinergia: "Gato Acaparador — Control de inventario"
-  - nombre: "Gato Acaparador"
+    habilidad: "Una más por si acaso"
+    descripcion: "Si tienes menos de 3 cartas al reponer tu mano, roba hasta tener 4."
+    sinergia: "Gata Acaparadora — Control de inventario"
+  - nombre: "Gata Acaparadora"
     imagen: "imagenes/gato_acaparador.png"
     sofa: 3
     salon: 1
+    habilidad: "Más vale que sobre"
     descripcion: "Aumenta tu límite de mano de 7 a 9 cartas."
-    sinergia: "Gato Metódico — Control de inventario"
+    sinergia: "Gato Previsor — Control de inventario"
   - nombre: "Gata Envidiosa"
     imagen: "imagenes/gata_envidiosa.png"
     sofa: 4
     salon: 2
-    descripcion: "Tus ataques contra instalaciones reciben +1 de daño. No se aplica contra gatos."
+    habilidad: "Si yo no lo tengo…"
+    descripcion: "Tus ataques contra estructuras reciben +1 de potencia."
     sinergia: "Gato Mapache — Saqueadores envidiosos"
   - nombre: "Mamá Gata"
     imagen: "imagenes/mama_gata.png"
     sofa: 2
     salon: 1
-    descripcion: "Mientras esté activa en el Sofá, concede +1 punto de prestigio a cada otro gato que esté en el Sofá. El Gato Bebé recibe +2 con Mamá y Bebé."
-    sinergia: "Gato Bebé — Mamá y Bebé"
+    habilidad: "Bajo mi ala"
+    descripcion: "Cada otro gato de tu Sofá obtiene +1 de prestigio. Con El ojito derecho, el Bebé recibe +2 en lugar de +1."
+    sinergia: "Gato Bebé — El ojito derecho"
   - nombre: "Gato Bebé"
     imagen: "imagenes/gato_bebe.png"
     sofa: 1
     salon: 1
-    descripcion: "Si está solo en el Sofá, durante el robo inicial roba 1 carta adicional."
-    sinergia: "Mamá Gata — Mamá y Bebé"
-  - nombre: "Gato Diurno (Blanco)"
+    habilidad: "Atención exclusiva"
+    descripcion: "Si está solo en tu Sofá, añade 1 carta a tu robo inicial."
+    sinergia: "Mamá Gata — El ojito derecho"
+  - nombre: "Gato Diurno"
     imagen: "imagenes/gato_diurno_blanco.png"
     sofa: 3
     salon: 1
-    descripcion: "Si un rival ataca con éxito a uno de tus gatos del Sofá, se descarta una carta de su mano."
-    sinergia: "Gato Nocturno (Negro) — Pareja yin-yang"
-  - nombre: "Gato Nocturno (Negro)"
+    habilidad: "El precio de ganar"
+    descripcion: "Si un rival ataca con éxito a un gato de tu Sofá, ese rival descarta 1 carta."
+    sinergia: "Gato Nocturno — Pareja yin-yang"
+  - nombre: "Gato Nocturno"
     imagen: "imagenes/gato_nocturno_negro.png"
     sofa: 3
     salon: 1
-    descripcion: "Si un rival fracasa al atacar a uno de tus gatos del Sofá, se descarta una carta de su mano."
-    sinergia: "Gato Diurno (Blanco) — Pareja yin-yang"
+    habilidad: "Tropezón a oscuras"
+    descripcion: "Si un rival falla al atacar a un gato de tu Sofá, ese rival descarta 1 carta."
+    sinergia: "Gato Diurno — Pareja yin-yang"
   - nombre: "Gato Trillizo"
     imagen: "imagenes/gato_trillizo_1.png"
     sofa: 2
     salon: 1
-    descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
+    habilidad: "Cambio en cadena"
+    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Trillizo"
     imagen: "imagenes/gato_trillizo_2.png"
     sofa: 2
     salon: 1
-    descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
+    habilidad: "Cambio en cadena"
+    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Trillizo"
     imagen: "imagenes/gato_trillizo_3.png"
     sofa: 2
     salon: 1
-    descripcion: "Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá."
+    habilidad: "Cambio en cadena"
+    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Solitario"
     imagen: "imagenes/gato_solitario.png"
     sofa: 0/7
     salon: 2
-    descripcion: "Si es el único gato en el Sofá, cancela automáticamente cartas CANCELABLES que lo elijan como objetivo y da 7 de presitigio. Si esta acompañado pierde su inmunidad y da 0 de prestigio."
-  - nombre: "Gato Escalador"
+    habilidad: "A solas se está mejor"
+    descripcion: "Si está solo en el Sofá, vale 7 de prestigio y cancela Eventos individuales CANCELABLE que lo elijan directamente. Si está acompañado, vale 0 y pierde la protección. Hora de la Siesta desactiva la protección, pero conserva su puntuación."
+  - nombre: "Gato Hiperactivo"
     imagen: "imagenes/gato_escalador.png"
     sofa: 3
     salon: 1
-    descripcion: "Una vez por turno, puedes realizar un movimiento gatuno adicional durante el Paso de Preparación."
-    sinergia: "Gato Victimista — ¡Porque solo a mí!"
+    habilidad: "De aquí para allá"
+    descripcion: "Una vez por turno, antes de usar tus acciones, puedes realizar 1 movimiento gatuno adicional."
+    sinergia: "Gato Victimista — ¿Por qué yo?"
   - nombre: "Gato Mapache"
     imagen: "imagenes/gato_mapache.png"
     sofa: 2
     salon: 1
-    descripcion: "Puedes recuperar la última carta de la pila de descartes en lugar de tu robo inicial."
+    habilidad: "Tesoros del cubo"
+    descripcion: "Puedes recuperar la carta superior del descarte en lugar del robo inicial y sus bonificaciones."
     sinergia: "Gata Envidiosa — Saqueadores envidiosos"
   - nombre: "Gato Victimista"
     imagen: "imagenes/gato_victimista.png"
     sofa: 3
     salon: 1
-    descripcion: "Si cancelan con Flús-Flús de Agua una travesura tuya, el rival descarta 1 carta adicional."
-    sinergia: "Gato Escalador — ¡Porque solo a mí!"
+    habilidad: "¿Ni me vas a escuchar?"
+    descripcion: "Si un rival cancela un Evento tuyo con Flús-Flús de Agua, ese rival descarta 1 carta adicional."
+    sinergia: "Gato Hiperactivo — ¿Por qué yo?"

@@ -24,6 +24,22 @@ function appendRulebookText(container, text) {
   }
 }
 
+function createTurnStepCard(step) {
+  const stepCard = document.createElement('article');
+  stepCard.className = `turn-step turn-phase-${step.fase} turn-marker-${step.marca}`;
+  const number = document.createElement('span');
+  number.className = 'turn-step-number';
+  number.textContent = step.numero;
+  const content = document.createElement('div');
+  const stepTitle = document.createElement('h4');
+  stepTitle.textContent = step.titulo;
+  const paragraph = document.createElement('p');
+  appendRulebookText(paragraph, step.texto);
+  content.append(stepTitle, paragraph);
+  stepCard.append(number, content);
+  return stepCard;
+}
+
 function renderRulebookContent(rulebook) {
   const container = $('rulebookPages');
   container.replaceChildren();
@@ -45,10 +61,13 @@ function renderRulebookContent(rulebook) {
     header.className = 'rulebook-page-header';
     const title = document.createElement('h2');
     title.textContent = heading.titulo;
-    const intro = document.createElement('p');
-    intro.className = 'rulebook-lead';
-    appendRulebookText(intro, heading.texto);
-    header.append(title, intro);
+    header.append(title);
+    for (const paragraphText of String(heading.texto).split(/\n\s*\n/)) {
+      const intro = document.createElement('p');
+      intro.className = 'rulebook-lead';
+      appendRulebookText(intro, paragraphText.trim());
+      header.append(intro);
+    }
 
     const sections = document.createElement('div');
     const columns = heading.columnas || 2;
@@ -57,6 +76,57 @@ function renderRulebookContent(rulebook) {
     for (let index = 0; index < blocks.length; index++) {
       const block = blocks[index];
       if (block === heading) continue;
+
+      if (block.tipo === 'paso_turno') {
+        const turnSteps = [block];
+        while (blocks[index + 1]?.tipo === 'paso_turno') {
+          turnSteps.push(blocks[++index]);
+        }
+        const diagrams = document.createElement('div');
+        diagrams.className = 'turn-diagrams';
+
+        for (const group of [...new Set(turnSteps.map(step => step.grupo))]) {
+          const groupSteps = turnSteps.filter(step => step.grupo === group);
+          const diagram = document.createElement('section');
+          diagram.className = `turn-diagram turn-diagram-${group}`;
+          diagram.setAttribute('aria-label', groupSteps[0].titulo_grupo);
+          const diagramTitle = document.createElement('h3');
+          diagramTitle.className = 'turn-diagram-title';
+          diagramTitle.textContent = groupSteps[0].titulo_grupo;
+          diagram.append(diagramTitle);
+
+          for (let stepIndex = 0; stepIndex < groupSteps.length; stepIndex++) {
+            const step = groupSteps[stepIndex];
+            if (!step.alternativa) {
+              diagram.append(createTurnStepCard(step));
+              continue;
+            }
+
+            const alternatives = [step];
+            while (groupSteps[stepIndex + 1]?.alternativa === step.alternativa) {
+              alternatives.push(groupSteps[++stepIndex]);
+            }
+            const choice = document.createElement('div');
+            choice.className = 'turn-choice';
+            choice.setAttribute('role', 'group');
+            choice.setAttribute('aria-label', 'Elige una de estas opciones');
+            alternatives.forEach((alternative, optionIndex) => {
+              if (optionIndex > 0) {
+                const separator = document.createElement('span');
+                separator.className = 'turn-choice-separator';
+                separator.setAttribute('aria-hidden', 'true');
+                separator.textContent = 'O';
+                choice.append(separator);
+              }
+              choice.append(createTurnStepCard(alternative));
+            });
+            diagram.append(choice);
+          }
+          diagrams.append(diagram);
+        }
+        sections.append(diagrams);
+        continue;
+      }
 
       if (block.tipo === 'lista') {
         const items = [block];

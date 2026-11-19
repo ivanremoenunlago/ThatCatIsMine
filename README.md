@@ -40,7 +40,10 @@ Los PDFs de cartas ya incluyen su tamaño físico y no necesitan que se seleccio
 
 ```text
 index.html
-styles.css
+css/
+  base.css
+  cards.css
+  print.css
 js/
   project-data.js
   card-renderer.js
@@ -80,7 +83,9 @@ cartas/
 ```
 
 - `index.html`: estructura de la página, pestañas, tableros y aviso de derechos.
-- `styles.css`: presentación de la galería y el reglamento, incluidas las páginas A4 de impresión.
+- `css/base.css`: estilos globales y estructura de la interfaz.
+- `css/cards.css`: cartas, sinergias y su presentación adaptable.
+- `css/print.css`: reglamento, tableros, selector de impresión y reglas de impresión A4.
 - `js/project-data.js`: configuración, estado, lectura/validación del YAML y resolución de archivos e imágenes.
 - `js/card-renderer.js`: composición de las cartas y sinergias, y generación de sus vistas previas.
 - `js/pdf-export.js`: creación de imágenes para imprimir y armado de PDFs.
@@ -88,14 +93,14 @@ cartas/
 - `js/app.js`: arranque de la aplicación, navegación por categorías y eventos de la interfaz.
 - `index.html` carga esos scripts en ese orden. Son scripts clásicos, no módulos, para conservar el uso directo desde `file://` y la selección manual de la carpeta.
 - Los archivos `categoria.yml` dentro de cada categoría contienen sus datos y configuración visual.
-- `reglamento/categoria.yml`: bloques de texto del reglamento. Se pueden cambiar títulos, párrafos, listas y orden de páginas sin editar el HTML.
+- `reglamento/categoria.yml`: contenido del reglamento, incluida la introducción y los esquemas de turno. Los pasos se editan como bloques `paso_turno`; `grupo`, `fase` y `marca` determinan su columna y color. Usa `alternativa` en pasos consecutivos para presentarlos como opciones excluyentes.
 - `cartas/emojis/`: iconos comunes de tipo, huella, sofá y salón.
 - `cartas/<categoria>/imagenes/`: ilustraciones de esa categoría.
-- `tableros/`: cinco imágenes de tablero de 1491 × 1055 px. Su proporción coincide prácticamente con A4 horizontal y se colocan en páginas de 297 × 210 mm. La resolución de origen es de unos 128 ppp al imprimir a ese tamaño.
+- `tableros/`: los cinco PNG activos de tablero son de 3508 × 2480 px a 300 ppp. Se ajustan prácticamente a A4 horizontal (297 × 210 mm) y se colocan en páginas de ese tamaño sin ampliación ni recorte. Sus posiciones se configuran en `css/print.css`; el PDF los rasteriza a aproximadamente 300 ppp.
 
 Las rutas `imagen` e `iconos` de cada YAML son relativas al propio archivo de categoría. El nombre y la extensión deben coincidir exactamente con el archivo en disco.
 
-Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Al jugar la Cama de Peluche, colócala junto al gato que protege; queda vinculada a él y no cambia de objetivo por la posición de otros gatos. En los tableros, la imagen se amplía al 105 % para que las plazas del Sofá y la zona de Estructuras midan aproximadamente 63,6 × 88,2 mm, el tamaño de una carta. Este ajuste recorta unos 7,4 mm de cada lado y 5,3 mm arriba y abajo; conviene imprimir en una impresora sin bordes a tamaño real (100 %). Si se reduce la imagen para conservar todo el arte dentro de los márgenes, las zonas de carta se quedan en unos 60,5 × 84 mm y las cartas no caben a tamaño real.
+Los gatos se pueden reordenar libremente dentro del Sofá o del Salón; eso no cuenta como movimiento. Al jugar la Cama de Peluche, colócala junto al gato que protege; queda vinculada a él y no cambia de objetivo por la posición de otros gatos. Los tres cojines del Sofá miden aproximadamente 66,0 mm de ancho. Los cuatro recuadros de carta de cada tablero miden 63,5 × 88 mm en la página A4 y, centrados en los cojines, dejan unos 1,25 mm de tapicería a cada lado. Sus bordes superiores quedan a 17,97 mm del borde superior de la página en las plazas del sofá y a 18,99 mm en la zona de Estructuras. La zona útil marcada para el Salón mide 237,6 × 54,6 mm. Imprime el PDF en A4 horizontal al 100 % para conservar estas medidas.
 
 ## Diseño de las cartas
 
@@ -126,7 +131,7 @@ Los YAML son la fuente de datos del catálogo: evita duplicar nombres, daños, t
 
 ### Gatos
 
-Cada entrada define `nombre`, `imagen`, `sofa`, `salon` y `descripcion`. `sinergia` es opcional; solo se muestra si está presente. Las cartas de Gatos no se duplican en el PDF.
+Cada entrada define `nombre`, `imagen`, `sofa`, `salon`, `habilidad` y `descripcion`. El nombre de la habilidad aparece integrado al inicio del efecto. `sinergia` es opcional; solo se muestra si está presente. Las cartas de Gatos no se duplican en el PDF.
 
 ### Ataques y apoyos
 
@@ -153,7 +158,7 @@ Las ilustraciones de Eventos Globales siguen en `cartas/globales/imagenes/`, per
 
 ### Sinergias
 
-Las nueve sinergias y explicaciones se mantienen en `cartas/sinergias/categoria.yml`. `imagen` es opcional; al añadir una ilustración, registra su ruta relativa al YAML. La carta muestra la ilustración completa en un lado y el nombre y la explicación en el otro, ambos con borde ámbar.
+Las nueve sinergias se mantienen en `cartas/sinergias/categoria.yml`. Cada una define `nombre`, `descripcion`, `lore` y `gatos`; `gatos` es una lista de los nombres que activan la sinergia (tres para Los Trillizos). `imagen` es opcional; al añadir una ilustración, registra su ruta relativa al YAML. La carta muestra la ilustración en un lado y, en el otro, el nombre, el efecto, el lore entre comillas en cursiva y los gatos requeridos al pie.
 
 ### Añadir una categoría nueva
 
@@ -163,7 +168,7 @@ Las nueve sinergias y explicaciones se mantienen en `cartas/sinergias/categoria.
 4. Si la categoría necesita datos o una composición distintos, actualiza `validateCategory` en `js/project-data.js` y el renderizado específico de `drawCard` en `js/card-renderer.js`.
 5. Comprueba carga de todas las imágenes, PNG individual, PDF, cantidades de copias y tamaño físico.
 
-El lector YAML integrado admite un subconjunto sencillo: claves de texto/número booleano y listas de cartas planas. Mantén las claves en ASCII con `snake_case` y los textos y rutas entre comillas dobles, como en los ejemplos actuales; no dependas de construcciones YAML avanzadas.
+El lector YAML integrado admite un subconjunto sencillo: claves de texto/número booleano, listas de cartas planas y listas inline de cadenas con sintaxis JSON. Mantén las claves en ASCII con `snake_case` y los textos y rutas entre comillas dobles, como en los ejemplos actuales; no dependas de construcciones YAML avanzadas.
 
 ## Flujo recomendado
 

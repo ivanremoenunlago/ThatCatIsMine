@@ -6,64 +6,84 @@ En Ataques se indica el daño o la bonificación definida en categoria.yml. La c
 GATOS
 
 Gato Gordo
-Descripción: Ocupa 2 espacios en el sofá.
+Habilidad: Ya si eso, mañana
+Descripción: Si está en tu Sofá y pasas toda la Fase de Acción, mira en secreto la carta superior del mazo. Puedes dejarla arriba o ponerla en el fondo. Ocupa dos plazas del Sofá.
 
 Gato Desnutrido
-Descripción: Si no tienes cartas en la mano, obtiene +2 puntos de prestigio.
+Habilidad: A pan y agua
+Descripción: Si tienes la mano vacía, obtiene +2 de prestigio.
 
-Gato de Barrio (Matón)
-Descripción: Aumenta en +1 el daño cuando atacas.
+Gato de Barrio
+Habilidad: Aquí mando yo
+Descripción: Obtienes +1 de potencia al atacar.
 
 Gato Territorial
-Descripción: Aumenta en +1 el daño cuando te defiendes
+Habilidad: De aquí no pasas
+Descripción: Obtienes +1 de potencia al defenderte.
 
 Gato Cotilla
-Descripción: Cuando te atacan, puedes descartar 1 carta para ver el ataque y sus apoyos.
+Habilidad: ¿Qué tramas?
+Descripción: Cuando te ataquen, puedes descartar 1 carta para revelar el Ataque y sus Apoyos antes de elegir tu defensa.
 
 Gato Curioso
-Descripción: Después de tu fase de robo, puedes descartar 1 carta para mirar las 3 primeras del mazo y quedarte con 1.
+Habilidad: A ver qué hay
+Descripción: Después de la Fase de Robo, puedes descartar 1 carta para mirar las 3 primeras cartas del mazo y quedarte con 1.
 
-Gato Metódico
-Descripción: Si al final de la fase de robo tienes menos de 3 cartas, roba hasta tener 4.
+Gato Previsor
+Habilidad: Una más por si acaso
+Descripción: Si tienes menos de 3 cartas al reponer tu mano, roba hasta tener 4.
 
-Gato Acaparador
+Gata Acaparadora
+Habilidad: Más vale que sobre
 Descripción: Aumenta tu límite de mano de 7 a 9 cartas.
 
 Gata Envidiosa
-Descripción: Tus ataques contra instalaciones reciben +1 de daño. No se aplica contra gatos.
+Habilidad: Si yo no lo tengo…
+Descripción: Tus ataques contra estructuras reciben +1 de potencia.
 
 Mamá Gata
-Descripción: Mientras esté activa en el Sofá, concede +1 punto de prestigio a cada otro gato que esté en el Sofá. El Gato Bebé recibe +2 con la sinergia Mamá y Bebé.
+Habilidad: Bajo mi ala
+Descripción: Cada otro gato de tu Sofá obtiene +1 de prestigio. Con El ojito derecho, el Bebé recibe +2 en lugar de +1.
 
 Gato Bebé
-Descripción: Si está solo en el Sofá, durante el robo inicial roba 1 carta adicional.
+Habilidad: Atención exclusiva
+Descripción: Si está solo en tu Sofá, añade 1 carta a tu robo inicial.
 
-Gato Diurno (Blanco)
-Descripción: Si un rival ataca con éxito a uno de tus gatos del Sofá, se descarta una carta de su mano.
+Gato Diurno
+Habilidad: El precio de ganar
+Descripción: Si un rival ataca con éxito a un gato de tu Sofá, ese rival descarta 1 carta.
 
-Gato Nocturno (Negro)
-Descripción: Si un rival fracasa al atacar a uno de tus gatos del Sofá, se descarta una carta de su mano.
-
-Gato Trillizo
-Descripción: Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá.
-
-Gato Trillizo
-Descripción: Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá.
+Gato Nocturno
+Habilidad: Tropezón a oscuras
+Descripción: Si un rival falla al atacar a un gato de tu Sofá, ese rival descarta 1 carta.
 
 Gato Trillizo
-Descripción: Una vez por turno, descarta y roba tantas cartas como Trillizos tengas en el Sofá.
+Habilidad: Cambio en cadena
+Descripción: Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres.
+
+Gato Trillizo
+Habilidad: Cambio en cadena
+Descripción: Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres.
+
+Gato Trillizo
+Habilidad: Cambio en cadena
+Descripción: Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres.
 
 Gato Solitario
-Descripción: Si es el único gato en el Sofá, cancela automáticamente cartas CANCELABLES que lo elijan como objetivo y da 7 de presitigio. Si esta acompañado pierde su inmunidad y da 0 de prestigio.
+Habilidad: A solas se está mejor
+Descripción: Si está solo en el Sofá, vale 7 de prestigio y cancela Eventos individuales CANCELABLE que lo elijan directamente. Si está acompañado, vale 0 y pierde la protección. Hora de la Siesta desactiva la protección, pero conserva su puntuación.
 
-Gato Escalador
-Descripción: Una vez por turno, puedes realizar un movimiento gatuno adicional durante el Paso de Preparación.
+Gato Hiperactivo
+Habilidad: De aquí para allá
+Descripción: Una vez por turno, antes de usar tus acciones, puedes realizar 1 movimiento gatuno adicional.
 
 Gato Mapache
-Descripción: Puedes recuperar la última carta de la pila de descartes en lugar de tu robo inicial.
+Habilidad: Tesoros del cubo
+Descripción: Puedes recuperar la carta superior del descarte en lugar del robo inicial y sus bonificaciones.
 
 Gato Victimista
-Descripción: Si cancelan con Flús-Flús de Agua una travesura tuya, el rival descarta 1 carta adicional.
+Habilidad: ¿Ni me vas a escuchar?
+Descripción: Si un rival cancela un Evento tuyo con Flús-Flús de Agua, ese rival descarta 1 carta adicional.
 
 ATAQUES
 

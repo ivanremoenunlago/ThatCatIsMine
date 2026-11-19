@@ -344,6 +344,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   const descriptionY = Math.round(height * design.y_texto_habilidad);
   const descriptionWidth = Math.round(width * design.ancho_texto_habilidad);
   const hasSynergy = category.slug === 'gatos' && Boolean(card.sinergia && card.sinergia.trim());
+  const hasCatSkill = category.slug === 'gatos' && Boolean(card.habilidad);
   const descriptionHeight = Math.round(height * (hasSynergy
     ? design.alto_texto_habilidad_con_sinergia
     : design.alto_texto_habilidad));
@@ -351,16 +352,36 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   let fontSize = Math.round(width * design.tamano_fuente_habilidad);
   let lines = [];
   const defaultLineHeight = height * design.interlineado_habilidad;
+  const descriptionText = card.descripcion;
+  let textTop = descriptionY;
+  let textHeight = descriptionHeight;
+  if (hasCatSkill) {
+    const skillTitle = card.habilidad.toLocaleUpperCase('es-ES');
+    let skillFontSize = Math.round(width * design.tamano_fuente_sinergia);
+    context.font = `800 ${skillFontSize}px "Nunito Sans", Arial, sans-serif`;
+    while (context.measureText(skillTitle).width > descriptionWidth && skillFontSize > minFontSize) {
+      skillFontSize -= 1;
+      context.font = `800 ${skillFontSize}px "Nunito Sans", Arial, sans-serif`;
+    }
+    context.fillStyle = palette.detalle;
+    context.textAlign = 'left';
+    context.textBaseline = 'top';
+    context.fillText(skillTitle, descriptionX, descriptionY, descriptionWidth);
+    const headingHeight = Math.round(skillFontSize * 1.2);
+    const headingGap = Math.round(height * 0.004);
+    textTop += headingHeight + headingGap;
+    textHeight -= headingHeight + headingGap;
+  }
   let lineHeight = defaultLineHeight;
   while (fontSize >= minFontSize) {
     context.font = `600 ${fontSize}px "Nunito Sans", Arial, Helvetica, sans-serif`;
-    lines = wrapText(context, card.descripcion, descriptionWidth);
+    lines = wrapText(context, descriptionText, descriptionWidth);
     lineHeight = hasSynergy ? Math.min(defaultLineHeight, fontSize * 1.22) : defaultLineHeight;
-    if (lines.length * lineHeight <= descriptionHeight) break;
+    if (lines.length * lineHeight <= textHeight) break;
     fontSize -= Math.max(1, Math.round(width * 0.0011));
   }
   lineHeight = hasSynergy ? Math.min(defaultLineHeight, fontSize * 1.22) : defaultLineHeight;
-  const textY = descriptionY + Math.max(0, (descriptionHeight - lines.length * lineHeight) / 2);
+  const textY = textTop + Math.max(0, (textHeight - lines.length * lineHeight) / 2);
   context.fillStyle = palette.tinta;
   context.textAlign = 'left';
   context.textBaseline = 'top';
@@ -436,26 +457,39 @@ function drawSynergyFace(canvas, category, card, side, artImage, renderDpi=categ
   fillCardShape(context, 0, 0, width, height, corner, amber, null, 0, null);
   fillCardShape(context, border, border, width - border * 2, height - border * 2,
     Math.max(0, corner - border), category.paleta.papel, null, 0, null);
-  const contentX = width * 0.12;
-  const contentWidth = width * 0.76;
-  const titleY = height * 0.24;
+  const contentX = width * 0.1;
+  const contentWidth = width * 0.8;
+  const fitLines = (text, maxWidth, maxHeight, initialSize, minimumSize,
+    family, weight, style, lineHeightFactor) => {
+    let fontSize = Math.round(initialSize);
+    const minFontSize = Math.round(minimumSize);
+    let lines = [];
+    let lineHeight = 0;
+    while (fontSize >= minFontSize) {
+      context.font = `${style} ${weight} ${fontSize}px ${family}`;
+      lines = wrapText(context, text, maxWidth);
+      lineHeight = fontSize * lineHeightFactor;
+      if (lines.length * lineHeight <= maxHeight || fontSize === minFontSize) break;
+      fontSize = Math.max(minFontSize, fontSize - 2);
+    }
+    return {fontSize, lines, lineHeight};
+  };
+
   context.textAlign = 'center';
   context.textBaseline = 'middle';
-  context.fillStyle = amber;
-  let titleSize = Math.round(width * 0.075);
-  let titleLines = [];
-  while (titleSize > width * 0.05) {
-    context.font = `700 ${titleSize}px Georgia, "Times New Roman", serif`;
-    titleLines = wrapText(context, card.nombre, contentWidth);
-    if (titleLines.length <= 2) break;
-    titleSize -= 2;
-  }
-  const titleLineHeight = titleSize * 1.15;
-  titleLines.forEach((line, index) => {
-    context.fillText(line, width / 2, titleY + (index - (titleLines.length - 1) / 2) * titleLineHeight);
+  context.fillStyle = category.paleta.detalle;
+  const titleTop = height * 0.065;
+  const titleHeight = height * 0.17;
+  const title = fitLines(card.nombre, contentWidth, titleHeight,
+    width * 0.067, width * 0.045, 'Georgia, "Times New Roman", serif', 700, 'normal', 1.1);
+  const titleCenterY = titleTop + titleHeight / 2;
+  title.lines.forEach((line, index) => {
+    context.font = `normal 700 ${title.fontSize}px Georgia, "Times New Roman", serif`;
+    context.fillText(line, width / 2,
+      titleCenterY + (index - (title.lines.length - 1) / 2) * title.lineHeight);
   });
 
-  const dividerY = height * 0.39;
+  const dividerY = height * 0.25;
   context.beginPath();
   context.strokeStyle = amber;
   context.lineWidth = Math.max(2, width * 0.006);
@@ -463,21 +497,57 @@ function drawSynergyFace(canvas, category, card, side, artImage, renderDpi=categ
   context.lineTo(width - contentX, dividerY);
   context.stroke();
 
-  let bodySize = Math.round(width * 0.047);
-  let bodyLines = [];
-  let lineHeight = 0;
-  const bodyHeight = height * 0.43;
-  while (bodySize >= width * 0.031) {
-    context.font = `600 ${bodySize}px Arial, Helvetica, sans-serif`;
-    bodyLines = wrapText(context, card.descripcion, contentWidth);
-    lineHeight = bodySize * 1.28;
-    if (bodyLines.length * lineHeight <= bodyHeight) break;
-    bodySize -= 2;
-  }
+  const bodyTop = height * 0.29;
+  const bodyHeight = height * 0.31;
+  const body = fitLines(card.descripcion, contentWidth, bodyHeight,
+    width * 0.043, width * 0.029, 'Arial, Helvetica, sans-serif', 600, 'normal', 1.2);
+  context.font = `normal 600 ${body.fontSize}px Arial, Helvetica, sans-serif`;
   context.fillStyle = category.paleta.tinta;
-  const firstLineY = height * 0.66 - (bodyLines.length - 1) * lineHeight / 2;
-  bodyLines.forEach((line, index) => {
-    context.fillText(line, width / 2, firstLineY + index * lineHeight, contentWidth);
+  const firstBodyY = bodyTop + (bodyHeight - (body.lines.length - 1) * body.lineHeight) / 2;
+  body.lines.forEach((line, index) => {
+    context.fillText(line, width / 2, firstBodyY + index * body.lineHeight, contentWidth);
+  });
+
+  const loreText = `“${card.lore}”`;
+  const loreWidth = width * 0.84;
+  const loreTop = height * 0.63;
+  const loreHeight = height * 0.19;
+  const lore = fitLines(loreText, loreWidth, loreHeight,
+    width * 0.029, width * 0.022, 'Georgia, "Times New Roman", serif', 500, 'italic', 1.2);
+  context.font = `italic 500 ${lore.fontSize}px Georgia, "Times New Roman", serif`;
+  context.fillStyle = category.paleta.tinta;
+  const firstLoreY = loreTop + (loreHeight - (lore.lines.length - 1) * lore.lineHeight) / 2;
+  lore.lines.forEach((line, index) => {
+    context.fillText(line, width / 2, firstLoreY + index * lore.lineHeight, loreWidth);
+  });
+
+  let catFontSize = Math.round(width * 0.024);
+  const minCatFontSize = Math.round(width * 0.018);
+  const catGap = Math.round(width * 0.012);
+  const catPadding = Math.round(width * 0.014);
+  let catWidths = [];
+  let totalCatWidth = 0;
+  while (catFontSize >= minCatFontSize) {
+    context.font = `700 ${catFontSize}px "Nunito Sans", Arial, sans-serif`;
+    catWidths = card.gatos.map(name => Math.ceil(context.measureText(name).width + catPadding * 2));
+    totalCatWidth = catWidths.reduce((total, item) => total + item, 0)
+      + catGap * (card.gatos.length - 1);
+    if (totalCatWidth <= width * 0.84 || catFontSize === minCatFontSize) break;
+    catFontSize = Math.max(minCatFontSize, catFontSize - 2);
+  }
+  const catHeight = height * 0.06;
+  const catY = height * 0.87;
+  let catX = (width - totalCatWidth) / 2;
+  card.gatos.forEach((name, index) => {
+    fillCardShape(context, catX, catY, catWidths[index], catHeight, catHeight / 2,
+      category.paleta.fondo, category.paleta.detalle, Math.max(1, width * 0.002), null);
+    context.font = `700 ${catFontSize}px "Nunito Sans", Arial, sans-serif`;
+    context.fillStyle = category.paleta.tinta;
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(name, catX + catWidths[index] / 2, catY + catHeight / 2,
+      catWidths[index] - catPadding * 2);
+    catX += catWidths[index] + catGap;
   });
 }
 
@@ -498,7 +568,19 @@ async function createSynergyCardTile(category, card) {
   backTitle.textContent = card.nombre;
   const description = document.createElement('p');
   description.textContent = card.descripcion;
-  back.append(backTitle, description);
+  const lore = document.createElement('blockquote');
+  lore.className = 'synergy-lore';
+  lore.textContent = `“${card.lore}”`;
+  const requiredCats = document.createElement('div');
+  requiredCats.className = 'synergy-required-cats';
+  requiredCats.setAttribute('aria-label', `Gatos necesarios: ${card.gatos.join(', ')}`);
+  for (const catName of card.gatos) {
+    const cat = document.createElement('span');
+    cat.className = 'synergy-required-cat';
+    cat.textContent = catName;
+    requiredCats.append(cat);
+  }
+  back.append(backTitle, description, lore, requiredCats);
   pair.append(front, back);
   tile.append(title, pair);
 

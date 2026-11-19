@@ -332,6 +332,7 @@ async function renderLandscapePdfPages(selectedPages, setProgress, pageKind) {
       const heightMm = 210;
       const widthPx = Math.round(widthMm * 96 / 25.4);
       const heightPx = Math.round(heightMm * 96 / 25.4);
+      const renderScale = page.classList.contains('rulebook-board-page') ? 300 / 96 : 2;
       setProgress(pageKind === 'tableros'
         ? `Preparando tablero ${index + 1} de ${selectedPages.length}…`
         : `Preparando página ${index + 1} de ${selectedPages.length} del reglamento…`);
@@ -348,7 +349,7 @@ async function renderLandscapePdfPages(selectedPages, setProgress, pageKind) {
         }));
         const canvas = await window.html2canvas(page, {
           backgroundColor: '#fffdf8',
-          scale: 2,
+          scale: renderScale,
           logging: false,
           useCORS: true,
           width: widthPx,

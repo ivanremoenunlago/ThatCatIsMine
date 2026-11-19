@@ -31,6 +31,7 @@ function setStatus(message, isError=false) {
 function parseYamlValue(value) {
   const text = value.trim();
   if (!text) return '';
+  if (text.startsWith('[') && text.endsWith(']')) return JSON.parse(text);
   if (text.startsWith('"')) return JSON.parse(text);
   if (text.startsWith("'") && text.endsWith("'")) return text.slice(1, -1).replace(/''/g, "'");
   if (text === '[]') return [];
@@ -98,7 +99,7 @@ function parseCategoryYaml(text) {
 
 function validateCategory(category) {
   if (category.slug === 'reglamento') {
-    const ruleTypes = new Set(['encabezado', 'seccion', 'nota', 'lista', 'sinergia']);
+    const ruleTypes = new Set(['encabezado', 'seccion', 'nota', 'lista', 'sinergia', 'paso_turno']);
     if (!category.nombre || !Array.isArray(category.cartas) || !category.cartas.length) {
       throw new Error('El reglamento debe incluir un nombre y al menos un bloque de contenido.');
     }
@@ -107,8 +108,18 @@ function validateCategory(category) {
         || !ruleTypes.has(block.tipo) || !block.texto) {
         throw new Error(`El bloque «${block.titulo || 'sin título'}» del reglamento no es válido.`);
       }
-      if (['encabezado', 'seccion', 'nota', 'sinergia'].includes(block.tipo) && !block.titulo) {
+      if (['encabezado', 'seccion', 'nota', 'sinergia', 'paso_turno'].includes(block.tipo) && !block.titulo) {
         throw new Error(`El bloque ${block.tipo} de la página ${block.pagina} necesita un título.`);
+      }
+      if (block.tipo === 'paso_turno'
+        && (!['basico', 'completo'].includes(block.grupo)
+          || !block.titulo_grupo
+          || typeof block.numero !== 'string'
+          || !['inicio', 'robo', 'accion', 'movimiento', 'cierre'].includes(block.fase)
+          || !['fase', 'opcional', 'intermedio'].includes(block.marca)
+          || (block.alternativa !== undefined
+            && (typeof block.alternativa !== 'string' || !block.alternativa)))) {
+        throw new Error(`El paso «${block.titulo}» de la página ${block.pagina} no tiene una fase, grupo o marca válidos.`);
       }
       if (block.tipo === 'lista' && !block.grupo) {
         throw new Error(`Los elementos de lista de la página ${block.pagina} necesitan un grupo.`);
@@ -143,9 +154,11 @@ function validateCategory(category) {
   }
   if (isSynergyCategory) {
     for (const card of category.cartas) {
-      if (!card.nombre || !card.descripcion
+      if (!card.nombre || !card.descripcion || !card.lore
+        || !Array.isArray(card.gatos) || card.gatos.length < 2
+        || card.gatos.some(name => typeof name !== 'string' || !name.trim())
         || (card.imagen !== undefined && typeof card.imagen !== 'string')) {
-        throw new Error(`La sinergia "${card.nombre || 'sin nombre'}" necesita nombre y explicación válidos.`);
+        throw new Error(`La sinergia "${card.nombre || 'sin nombre'}" necesita nombre, explicación, lore y gatos válidos.`);
       }
     }
     return;
@@ -161,8 +174,9 @@ function validateCategory(category) {
     if (card.marca_flush && !category.iconos.flush) {
       throw new Error(`La carta "${card.nombre}" necesita el icono de Flús-Flús.`);
     }
-    if (category.slug === 'gatos' && !card.descripcion) {
-      throw new Error(`La carta "${card.nombre}" necesita una descripción.`);
+    if (category.slug === 'gatos'
+      && (!card.descripcion || typeof card.habilidad !== 'string' || !card.habilidad.trim())) {
+      throw new Error(`La carta "${card.nombre}" necesita nombre y descripción de habilidad.`);
     }
     if (category.slug === 'ataques') {
       if (!['ataque', 'apoyo'].includes(card.tipo) || !Number.isInteger(card.copias) || card.copias < 1) {

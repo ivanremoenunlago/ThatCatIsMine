@@ -1,0 +1,48 @@
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(205px, 1fr)); gap: 22px; align-items: start; }
+.card-tile {
+  min-width: 0;
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  box-shadow: 0 7px 22px #513c2110;
+}
+.card-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: #eee5d5;
+  box-shadow: 0 5px 14px #0002;
+}
+.card-tile h3 { margin: 13px 0 11px; font: 700 16px/1.3 Georgia, 'Times New Roman', serif; }
+.card-actions { display: flex; }
+.card-actions .button { width: 100%; }
+.card-meta { margin: 0 0 12px; color: var(--muted); font-size: 11px; }
+.synergy-card-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+.synergy-tile { border-color: #c58a2e; }
+.synergy-face-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.synergy-face {
+  display: flex;
+  min-width: 0;
+  aspect-ratio: 63.5 / 88;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #493323;
+  background: #fffdf8;
+  border: 3px solid #c58a2e;
+  border-radius: 9px;
+  text-align: center;
+}
+.synergy-face-front img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.synergy-face-back { align-items: stretch; flex-direction: column; gap: 6px; padding: 8px; background: #fff8e9; }
+.synergy-face-back h4 { margin: 0; color: #a56d1c; font: 700 13px/1.15 Georgia, 'Times New Roman', serif; }
+.synergy-face-back p { margin: 0; font-size: 11px; line-height: 1.25; }
+.synergy-lore { margin: auto 0 0; font: italic 10px/1.2 Georgia, 'Times New Roman', serif; }
+.synergy-required-cats { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; }
+.synergy-required-cat { padding: 2px 4px; background: #f5e9ce; border: 1px solid #c58a2e; border-radius: 999px; font-size: 8px; line-height: 1.1; }
+@media (max-width: 680px) {
+  .card-grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 13px; }
+  .card-tile { padding: 9px; }
+}
