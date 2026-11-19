@@ -2,6 +2,7 @@
 
 const RULEBOOK_PAGE_WIDTH = 297 * 96 / 25.4;
 const RULEBOOK_PAGE_HEIGHT = 210 * 96 / 25.4;
+const rulebookIconUrls = [];
 
 function fitRulebookPages() {
   const panel = $('rulebookPanel');
@@ -56,7 +57,42 @@ function createTurnStepCard(step) {
   return stepCard;
 }
 
-function renderRulebookContent(rulebook) {
+function releaseRulebookIconUrls() {
+  for (const url of rulebookIconUrls.splice(0)) URL.revokeObjectURL(url);
+}
+
+async function colorizeRulebookIcons(container) {
+  releaseRulebookIconUrls();
+  try {
+    for (const image of container.querySelectorAll('.rulebook-icon')) {
+      await waitForImageLoad(image, `No se pudo cargar un icono del reglamento: ${image.src}`);
+      const canvas = document.createElement('canvas');
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      try {
+        const context = canvas.getContext('2d');
+        if (!context) throw new Error('No se pudo preparar el icono del reglamento.');
+        context.drawImage(image, 0, 0);
+        context.globalCompositeOperation = 'source-in';
+        context.fillStyle = '#000000';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        if (!blob) throw new Error('No se pudo convertir a negro un icono del reglamento.');
+        const url = URL.createObjectURL(blob);
+        rulebookIconUrls.push(url);
+        image.src = url;
+      } finally {
+        canvas.width = 0;
+        canvas.height = 0;
+      }
+    }
+  } catch (error) {
+    releaseRulebookIconUrls();
+    throw error;
+  }
+}
+
+async function renderRulebookContent(rulebook) {
   const container = $('rulebookPages');
   container.replaceChildren();
   const pages = new Map();
@@ -165,7 +201,9 @@ function renderRulebookContent(rulebook) {
           if (item.icono) {
             const icon = document.createElement('img');
             icon.className = 'rulebook-icon';
-            icon.src = item.icono;
+            icon.src = state.uploadedFiles
+              ? uploadedAssetUrl(item.icono)
+              : new URL(item.icono, location.href).href;
             icon.alt = '';
             icon.setAttribute('aria-hidden', 'true');
             listItem.append(icon, document.createTextNode(' '));
@@ -191,6 +229,7 @@ function renderRulebookContent(rulebook) {
     page.append(header, sections);
     container.append(page);
   }
+  await colorizeRulebookIcons(container);
 }
 
 function renderFinalPrintOptions() {

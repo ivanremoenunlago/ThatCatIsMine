@@ -201,7 +201,7 @@ async function loadProject(files=null) {
     rulebook.configPath = RULEBOOK_PATH;
     state.categories = categories;
     state.rulebook = rulebook;
-    renderRulebookContent(rulebook);
+    await renderRulebookContent(rulebook);
     showCategories();
   } catch (error) {
     console.error(error);

@@ -319,15 +319,6 @@ cartas:
     marca: "fase"
     titulo: "Cierre del turno"
     texto: "Descarta hasta tu límite: 7 cartas, o 9 con Acaparadora. Caducan los efectos del turno; si cambia tu prestigio, comprueba la victoria."
-  - pagina: 2
-    tipo: "seccion"
-    grupo: "turno-perdido"
-    titulo: "Turno perdido"
-    texto: "Con No te muevas, estoy cómodo pierdes el turno completo, incluidos inicio, cierre y comprobación de victoria. Varias copias antes de tu turno hacen perder un solo turno; los efectos que debían caducar al inicio esperan hasta el siguiente inicio que resuelvas."
-  - pagina: 2
-    tipo: "seccion"
-    titulo: "Acciones adicionales"
-    texto: "El Rascador se resuelve antes de la Fase de Acción y puedes pagarlo aunque la omitas. Si ya jugaste una carta o declaraste un ataque, dejar acciones adicionales sin gastar no cuenta como saltársela y no activa la habilidad del Gordo. Las acciones no se guardan para otro turno ni permiten mover."
   - pagina: 3
     tipo: "encabezado"
     titulo: "Combate, acciones y eventos ⚔️🌍"
@@ -440,6 +431,16 @@ cartas:
     ancho: "completo"
     titulo: "Mazo agotado 🃏"
     texto: "Si se agota el mazo, baraja los descartes para formar uno nuevo. Si tampoco quedan descartes, termina el robo."
+  - pagina: 4
+    tipo: "seccion"
+    ancho: "completo"
+    titulo: "Turno perdido"
+    texto: "Con No te muevas, estoy cómodo pierdes el turno completo, incluidos inicio, cierre y comprobación de victoria. Varias copias antes de tu turno hacen perder un solo turno; los efectos que debían caducar al inicio esperan hasta el siguiente inicio que resuelvas."
+  - pagina: 4
+    tipo: "seccion"
+    ancho: "completo"
+    titulo: "Acciones adicionales"
+    texto: "El Rascador se resuelve antes de la Fase de Acción y puedes pagarlo aunque la omitas. Si ya jugaste una carta o declaraste un ataque, dejar acciones adicionales sin gastar no cuenta como saltársela y no activa la habilidad del Gordo. Las acciones no se guardan para otro turno ni permiten mover."
   - pagina: 4
     tipo: "seccion"
     ancho: "completo"

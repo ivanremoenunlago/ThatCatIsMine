@@ -341,6 +341,12 @@
   .rulebook-lead { font-size: 9.5pt; }
   .rulebook-block { break-inside: avoid; }
   .rulebook-block h3 { font-size: 11pt; }
+  .rulebook-icon {
+    filter: brightness(0) saturate(100%) !important;
+    -webkit-filter: brightness(0) saturate(100%) !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
   .turn-diagram-basico .turn-step h4 { font-size: 9pt; }
   .turn-diagram-basico .turn-step p { font-size: 8.5pt; line-height: 1.14; }
   .turn-diagram-completo .turn-step p { font-size: 8.7pt; line-height: 1.14; }
