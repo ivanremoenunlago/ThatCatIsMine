@@ -127,9 +127,10 @@
           <div>
             <p class="eyebrow">PREPARACIÓN DE ARCHIVOS</p>
             <h2>Impresión final</h2>
-            <p>Selecciona el reglamento, los tableros y las cartas que quieras. Se descargarán juntos en un único PDF.</p>
+            <p>El PDF incluirá solo los elementos marcados; no representa el mazo completo salvo que marques todo. Se descargarán juntos en un único archivo. Por defecto, se añade un reverso por cada carta seleccionada, sin contar las sinergias. No se añaden páginas en blanco; si el bloque anterior tiene un número impar de páginas o las cantidades de anversos y reversos difieren, la impresión a doble cara puede quedar desalineada. El estado muestra los rangos exactos. Imprime en A4 al 100 % o «Tamaño real», no uses «Ajustar a página».</p>
           </div>
           <div class="final-print-download">
+            <button id="selectAllFinalPrintButton" class="button secondary" type="button">Seleccionar todo</button>
             <button id="downloadFinalPdfButton" class="button primary" type="button" disabled>Descargar PDF de la selección</button>
             <p id="finalPrintStatus" class="final-print-status" role="status" aria-live="polite">Marca al menos un elemento para preparar el PDF.</p>
           </div>
@@ -149,6 +150,14 @@
               <span>Todos los tableros · 5 páginas</span>
             </label>
             <div id="finalPrintBoards" class="final-print-options"></div>
+          </fieldset>
+          <fieldset class="final-print-group">
+            <legend>Reversos</legend>
+            <label class="final-print-option" for="finalReverseQuantity">
+              <span>Copias de reverso</span>
+              <input id="finalReverseQuantity" class="final-print-quantity" type="number" min="0" step="1" value="0">
+            </label>
+            <p class="final-print-help">Por defecto, coincide con las cartas seleccionadas. Puedes cambiar la cantidad.</p>
           </fieldset>
           <div id="finalPrintCategories" class="final-print-categories"></div>
         </div>

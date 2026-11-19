@@ -58,29 +58,29 @@ cartas:
     imagen: "imagenes/caja_de_carton.png"
     tipo: "estructura"
     copias: 2
-    descripcion: "Protege tus gatos de ataques directos. Se destruye con un ataque exitoso contra ella."
+    descripcion: "Protege a tus gatos de ataques directos. Un ataque con éxito contra la Caja la destruye."
   - nombre: "Fortaleza Gatuna"
     imagen: "imagenes/fortaleza_gatuna.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "Protege tus gatos de ataques directos y bloquea eventos individuales rivales que afecten a tus gatos. Permanece tras interceptar un Evento individual y se destruye con un ataque exitoso."
+    descripcion: "Protege a tus gatos de ataques directos. Bloquea los Eventos individuales rivales que los afecten. Un ataque con éxito contra la Fortaleza la destruyen."
   - nombre: "Comedero Automático"
     imagen: "imagenes/comedero_automatico.png"
     tipo: "estructura"
     copias: 2
-    descripcion: "Roba 1 carta adicional durante el robo inicial. Se destruye con un ataque exitoso contra ella."
+    descripcion: "Roba 1 carta más en tu robo inicial. Un ataque con éxito contra el Comedero lo destruye."
   - nombre: "Rascador de Sisal"
     imagen: "imagenes/rascador_de_sisal.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "Una vez por turno, al declarar un ataque, puedes descartar 1 carta de tu mano para sumar +1 a su potencia. Decide antes de que el rival elija su defensa. Se destruye con un ataque exitoso contra ella."
+    descripcion: "Antes de la Fase de Acción, puedes descartar 1 carta. Tu primer ataque posterior de este turno recibe +1 de potencia, nunca una Defensa. Un ataque con éxito contra el Rascador lo destruye."
   - nombre: "Cama de Peluche"
     imagen: "imagenes/cama_de_peluche.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "El gato junto a esta cama no puede ser atacado ni movido. Descarta la cama al inicio de tu próximo turno."
+    descripcion: "Pon la Cama en su sitio habitual; protege al gato del Sofá que quede más cerca. (Puedes reordenar los gatos del Sofá). Sabotaje Vecinal puede destruirla. Descarta la Cama al inicio de tu próximo turno."
   - nombre: "Arenero"
     imagen: "imagenes/arenero.png"
     tipo: "estructura"
     copias: 1
-    descripcion: "Cuando descartes cartas de tu mano, sobre el Arenero. Justo antes de tu fase de cierre, si hay 3 o más, puedes devolver 1 a tu mano y enviar las demás al descarte común. Se destruye con un ataque exitoso contra ella."
+    descripcion: "Pon aquí boca arriba las cartas que descartes de tu mano. Justo antes del cierre, si hay 3 o más, puedes recuperar 1 y mandar el resto al descarte común. Un ataque con éxito contra el Arenero lo destruye. Si sale de juego, vacíalo en el descarte común."

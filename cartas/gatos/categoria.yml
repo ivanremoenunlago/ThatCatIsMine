@@ -75,7 +75,8 @@ cartas:
     sofa: 6
     salon: 2
     habilidad: "Ya si eso, mañana"
-    descripcion: "Si está en tu Sofá y pasas toda la Fase de Acción, mira en secreto la carta superior del mazo. Puedes dejarla arriba o ponerla en el fondo. Ocupa dos plazas del Sofá."
+    recordatorio: "Ocupa 2 plazas del Sofá"
+    descripcion: "S decides saltarte tu fase de acción, mira en secreto la primera carta del mazo. Puedes dejarla arriba o ponerla en el fondo."
     sinergia: "Gato Desnutrido — ¡Que me aplastas!"
   - nombre: "Gato Desnutrido"
     imagen: "imagenes/gato_desnutrido.png"
@@ -89,21 +90,21 @@ cartas:
     sofa: 2
     salon: 1
     habilidad: "Aquí mando yo"
-    descripcion: "Obtienes +1 de potencia al atacar."
+    descripcion: "Obtienes +1 de daño al atacar."
     sinergia: "Gato Territorial — Veteranos del barrio"
   - nombre: "Gato Territorial"
     imagen: "imagenes/gato_territorial.png"
     sofa: 2
     salon: 1
     habilidad: "De aquí no pasas"
-    descripcion: "Obtienes +1 de potencia al defenderte."
+    descripcion: "Obtienes +1 de daño al defenderte."
     sinergia: "Gato de Barrio — Veteranos del barrio"
   - nombre: "Gato Cotilla"
     imagen: "imagenes/gato_cotilla.png"
     sofa: 3
     salon: 1
     habilidad: "¿Qué tramas?"
-    descripcion: "Cuando te ataquen, puedes descartar 1 carta para revelar el Ataque y sus Apoyos antes de elegir tu defensa."
+    descripcion: "Antes de elegir tu defensa, puedes descartar 1 carta para revelar el Ataque y Apoyos del atacante"
     sinergia: "Gato Curioso — Socios de información"
   - nombre: "Gato Curioso"
     imagen: "imagenes/gato_curioso.png"
@@ -131,14 +132,14 @@ cartas:
     sofa: 4
     salon: 2
     habilidad: "Si yo no lo tengo…"
-    descripcion: "Tus ataques contra estructuras reciben +1 de potencia."
+    descripcion: "Tus ataques contra estructuras reciben +1 de daño."
     sinergia: "Gato Mapache — Saqueadores envidiosos"
   - nombre: "Mamá Gata"
     imagen: "imagenes/mama_gata.png"
     sofa: 2
     salon: 1
     habilidad: "Bajo mi ala"
-    descripcion: "Cada otro gato de tu Sofá obtiene +1 de prestigio. Con El ojito derecho, el Bebé recibe +2 en lugar de +1."
+    descripcion: "Cada otro gato de tu Sofá obtiene +1 de prestigio."
     sinergia: "Gato Bebé — El ojito derecho"
   - nombre: "Gato Bebé"
     imagen: "imagenes/gato_bebe.png"
@@ -166,28 +167,28 @@ cartas:
     sofa: 2
     salon: 1
     habilidad: "Cambio en cadena"
-    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres."
+    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Trillizo"
     imagen: "imagenes/gato_trillizo_2.png"
     sofa: 2
     salon: 1
     habilidad: "Cambio en cadena"
-    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres."
+    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Trillizo"
     imagen: "imagenes/gato_trillizo_3.png"
     sofa: 2
     salon: 1
     habilidad: "Cambio en cadena"
-    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá. Se activa una vez por turno entre los tres."
+    descripcion: "Antes de usar tus acciones, puedes descartar y robar tantas cartas como Trillizos tengas en el Sofá."
     sinergia: "Los otros 2 Trillizos — Los Trillizos"
   - nombre: "Gato Solitario"
     imagen: "imagenes/gato_solitario.png"
-    sofa: 0/7
+    sofa: "0/7"
     salon: 2
     habilidad: "A solas se está mejor"
-    descripcion: "Si está solo en el Sofá, vale 7 de prestigio y cancela Eventos individuales CANCELABLE que lo elijan directamente. Si está acompañado, vale 0 y pierde la protección. Hora de la Siesta desactiva la protección, pero conserva su puntuación."
+    descripcion: "Si está solo en el Sofá, vale 7 de prestigio y cancela Eventos individuales CANCELABLES que lo elijan directamente. Si está acompañado, vale 0 y pierde la protección."
   - nombre: "Gato Hiperactivo"
     imagen: "imagenes/gato_escalador.png"
     sofa: 3
@@ -206,6 +207,6 @@ cartas:
     imagen: "imagenes/gato_victimista.png"
     sofa: 3
     salon: 1
-    habilidad: "¿Ni me vas a escuchar?"
-    descripcion: "Si un rival cancela un Evento tuyo con Flús-Flús de Agua, ese rival descarta 1 carta adicional."
+    habilidad: "¡Déjame acabar!"
+    descripcion: "Si un rival cancela un Evento tuyo con Flús-Flús, ese rival descarta 1 carta adicional."
     sinergia: "Gato Hiperactivo — ¿Por qué yo?"

@@ -17,6 +17,12 @@ function downloadBlob(blob, filename) {
 }
 
 function printableCards(category) {
+  if (category.slug === 'reversos') {
+    const copyCount = state.categories
+      .filter(item => item.slug !== 'sinergias' && item.slug !== 'reversos')
+      .reduce((total, item) => total + item.cartas.reduce((count, card) => count + (card.copias || 1), 0), 0);
+    return Array.from({length: copyCount}, () => category.cartas[0]);
+  }
   return category.cartas.flatMap(card =>
     Array.from({length: card.copias || 1}, () => card));
 }
@@ -89,6 +95,14 @@ async function canvasJpegBytes(canvas, quality) {
   return new Uint8Array(await blob.arrayBuffer());
 }
 
+function flattenCanvas(canvas, background='#FFFFFF') {
+  const context = canvas.getContext('2d');
+  context.globalCompositeOperation = 'destination-over';
+  context.fillStyle = background;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.globalCompositeOperation = 'source-over';
+}
+
 function cropMarks(x, y, width, height, gap, length) {
   const commands = [];
   const line = (x1, y1, x2, y2) => commands.push(`${x1.toFixed(2)} ${y1.toFixed(2)} m ${x2.toFixed(2)} ${y2.toFixed(2)} l S`);
@@ -105,6 +119,9 @@ function cropMarks(x, y, width, height, gap, length) {
 
 function createPdfDocument(pages) {
   if (!pages.length) throw new Error('No hay páginas disponibles para el PDF.');
+  const emptyPage = pages.findIndex(page =>
+    !(page.images && page.images.length) && !(page.commands && page.commands.length));
+  if (emptyPage >= 0) throw new Error(`No se permiten páginas vacías en el PDF (página ${emptyPage + 1}).`);
   const objects = [];
   const pageObjectIds = [];
   const firstImageObjectId = 3 + pages.length * 2;
@@ -209,31 +226,36 @@ function createSynergyPages(cards, category) {
   const pageHeight = 841.89;
   const cardWidth = category.diseno.ancho_mm * 72 / 25.4;
   const cardHeight = category.diseno.alto_mm * 72 / 25.4;
-  const pairGap = 3 * 72 / 25.4;
-  const rowGap = 8 * 72 / 25.4;
-  const pairWidth = 2 * cardWidth + pairGap;
-  const marginX = (pageWidth - pairWidth) / 2;
+  const columnGap = 3 * 72 / 25.4;
+  const rowGap = 3 * 72 / 25.4;
+  const gridWidth = 3 * cardWidth + 2 * columnGap;
+  const marginX = (pageWidth - gridWidth) / 2;
   const gridHeight = 3 * cardHeight + 2 * rowGap;
   const marginY = (pageHeight - gridHeight) / 2;
   const cropGap = 0.3 * 72 / 25.4;
   const cropLength = 1.2 * 72 / 25.4;
+  const faces = [];
   const pages = [];
 
   for (let firstCard = 0; firstCard < cards.length; firstCard += 3) {
-    const images = [];
-    cards.slice(firstCard, firstCard + 3).forEach((card, row) => {
+    const group = cards.slice(firstCard, firstCard + 3);
+    faces.push(...group.map(card => card.front), ...group.map(card => card.back));
+  }
+
+  for (let firstFace = 0; firstFace < faces.length; firstFace += 9) {
+    const images = faces.slice(firstFace, firstFace + 9).map((image, slot) => {
+      const row = Math.floor(slot / 3);
+      const column = slot % 3;
+      const x = marginX + column * (cardWidth + columnGap);
       const y = pageHeight - marginY - (row + 1) * cardHeight - row * rowGap;
-      [card.front, card.back].forEach((image, side) => {
-        const x = marginX + side * (cardWidth + pairGap);
-        images.push({
-          ...image,
-          x,
-          y,
-          width: cardWidth,
-          height: cardHeight,
-          cropMarks: {gap: cropGap, length: cropLength}
-        });
-      });
+      return {
+        ...image,
+        x,
+        y,
+        width: cardWidth,
+        height: cardHeight,
+        cropMarks: {gap: cropGap, length: cropLength}
+      };
     });
     pages.push({width: pageWidth, height: pageHeight, images});
   }
@@ -247,6 +269,7 @@ async function createCardImage(category, card) {
   const canvas = document.createElement('canvas');
   try {
     drawCard(canvas, category, card, artImage, icons, category.diseno.dpi);
+    flattenCanvas(canvas);
     return {
       bytes: await canvasJpegBytes(canvas, 0.94),
       pixelWidth: canvas.width,
@@ -274,6 +297,7 @@ async function createSynergyImages(category, progress, cards=printableCards(cate
       const canvas = document.createElement('canvas');
       try {
         drawSynergyFace(canvas, category, card, side, artImage, category.diseno.dpi);
+        flattenCanvas(canvas);
         faces[side] = {
           bytes: await canvasJpegBytes(canvas, 0.96),
           pixelWidth: canvas.width,
@@ -292,10 +316,15 @@ async function createSynergyImages(category, progress, cards=printableCards(cate
 async function createPdf(category) {
   const cards = printableCards(category);
   const images = [];
-  for (let index = 0; index < cards.length; index++) {
-    setStatus(`Preparando imagen ${index + 1} de ${cards.length} para el PDF…`);
-    await new Promise(resolve => setTimeout(resolve, 0));
-    images.push(await createCardImage(category, cards[index]));
+  if (category.slug === 'reversos' && cards.length) {
+    setStatus(`Preparando ${cards.length} reversos para el PDF…`);
+    images.push(...Array(cards.length).fill(await createCardImage(category, cards[0])));
+  } else {
+    for (let index = 0; index < cards.length; index++) {
+      setStatus(`Preparando imagen ${index + 1} de ${cards.length} para el PDF…`);
+      await new Promise(resolve => setTimeout(resolve, 0));
+      images.push(await createCardImage(category, cards[index]));
+    }
   }
   return createPdfDocument(createCardGridPages(images, category.diseno.ancho_mm, category.diseno.alto_mm));
 }
@@ -338,15 +367,9 @@ async function renderLandscapePdfPages(selectedPages, setProgress, pageKind) {
         : `Preparando página ${index + 1} de ${selectedPages.length} del reglamento…`);
       page.classList.add('pdf-export-page');
       try {
-        await Promise.all([...page.querySelectorAll('img')].map(async image => {
-          if (!image.complete) {
-            await new Promise((resolve, reject) => {
-              image.addEventListener('load', resolve, {once: true});
-              image.addEventListener('error', () => reject(new Error(`No se pudo cargar una imagen del reglamento: ${image.src}`)), {once: true});
-            });
-          }
-          if (!image.naturalWidth) throw new Error(`No se pudo cargar una imagen del reglamento: ${image.src}`);
-        }));
+        await Promise.all([...page.querySelectorAll('img')].map(image =>
+          waitForImageLoad(image, `No se pudo cargar una imagen del reglamento: ${image.src}`)
+        ));
         const canvas = await window.html2canvas(page, {
           backgroundColor: '#fffdf8',
           scale: renderScale,

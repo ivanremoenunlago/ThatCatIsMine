@@ -1,0 +1,37 @@
+nombre: "Reversos"
+slug: "reversos"
+paleta:
+  fondo: "#241E2C"
+  medallon: "#392B40"
+  placa: "#302538"
+  marco: "#C2A06B"
+  cobre: "#A88973"
+  separador: "#88748B"
+  detalle: "#EAD7B3"
+iconos:
+  huella: "../emojis/paw.png"
+diseno:
+  ancho_mm: 63.5
+  alto_mm: 88
+  dpi: 720
+  dpi_vista_previa: 240
+  lienzo_px: [750, 1040]
+  fondo_carta: [3.3, 3.3, 746.7, 1036.7, 46]
+  marco_exterior: [46, 46, 703, 993, 46, 9]
+  marco_interior: [57, 57, 692, 982, 39, 3]
+  separador_superior: [142, 333, 607, 333, 4]
+  separador_inferior: [142, 706, 607, 706, 4]
+  medallon: [374.5, 519.5, 155.5, 5]
+  aro_interior: [374.5, 519.5, 143.5, 2]
+  linea_medallon: [311, 519, 438, 519, 4]
+  rombos_esquinas: [[75, 75], [674, 75], [75, 964], [674, 964]]
+  rombo_esquina_px: 14
+  rombo_central: [375, 519, 16]
+  puntos_separadores: [[142, 333], [607, 333], [142, 706], [607, 706]]
+  punto_radio_px: 3
+  icono_huella_superior: [330, 408, 90]
+  icono_huella_inferior: [330, 542, 90]
+cartas:
+  - nombre: "Reverso reforzado"
+    tipo: "reverso"
+    copias: 1

@@ -3,13 +3,13 @@ slug: "reglamento"
 cartas:
   - pagina: 1
     tipo: "encabezado"
-    titulo: "Introducción"
+    titulo: "Introducción y preparación"
     columnas: 2
     texto: "En ¡Ese gato es mío!, todos los vecinos del barrio sois unos auténticos esnobs y locos de los gatos. Ya tenéis muchos gastos en casa, pero todavía no os habéis puesto de acuerdo sobre quién tiene los mejores mininos.\n\nLa llegada de nuevos mininos callejeros desata una guerra de postureo, travesuras y robos de gatos. Tendrás que acomodar a tus favoritos en el Sofá, aprovechar sus habilidades y fastidiar los planes de tus vecinos hasta demostrar quién tiene la colonia de gatos más prestigiosa.\n\nLos puntos de prestigio representan la reputación de tu colonia en el barrio. Los gatos aportan puntos según estén en el Sofá o en el Salón. Sus habilidades, las sinergias y algunas cartas pueden aumentar esos puntos."
   - pagina: 1
     tipo: "seccion"
     titulo: "Objetivo"
-    texto: "Gana quien alcance su objetivo durante su propio turno, una vez resuelto el efecto en curso y sus respuestas. Si ya lo cumples al empezar, resuelve primero los efectos de inicio. Llegar a la cifra durante el turno de otra persona no da la victoria."
+    texto: "Gana quien alcance su objetivo durante su propio turno. Si ya lo cumples al empezar, resuelve primero los efectos de inicio y sus respuestas. Durante el turno, tras resolver por completo cada acción, habilidad, movimiento o efecto y sus respuestas, coloca los gatos recibidos y comprueba la victoria. Comprueba también cualquier cambio de prestigio al cierre. Llegar a la cifra durante el turno de otra persona no da la victoria."
   - pagina: 1
     tipo: "lista"
     grupo: "prestigio"
@@ -38,7 +38,7 @@ cartas:
     tipo: "lista"
     grupo: "preparacion"
     ordenada: true
-    texto: "Coloca tus gatos en el Sofá si caben o en el Salón; las demás cartas forman tu mano."
+    texto: "Coloca tus gatos en el Sofá si caben o en el Salón; las demás cartas forman tu mano. Comprueba la capacidad después de colocarlos."
   - pagina: 1
     tipo: "lista"
     grupo: "preparacion"
@@ -51,13 +51,81 @@ cartas:
     texto: "Los turnos continúan en sentido horario."
   - pagina: 1
     tipo: "seccion"
-    titulo: "Tu casa"
-    texto: "El Sofá tiene 3 espacios y activa las habilidades que no indiquen otra zona. El Salón no tiene límite y sus gatos también cuentan para el prestigio. El Gordo cuenta como un gato, pero ocupa 2 espacios del Sofá. Cuando recibas un gato, eliges dónde colocarlo si cabe; puedes reordenar gatos dentro de una zona sin que cuente como movimiento."
+    titulo: "Tu casa 🛋️🏠"
+    texto: "El Sofá tiene 3 espacios y activa las habilidades que no indiquen otra zona; el Salón no tiene límite y sus gatos también cuentan para el prestigio. El Gordo cuenta como un gato, pero ocupa 2 espacios; el Desnutrido bajo el Gordo no ocupa espacio adicional. Al recibir un gato, incluso en el reparto inicial o fuera de tu turno, elige el Sofá si cabe o el Salón y comprueba la capacidad tras colocarlo. Puedes elegir el Salón aunque quepa en el Sofá. Puedes reordenar libremente los gatos dentro del Sofá o del Salón por estética; es solo colocación, no movimiento entre zonas, y también está permitido durante Huelga. Cada casa tiene 1 estructura activa."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "estructuras"
+    titulo: "Estructuras 🛡️"
+    ancho: "completo"
+    texto: "Caja de Cartón protege a tus gatos de ataques directos, incluso si están en el Salón."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "estructuras"
+    texto: "Fortaleza Gatuna protege a tus gatos de ataques directos, también si están en el Salón, como la Caja de Cartón. Bloquea Eventos individuales rivales que los afecten. No protege la mano ni otras estructuras. Permanece tras bloquear un Evento; un ataque exitoso contra la Fortaleza o Sabotaje Vecinal la destruye."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "estructuras"
+    texto: "Comedero Automático añade 1 carta al robo inicial. Su bonificación se acumula con la del Bebé si está solo en el Sofá."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "estructuras"
+    texto: "Rascador: antes de la Fase de Acción, una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de potencia. Puedes pagar el descarte aunque no ataques o saltes la fase."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "estructuras"
+    texto: "Coloca la Cama de Peluche en su sitio habitual; protege al gato del Sofá que quede más cerca. Puedes reordenar los gatos del Sofá para decidir quién queda más cerca, incluso durante Huelga; es solo colocación, no movimiento entre zonas. El protegido no puede ser atacado ni movido con efectos de juego. Sabotaje Vecinal puede destruir la Cama. Descártala al inicio del siguiente turno de su dueño."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "estructuras"
+    texto: "Arenero recibe boca arriba los costes y descartes impuestos de tu mano, incluso fuera de tu turno. Sus cartas quedan fuera del descarte común hasta que salga de juego; entonces van todas al descarte común."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "iconos"
+    ancho: "completo"
+    titulo: "Iconos de las cartas"
+    icono: "cartas/emojis/paw.png"
+    texto: "**Huella:** identifica las cartas de Gatos y aparece también en el reverso."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "iconos"
+    icono: "cartas/emojis/sofa.png"
+    texto: "**Sofá:** señala la puntuación del gato en el Sofá."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "iconos"
+    icono: "cartas/emojis/salon.png"
+    texto: "**Salón:** señala la puntuación del gato en el Salón."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "iconos"
+    icono: "cartas/emojis/ataque.png"
+    texto: "**Arañazos:** identifica las cartas de Ataque."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "iconos"
+    icono: "cartas/emojis/acciones.png"
+    texto: "**Acciones:** identifica la categoría Acciones y Eventos, incluidos sus Eventos Globales."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "iconos"
+    icono: "cartas/emojis/estructuras.png"
+    texto: "**Rascador:** identifica las cartas de Estructura."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "iconos"
+    icono: "cartas/emojis/consumibles.png"
+    texto: "**Lata:** identifica las cartas de Consumibles."
+  - pagina: 1
+    tipo: "lista"
+    grupo: "iconos"
+    icono: "cartas/emojis/flush flush.png"
+    texto: "**Flús-Flús:** marca las cartas que se pueden cancelar; no es un tipo de carta."
   - pagina: 2
     tipo: "encabezado"
-    titulo: "El turno"
+    titulo: "El turno 🃏"
     columnas: 2
-    texto: "Izquierda: turno básico; derecha: paso a paso. Colores: inicio (azul), robo (morado), acción (ocre), movimiento (verde), cierre (gris), habilidades (turquesa) y alternativas (rojo)."
+    texto: "Izquierda: resumen; derecha: detalle del mismo turno. La Fase de Acción aparece en ambas vistas, pero solo hay una por turno. Colores: inicio (azul), robo (morado), acción (ocre), movimiento (verde), cierre (gris), habilidades (turquesa) y alternativas (rojo)."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "basico"
@@ -66,7 +134,7 @@ cartas:
     fase: "inicio"
     marca: "fase"
     titulo: "Inicio del turno"
-    texto: "Resuelve los efectos de inicio y comprueba si ganas."
+    texto: "Resuelve los efectos de inicio y sus respuestas; después comprueba si ganas."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "basico"
@@ -89,11 +157,20 @@ cartas:
     tipo: "paso_turno"
     grupo: "basico"
     titulo_grupo: "Turno básico"
+    numero: "2.3"
+    fase: "accion"
+    marca: "intermedio"
+    titulo: "Rascador · antes de la Fase de Acción"
+    texto: "Una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de potencia. Puedes pagar el descarte aunque no ataques o saltes la fase."
+  - pagina: 2
+    tipo: "paso_turno"
+    grupo: "basico"
+    titulo_grupo: "Turno básico"
     numero: "3"
     fase: "accion"
     marca: "fase"
     titulo: "Fase de Acción · puedes pasar"
-    texto: "Tienes 1 acción: juega 1 carta, declara 1 ataque o pasa. Usa aquí las acciones extra."
+    texto: "Esta es la única Fase de Acción del turno. Puedes omitirla completa; si actúas, empiezas con 1 acción principal: juega 1 carta o declara 1 ataque."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "basico"
@@ -102,7 +179,7 @@ cartas:
     fase: "movimiento"
     marca: "fase"
     titulo: "Movimiento gatuno · opcional"
-    texto: "Si quieres, mueve 1 gato entre el Sofá y el Salón."
+    texto: "Opcional: sube 1 gato del Salón al Sofá, baja 1 del Sofá al Salón o intercambia 1 de cada zona de tu casa. Comprueba la capacidad del Sofá tras resolverlo."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "basico"
@@ -111,7 +188,7 @@ cartas:
     fase: "cierre"
     marca: "fase"
     titulo: "Cierre del turno"
-    texto: "Descarta hasta quedarte con 7 cartas. Pierdes las acciones no usadas."
+    texto: "Descarta hasta tu límite de mano. Las acciones sin gastar se pierden; comprueba la victoria tras cualquier cambio de prestigio al cierre."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "basico"
@@ -164,37 +241,10 @@ cartas:
     grupo: "completo"
     titulo_grupo: "Paso a paso · con habilidades y efectos"
     numero: "2.3"
-    fase: "robo"
-    marca: "intermedio"
-    titulo: "Curioso · opcional"
-    texto: "Puedes descartar 1 carta para elegir 1 de las 3 primeras. Socios de información: Curioso mira 4 y Cotilla no descarta."
-  - pagina: 2
-    tipo: "paso_turno"
-    grupo: "completo"
-    titulo_grupo: "Paso a paso · con habilidades y efectos"
-    numero: "2.4"
-    fase: "robo"
-    marca: "intermedio"
-    titulo: "Trillizos · opcional"
-    texto: "Una vez por turno, descarta y roba tantas cartas como Trillizos haya en el Sofá; paga todo el descarte."
-  - pagina: 2
-    tipo: "paso_turno"
-    grupo: "completo"
-    titulo_grupo: "Paso a paso · con habilidades y efectos"
-    numero: "2.5"
     fase: "accion"
     marca: "intermedio"
-    titulo: "Hiperactivo · opcional"
-    texto: "Antes de actuar, puedes mover 1 gato adicional."
-  - pagina: 2
-    tipo: "paso_turno"
-    grupo: "completo"
-    titulo_grupo: "Paso a paso · con habilidades y efectos"
-    numero: "2.6"
-    fase: "accion"
-    marca: "intermedio"
-    titulo: "Rascador · cuando ataques"
-    texto: "Una vez por turno, al atacar, puedes descartar 1 carta para sumar +1 de potencia. Decide antes de la defensa."
+    titulo: "Rascador · antes de la Fase de Acción"
+    texto: "Una vez por turno, puedes descartar 1 carta; el primer ataque posterior de este turno recibe +1 de potencia. Puedes pagar el descarte aunque no ataques o saltes la fase."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "completo"
@@ -203,18 +253,45 @@ cartas:
     fase: "accion"
     marca: "fase"
     alternativa: "fase-accion"
-    titulo: "Fase de Acción · puedes pasar"
-    texto: "1 acción principal: juega 1 carta, declara 1 ataque o pasa. Puedes pasar extras; resuelve efectos y respuestas y comprueba la victoria."
+    titulo: "Fase de Acción · única"
+    texto: "Puedes omitir esta fase completa; si pasas, omite también sus habilidades opcionales y continúa con el movimiento gatuno. Si actúas, empiezas con 1 acción principal: juega 1 carta o declara 1 ataque por acción. Tras resolver cada acción y sus respuestas, coloca los gatos recibidos y comprueba la victoria; puedes terminar dejando acciones adicionales sin gastar."
+  - pagina: 2
+    tipo: "paso_turno"
+    grupo: "completo"
+    titulo_grupo: "Paso a paso · con habilidades y efectos"
+    numero: "3"
+    fase: "accion"
+    marca: "opcional"
+    alternativa: "fase-accion"
+    titulo: "Gordo · si te saltas la fase"
+    texto: "Si está en tu Sofá y decides saltarte tu fase de acción, mira en secreto la primera carta del mazo. Puedes dejarla arriba o ponerla en el fondo."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "completo"
     titulo_grupo: "Paso a paso · con habilidades y efectos"
     numero: "3.1"
     fase: "accion"
-    marca: "opcional"
-    alternativa: "fase-accion"
-    titulo: "Gordo · si pasas"
-    texto: "Si está en el Sofá y pasas toda la Fase de Acción, mira en secreto la carta superior; déjala arriba o al fondo."
+    marca: "intermedio"
+    titulo: "Curioso · opcional"
+    texto: "Puedes descartar 1 carta para elegir 1 de las 3 primeras. Socios de información: Curioso mira 4 y Cotilla no descarta."
+  - pagina: 2
+    tipo: "paso_turno"
+    grupo: "completo"
+    titulo_grupo: "Paso a paso · con habilidades y efectos"
+    numero: "3.2"
+    fase: "accion"
+    marca: "intermedio"
+    titulo: "Trillizos · opcional"
+    texto: "Una vez por turno, descarta y roba tantas cartas como Trillizos haya en el Sofá; paga todo el descarte."
+  - pagina: 2
+    tipo: "paso_turno"
+    grupo: "completo"
+    titulo_grupo: "Paso a paso · con habilidades y efectos"
+    numero: "3.3"
+    fase: "accion"
+    marca: "intermedio"
+    titulo: "Hiperactivo · opcional"
+    texto: "Una vez por turno, antes de tus acciones, sube 1 gato del Salón al Sofá, baja 1 del Sofá al Salón o intercambia 1 de cada zona de tu casa."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "completo"
@@ -223,7 +300,7 @@ cartas:
     fase: "movimiento"
     marca: "fase"
     titulo: "Movimiento gatuno · opcional"
-    texto: "Puedes mover 1 gato entre Sofá y Salón; no es intercambio. Huelga lo impide."
+    texto: "Opcional: sube 1 gato del Salón al Sofá, baja 1 del Sofá al Salón o intercambia 1 de cada zona de tu casa. Comprueba la capacidad tras resolver el movimiento. Huelga impide bajar gatos del Sofá al Salón e intercambiar zonas, pero permite subirlos; la Cama impide mover al gato protegido. Puedes reordenar libremente los gatos dentro del Sofá o del Salón por estética, incluso durante Huelga; es solo colocación, no movimiento entre zonas."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "completo"
@@ -232,7 +309,7 @@ cartas:
     fase: "cierre"
     marca: "intermedio"
     titulo: "Antes del cierre · Arenero"
-    texto: "Con 3 o más cartas en el Arenero, puedes recuperar 1 antes del cierre y descartar el resto."
+    texto: "Con 3 o más cartas encima, puedes recuperar 1 y enviar todas las demás al descarte común; si pasas, se quedan. Recibe costes y descartes impuestos de tu mano, incluso fuera de tu turno. Ataques, Defensas, Apoyos y respuestas jugados van al descarte común normal. Las cartas encima están fuera del descarte común hasta que el Arenero salga de juego; entonces van todas al descarte. Los descartes por exceso de mano ocurren después de esta ventana."
   - pagina: 2
     tipo: "paso_turno"
     grupo: "completo"
@@ -241,16 +318,25 @@ cartas:
     fase: "cierre"
     marca: "fase"
     titulo: "Cierre del turno"
-    texto: "Descarta hasta tu límite: 7 cartas, o 9 con Acaparadora. Caducan los efectos del turno."
+    texto: "Descarta hasta tu límite: 7 cartas, o 9 con Acaparadora. Caducan los efectos del turno; si cambia tu prestigio, comprueba la victoria."
+  - pagina: 2
+    tipo: "seccion"
+    grupo: "turno-perdido"
+    titulo: "Turno perdido"
+    texto: "Con No te muevas, estoy cómodo pierdes el turno completo, incluidos inicio, cierre y comprobación de victoria. Varias copias antes de tu turno hacen perder un solo turno; los efectos que debían caducar al inicio esperan hasta el siguiente inicio que resuelvas."
+  - pagina: 2
+    tipo: "seccion"
+    titulo: "Acciones adicionales"
+    texto: "El Rascador se resuelve antes de la Fase de Acción y puedes pagarlo aunque la omitas. Si ya jugaste una carta o declaraste un ataque, dejar acciones adicionales sin gastar no cuenta como saltársela y no activa la habilidad del Gordo. Las acciones no se guardan para otro turno ni permiten mover."
   - pagina: 3
     tipo: "encabezado"
-    titulo: "Combate y acciones"
+    titulo: "Combate, acciones y eventos ⚔️🌍"
     columnas: 2
     texto: "Atacar cuesta 1 acción principal. El objetivo puede ser un gato o una estructura atacable."
   - pagina: 3
     tipo: "lista"
     grupo: "combate"
-    titulo: "Resolución del combate"
+    titulo: "Resolución del combate ⚔️"
     ordenada: true
     ancho: "completo"
     texto: "El atacante declara el objetivo y elige boca abajo su Ataque y los Apoyos que quiera."
@@ -258,12 +344,7 @@ cartas:
     tipo: "lista"
     grupo: "combate"
     ordenada: true
-    texto: "Quien recibe el ataque puede usar Ratón con Hierba Gatuna para desviarlo a otro objetivo válido, respetando las protecciones. Se permiten desvíos sucesivos; la Cama no puede elegirse."
-  - pagina: 3
-    tipo: "lista"
-    grupo: "combate"
-    ordenada: true
-    texto: "Antes de elegir defensa, Espía revela el Ataque y sus Apoyos a la mesa, sin acción ni descarte. Cotilla puede revelar lo mismo si descarta 1 carta."
+    texto: "Quien recibe el ataque puede usar Ratón con Hierba Gatuna para desviarlo a otro objetivo válido de cualquier casa salvo la del atacante, respetando las protecciones. Se permiten desvíos sucesivos y se puede volver a elegir un objetivo que ya apareció en la cadena. La Cama no puede elegirse. Si cancelan un Ratón con Flús-Flús, se conserva el objetivo anterior."
   - pagina: 3
     tipo: "lista"
     grupo: "combate"
@@ -273,138 +354,99 @@ cartas:
     tipo: "lista"
     grupo: "combate"
     ordenada: true
+    texto: "Después de elegir la defensa, Espía revela el Ataque y sus Apoyos a toda la mesa sin coste. Cotilla puede revelar lo mismo a toda la mesa si descarta 1 carta; Socios de información elimina ese coste."
+  - pagina: 3
+    tipo: "lista"
+    grupo: "combate"
+    ordenada: true
     texto: "Revelad y sumad las potencias. Sin defensa, el Ataque tiene éxito, incluso con potencia 0. Con defensa, el Ataque debe superarla; el empate favorece al defensor."
   - pagina: 3
     tipo: "seccion"
     titulo: "Si el ataque tiene éxito"
-    texto: "Si el objetivo es un gato, el atacante lo captura y elige Sofá o Salón; durante Huelga puede capturarlo, pero no moverlo hasta que termine el evento. Un ataque exitoso destruye la estructura objetivo: Caja de Cartón, Fortaleza Gatuna, Comedero Automático, Rascador de Sisal o Arenero. La Cama no puede elegirse como objetivo."
+    texto: "Si el objetivo es un gato, el atacante lo captura y elige Sofá si cabe o Salón. Durante Huelga se puede seguir atacando y el gato capturado entra en su nueva casa; solo se impide bajar gatos que ya estaban en el Sofá al Salón o intercambiar zonas. Comprueba la capacidad tras colocarlo y la victoria después de completar la captura. Un ataque exitoso contra Caja de Cartón o Fortaleza Gatuna destruye esa estructura y termina ahí: capturar al gato protegido requiere otro ataque. Las demás estructuras atacables también se destruyen con un ataque exitoso; la Cama no puede elegirse como objetivo de ataque, pero Sabotaje Vecinal sí puede destruirla."
   - pagina: 3
     tipo: "seccion"
     titulo: "Apoyos y potencia"
-    texto: "Los Apoyos se suman a una carta de Ataque o Defensa; no atacan ni defienden por sí solos y no hay límite por combate. Ataque en Manada cuenta tus gatos de ambas zonas. Manguerazo Frío cuenta los del defensor final después de los desvíos. El Rascador permite descartar 1 carta al declarar el ataque para sumar +1; decide antes de que el rival elija defensa."
+    texto: "Los Apoyos se suman a una carta de Ataque o Defensa; no atacan ni defienden por sí solos y no hay límite por combate. Ataque en Manada cuenta tus gatos de ambas zonas. Manguerazo Frío cuenta los del defensor final después de los desvíos. Antes de la Fase de Acción, puedes descartar 1 carta con el Rascador: tu primer ataque posterior de este turno recibe +1, nunca una Defensa. Puedes pagar el descarte aunque no ataques o saltes la fase."
   - pagina: 3
     tipo: "seccion"
-    grupo: "turno-perdido"
-    titulo: "Turno perdido"
-    texto: "Con No te muevas, estoy cómodo pierdes el turno completo, incluidos inicio, cierre y comprobación de victoria. Varias copias antes de tu turno hacen perder un solo turno; los efectos que debían caducar al inicio esperan hasta el siguiente inicio que resuelvas."
-  - pagina: 3
-    tipo: "seccion"
-    titulo: "Acciones adicionales"
-    texto: "Cada acción extra permite jugar 1 carta o declarar 1 ataque durante la Fase de Acción; no estás obligado a gastarla. Puedes encadenar cartas que concedan acciones; las que sobren al cierre se pierden y nunca permiten mover."
-  - pagina: 3
-    tipo: "seccion"
-    titulo: "Flús-Flús"
-    texto: "Los Eventos individuales cancelables llevan la marca de Flús-Flús; Sabotaje Vecinal no se cancela y puede destruir cualquier estructura rival, incluida Fortaleza. Cualquier jugador puede responder, incluso a favor de otro. Un Flús-Flús puede cancelar otro y las cadenas se resuelven desde el último al primero. La acción gastada no se recupera. Ataques, Apoyos, estructuras, consumibles y Eventos Globales no se cancelan."
-  - pagina: 4
-    tipo: "encabezado"
-    titulo: "Estructuras y eventos globales"
-    columnas: 2
-    texto: "Cada casa puede tener 1 estructura activa; si juegas otra, la anterior se descarta."
-  - pagina: 4
-    tipo: "lista"
-    grupo: "estructuras"
-    titulo: "Estructuras"
-    ancho: "completo"
-    texto: "Caja de Cartón protege tus gatos de ataques directos."
-  - pagina: 4
-    tipo: "lista"
-    grupo: "estructuras"
-    texto: "Fortaleza Gatuna protege tus gatos de ataques directos y bloquea Eventos individuales rivales que afecten a tus gatos, tu mano o tu Salón. Permanece tras interceptar un Evento; no protege otras estructuras ni tus propios Eventos."
-  - pagina: 4
-    tipo: "lista"
-    grupo: "estructuras"
-    texto: "Comedero Automático añade 1 carta al robo inicial. Su bonificación se acumula con la del Bebé si está solo en el Sofá."
-  - pagina: 4
-    tipo: "lista"
-    grupo: "estructuras"
-    texto: "Rascador: una vez por turno, al declarar un ataque, puedes descartar 1 carta para sumar +1 a su potencia."
-  - pagina: 4
-    tipo: "lista"
-    grupo: "estructuras"
-    texto: "Cama de Peluche queda junto al gato que protege; ese gato no puede ser atacado ni moverse. La Cama se descarta al inicio del siguiente turno de su dueño."
-  - pagina: 4
-    tipo: "lista"
-    grupo: "estructuras"
-    texto: "Arenero recibe boca arriba los descartes de tu mano, incluidos costes y descartes impuestos. Si sale de juego, las cartas que tenía van al descarte común."
-  - pagina: 4
-    tipo: "seccion"
-    titulo: "Eventos Globales"
+    titulo: "Eventos Globales 🌍"
     texto: "Afectan a todos, también a quien los juega, y no se cancelan con Flús-Flús."
-  - pagina: 4
+  - pagina: 3
     tipo: "lista"
     grupo: "eventos"
     titulo: "Efectos de los eventos"
     ancho: "completo"
-    texto: "Hora de la Siesta desactiva habilidades y sinergias hasta tu próximo turno, pero no inmoviliza a los gatos y mantiene sus puntuaciones y los valores de Solitario. Anula la protección de Solitario."
-  - pagina: 4
+    texto: "Hora de la Siesta desactiva habilidades y sinergias hasta tu próximo turno, pero no inmoviliza a los gatos y mantiene sus puntuaciones y los valores de Solitario. Anula la protección de Solitario. El Desnutrido permanece bajo el Gordo: esa colocación pasiva no se rompe durante la Siesta."
+  - pagina: 3
     tipo: "lista"
     grupo: "eventos"
     texto: "Perro del Vecino hace que cada jugador mueva 1 gato del Sofá al Salón si puede; la Cama impide mover al gato protegido."
-  - pagina: 4
+  - pagina: 3
     tipo: "lista"
     grupo: "eventos"
     texto: "Reparto de Juguetes: todos pasan 1 carta boca abajo a la izquierda, simultáneamente. Quien no tenga carta puede recibir."
-  - pagina: 4
+  - pagina: 3
     tipo: "lista"
     grupo: "eventos"
     texto: "Visita al Veterinario: con 1–3 gatos, descarta 1 carta; con 4 o más, descarta 2; con 0, no descartas."
-  - pagina: 4
+  - pagina: 3
     tipo: "lista"
     grupo: "eventos"
-    texto: "Huelga de Gatos impide mover gatos que ya están en una casa. Los gatos nuevos pueden entrar, pero no moverse hasta que acabe el evento. Se puede seguir atacando."
-  - pagina: 5
+    texto: "Huelga de Gatos impide mover gatos del Sofá al Salón e intercambiar zonas. Sí permite subir gatos del Salón al Sofá, atacar y robar o capturar gatos, que entran en su nueva casa. Puedes reordenar libremente los gatos dentro del Sofá o del Salón, incluso durante Huelga; es solo colocación por estética, no movimiento entre zonas."
+  - pagina: 4
     tipo: "encabezado"
-    titulo: "Sinergias y consulta rápida"
+    titulo: "Sinergias y consulta rápida 🔗"
     columnas: 3
     texto: "Salvo que una sinergia indique otra condición, sus gatos deben estar juntos en el Sofá."
-  - pagina: 5
+  - pagina: 4
     tipo: "sinergia"
     titulo: "¡Que me aplastas!"
-    texto: "Coloca al Desnutrido debajo del Gordo; no ocupa una plaza adicional."
-  - pagina: 5
+    texto: "Coloca al Desnutrido debajo del Gordo; no ocupa una plaza adicional y permanece así durante la Siesta."
+  - pagina: 4
     tipo: "sinergia"
     titulo: "Veteranos del barrio"
     texto: "De Barrio + Territorial: se anulan sus bonificaciones individuales de potencia; la pareja obtiene +2 de prestigio en total."
-  - pagina: 5
+  - pagina: 4
     tipo: "sinergia"
     titulo: "Socios de información"
-    texto: "Cotilla + Curioso: Cotilla no descarta para mirar; Curioso mira 4 cartas en lugar de 3."
-  - pagina: 5
+    texto: "Cotilla + Curioso: Cotilla usa «¿Qué tramas?» sin descartar. Curioso mira 4 cartas con «A ver qué hay» en vez de 3 y conserva su coste."
+  - pagina: 4
     tipo: "sinergia"
     titulo: "Control de inventario"
     texto: "Previsor + Acaparadora: si tienes menos de 3 cartas después del robo inicial, repón hasta 5 en vez de hasta 4."
-  - pagina: 5
+  - pagina: 4
     tipo: "sinergia"
     titulo: "Saqueadores envidiosos"
     texto: "Envidiosa + Mapache: al destruir una estructura rival con un ataque, puedes descartar 1 carta para añadir esa estructura del descarte a tu mano."
-  - pagina: 5
+  - pagina: 4
     tipo: "sinergia"
     titulo: "Pareja yin-yang"
     texto: "Diurno + Nocturno: la pareja obtiene +1 de prestigio adicional en total."
-  - pagina: 5
+  - pagina: 4
     tipo: "sinergia"
     titulo: "¿Por qué yo?"
     texto: "Victimista + Hiperactivo: si ambos empiezan tu turno en el Sofá y el Victimista baja al Salón ese turno, roba 1 carta. El Victimista no puede volver al Sofá ese turno."
-  - pagina: 5
+  - pagina: 4
     tipo: "sinergia"
     titulo: "Los Trillizos"
     texto: "Con los tres en el Sofá, obtienes +2 de prestigio además de sus puntos base."
-  - pagina: 5
+  - pagina: 4
     tipo: "sinergia"
     titulo: "El ojito derecho"
-    texto: "El Bebé recibe +2 de prestigio de Mamá Gata en lugar de +1; los demás gatos de tu Sofá siguen recibiendo +1."
-  - pagina: 5
+    texto: "El Bebé recibe +3 de prestigio de Mamá Gata en lugar de +1; los demás gatos de tu Sofá siguen recibiendo +1."
+  - pagina: 4
     tipo: "seccion"
     ancho: "completo"
-    titulo: "Solitario y Ronroneo"
-    texto: "En el Sofá, Solitario vale 7 puntos si está solo y 0 si está acompañado; en el Salón vale 2. Cuando está solo, cancela los Eventos individuales cancelables que lo elijan directamente. Ronroneo se pierde si cualquiera de los dos gatos sale del Sofá antes de tu siguiente turno."
-  - pagina: 5
-    tipo: "seccion"
-    ancho: "completo"
-    titulo: "Mazo agotado"
+    titulo: "Mazo agotado 🃏"
     texto: "Si se agota el mazo, baraja los descartes para formar uno nuevo. Si tampoco quedan descartes, termina el robo."
-  - pagina: 5
+  - pagina: 4
     tipo: "nota"
     ancho: "completo"
-    titulo: "Reglas en prueba"
-    texto: "Queda por decidir si el atacante original puede ser objetivo de un desvío de Ratón y responder con otro; si Cotilla revela al defensor o a toda la mesa; el orden de descarte del combate; la colocación de Gordo y Desnutrido durante la Siesta; y si un gato protegido obliga a atacar primero la Caja o la Fortaleza."
+    titulo: "Pendiente de aclarar"
+    texto: "Falta acordar el orden de descarte cuando se descartan a la vez el Ataque, los Apoyos de ataque, la Defensa, los Apoyos de defensa y cartas de Acción."
+  - pagina: 4
+    tipo: "seccion"
+    titulo: "Flús-Flús 💦"
+    ancho: "completo"
+    texto: "Solo se cancelan las cartas con la marca de Flús-Flús. Se juega como respuesta antes de que se resuelva la carta marcada; no gasta una acción principal, pero una carta cancelada no produce su efecto y no recuperas la acción ni los costes pagados. Cualquier jugador puede responder, incluso si la carta no le afecta directamente o para proteger la carta de otro. Un Flús-Flús puede cancelar otro: cada carta pendiente admite una respuesta directa y, cuando nadie añade otra, la cadena se resuelve desde la última carta hacia la primera. Sabotaje Vecinal no lleva la marca, no se puede cancelar y puede destruir estructuras rivales, incluida la Cama de Peluche y la Fortaleza Gatuna. No se cancelan Ataques ni Defensas, Apoyos, Estructuras, Consumibles ni Eventos Globales."

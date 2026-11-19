@@ -12,10 +12,13 @@ async function renderCategory(category) {
   const printableCount = printableCards(category).length;
   const hasCopyCounts = category.cartas.some(card => Number.isInteger(card.copias));
   const typeCount = cardTypeCount(category);
-  $('categoryTitle').textContent = hasCopyCounts
+  $('categoryTitle').textContent = category.slug === 'reversos'
+    ? 'Reverso reforzado · 63,5 × 88 mm · 720 ppp'
+    : hasCopyCounts
     ? `${category.nombre} · ${typeCount} tipos · ${printableCount} copias`
     : `${category.nombre} · ${typeCount} cartas`;
   if (category.iconos && category.iconos.tipo) {
+    $('categoryIcon').hidden = false;
     try {
       const typeIconUrl = assetUrl(category, category.iconos.tipo);
       await loadImage(typeIconUrl);
@@ -25,9 +28,11 @@ async function renderCategory(category) {
       console.error(error);
       if (renderId !== state.categoryRenderId) return;
       $('categoryIcon').removeAttribute('src');
+      $('categoryIcon').hidden = true;
     }
   } else {
     $('categoryIcon').removeAttribute('src');
+    $('categoryIcon').hidden = true;
   }
   $('emptyState').hidden = category.cartas.length > 0;
   $('emptyState').textContent = category.cartas.length
@@ -35,11 +40,13 @@ async function renderCategory(category) {
     : `Esta categoría aún no contiene cartas. Añade sus datos e ilustraciones a ${category.configPath}.`;
   $('cardGrid').replaceChildren();
   $('pdfButton').disabled = true;
-  $('pdfButton').textContent = category.slug === 'sinergias'
-    ? printableCount ? `Descargar PDF A4 · ${printableCount} sinergias` : 'Sinergias no disponibles'
-    : printableCount
-      ? `Descargar PDF A4 · ${printableCount} ${hasCopyCounts ? 'copias' : 'cartas'}`
-      : 'PDF A4 no disponible';
+  $('pdfButton').textContent = category.slug === 'reversos'
+    ? 'Descargar PDF A4 · reverso'
+    : category.slug === 'sinergias'
+      ? printableCount ? `Descargar PDF A4 · ${printableCount} sinergias` : 'Sinergias no disponibles'
+      : printableCount
+        ? `Descargar PDF A4 · ${printableCount} ${hasCopyCounts ? 'copias' : 'cartas'}`
+        : 'PDF A4 no disponible';
 
   for (const button of $('categoryTabs').querySelectorAll('button')) {
     button.setAttribute('aria-selected', String(button.dataset.slug === category.slug));
@@ -49,7 +56,9 @@ async function renderCategory(category) {
     return;
   }
 
-  setStatus(`Cargando ${category.slug === 'sinergias' ? 'las sinergias' : 'las ilustraciones'} de ${category.cartas.length} cartas…`);
+  setStatus(category.slug === 'reversos'
+    ? 'Cargando los iconos del reverso…'
+    : `Cargando ${category.slug === 'sinergias' ? 'las sinergias' : 'las ilustraciones'} de ${category.cartas.length} cartas…`);
   const tiles = await Promise.all(category.cartas.map(card =>
     category.slug === 'sinergias'
       ? createSynergyCardTile(category, card)
@@ -69,10 +78,12 @@ async function renderCategory(category) {
     ? category.cartas.filter(card => !card.imagen).length
     : 0;
   setStatus(failed
-    ? `${failed} ilustraciones no se pudieron cargar; corrige sus rutas antes de exportar.`
+    ? `${failed} recursos no se pudieron cargar; corrige sus rutas antes de exportar.`
     : pending
       ? `${category.cartas.length} sinergias listas; ${pending} ilustraciones pendientes se marcarán en el PDF.`
-      : `${category.cartas.length} ${category.slug === 'sinergias' ? 'sinergias listas para descargar.' : 'cartas listas para descargar.'}`);
+      : category.slug === 'reversos'
+        ? 'Reverso listo para descargar en PNG o PDF A4.'
+        : `${category.cartas.length} ${category.slug === 'sinergias' ? 'sinergias listas para descargar.' : 'cartas listas para descargar.'}`);
 }
 
 function showCategories() {
@@ -127,6 +138,7 @@ function showCategories() {
 function showRulebook() {
   $('categoryPanel').hidden = true;
   $('rulebookPanel').hidden = false;
+  fitRulebookPages();
   $('boardsPanel').hidden = true;
   $('finalPrintPanel').hidden = true;
   $('pdfButton').hidden = true;
@@ -176,6 +188,7 @@ async function loadProject(files=null) {
       state.imageCache.clear();
       state.tintedIconCache.clear();
     }
+    if (files || location.protocol === 'file:') await updateBoardImageSources();
     setStatus('Leyendo los archivos de las categorías…');
     const [categories, rulebook] = await Promise.all([
       Promise.all(CATEGORY_PATHS.map(async path => {
@@ -203,6 +216,34 @@ async function loadProject(files=null) {
   }
 }
 
+async function updateBoardImageSources() {
+  const images = [...$('boardsPanel').querySelectorAll('.board-image-stage img')];
+  const localAssetUrls = new Map();
+  const localAssetUrl = projectPath => {
+    const key = projectPath.toLowerCase();
+    if (!localAssetUrls.has(key)) {
+      localAssetUrls.set(key, (async () => {
+        const response = await fetch(new URL(projectPath, location.href));
+        if (!response.ok) throw new Error(`No se pudo leer el archivo ${projectPath} (${response.status}).`);
+        return URL.createObjectURL(await response.blob());
+      })());
+    }
+    return localAssetUrls.get(key);
+  };
+  await Promise.all(images.map(async image => {
+    const projectPath = image.dataset.projectPath || image.getAttribute('src');
+    if (!projectPath) throw new Error('Uno de los recursos del tablero no tiene una ruta de proyecto.');
+    image.dataset.projectPath = projectPath;
+    if (image._boardFetchedUrl) URL.revokeObjectURL(image._boardFetchedUrl);
+    const imageUrl = state.uploadedFiles
+      ? uploadedAssetUrl(projectPath)
+      : await localAssetUrl(projectPath);
+    image.src = imageUrl;
+    if (!state.uploadedFiles) image._boardFetchedUrl = imageUrl;
+    await waitForImageLoad(image, `No se pudo cargar el archivo ${projectPath}.`);
+  }));
+}
+
 $('folderButton').addEventListener('click', () => {
   if ($('folderButton').dataset.action === 'choose') {
     $('projectFolderInput').click();
@@ -226,10 +267,25 @@ $('pdfButton').addEventListener('click', async () => {
       setStatus('Generando el PDF A4 de sinergias…');
       const pdf = await createSynergyPdf(category);
       downloadBlob(pdf, 'sinergias-cartas-a4.pdf');
-      setStatus(`PDF descargado: ${printableCards(category).length} sinergias, con anverso y explicación lado a lado.`);
+      setStatus(`PDF descargado: ${printableCards(category).length} sinergias con anversos y explicaciones en filas alternas.`);
     } catch (error) {
       console.error(error);
       setStatus(error.message || 'No se pudo generar el PDF de sinergias.', true);
+    } finally {
+      $('pdfButton').disabled = category.cartas.some(card => card.imageError);
+    }
+    return;
+  }
+  if (category.slug === 'reversos') {
+    try {
+      $('pdfButton').disabled = true;
+      setStatus('Generando el PDF A4 del reverso…');
+      const pdf = await createPdf(category);
+      downloadBlob(pdf, 'reverso-cartas-a4.pdf');
+      setStatus('PDF del reverso listo para descargar.');
+    } catch (error) {
+      console.error(error);
+      setStatus(error.message || 'No se pudo generar el PDF del reverso.', true);
     } finally {
       $('pdfButton').disabled = category.cartas.some(card => card.imageError);
     }
@@ -281,12 +337,28 @@ $('finalPrintPanel').addEventListener('change', event => {
   updateFinalPrintStatus();
 });
 
+$('selectAllFinalPrintButton').addEventListener('click', () => {
+  const masterInputs = [
+    $('includeRulebook'),
+    $('includeAllBoards'),
+    ...$('finalPrintCategories').querySelectorAll('.final-category-toggle')
+  ];
+  for (const input of masterInputs) {
+    input.checked = true;
+    input.dispatchEvent(new Event('change', {bubbles: true}));
+  }
+});
+
 $('finalPrintPanel').addEventListener('input', event => {
+  if (event.target.id === 'finalReverseQuantity') {
+    event.target.dataset.manual = 'true';
+  }
   if (event.target.classList.contains('final-print-quantity')) updateFinalPrintStatus();
 });
 
 $('downloadFinalPdfButton').addEventListener('click', async () => {
   const button = $('downloadFinalPdfButton');
+  const selectAllButton = $('selectAllFinalPrintButton');
   let selection;
   try {
     selection = collectFinalPrintSelection();
@@ -298,19 +370,22 @@ $('downloadFinalPdfButton').addEventListener('click', async () => {
 
   state.finalPdfGenerating = true;
   button.disabled = true;
+  selectAllButton.disabled = true;
   for (const fieldset of $('finalPrintPanel').querySelectorAll('fieldset')) fieldset.disabled = true;
   let finalMessage = '';
   let isError = false;
   try {
     const pdf = await createFinalPrintPdf(selection);
     downloadBlob(pdf, 'ese-gato-es-mio-impresion-seleccionada.pdf');
-    finalMessage = `PDF descargado: ${finalPrintDescription(selection)} · ${finalPrintPageCount(selection)} páginas.`;
+    const pagePlan = finalPrintPagePlan(selection);
+    finalMessage = `PDF descargado: ${finalPrintDescription(selection)} · ${pagePlan.ranges.join(' · ')} · ${pagePlan.totalPages} páginas.`;
   } catch (error) {
     console.error(error);
     finalMessage = error.message || 'No se pudo generar el PDF de la selección.';
     isError = true;
   } finally {
     for (const fieldset of $('finalPrintPanel').querySelectorAll('fieldset')) fieldset.disabled = false;
+    selectAllButton.disabled = false;
     state.finalPdfGenerating = false;
     updateFinalPrintStatus();
     if (finalMessage) setFinalPrintStatus(finalMessage, isError);

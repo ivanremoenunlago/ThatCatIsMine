@@ -84,19 +84,19 @@ cartas:
     tipo: "accion"
     copias: 2
     marca_flush: true
-    descripcion: "Elige 2 gatos del Sofá y cúbrelos con esta carta. Si siguen allí al inicio de tu próximo turno, obtienen +1 punto cada uno ese turno. Luego, descártala."
+    descripcion: "Cubre 2 gatos de tu Sofá con esta carta. Si alguno sale del Sofá antes del inicio de tu próximo turno, descártala. Si ambos permanecen, al inicio de tu próximo turno cada uno obtiene +1 de prestigio durante ese turno. Después, descarta esta carta."
   - nombre: "Espía de Ventana"
     imagen: "imagenes/espia_de_ventana.png"
     tipo: "accion"
     copias: 1
     marca_flush: true
-    descripcion: "Cuando te ataquen, revela el ataque y sus apoyos antes de decidir tu defensa."
+    descripcion: "Cuando te ataquen, revela el Ataque y sus Apoyos a toda la mesa después de que el defensor elija su defensa."
   - nombre: "Sorpresa en la Almohada"
     imagen: "imagenes/sorpresa_en_la_almohada.png"
     tipo: "accion"
     copias: 1
     marca_flush: true
-    descripcion: "Elige un rival y descarta al azar la mitad de las cartas de su mano, redondeando hacia abajo. Si tiene 1 carta, descarta esa carta."
+    descripcion: "Elige un rival. Descarta al azar la mitad de sus cartas de mano, redondeando hacia abajo, con un mínimo de 1 si tiene cartas."
   - nombre: "Tirar Cosas de la Mesa"
     imagen: "imagenes/tirar_cosas_de_la_mesa.png"
     tipo: "accion"
@@ -114,26 +114,26 @@ cartas:
     tipo: "accion"
     copias: 2
     marca_flush: true
-    descripcion: "Intercambia 1 gato tuyo por 1 gato del Salón o Sofá rival."
+    descripcion: "Intercambia 1 gato tuyo por 1 gato rival. Cada gato ocupa el puesto que deja el otro. Si el Gordo no cabe en el Sofá de destino, colócalo en el Salón de su nueva casa."
   - nombre: "Robo Felino"
     imagen: "imagenes/robo_felino.png"
     tipo: "accion"
     copias: 2
     marca_flush: true
     descripcion: "Roba 1 gato del Salón rival (no del Sofá) y llévalo a tu casa."
-  - nombre: "Apuntar con Láser Infrarrojo"
-    imagen: "imagenes/apuntar_con_laser_infrarrojo.png"
+  - nombre: "Láser Infrarrojo"
+    imagen: "imagenes/laser_infrarrojo.png"
     tipo: "accion"
     copias: 2
     marca_flush: true
-    descripcion: "Mueve/Intercambia un gato tuyo o rival entre el Sofá y el Salón."
+    descripcion: "Elige tu casa o la de un rival. Mueve o intercambia 1 gato entre el sofá y el salón."
   - nombre: "¡Pspspsps!"
     imagen: "imagenes/pspspsps.png"
     tipo: "accion"
     copias: 1
     marca_flush: true
-    descripcion: "Coge el mazo y quedate el primer gato que encuentres y barajalo, si no hay mas gatos en el mazo, roba 1 carta al azar."
-  - nombre: "Sabotaje vecinal"
+    descripcion: "Busca desde arriba en el mazo hasta encontrar el primer gato. Colócalo en tu casa y baraja el mazo. Si no encuentras ningún gato, baraja y roba 1 carta."
+  - nombre: "Sabotaje Vecinal"
     imagen: "imagenes/sabotaje_vecinal.png"
     tipo: "accion"
     copias: 2
@@ -144,13 +144,38 @@ cartas:
     tipo: "objeto"
     copias: 3
     marca_flush: true
-    descripcion: "Recupera una carta del descarte común y añádela a tu mano. Si es un gato, colócalo directamente en tu casa."
+    descripcion: "Recupera una carta del descarte común y quedatela."
   - nombre: "Ratón con Hierba Gatuna"
     imagen: "imagenes/raton_con_hierba_gatuna.png"
     tipo: "objeto"
     copias: 2
     marca_flush: true
-    descripcion: "Cuando te ataquen, puedes desviar el ataque hacia otro gato o estructura válida. El nuevo objetivo puede volver a desviarlo."
+    descripcion: "Cuando te ataquen, puedes desviar el ataque hacia otro gato o estructura válida de cualquier casa salvo la del atacante. El nuevo objetivo puede volver a desviarlo."
+  - nombre: "Hora de la Siesta"
+    imagen: "imagenes/hora_de_la_siesta.png"
+    tipo: "evento_global"
+    copias: 1
+    descripcion: "Hasta el inicio de tu próximo turno, se anulan las habilidades y sinergias de todos los gatos."
+  - nombre: "Perro del Vecino"
+    imagen: "imagenes/perro_del_vecino.png"
+    tipo: "evento_global"
+    copias: 1
+    descripcion: "Cada jugador baja 1 gato de su Sofá a su Salón, si puede."
+  - nombre: "Reparto de Juguetes"
+    imagen: "imagenes/reparto_de_juguetes.png"
+    tipo: "evento_global"
+    copias: 1
+    descripcion: "Cada jugador pasa 1 carta de su mano, boca abajo, al jugador de su izquierda. Todos a la vez."
+  - nombre: "Visita al Veterinario"
+    imagen: "imagenes/visita_al_veterinario.png"
+    tipo: "evento_global"
+    copias: 1
+    descripcion: "Cada jugador con 1 a 3 gatos descarta 1 carta. Con 4 o más gatos, descarta 2."
+  - nombre: "Huelga de Gatos"
+    imagen: "imagenes/huelga_de_gatos.png"
+    tipo: "evento_global"
+    copias: 1
+    descripcion: "Hasta el inicio de tu próximo turno, no puedes mover gatos del Sofá al Salón ni viceversa. Sí puedes atacar y robar. Los gatos nuevos, incluidos los robados o capturados, pueden entrar en su nueva casa."
   - nombre: "Flús-Flús de Agua"
     imagen: "imagenes/flus-flus_de_agua_1.png"
     tipo: "respuesta"
@@ -183,28 +208,3 @@ cartas:
     paleta: "azul"
     version: 4
     descripcion: "Cancela 1 carta marcada con el símbolo de Flús-Flús."
-  - nombre: "Hora de la Siesta"
-    imagen: "../globales/imagenes/hora_de_la_siesta.png"
-    tipo: "evento_global"
-    copias: 1
-    descripcion: "Hasta el inicio de tu próximo turno, se anulan las habilidades y sinergias de todos los gatos."
-  - nombre: "Perro del Vecino"
-    imagen: "../globales/imagenes/perro_del_vecino.png"
-    tipo: "evento_global"
-    copias: 1
-    descripcion: "Cada jugador baja 1 gato de su Sofá a su Salón, si puede."
-  - nombre: "Reparto de Juguetes"
-    imagen: "../globales/imagenes/reparto_de_juguetes.png"
-    tipo: "evento_global"
-    copias: 1
-    descripcion: "Cada jugador pasa 1 carta de su mano, boca abajo, al jugador de su izquierda. Todos a la vez."
-  - nombre: "Visita al Veterinario"
-    imagen: "../globales/imagenes/visita_al_veterinario.png"
-    tipo: "evento_global"
-    copias: 1
-    descripcion: "Cada jugador con 1 a 3 gatos descarta 1 carta. Con 4 o más gatos, descarta 2."
-  - nombre: "Huelga de Gatos"
-    imagen: "../globales/imagenes/huelga_de_gatos.png"
-    tipo: "evento_global"
-    copias: 1
-    descripcion: "Hasta el inicio de tu próximo turno, quedan bloqueados los movimientos entre Sofá y Salón y los intercambios. Los gatos recibidos por robo o captura pueden entrar en su nueva casa."

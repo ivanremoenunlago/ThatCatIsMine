@@ -1,5 +1,21 @@
 'use strict';
 
+const RULEBOOK_PAGE_WIDTH = 297 * 96 / 25.4;
+const RULEBOOK_PAGE_HEIGHT = 210 * 96 / 25.4;
+
+function fitRulebookPages() {
+  const panel = $('rulebookPanel');
+  if (panel.hidden || !panel.clientWidth) return;
+  const scale = Math.min(1, panel.clientWidth / RULEBOOK_PAGE_WIDTH);
+  for (const page of panel.querySelectorAll('.rulebook-text-page')) {
+    page.style.transform = `scale(${scale})`;
+    page.style.transformOrigin = 'top left';
+    page.style.marginBottom = `${22 - (1 - scale) * RULEBOOK_PAGE_HEIGHT}px`;
+  }
+}
+
+window.addEventListener('resize', fitRulebookPages);
+
 function printCardLabel(category, card) {
   const sameName = category.cartas.filter(item => item.nombre === card.nombre);
   const variant = Number.isInteger(card.version)
@@ -143,8 +159,17 @@ function renderRulebookContent(rulebook) {
           section.append(sectionTitle);
         }
         const list = document.createElement(block.ordenada ? 'ol' : 'ul');
+        if (items.some(item => item.icono)) list.classList.add('rulebook-icon-list');
         for (const item of items) {
           const listItem = document.createElement('li');
+          if (item.icono) {
+            const icon = document.createElement('img');
+            icon.className = 'rulebook-icon';
+            icon.src = item.icono;
+            icon.alt = '';
+            icon.setAttribute('aria-hidden', 'true');
+            listItem.append(icon, document.createTextNode(' '));
+          }
           appendRulebookText(listItem, item.texto);
           list.append(listItem);
         }
@@ -173,6 +198,8 @@ function renderFinalPrintOptions() {
   const categoryContainer = $('finalPrintCategories');
   boardContainer.replaceChildren();
   categoryContainer.replaceChildren();
+  $('finalReverseQuantity').value = '0';
+  $('finalReverseQuantity').dataset.manual = 'false';
 
   const rulebookPages = [...$('rulebookPages').querySelectorAll('.rulebook-page')];
   $('includeRulebookLabel').textContent = `Reglamento completo · ${rulebookPages.length} páginas`;
@@ -195,6 +222,7 @@ function renderFinalPrintOptions() {
   });
 
   state.categories.forEach((category, categoryIndex) => {
+    if (category.slug === 'reversos') return;
     const fieldset = document.createElement('fieldset');
     fieldset.className = 'final-print-category';
     const legend = document.createElement('legend');
@@ -269,6 +297,7 @@ function collectFinalPrintSelection() {
     const category = state.categories[Number(input.dataset.categoryIndex)];
     const card = category && category.cartas[Number(input.dataset.cardIndex)];
     if (!category || !card) throw new Error('No se pudo identificar una de las cartas seleccionadas.');
+    if (category.slug === 'reversos') continue;
     const quantityInput = input.closest('.final-print-item').querySelector('.final-print-quantity');
     const quantity = quantityInput ? quantityInput.valueAsNumber : 1;
     const maxCopies = card.copias || 1;
@@ -283,23 +312,95 @@ function collectFinalPrintSelection() {
     }
   }
 
+  const reverseQuantityInput = $('finalReverseQuantity');
+  if (reverseQuantityInput.dataset.manual !== 'true') {
+    reverseQuantityInput.value = String(cards.length);
+  }
+  const reverseCount = reverseQuantityInput.valueAsNumber;
+  if (!Number.isInteger(reverseCount) || reverseCount < 0) {
+    throw new Error('El número de reversos debe ser un entero igual o mayor que cero.');
+  }
+  const reverseCategory = state.categories.find(category => category.slug === 'reversos');
+  if (reverseCount && (!reverseCategory || !reverseCategory.cartas[0])) {
+    throw new Error('No se encontró el reverso necesario para las cartas seleccionadas.');
+  }
   const boardCount = selectedBoardIndexes.size;
-  const hasSelection = rulebookPages.length > 0 || boardPages.length > 0 || cards.length > 0 || synergies.length > 0;
-  return {rulebookPages, boardPages, includeRulebook, boardCount, cards, synergies, hasSelection};
+  const hasSelection = rulebookPages.length > 0 || boardPages.length > 0
+    || cards.length > 0 || reverseCount > 0 || synergies.length > 0;
+  return {
+    rulebookPages,
+    boardPages,
+    includeRulebook,
+    boardCount,
+    cards,
+    synergies,
+    reverseCount,
+    reverseCategory,
+    reverseCard: reverseCategory && reverseCategory.cartas[0],
+    hasSelection
+  };
+}
+
+function formatPageRange(start, count) {
+  if (!count) return '';
+  const end = start + count - 1;
+  return count === 1 ? String(start) : `${start}–${end}`;
+}
+
+function formatPageNumbers(numbers) {
+  if (numbers.length < 2) return numbers.join('');
+  const first = numbers[0];
+  const step = numbers[1] - first;
+  const isRegular = (step === 1 || step === 2)
+    && numbers.every((page, index) => page === first + index * step);
+  if (!isRegular) return numbers.join(', ');
+  const parity = step === 2 ? ` (${first % 2 ? 'impares' : 'pares'})` : '';
+  return `${first}–${numbers[numbers.length - 1]}${parity}`;
+}
+
+function finalPrintPagePlan(selection) {
+  const ranges = [];
+  let nextPage = 1;
+  const addRange = (label, count) => {
+    if (!count) return;
+    ranges.push(`${label} ${formatPageRange(nextPage, count)}`);
+    nextPage += count;
+  };
+
+  addRange('Reglamento', selection.rulebookPages.length);
+  addRange('Tableros', selection.boardPages.length);
+  const frontSheets = Math.ceil(selection.cards.length / 9);
+  const reverseSheets = Math.ceil(selection.reverseCount / 9);
+  const duplexSheets = Math.max(frontSheets, reverseSheets);
+  if (duplexSheets) {
+    const frontPageNumbers = [];
+    const reversePageNumbers = [];
+    for (let index = 0; index < duplexSheets; index++) {
+      if (index < frontSheets) frontPageNumbers.push(nextPage++);
+      if (index < reverseSheets) reversePageNumbers.push(nextPage++);
+    }
+    if (frontPageNumbers.length) ranges.push(`Anversos ${formatPageNumbers(frontPageNumbers)}`);
+    if (reversePageNumbers.length) ranges.push(`Reversos ${formatPageNumbers(reversePageNumbers)}`);
+  }
+
+  const synergyPages = Math.ceil(selection.synergies.length * 2 / 9);
+  addRange('Sinergias', synergyPages);
+  return {ranges, totalPages: nextPage - 1};
 }
 
 function finalPrintPageCount(selection) {
-  return selection.rulebookPages.length
-    + selection.boardPages.length
-    + Math.ceil(selection.cards.length / 9)
-    + Math.ceil(selection.synergies.length / 3);
+  return finalPrintPagePlan(selection).totalPages;
 }
 
 function finalPrintDescription(selection) {
   const parts = [];
   if (selection.includeRulebook) parts.push('el reglamento');
   if (selection.boardCount) parts.push(`${selection.boardCount} ${selection.boardCount === 1 ? 'tablero' : 'tableros'}`);
-  if (selection.cards.length) parts.push(`${selection.cards.length} ${selection.cards.length === 1 ? 'carta' : 'cartas'}`);
+  if (selection.cards.length || selection.reverseCount) {
+    const frontCount = selection.cards.length;
+    const reverseCount = selection.reverseCount;
+    parts.push(`${frontCount} ${frontCount === 1 ? 'carta' : 'cartas'} + ${reverseCount} ${reverseCount === 1 ? 'reverso' : 'reversos'}`);
+  }
   if (selection.synergies.length) parts.push(`${selection.synergies.length} ${selection.synergies.length === 1 ? 'sinergia' : 'sinergias'}`);
   return parts.join(', ');
 }
@@ -319,8 +420,8 @@ function updateFinalPrintStatus() {
       setFinalPrintStatus('Marca al menos un elemento para preparar el PDF.');
       return;
     }
-    const pageCount = finalPrintPageCount(selection);
-    setFinalPrintStatus(`Selección: ${finalPrintDescription(selection)} · ${pageCount} páginas aproximadamente.`);
+    const pagePlan = finalPrintPagePlan(selection);
+    setFinalPrintStatus(`Selección: ${finalPrintDescription(selection)} · ${pagePlan.ranges.join(' · ')} · ${pagePlan.totalPages} páginas.`);
   } catch (error) {
     button.disabled = true;
     setFinalPrintStatus(error.message, true);
@@ -343,7 +444,18 @@ async function createFinalPrintPdf(selection) {
     await new Promise(resolve => setTimeout(resolve, 0));
     cardImages.push(await createCardImage(category, card));
   }
-  if (cardImages.length) pages.push(...createCardGridPages(cardImages, 63.5, 88));
+  const frontPages = createCardGridPages(cardImages, 63.5, 88);
+  let reversePages = [];
+  if (selection.reverseCount) {
+    setFinalPrintStatus(`Preparando ${selection.reverseCount} reversos…`);
+    const reverseImage = await createCardImage(selection.reverseCategory, selection.reverseCard);
+    reversePages = createCardGridPages(Array(selection.reverseCount).fill(reverseImage), 63.5, 88);
+  }
+  const duplexSheets = Math.max(frontPages.length, reversePages.length);
+  for (let index = 0; index < duplexSheets; index++) {
+    if (frontPages[index]) pages.push(frontPages[index]);
+    if (reversePages[index]) pages.push(reversePages[index]);
+  }
 
   if (selection.synergies.length) {
     const category = selection.synergies[0].category;

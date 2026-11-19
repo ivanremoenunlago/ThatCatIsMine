@@ -42,13 +42,15 @@ async function loadCategoryFile(path) {
 
 function assetUrl(category, assetPath) {
   const projectPath = resolveProjectPath(category.configPath, assetPath);
-  if (state.uploadedFiles) {
-    const file = state.uploadedFileMap.get(projectPath.toLowerCase());
-    if (!file) throw new Error(`No se encontró el archivo ${projectPath}.`);
-    if (!file._cardMakerUrl) file._cardMakerUrl = URL.createObjectURL(file);
-    return file._cardMakerUrl;
-  }
+  if (state.uploadedFiles) return uploadedAssetUrl(projectPath);
   return new URL(assetPath, new URL(category.configPath, location.href)).href;
+}
+
+function uploadedAssetUrl(projectPath) {
+  const file = state.uploadedFileMap.get(projectPath.toLowerCase());
+  if (!file) throw new Error(`No se encontró el archivo ${projectPath}.`);
+  if (!file._cardMakerUrl) file._cardMakerUrl = URL.createObjectURL(file);
+  return file._cardMakerUrl;
 }
 
 function loadImage(url) {
@@ -61,6 +63,32 @@ function loadImage(url) {
   });
   state.imageCache.set(url, promise);
   return promise;
+}
+
+function waitForImageLoad(image, errorMessage) {
+  return new Promise((resolve, reject) => {
+    const cleanup = () => {
+      image.removeEventListener('load', onLoad);
+      image.removeEventListener('error', onError);
+    };
+    const onLoad = () => {
+      cleanup();
+      if (image.naturalWidth) resolve(image);
+      else reject(new Error(errorMessage));
+    };
+    const onError = () => {
+      cleanup();
+      reject(new Error(errorMessage));
+    };
+
+    if (image.complete) {
+      onLoad();
+      return;
+    }
+    image.addEventListener('load', onLoad, {once: true});
+    image.addEventListener('error', onError, {once: true});
+    if (image.complete) onLoad();
+  });
 }
 
 function tintedIcon(category, iconKey, image, palette=category.paleta) {
@@ -112,6 +140,122 @@ function drawContain(context, image, x, y, width, height) {
   context.drawImage(image, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
 }
 
+function drawCardBack(canvas, category, icons) {
+  const design = category.diseno;
+  const context = canvas.getContext('2d');
+  const [designWidth, designHeight] = design.lienzo_px;
+  const scaleX = canvas.width / designWidth;
+  const scaleY = canvas.height / designHeight;
+  const scale = (scaleX + scaleY) / 2;
+  const palette = category.paleta;
+
+  const fillFrame = ([left, top, right, bottom, radius], fill) => {
+    roundedRect(context, left * scaleX, top * scaleY,
+      (right - left) * scaleX, (bottom - top) * scaleY, radius * scale);
+    context.fillStyle = fill;
+    context.fill();
+  };
+  const background = context.createLinearGradient(0, 0, 0, canvas.height);
+  background.addColorStop(0, darkenColor(palette.fondo, 0.9));
+  background.addColorStop(0.5, palette.fondo);
+  background.addColorStop(1, darkenColor(palette.fondo, 0.9));
+  fillFrame(design.fondo_carta, background);
+
+  const strokeFrame = ([left, top, right, bottom, radius, lineWidth], color) => {
+    roundedRect(context, left * scaleX, top * scaleY,
+      (right - left) * scaleX, (bottom - top) * scaleY, radius * scale);
+    context.lineWidth = lineWidth * scale;
+    context.strokeStyle = color;
+    context.stroke();
+  };
+  strokeFrame(design.marco_exterior, palette.marco);
+  strokeFrame(design.marco_interior, palette.cobre);
+
+  const [medallionX, medallionY, medallionRadius, medallionWidth] = design.medallon;
+  context.beginPath();
+  context.arc(medallionX * scaleX, medallionY * scaleY, medallionRadius * scale, 0, Math.PI * 2);
+  const medallionFill = context.createRadialGradient(
+    medallionX * scaleX - medallionRadius * scale * 0.35,
+    medallionY * scaleY - medallionRadius * scale * 0.4,
+    medallionRadius * scale * 0.08,
+    medallionX * scaleX,
+    medallionY * scaleY,
+    medallionRadius * scale
+  );
+  medallionFill.addColorStop(0, palette.placa);
+  medallionFill.addColorStop(1, palette.medallon);
+  context.fillStyle = medallionFill;
+  context.fill();
+  context.lineWidth = medallionWidth * scale;
+  context.strokeStyle = palette.marco;
+  context.stroke();
+
+  const [innerX, innerY, innerRadius, innerWidth] = design.aro_interior;
+  context.beginPath();
+  context.arc(innerX * scaleX, innerY * scaleY, innerRadius * scale, 0, Math.PI * 2);
+  context.lineWidth = innerWidth * scale;
+  context.strokeStyle = palette.separador;
+  context.stroke();
+
+  const strokeLine = ([x1, y1, x2, y2, lineWidth], color) => {
+    context.beginPath();
+    context.moveTo(x1 * scaleX, y1 * scaleY);
+    context.lineTo(x2 * scaleX, y2 * scaleY);
+    context.lineWidth = lineWidth * scale;
+    context.lineCap = 'butt';
+    context.strokeStyle = color;
+    context.stroke();
+  };
+  strokeLine(design.separador_superior, palette.separador);
+  strokeLine(design.separador_inferior, palette.separador);
+  strokeLine(design.linea_medallon, palette.marco);
+
+  const drawDiamond = (x, y, size) => {
+    const half = size * scale / 2;
+    context.beginPath();
+    context.moveTo(x * scaleX, y * scaleY - half);
+    context.lineTo(x * scaleX + half, y * scaleY);
+    context.lineTo(x * scaleX, y * scaleY + half);
+    context.lineTo(x * scaleX - half, y * scaleY);
+    context.closePath();
+    context.fillStyle = palette.marco;
+    context.fill();
+  };
+  for (const [x, y] of design.rombos_esquinas) drawDiamond(x, y, design.rombo_esquina_px);
+  drawDiamond(...design.rombo_central);
+
+  for (const [x, y] of design.puntos_separadores) {
+    context.beginPath();
+    context.arc(x * scaleX, y * scaleY, design.punto_radio_px * scale, 0, Math.PI * 2);
+    context.fillStyle = palette.marco;
+    context.fill();
+  }
+
+  const iconPositions = [
+    ['huella', 'superior'],
+    ['huella', 'inferior']
+  ];
+  for (const [iconName, position] of iconPositions) {
+    const image = icons[iconName];
+    if (!image) continue;
+    const [x, y, size] = design[`icono_${iconName}_${position}`];
+    const boxWidth = size * scaleX;
+    const boxHeight = size * scaleY;
+    context.save();
+    context.shadowColor = 'rgba(12, 8, 16, 0.48)';
+    context.shadowBlur = 3 * scale;
+    context.shadowOffsetY = 1.5 * scale;
+    if (position === 'inferior') {
+      context.translate((x + size / 2) * scaleX, (y + size / 2) * scaleY);
+      context.rotate(Math.PI);
+      drawContain(context, image, -boxWidth / 2, -boxHeight / 2, boxWidth, boxHeight);
+    } else {
+      drawContain(context, image, x * scaleX, y * scaleY, boxWidth, boxHeight);
+    }
+    context.restore();
+  }
+}
+
 function fillCardShape(context, x, y, width, height, radius, fill, stroke, lineWidth, shadow) {
   context.save();
   if (shadow) {
@@ -159,6 +303,7 @@ function wrapText(context, text, maxWidth) {
 function drawAttackContent(context, category, card, x, y, width, height) {
   const design = category.diseno;
   const palette = paletteForCard(category, card);
+  const damageColor = palette.dano || palette.detalle;
   const centerX = x + width / 2;
   const centerY = y + height / 2;
   const textWidth = width * 0.82;
@@ -177,7 +322,7 @@ function drawAttackContent(context, category, card, x, y, width, height) {
       if (lines.length * lineHeight <= height * 0.76) break;
       fontSize -= 2;
     }
-    context.fillStyle = palette.detalle;
+    context.fillStyle = damageColor;
     const firstLineY = centerY - (lines.length - 1) * lineHeight / 2;
     lines.forEach((line, index) => context.fillText(line, centerX, firstLineY + index * lineHeight, textWidth));
     return;
@@ -187,14 +332,15 @@ function drawAttackContent(context, category, card, x, y, width, height) {
   const hasDescription = Boolean(card.descripcion);
   const label = isSupport ? 'BONIFICACIÓN' : 'DAÑO';
   const value = isSupport ? `+${card.bonificacion}` : String(card.dano);
+  const statColor = damageColor;
   const labelY = centerY - height * (hasDescription ? 0.26 : 0.16);
   const valueY = centerY + height * (hasDescription ? -0.02 : 0.08);
 
-  context.fillStyle = palette.marco;
+  context.fillStyle = statColor;
   context.font = `800 ${Math.round(width * design.tamano_fuente_rotulo_ataque)}px "Nunito Sans", Arial, sans-serif`;
   context.fillText(label, centerX, labelY);
 
-  context.fillStyle = palette.marco;
+  context.fillStyle = statColor;
   context.font = `700 ${Math.round(width * design.tamano_fuente_valor_ataque)}px "Lora", Georgia, serif`;
   context.fillText(value, centerX, valueY);
 
@@ -209,7 +355,7 @@ function drawAttackContent(context, category, card, x, y, width, height) {
       if (lines.length * lineHeight <= height * 0.34) break;
       fontSize -= 2;
     }
-    context.fillStyle = palette.detalle;
+    context.fillStyle = damageColor;
     const detailY = centerY + height * 0.3;
     const firstLineY = detailY - (lines.length - 1) * lineHeight / 2;
     lines.forEach((line, index) => context.fillText(line, centerX, firstLineY + index * lineHeight, textWidth));
@@ -218,6 +364,12 @@ function drawAttackContent(context, category, card, x, y, width, height) {
 
 function drawCard(canvas, category, card, artImage, icons, renderDpi=category.diseno.dpi) {
   const context = canvas.getContext('2d');
+  if (category.slug === 'reversos') {
+    canvas.width = Math.round(category.diseno.ancho_mm * renderDpi / 25.4);
+    canvas.height = Math.round(category.diseno.alto_mm * renderDpi / 25.4);
+    drawCardBack(canvas, category, icons);
+    return;
+  }
   const palette = paletteForCard(category, card);
   const design = category.diseno;
   const width = Math.round(design.ancho_mm * renderDpi / 25.4);
@@ -275,10 +427,17 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
     context.restore();
   }
 
-  if (icons.sofa && icons.salon && Number.isFinite(Number(card.sofa)) && Number.isFinite(Number(card.salon))) {
-    const scoreWidth = Math.round(width * design.ancho_puntuaciones);
+  const sofaScore = String(card.sofa);
+  const isSofaScoreRange = /^\d+\/\d+$/.test(sofaScore);
+  if (icons.sofa && icons.salon
+    && (Number.isFinite(Number(card.sofa)) || isSofaScoreRange)
+    && Number.isFinite(Number(card.salon))) {
+    const scoreWidthScale = isSofaScoreRange ? 1.35 : 1;
+    const scoreWidth = Math.round(width * design.ancho_puntuaciones * scoreWidthScale);
     const scoreHeight = Math.round(height * design.alto_puntuaciones);
-    const scoreX = Math.round(width * design.x_panel_puntuacion);
+    const scoreX = Math.round(width * (
+      design.x_panel_puntuacion - design.ancho_puntuaciones * (scoreWidthScale - 1)
+    ));
     const scoreY = Math.round(height * design.y_panel_puntuacion);
     fillCardShape(context, scoreX, scoreY, scoreWidth, scoreHeight,
       Math.round(width * design.radio_puntuaciones), palette.papel, palette.detalle,
@@ -303,7 +462,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
     context.font = `700 ${Math.round(width * design.tamano_fuente_puntuacion)}px "Lora", Georgia, serif`;
     context.textAlign = 'right';
     context.textBaseline = 'middle';
-    context.fillText(String(card.sofa), numberX, sofaCenterY);
+    context.fillText(sofaScore, numberX, sofaCenterY);
     context.fillText(String(card.salon), numberX, salonCenterY);
   }
 
@@ -355,6 +514,18 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
   const descriptionText = card.descripcion;
   let textTop = descriptionY;
   let textHeight = descriptionHeight;
+  if (card.recordatorio) {
+    const reminderFontSize = Math.round(width * 0.025);
+    const reminderHeight = Math.round(reminderFontSize * 1.2);
+    const reminderGap = Math.round(height * 0.003);
+    context.fillStyle = palette.detalle;
+    context.font = `700 ${reminderFontSize}px "Nunito Sans", Arial, sans-serif`;
+    context.textAlign = 'left';
+    context.textBaseline = 'top';
+    context.fillText(card.recordatorio, descriptionX, textTop, descriptionWidth);
+    textTop += reminderHeight + reminderGap;
+    textHeight -= reminderHeight + reminderGap;
+  }
   if (hasCatSkill) {
     const skillTitle = card.habilidad.toLocaleUpperCase('es-ES');
     let skillFontSize = Math.round(width * design.tamano_fuente_sinergia);
@@ -366,7 +537,7 @@ function drawCard(canvas, category, card, artImage, icons, renderDpi=category.di
     context.fillStyle = palette.detalle;
     context.textAlign = 'left';
     context.textBaseline = 'top';
-    context.fillText(skillTitle, descriptionX, descriptionY, descriptionWidth);
+    context.fillText(skillTitle, descriptionX, textTop, descriptionWidth);
     const headingHeight = Math.round(skillFontSize * 1.2);
     const headingGap = Math.round(height * 0.004);
     textTop += headingHeight + headingGap;
@@ -447,7 +618,8 @@ function drawSynergyFace(canvas, category, card, side, artImage, renderDpi=categ
         width / 2, height / 2, width - 2 * inset);
     }
     context.restore();
-    roundedRect(context, border / 2, border / 2, width - border, height - border, corner);
+    roundedRect(context, border / 2, border / 2, width - border, height - border,
+      Math.max(0, corner - border / 2));
     context.lineWidth = border;
     context.strokeStyle = amber;
     context.stroke();
@@ -608,7 +780,7 @@ async function createSynergyCardTile(category, card) {
 
 async function createCardTile(category, card) {
   const tile = document.createElement('article');
-  tile.className = 'card-tile';
+  tile.className = `card-tile${category.slug === 'reversos' ? ' card-back-tile' : ''}`;
   const canvas = document.createElement('canvas');
   canvas.className = 'card-art';
   const previewDpi = category.diseno.dpi_vista_previa;
@@ -625,6 +797,9 @@ async function createCardTile(category, card) {
   score.className = 'card-meta';
   if (category.slug === 'gatos') {
     score.textContent = `Sofá ${card.sofa} · Salón ${card.salon}`;
+  } else if (category.slug === 'reversos') {
+    const copies = printableCards(category).length;
+    score.textContent = `Reverso · ${copies} ${copies === 1 ? 'copia' : 'copias'}`;
   } else if (category.slug === 'ataques') {
     const copyLabel = `${card.copias} ${card.copias === 1 ? 'copia' : 'copias'}`;
     const typeLabel = card.tipo === 'apoyo' ? 'Apoyo' : 'Ataque';
@@ -689,7 +864,20 @@ async function createCardTile(category, card) {
 }
 
 async function loadCardAssets(category, card) {
-  if (card.artImage && card.icons) return {artImage: card.artImage, icons: card.icons};
+  if ((card.artImage || category.slug === 'reversos') && card.icons) {
+    return {artImage: card.artImage || null, icons: card.icons};
+  }
+  if (category.slug === 'reversos') {
+    const icons = Object.fromEntries(await Promise.all(Object.entries(category.iconos).map(
+      async ([name, path]) => {
+        const image = await loadImage(assetUrl(category, path));
+        return [name, tintedIcon(category, name, image)];
+      }
+    )));
+    card.icons = icons;
+    card.imageError = false;
+    return {artImage: null, icons};
+  }
   const artImage = await loadImage(assetUrl(category, card.imagen));
   const rawIcons = {
     tipo: await loadImage(assetUrl(category, category.iconos.tipo)),

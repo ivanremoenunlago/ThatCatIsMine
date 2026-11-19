@@ -7,6 +7,7 @@ paleta:
   papel: "#F5E4DF"
   tinta: "#493323"
   detalle: "#B94B48"
+  dano: "#922F34"
 iconos:
   tipo: "../emojis/ataque.png"
 diseno:

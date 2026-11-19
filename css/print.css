@@ -15,7 +15,7 @@
 .final-print-header h2 { margin: 0 0 7px; font: 700 28px Georgia, 'Times New Roman', serif; }
 .final-print-header p { margin-bottom: 0; color: var(--muted); line-height: 1.5; }
 .final-print-download { display: grid; min-width: 250px; gap: 8px; justify-items: end; }
-.final-print-status { max-width: 440px; font-size: 12px; text-align: right; }
+.final-print-status { max-width: 700px; font-size: 12px; line-height: 1.45; text-align: right; }
 .final-print-status.error { color: #a33f36; }
 .final-print-groups { display: grid; grid-template-columns: minmax(270px, 0.8fr) minmax(0, 2fr); align-items: start; gap: 16px; }
 .final-print-group, .final-print-category { min-width: 0; margin: 0; padding: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
@@ -31,6 +31,7 @@
 .final-print-item .final-print-option { flex: 1; }
 .final-print-quantity { width: 68px; min-height: 34px; padding: 5px 7px; color: var(--ink); background: white; border: 1px solid #ded5c6; border-radius: 7px; }
 .final-print-quantity:disabled { opacity: 0.5; }
+.final-print-help { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.4; }
 .rulebook-page {
   width: 100%;
   max-width: 297mm;
@@ -44,6 +45,14 @@
   font-size: 8.5pt;
   line-height: 1.24;
 }
+.rulebook-text-page {
+  width: 297mm;
+  max-width: none;
+  height: 210mm;
+  min-height: 210mm;
+  aspect-ratio: auto;
+  transform-origin: top left;
+}
 .rulebook-board-page { max-width: 297mm; padding: 0; }
 .rulebook-page.pdf-export-page {
   display: block;
@@ -51,9 +60,10 @@
   max-width: none;
   height: 210mm;
   min-height: 210mm;
-  margin: 0;
+  margin: 0 !important;
   padding: 7mm 8mm;
   overflow: hidden;
+  transform: none !important;
   background: #fff;
   border: 0;
 }
@@ -151,12 +161,13 @@
 .rulebook-sections-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .rulebook-block { min-width: 0; padding: 1mm; border-bottom: 1px solid #e7ddcb; break-inside: avoid; }
 .rulebook-block-full { grid-column: 1 / -1; }
-.rulebook-block-full ol, .rulebook-block-full ul { columns: 2; column-gap: 6mm; }
+.rulebook-block-full ul { columns: 2; column-gap: 6mm; }
 .rulebook-block h3 { margin: 0 0 1mm; color: #493323; font: 700 10pt/1.15 Arial, sans-serif; }
 .rulebook-block p { margin: 0; }
 .rulebook-block ol, .rulebook-block ul { margin: 0; padding-left: 5mm; }
 .rulebook-block li { margin: 0 0 1mm; padding-left: .5mm; }
 .rulebook-block li:last-child { margin-bottom: 0; }
+.rulebook-icon { width: 4mm; height: 4mm; margin-right: 1mm; object-fit: contain; vertical-align: middle; filter: brightness(0); }
 .rulebook-note-block { padding: 2mm 3mm; background: #f5f2eb; border-left: 1mm solid #b98232; border-bottom: 0; }
 .rulebook-synergy { padding: 2mm; background: #faf8f3; }
 .rulebook-synergy h3 { font-size: 9pt; }
@@ -284,15 +295,7 @@
   .final-print-download { width: 100%; justify-items: start; }
   .final-print-status { text-align: left; }
   .final-print-groups, .final-print-categories { grid-template-columns: 1fr; }
-  .rulebook-page { min-height: 0; aspect-ratio: auto; overflow: visible; padding: 5mm; }
-  .rulebook-page-header h2 { font-size: 16pt; }
-  .rulebook-sections-2, .rulebook-sections-3 { grid-template-columns: 1fr; }
-  .rulebook-columns, .rulebook-zones, .synergy-grid, .turn-diagrams { grid-template-columns: 1fr; }
-  .turn-diagram-completo { grid-template-columns: 1fr; }
-  .turn-diagram-completo > .turn-diagram-title,
-  .turn-diagram-completo > .turn-choice { grid-column: auto; }
-  .turn-choice { align-items: center; flex-direction: column; }
-  .rulebook-card { padding: 3mm; }
+  .rulebook-page:not(.rulebook-text-page) { min-height: 0; aspect-ratio: auto; overflow: visible; padding: 5mm; }
 }
 @page { size: A4 landscape; margin: 0; }
 @media print {
@@ -306,9 +309,10 @@
     max-width: none;
     height: 210mm;
     min-height: 210mm;
-    margin: 0;
+    margin: 0 !important;
     padding: 7mm 8mm;
     overflow: hidden;
+    transform: none !important;
     background: #fff;
     border: 0;
     break-after: page;

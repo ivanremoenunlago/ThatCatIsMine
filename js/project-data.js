@@ -6,7 +6,8 @@ const CATEGORY_PATHS = [
   'cartas/estructuras/categoria.yml',
   'cartas/acciones/categoria.yml',
   'cartas/consumibles/categoria.yml',
-  'cartas/sinergias/categoria.yml'
+  'cartas/sinergias/categoria.yml',
+  'cartas/reversos/categoria.yml'
 ];
 const RULEBOOK_PATH = 'reglamento/categoria.yml';
 const $ = (id) => document.getElementById(id);
@@ -135,6 +136,7 @@ function validateCategory(category) {
   }
 
   const isSynergyCategory = category.slug === 'sinergias';
+  const isCardBackCategory = category.slug === 'reversos';
   if (!category.nombre || !category.slug || (!category.iconos && !isSynergyCategory)
     || !category.diseno || !Array.isArray(category.cartas)) {
     throw new Error('Faltan datos obligatorios en el archivo de categoría.');
@@ -143,7 +145,7 @@ function validateCategory(category) {
   if (![ancho_mm, alto_mm, dpi].every(value => Number.isFinite(value) && value > 0)) {
     throw new Error(`La categoría "${category.nombre}" debe definir ancho_mm, alto_mm y dpi válidos.`);
   }
-  if (Object.values(category.diseno).some(value => !Number.isFinite(value))) {
+  if (Object.values(category.diseno).flat(Infinity).some(value => !Number.isFinite(value))) {
     throw new Error(`La categoría "${category.nombre}" tiene proporciones de diseño no válidas.`);
   }
   const palettes = Object.entries(category)
@@ -160,6 +162,16 @@ function validateCategory(category) {
         || (card.imagen !== undefined && typeof card.imagen !== 'string')) {
         throw new Error(`La sinergia "${card.nombre || 'sin nombre'}" necesita nombre, explicación, lore y gatos válidos.`);
       }
+    }
+    return;
+  }
+  if (isCardBackCategory) {
+    if (!category.iconos || category.cartas.length !== 1
+      || !category.cartas[0].nombre || category.cartas[0].tipo !== 'reverso'
+      || typeof category.iconos.huella !== 'string' || !category.iconos.huella
+      || !category.paleta.fondo || !category.paleta.medallon || !category.paleta.marco
+      || !category.paleta.cobre || !category.paleta.separador) {
+      throw new Error('El reverso necesita una carta, el icono de la huella y todos sus colores.');
     }
     return;
   }
@@ -208,11 +220,6 @@ function validateCategory(category) {
     }
     if (category.slug === 'consumibles'
       && (card.tipo !== 'consumible' || !card.descripcion
-        || !Number.isInteger(card.copias) || card.copias < 1)) {
-      throw new Error(`La carta "${card.nombre}" necesita descripción y cantidad de copias válidas.`);
-    }
-    if (category.slug === 'globales'
-      && (card.tipo !== 'evento_global' || !card.descripcion
         || !Number.isInteger(card.copias) || card.copias < 1)) {
       throw new Error(`La carta "${card.nombre}" necesita descripción y cantidad de copias válidas.`);
     }

@@ -13,17 +13,17 @@ diseno:
   dpi_vista_previa: 240
 cartas:
   - nombre: "¡Que me aplastas!"
-    descripcion: "Coloca al Desnutrido debajo del Gordo. El Desnutrido no ocupa una plaza adicional."
+    descripcion: "El Gordo se sienta sobre el desnutrido. El Desnutrido no ocupa una plaza adicional."
     lore: "El Desnutrido se sentó primero. El Gordo ni lo vio."
     gatos: ["Gato Gordo", "Gato Desnutrido"]
     imagen: "que_me_aplastas.png"
   - nombre: "Veteranos del barrio"
-    descripcion: "Se anulan sus bonificaciones individuales de potencia y la pareja obtiene +2 de prestigio en total."
+    descripcion: "Se anulan sus bonificaciones individuales de daño y la pareja obtiene +2 de prestigio en total."
     lore: "Los dos saben pelear. Juntos, se pasan el día peleándose entre ellos."
     gatos: ["Gato de Barrio", "Gato Territorial"]
     imagen: "veteranos_del_barrio.png"
   - nombre: "Socios de información"
-    descripcion: "El Cotilla usa su habilidad sin descartar. El Curioso mira 4 cartas en vez de 3."
+    descripcion: "El Cotilla puede usar «¿Qué tramas?» sin descartar. Curioso mira 4 cartas en vez de 3 al usar «A ver qué hay»; conserva su coste de descarte."
     lore: "El Curioso mete el hocico. El Cotilla se entera de todo lo demás."
     gatos: ["Gato Cotilla", "Gato Curioso"]
     imagen: "socios_de_informacion.png"
@@ -53,7 +53,7 @@ cartas:
     gatos: ["Gato Trillizo", "Gato Trillizo", "Gato Trillizo"]
     imagen: "los_trillizos.png"
   - nombre: "El ojito derecho"
-    descripcion: "El Bebé recibe +2 de prestigio de Mamá Gata en lugar de +1. Los demás gatos de tu Sofá siguen recibiendo +1."
+    descripcion: "El Bebé recibe +3 de prestigio de Mamá Gata en lugar de +1. Los demás gatos de tu Sofá siguen recibiendo +1."
     lore: "Hay mimos para todos. Y uno más para el pequeño."
     gatos: ["Mamá Gata", "Gato Bebé"]
     imagen: "mama_y_bebe.png"

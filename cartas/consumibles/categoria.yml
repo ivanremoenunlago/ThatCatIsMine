@@ -54,7 +54,7 @@ diseno:
   desplazamiento_sombra: 0.0044
   desenfoque_sombra: 0.01
 cartas:
-  - nombre: "Pienso Premium"
+  - nombre: "Pienso"
     imagen: "imagenes/pienso_premium.png"
     tipo: "consumible"
     copias: 2
@@ -63,12 +63,12 @@ cartas:
     imagen: "imagenes/lata_de_atun.png"
     tipo: "consumible"
     copias: 3
-    descripcion: "Roba 2 cartas. Los gatos van a casa de sus dueños."
+    descripcion: "Roba 2 cartas."
   - nombre: "Churu"
     imagen: "imagenes/churu.png"
     tipo: "consumible"
     copias: 1
-    descripcion: "Roba 3 cartas. Los gatos van a casa de sus dueños."
+    descripcion: "Roba 3 cartas."
   - nombre: "Bolsa de Catnip"
     imagen: "imagenes/bolsa_de_catnip.png"
     tipo: "consumible"
